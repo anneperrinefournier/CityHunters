@@ -1,0 +1,2 @@
+class Storyline < ApplicationRecord
+end
