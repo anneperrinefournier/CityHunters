@@ -73,6 +73,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_111504) do
     t.float "duration"
     t.text "short_description"
     t.text "long_description"
+    t.text "starting_point"
   end
 
   create_table "users", force: :cascade do |t|
