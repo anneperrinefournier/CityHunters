@@ -1,5 +1,5 @@
 
-.btn {
+.btn-home {
   color: white;
   cursor: pointer;
   font-family: Nova Square;
@@ -11,18 +11,10 @@
   font-size: 18px;
   padding: 12px 20px;
   height: 120px;
-
-  &::active {
-    border: 2px solid white;
-  }
-}
-
-.btn:active {
-  border: 2px solid white;
 }
 
 
-.btn.v2 {
+.btn-home.v2 {
   transition: color  ease;
 
   &::before {
@@ -79,10 +71,6 @@
     color: lighten($gold, 10%);
     border: 2px solid white;
   }
-
-    &::before {
-      transform: translateX(50%);
-    }
 
     &::after {
       transform: translate(10px, -50%);
