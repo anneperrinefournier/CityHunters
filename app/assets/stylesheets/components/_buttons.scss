@@ -1,0 +1,91 @@
+
+.btn {
+  color: white;
+  cursor: pointer;
+  font-family: Nova Square;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
+  border: 2px solid $gold;
+  font-size: 18px;
+  padding: 12px 20px;
+  height: 120px;
+
+  &::active {
+    border: 2px solid white;
+  }
+}
+
+.btn:active {
+  border: 2px solid white;
+}
+
+
+.btn.v2 {
+  transition: color  ease;
+
+  &::before {
+    background: linear-gradient(90deg, darken($navy, 5%) 50%, $navy 50%);
+    content: '';
+    height: 100%;
+    right: 0;
+    position: absolute;
+    top: 0;
+    transition: transform  ease;
+    width: 200%;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: lighten($gold, 10%);
+    border: 2px solid white;
+
+    &::before {
+      transform: translateX(50%);
+    }
+
+    &::after {
+      transform: translate(10px, -50%);
+      border: 2px solid white;
+    }
+  }
+}
+
+.btn-ugly{
+  color: white;
+  background-color: $navy;
+  font-family: Nova Square;
+  border-radius: 10px;
+  border: 2px solid $gold;
+  font-size: 12px;
+  padding: 12px 20px;
+  margin-top: 100px;
+  float: right;
+
+  &::before {
+    background: linear-gradient(90deg, darken($navy, 5%) 50%, $navy 50%);
+    content: '';
+    height: 100%;
+    right: 0;
+    position: absolute;
+    top: 0;
+    transition: transform  ease;
+    width: 200%;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: lighten($gold, 10%);
+    border: 2px solid white;
+  }
+
+    &::before {
+      transform: translateX(50%);
+    }
+
+    &::after {
+      transform: translate(10px, -50%);
+      border: 2px solid white;
+    }
+}
