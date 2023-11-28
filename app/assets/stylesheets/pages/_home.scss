@@ -1,1 +1,31 @@
 // Specific CSS for your home-page
+
+.waviy {
+  position: relative;
+  font-family: Nova Square;
+  letter-spacing: -5px;
+
+  color: #8b008b;
+}
+.waviy h1 {
+  font-size: 70px;
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+  animation: flip 2s infinite;
+  // animation-iteration-count: 3;
+  animation-delay: calc(.2s * var(--i))
+}
+@keyframes flip {
+  0%,80% {
+    transform: rotateY(360deg)
+  }
+}
+
+.col-6 {
+  width: 100%
+}
+
+.container {
+  background-color: #F4F4F4;
+}

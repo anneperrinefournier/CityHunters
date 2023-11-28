@@ -1,6 +1,35 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<p>HELLO FROM CITY HUNTERS</p>
-<form action="/storylines/1/games" method="POST">
-  <button class="btn btn-danger">Create game lobby</button>
-</form>
+<div class="container" style="min-height: 92vh">
+
+<%= cl_image_tag("compass", height: 300, width: 350, crop: :fill) %>
+
+  <div class="waviy text-center pt-5">
+    <h1 style="--i:1">C</h1>
+    <h1 style="--i:2">i</h1>
+    <h1 style="--i:3">t</h1>
+    <h1 style="--i:4">y</h1>
+    <h1 style="--i:5">H</h1>
+    <h1 style="--i:6">u</h1>
+    <h1 style="--i:7">n</h1>
+    <h1 style="--i:8">t</h1>
+    <h1 style="--i:9">e</h1>
+    <h1 style="--i:10">r</h1>
+    <h1 style="--i:11">s</h1>
+  </div>
+
+  <div class="justify-content-center mt-5">
+
+    <div class="d-grid gap-2 col-6 mx-auto">
+
+        <%=link_to "Créer une partie", storylines_path, class:"btn-home v2" %>
+
+        <button class="btn-home v2">Rejoindre une partie</button>
+
+    </div>
+
+    <button class="btn-ugly">Éditer un scénario</button>
+
+
+  </div>
+
+
+</div>
