@@ -1,11 +1,12 @@
 class Game < ApplicationRecord
   belongs_to :user
   belongs_to :storyline
-  belongs_to :participation
+
+  has_many :participations, dependent: :destroy
 
   enum status: {
     not_started: 0,
-    started: 1,
-    finished: 2
+    running: 1,
+    over: 2
   }
 end

@@ -21,8 +21,6 @@ p "destroyed #{Place.all.count} places"
 p "destroyed #{Riddle.all.count} riddles"
 p "destroyed #{Clue.all.count} clues"
 
-User.create!(email: "john@example.com", password: "password")
-
 monica = User.new(
   email: 'monica@gmail.com',
   password: 'password',

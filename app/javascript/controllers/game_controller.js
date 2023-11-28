@@ -13,3 +13,8 @@ export default class extends Controller {
     this.introductionTarget.classList.add('d-none')
   }
 }
+
+
+/* <form action="/storylines/1/games" method="POST">
+  <button class="btn btn-danger">Create game lobby</button>
+</form> */

@@ -7,7 +7,6 @@ class GamesController < ApplicationController
       status: :not_started,
       pin: 7.times.map { ('A'..'Z').to_a.sample }.join
     )
-    raise
     game.save!
     redirect_to lobby_game_path(game)
   end
@@ -17,7 +16,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game.update(status: :started)
+    @game.update(status: :running)
     @storyline = Storyline.find(@game.storyline_id)
     @place = Place.where(storyline_id: @storyline.id)[1]
     @riddle = Riddle.where(place_id: @place.id)[0]
