@@ -49,7 +49,8 @@ storyline1 = Storyline.new(
   difficulty: 2,
   starting_point: "Louvre Museum, Rue de Rivoli, 75001 Paris, France",
   short_description: "Découvrez les mystères cachés dans les galeries du Louvre. Suivez les indices artistiques et percez le secret qui se cache derrière chaque chef-d'œuvre.",
-  long_description: "Plongez dans l'histoire de l'art au cœur du 1er arrondissement. Le Louvre, berceau d'innombrables trésors, cache des mystères inexplorés. Parcourez les galeries emblématiques, résolvez des énigmes artistiques, et percez le secret qui se cache derrière chaque chef-d'œuvre."
+  long_description: "Plongez dans l'histoire de l'art au cœur du 1er arrondissement. Le Louvre, berceau d'innombrables trésors, cache des mystères inexplorés. Parcourez les galeries emblématiques, résolvez des énigmes artistiques, et percez le secret qui se cache derrière chaque chef-d'œuvre.",
+  introduction: "Ceci est une magnifique introduction aillant pour seul et unique but de combler un vide, un vide dans l'application, un vide dans la modale, un vide... dans mon coeur..."
 )
 storyline1.save!
 

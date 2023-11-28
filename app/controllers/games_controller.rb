@@ -17,6 +17,9 @@ class GamesController < ApplicationController
 
   def show
     @game.update(status: :started)
+    @storyline = Storyline.find(@game.storyline_id)
+    @place = Place.where(storyline_id: @storyline.id)[1]
+    @riddle = Riddle.where(place_id: @place.id)[0]
   end
 
   private
