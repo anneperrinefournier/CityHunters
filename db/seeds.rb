@@ -252,21 +252,21 @@ place8 = Place.new(
 place8.save!
 
 riddle1 = Riddle.new(
-  title: 'Énigme 1',
+  title: 'Horse color',
   description: 'riddle 1 : horse color',
   content: 'blanc',
   question: 'Quelle est la couleur du cheval blanc d’Henri 4?',
   place: place2
 )
 riddle2 = Riddle.new(
-  title: 'Énigme 2',
+  title: 'Dog color',
   description: 'riddle 2 : dog color',
   content: 'rouge',
   question: 'Quelle est la couleur de Pif le chien rouge?',
   place: place2
 )
 riddle3 = Riddle.new(
-  title: 'Énigme 3',
+  title: 'Cat color',
   description: 'riddle 3 : cat color',
   content: 'noir',
   question: 'Quelle est la couleur du chat noir de la voisine?',

@@ -1,6 +1,7 @@
 class Game < ApplicationRecord
   belongs_to :user
   belongs_to :storyline
+  belongs_to :participation
 
   enum status: {
     not_started: 0,

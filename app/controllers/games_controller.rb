@@ -7,7 +7,8 @@ class GamesController < ApplicationController
       status: :not_started,
       pin: 7.times.map { ('A'..'Z').to_a.sample }.join
     )
-    game.save
+    raise
+    game.save!
     redirect_to lobby_game_path(game)
   end
 
