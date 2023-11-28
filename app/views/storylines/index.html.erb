@@ -1,17 +1,24 @@
 <div class="container mt-3">
-  <h2>Storylines</h2>
+  <h1>Storylines</h1>
 </div>
 
+
 <% @storylines.each do |storyline| %>
-<div class="m-3">
-<%= storyline.title %>
-<%= storyline.district %>
-<%= storyline.duration %>
-<%= storyline.distance %>
-<%= storyline.theme %>
-<div></div>
-<%= storyline.difficulty %>
-<div></div>
-<%= storyline.short_description %>
-</div>
+<%= link_to storyline_path(storyline), class: "links" do %>
+  <div class="m-3">
+      <div class="d-flex justify-content-between">
+      <h2><%= storyline.title %></h2>
+      <div>Niv. <%= storyline.difficulty %></div>
+      </div>
+  <div class="scenario-card-product">
+    <img src="https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg" />
+    <div class="scenario-card-product-infos">
+      <div><%= storyline.duration.to_i %> min</div>
+      <div><%= storyline.district %></div>
+      <p>thème : <%= storyline.theme %></p>
+      <p><%= storyline.short_description %></p>
+      </div>
+    </div>
+  </div>
+    <% end %>
 <% end %>
