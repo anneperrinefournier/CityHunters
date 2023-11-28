@@ -3,5 +3,15 @@
 </div>
 
 <% @storylines.each do |storyline| %>
-<% storyline.name %>
+<div class="m-3">
+<%= storyline.title %>
+<%= storyline.district %>
+<%= storyline.duration %>
+<%= storyline.distance %>
+<%= storyline.theme %>
+<div></div>
+<%= storyline.difficulty %>
+<div></div>
+<%= storyline.short_description %>
+</div>
 <% end %>
