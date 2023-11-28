@@ -1,5 +1,7 @@
 <div class="container" style="min-height: 92vh">
 
+<%= cl_image_tag("compass", height: 300, width: 350, crop: :fill) %>
+
   <div class="waviy text-center pt-5">
     <h1 style="--i:1">C</h1>
     <h1 style="--i:2">i</h1>
@@ -18,13 +20,14 @@
 
     <div class="d-grid gap-2 col-6 mx-auto">
 
-        <button class="btn-home v2">Créer une partie</button>
+        <%=link_to "Créer une partie", storylines_path, class:"btn-home v2" %>
 
         <button class="btn-home v2">Rejoindre une partie</button>
 
     </div>
 
     <button class="btn-ugly">Éditer un scénario</button>
+
 
   </div>
 
