@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_28_105752) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_28_111504) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,14 +30,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_105752) do
     t.bigint "storyline_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pin"
     t.index ["storyline_id"], name: "index_games_on_storyline_id"
     t.index ["user_id"], name: "index_games_on_user_id"
   end
 
   create_table "places", force: :cascade do |t|
+    t.string "name"
     t.string "address"
     t.string "description"
     t.string "picture"
+    t.float "longitude"
+    t.float "latitude"
     t.bigint "storyline_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -45,6 +49,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_105752) do
   end
 
   create_table "riddles", force: :cascade do |t|
+    t.string "title"
     t.string "description"
     t.string "picture"
     t.string "content"
@@ -58,7 +63,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_105752) do
   end
 
   create_table "storylines", force: :cascade do |t|
-    t.string "address"
+    t.string "district"
     t.string "theme"
     t.integer "difficulty"
     t.float "distance"
