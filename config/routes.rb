@@ -9,4 +9,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  resources :games, only: [] do
+    member do
+      get '/lobby', to: "game#lobby"
+    end
+  end
+
+  resources :storylines, only: [:index, :show] do
+    resources :games, only: [:create]
+  end
 end
