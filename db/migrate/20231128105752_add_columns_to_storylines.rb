@@ -4,5 +4,6 @@ class AddColumnsToStorylines < ActiveRecord::Migration[7.1]
     add_column :storylines, :duration, :float
     add_column :storylines, :short_description, :text
     add_column :storylines, :long_description, :text
+    add_column :storylines, :starting_point, :text
   end
 end
