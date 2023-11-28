@@ -10,9 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_27_113525) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_27_150616) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clues", force: :cascade do |t|
+    t.string "content"
+    t.bigint "riddle_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["riddle_id"], name: "index_clues_on_riddle_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.integer "status"
+    t.date "start_time"
+    t.date "end_time"
+    t.bigint "user_id", null: false
+    t.bigint "storyline_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["storyline_id"], name: "index_games_on_storyline_id"
+    t.index ["user_id"], name: "index_games_on_user_id"
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "address"
+    t.string "description"
+    t.string "picture"
+    t.bigint "storyline_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["storyline_id"], name: "index_places_on_storyline_id"
+  end
+
+  create_table "riddles", force: :cascade do |t|
+    t.string "description"
+    t.string "picture"
+    t.string "content"
+    t.string "question"
+    t.float "longitude"
+    t.float "latitude"
+    t.bigint "place_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_riddles_on_place_id"
+  end
+
+  create_table "storylines", force: :cascade do |t|
+    t.string "address"
+    t.string "theme"
+    t.integer "difficulty"
+    t.float "distance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +74,17 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_27_113525) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "photo"
+    t.integer "level"
+    t.integer "xp"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "clues", "riddles"
+  add_foreign_key "games", "storylines"
+  add_foreign_key "games", "users"
+  add_foreign_key "places", "storylines"
+  add_foreign_key "riddles", "places"
 end
