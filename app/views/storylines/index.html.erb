@@ -1,0 +1,17 @@
+<div class="container mt-3">
+  <h2>Storylines</h2>
+</div>
+
+<% @storylines.each do |storyline| %>
+<div class="m-3">
+<%= storyline.title %>
+<%= storyline.district %>
+<%= storyline.duration %>
+<%= storyline.distance %>
+<%= storyline.theme %>
+<div></div>
+<%= storyline.difficulty %>
+<div></div>
+<%= storyline.short_description %>
+</div>
+<% end %>
