@@ -12,9 +12,9 @@
       <p><%= @riddle.question %></p>
     </div>
     <div class='d-flex justify-content-center' data-controller="answer-modal">
-      <%= console %>
       <button class="btn btn-primary" data-action="click->answer-modal#openModal" >Répondre</button>
        <%= render "answer_modal", riddle: @riddle %>
+       <div data-answer-modal-target="displayriddle"></div>
     </div>
 
     <div style="width: 100%; height: 600px;"
