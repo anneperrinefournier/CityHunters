@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_28_111504) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_28_161705) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,17 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_111504) do
     t.string "pin"
     t.index ["storyline_id"], name: "index_games_on_storyline_id"
     t.index ["user_id"], name: "index_games_on_user_id"
+  end
+
+  create_table "participations", force: :cascade do |t|
+    t.float "longitude"
+    t.float "latitude"
+    t.bigint "game_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_participations_on_game_id"
+    t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
   create_table "places", force: :cascade do |t|
@@ -74,6 +85,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_111504) do
     t.text "short_description"
     t.text "long_description"
     t.text "starting_point"
+    t.text "introduction"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,6 +107,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_28_111504) do
   add_foreign_key "clues", "riddles"
   add_foreign_key "games", "storylines"
   add_foreign_key "games", "users"
+  add_foreign_key "participations", "games"
+  add_foreign_key "participations", "users"
   add_foreign_key "places", "storylines"
   add_foreign_key "riddles", "places"
 end

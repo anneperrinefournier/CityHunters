@@ -21,8 +21,6 @@ p "destroyed #{Place.all.count} places"
 p "destroyed #{Riddle.all.count} riddles"
 p "destroyed #{Clue.all.count} clues"
 
-User.create!(email: "john@example.com", password: "password")
-
 monica = User.new(
   email: 'monica@gmail.com',
   password: 'password',
@@ -49,7 +47,8 @@ storyline1 = Storyline.new(
   difficulty: 2,
   starting_point: "Louvre Museum, Rue de Rivoli, 75001 Paris, France",
   short_description: "Découvrez les mystères cachés dans les galeries du Louvre. Suivez les indices artistiques et percez le secret qui se cache derrière chaque chef-d'œuvre.",
-  long_description: "Plongez dans l'histoire de l'art au cœur du 1er arrondissement. Le Louvre, berceau d'innombrables trésors, cache des mystères inexplorés. Parcourez les galeries emblématiques, résolvez des énigmes artistiques, et percez le secret qui se cache derrière chaque chef-d'œuvre."
+  long_description: "Plongez dans l'histoire de l'art au cœur du 1er arrondissement. Le Louvre, berceau d'innombrables trésors, cache des mystères inexplorés. Parcourez les galeries emblématiques, résolvez des énigmes artistiques, et percez le secret qui se cache derrière chaque chef-d'œuvre.",
+  introduction: "Ceci est une magnifique introduction aillant pour seul et unique but de combler un vide, un vide dans l'application, un vide dans la modale, un vide... dans mon coeur..."
 )
 storyline1.save!
 
@@ -251,21 +250,21 @@ place8 = Place.new(
 place8.save!
 
 riddle1 = Riddle.new(
-  title: 'Énigme 1',
+  title: 'Horse color',
   description: 'riddle 1 : horse color',
   content: 'blanc',
   question: 'Quelle est la couleur du cheval blanc d’Henri 4?',
   place: place2
 )
 riddle2 = Riddle.new(
-  title: 'Énigme 2',
+  title: 'Dog color',
   description: 'riddle 2 : dog color',
   content: 'rouge',
   question: 'Quelle est la couleur de Pif le chien rouge?',
   place: place2
 )
 riddle3 = Riddle.new(
-  title: 'Énigme 3',
+  title: 'Cat color',
   description: 'riddle 3 : cat color',
   content: 'noir',
   question: 'Quelle est la couleur du chat noir de la voisine?',

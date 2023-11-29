@@ -1,0 +1,22 @@
+<div class="container">
+
+    <%= cl_image_tag("compass", :alt => "Compass Image", :width => 400, :crop => "pad") %>
+  <div class="m-3">
+    <%#= cl_image_tag(@storyline) %>
+    <h1> <%= @storyline.title %> </h1>
+    <p class="storyline-infos">Arrondissement: <%= @storyline.district %></p>
+    <p class="storyline-infos">Durée: <%= @storyline.duration.to_i %> min</p>
+    <p class="storyline-infos">Thème: <%= @storyline.theme %></p>
+    <p class="storyline-long-description">  <%= @storyline.long_description %> </p>
+    <p>
+      difficulty : <% @storyline.difficulty.times do %>
+        <i class="star-rating fa-regular fa-star"></i>
+      <% end %>
+    </p>
+
+    <form action="/storylines/<%=@storyline.id%>/games" method="POST">
+      <button class="btn btn-primary">JOUER</button>
+    </form>
+  </div>
+
+</div>
