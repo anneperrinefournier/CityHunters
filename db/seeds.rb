@@ -57,7 +57,7 @@ storyline1 = Storyline.new(
   distance: 2,
   theme: "historique",
   difficulty: 2,
-  starting_point: "Louvre Museum, Rue de Rivoli, 75001 Paris, France",
+  starting_point: "Rue de Rivoli, 75001 Paris, France",
   short_description: "Découvrez les mystères cachés dans les galeries du Louvre. Suivez les indices artistiques et percez le secret qui se cache derrière chaque chef-d'œuvre.",
   long_description: "Plongez dans l'histoire de l'art au cœur du 1er arrondissement. Le Louvre, berceau d'innombrables trésors, cache des mystères inexplorés. Parcourez les galeries emblématiques, résolvez des énigmes artistiques, et percez le secret qui se cache derrière chaque chef-d'œuvre.",
   introduction: "Ceci est une magnifique introduction aillant pour seul et unique but de combler un vide, un vide dans l'application, un vide dans la modale, un vide... dans mon coeur..."
@@ -185,8 +185,6 @@ place1 = Place.new(
   name: "Place Royale",
   address: "1 Place des Vosges, 75004 Paris, France",
   description: "La Place Royale, également connue sous le nom de Place des Vosges, est une place historique entourée d'élégants pavillons. Construite au XVIIe siècle, elle est le joyau du Marais.",
-  longitude: 2.3667,
-  latitude: 48.8553,
   storyline: storyline1
 )
 place1.save!
@@ -195,8 +193,6 @@ place2 = Place.new(
   name: "Palais du Louvre",
   address: "Rue de Rivoli, 75001 Paris, France",
   description: "Le Palais du Louvre, ancienne résidence royale, est aujourd'hui l'un des plus grands musées du monde. Avec ses vastes collections artistiques, il est un incontournable du 1er arrondissement.",
-  longitude: 2.3377,
-  latitude: 48.8606,
   storyline: storyline1
 )
 place2.save!
@@ -205,8 +201,6 @@ place3 = Place.new(
   name: "Église Saint-Germain-l'Auxerrois",
   address: "2 Place du Louvre, 75001 Paris, France",
   description: "Cette église, située à proximité du Louvre, est connue pour son architecture gothique et son histoire étroitement liée à la royauté française. Un lieu empreint de spiritualité et d'histoire.",
-  longitude: 2.3403,
-  latitude: 48.8591,
   storyline: storyline1
 )
 place3.save!
@@ -215,8 +209,6 @@ place4 = Place.new(
   name: "Fontaine des Innocents",
   address: "Place Joachim du Bellay, 75001 Paris, France",
   description: "La Fontaine des Innocents est une fontaine Renaissance richement décorée. Construite au XVIe siècle, elle a été déplacée à son emplacement actuel au cœur du 1er arrondissement.",
-  longitude: 2.3467,
-  latitude: 48.8609,
   storyline: storyline1
 )
 place4.save!
@@ -225,8 +217,6 @@ place5 = Place.new(
   name: "Théâtre du Châtelet",
   address: "1 Place du Châtelet, 75001 Paris, France",
   description: "Le Théâtre du Châtelet est un théâtre historique au style Belle Époque. Il est réputé pour ses productions musicales et sa contribution à la scène artistique parisienne.",
-  longitude: 2.3463,
-  latitude: 48.8578,
   storyline: storyline1
 )
 place5.save!
@@ -235,8 +225,6 @@ place6 = Place.new(
   name: "Palais Royal",
   address: "8 Rue de Montpensier, 75001 Paris, France",
   description: "Le Palais Royal, résidence autrefois royale, est entouré de jardins élégants. Avec ses colonnes rayées emblématiques et son histoire fascinante, il reste un joyau du 1er arrondissement.",
-  longitude: 2.3372,
-  latitude: 48.8635,
   storyline: storyline1
 )
 place6.save!
@@ -245,8 +233,6 @@ place7 = Place.new(
   name: "Colonnes de Buren",
   address: "Palais Royal, 75001 Paris, France",
   description: "Les Colonnes de Buren, situées dans la cour du Palais Royal, sont une installation artistique contemporaine. Leurs colonnes rayées offrent un contraste unique avec l'histoire du lieu.",
-  longitude: 2.3375,
-  latitude: 48.8634,
   storyline: storyline1
 )
 place7.save!
@@ -255,8 +241,6 @@ place8 = Place.new(
   name: "Jardins des Tuileries",
   address: "Rue de Rivoli, 75001 Paris, France",
   description: "Les Jardins des Tuileries, adjacents au Louvre, sont des jardins à la française classiques. Leur conception élégante et leurs statues impressionnantes en font un lieu de promenade incontournable.",
-  longitude: 2.3266,
-  latitude: 48.8635,
   storyline: storyline1
 )
 place8.save!
@@ -304,7 +288,7 @@ participation = Participation.new(
   latitude: 48.8641,
   longitude: 2.3753,
   user: monica,
-  game: game1
+  game: Game.last
 )
 participation.save!
 
