@@ -1,6 +1,4 @@
-
-
-<div id="myModal" class="modal" tabindex="-1" role="dialog">
+<div id="myModal" class="modal" tabindex="-1" role="dialog" data-controller="answer-modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -10,12 +8,18 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
-        <%=  @riddle.content %>
+        <%= simple_form_for :question, url: "#", html: { data: { answer_modal_target: "form", action: "submit->answer-modal#verifyAnswer" } } do |f| %>
+          <%= f.input :answer %>
+          <%= f.input :riddle_id, input_html: { value: riddle.id } %>
+          <%= f.submit %>
+        <% end %>
+
+        <div class="d-none" data-answer-modal-target="response">
+          <%= @riddle.content %>
+        </div>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Submit your answer</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal" data-action="click->answer-modal#closeModal">Close</button>
       </div>
     </div>
