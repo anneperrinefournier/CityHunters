@@ -9,12 +9,14 @@
 #   end
 
 Game.destroy_all
+Participation.destroy_all
 User.destroy_all
 Storyline.destroy_all
 Place.destroy_all
 Riddle.destroy_all
 Clue.destroy_all
 p "destroyed #{Game.all.count} games"
+p "destroyed #{Participation.all.count} participations"
 p "destroyed #{User.all.count} users"
 p "destroyed #{Storyline.all.count} storylines"
 p "destroyed #{Place.all.count} places"
@@ -37,6 +39,7 @@ joey = User.new(
 )
 monica.save!
 joey.save!
+
 
 storyline1 = Storyline.new(
   title: "Le Secret du Louvre",
@@ -279,7 +282,25 @@ clue = Clue.new(
 )
 clue.save!
 
+game1 = Game.new(
+  status: 0,
+  start_time: DateTime.now,
+  end_time: DateTime.now + 1.hour,
+  user: monica,
+  storyline: storyline1
+)
+game1.save!
+
+participation = Participation.new(
+  latitude: 48.8641,
+  longitude: 2.3753,
+  user: monica,
+  game: game1
+)
+participation.save!
+
 p "created #{Game.all.count} games"
+p "created #{Participation.all.count} participations"
 p "created #{User.all.count} users"
 p "created #{Storyline.all.count} storylines"
 p "created #{Place.all.count} places"

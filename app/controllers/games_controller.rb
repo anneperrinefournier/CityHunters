@@ -12,14 +12,37 @@ class GamesController < ApplicationController
   end
 
   def lobby
-    @storyline_title = Storyline.find(@game.storyline_id).title
+    @game = Game.last
+    @storyline = Storyline.find(@game.storyline_id)
+    @storyline_title = @storyline.title
   end
 
   def show
     @game.update(status: :running)
     @storyline = Storyline.find(@game.storyline_id)
-    @place = Place.where(storyline_id: @storyline.id)[1]
-    @riddle = Riddle.where(place_id: @place.id)[0]
+    @places = Place.where(storyline: @storyline)
+    @riddle = Riddle.where(place: @places[1])[0]
+    @participations = Participation.where(game: @game)
+
+    @place_markers = @places.geocoded.map do |place|
+      {
+        lat: place.latitude,
+        lng: place.longitude,
+        info_window_html: render_to_string(partial: "places_info_window", locals: { place: place })
+      }
+    end
+
+
+    @participations_markers = @participations.geocoded.map do |participation|
+      {
+        lat: participation.latitude,
+        lng: participation.longitude,
+        user: participation.user,
+        info_window_html: render_to_string(partial: "participations_info_window", locals: { participation: participation })
+      }
+    end
+
+    @markers = @places_markers + @participations_markers
   end
 
   private
