@@ -3,12 +3,11 @@ class GamesController < ApplicationController
   before_action :set_game_users, only: %i[lobby stats]
 
   def create
-    game = Game.new(
+    game = Game.create!(
       user: current_user,
       storyline_id: params[:storyline_id],
       status: :not_started
     )
-    game.save!
     Participation.create!(
       game: game,
       user: current_user
@@ -24,15 +23,15 @@ class GamesController < ApplicationController
   end
 
   def join
-    # LobbyChannel.broadcast_to()
   end
 
   def access
     game = Game.find_by(pin: params[:game][:pin].upcase)
-    Participation.create!(
+    participation = Participation.new(
       game: game,
       user: current_user
     )
+    participation.save
     redirect_to lobby_game_path(game)
   end
 
