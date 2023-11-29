@@ -1,10 +1,10 @@
 <% @users.each do |user| %>
-  <div class="lobby-players mt-2">
+  <div class="lobby-player mt-2">
     <div class="d-flex">
       <% if user.photo.attached? %>
         <%= cl_image_tag(user.photo.key, class:'avatar') %>
       <% else %>
-        <img src="https://cdn2.iconfinder.com/data/icons/instagram-outline/19/11-1024.png" alt="user-picture" class="avatar">
+        <img src="https://cdn2.iconfinder.com/data/icons/instagram-outline/19/11-1024.png" alt="user-picture" class="lobby-avatar">
       <% end %>
       <p class="lobby-player-name"><%= user.name %></p>
     </div>

@@ -3,7 +3,7 @@
   <div class="lobby-qrcode"></div>
   <h2 class="mt-5 text-center lobby-pin">PIN: <%= @game.pin %></h2>
 
-  <div class="mt-5" data-lobby-target="players">
+  <div class="mt-5 lobby-players-list" data-lobby-target="players">
     <%= render(partial: "player", locals: { users: @users }) %>
   </div>
 
