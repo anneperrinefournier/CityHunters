@@ -20,6 +20,7 @@ class GamesController < ApplicationController
     @storyline = Storyline.find(@game.storyline_id)
     @place = Place.where(storyline_id: @storyline.id)[1]
     @riddle = Riddle.where(place_id: @place.id)[0]
+    @clue = Clue.where(riddle_id: @riddle.id)[0]
   end
 
   def join
