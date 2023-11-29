@@ -9,9 +9,18 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get 'games/join', to: "games#join", as: "join_game"
+  post 'games/access', to: "games#access", as: "access_game"
+
   resources :games, only: [:show] do
     member do
       get '/lobby', to: "games#lobby"
+    end
+  end
+
+  resources :games, only: [] do
+    member do
+      get 'results', to: "games#stats"
     end
   end
 
