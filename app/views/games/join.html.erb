@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Rejoindre une partie</h1>
+
+  <%= simple_form_for :game, url: access_game_path do |f| %>
+    <%= f.input :pin %>
+    <%= f.submit %>
+  <% end %>
+</div>
