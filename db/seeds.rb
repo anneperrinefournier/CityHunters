@@ -8,8 +8,13 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+require "open-uri"
+
 Game.destroy_all
 User.destroy_all
+User.all.each do |user|
+  user.photo.purge
+end
 Storyline.destroy_all
 Place.destroy_all
 Riddle.destroy_all
@@ -35,7 +40,11 @@ joey = User.new(
   level: 2,
   xp: 230
 )
+photo = URI.open('https://img.freepik.com/photos-gratuite/portrait-belle-jeune-femme-maquillage-yeux-charbonneux-jolie-jeune-fille-adulte-posant-au-studio-gros-plan-visage-feminin-attrayant_186202-4439.jpg')
+monica.photo.attach(io: photo, filename: "monica-photo", content_type: 'image/jpg')
 monica.save!
+photo = URI.open('https://curiosmos.com/wp-content/uploads/2023/08/Homo-sapiens-new-lineage.jpeg')
+joey.photo.attach(io: photo, filename: "joey-photo", content_type: 'image/jpeg')
 joey.save!
 
 storyline1 = Storyline.new(
