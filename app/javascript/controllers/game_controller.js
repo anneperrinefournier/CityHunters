@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ['riddle', 'introduction'];
 
   connect() {
-    console.log("Hi from game controller")
+    // console.log("Hi from game controller")
   }
 
   closeIntroduction() {
