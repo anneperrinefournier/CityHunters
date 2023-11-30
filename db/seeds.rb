@@ -275,23 +275,6 @@ clue = Clue.new(
 )
 clue.save!
 
-game1 = Game.new(
-  status: 0,
-  start_time: DateTime.now,
-  end_time: DateTime.now + 1.hour,
-  user: monica,
-  storyline: storyline1
-)
-game1.save!
-
-participation = Participation.new(
-  latitude: 48.8641,
-  longitude: 2.3753,
-  user: monica,
-  game: Game.last
-)
-participation.save!
-
 p "created #{Game.all.count} games"
 p "created #{Participation.all.count} participations"
 p "created #{User.all.count} users"
