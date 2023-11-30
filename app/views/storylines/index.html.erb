@@ -1,24 +1,54 @@
 <div class="container mt-3">
-  <h1>Storylines</h1>
-</div>
-
-
-<% @storylines.each do |storyline| %>
-<%= link_to storyline_path(storyline), class: "links" do %>
-  <div class="m-3">
-      <div class="d-flex justify-content-between">
-      <h2><%= storyline.title %></h2>
-      <div>Niv. <%= storyline.difficulty %></div>
-      </div>
-  <div class="scenario-card-product">
-    <img src="https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg" />
-    <div class="scenario-card-product-infos">
-      <div><%= storyline.duration.to_i %> min</div>
-      <div><%= storyline.district %></div>
-      <p>thème : <%= storyline.theme %></p>
-      <p><%= storyline.short_description %></p>
-      </div>
+  <div class="row justify-content-between align-items-center">
+    <div class="col-auto">
+      <a href="<%= root_path %>">
+        <%= image_tag asset_path('back_arrow.svg'), alt: 'home' %>
+      </a>
     </div>
+    <div class="col-auto py-3">
+      <h2>Choisis un scénario</h2>
+    </div>
+    <div class="col-auto"></div>
   </div>
+  <% @storylines.each_with_index do |storyline, i| %>
+    <%= link_to storyline_path(storyline), class: "links" do %>
+      <div class="m-3 scenario-card-product">
+        <div class="d-flex justify-content-between">
+          <div class="text-right">
+            <h2><%= storyline.title %></h2>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div class="text-left">
+            <p><%= storyline.short_description %></p>
+          </div>
+          <div class="text-right">
+            <%= image_tag("https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg", alt: "Image", class: "rounded-square") %>
+          </div>
+        </div>
+        <hr class="dotted-line">
+        <div class="d-flex justify-content-between">
+          <div class="text-right">
+            <strong>Où?</strong> <%= storyline.district %>
+          </div>
+        </div>
+        <hr class="dotted-line">
+        <div class="d-flex justify-content-between">
+          <div class="text-right">
+            <strong>Durée:</strong> <%= storyline.duration.to_i %> min
+          </div>
+          <div><strong>Difficulté:</strong> <% storyline.difficulty.times do %>
+            <i class="star-rating fa-regular fa-star"></i>
+            <% end %>
+          </div>
+        </div>
+        <hr class="dotted-line">
+        <div class="d-flex justify-content-between">
+          <div class="text-right">
+            <strong>Thème:</strong> <%= storyline.theme %>
+          </div>
+        </div>
+      </div>
     <% end %>
-<% end %>
+  <% end %>
+</div>

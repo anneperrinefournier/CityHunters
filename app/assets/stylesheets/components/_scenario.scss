@@ -1,32 +1,50 @@
 .scenario-card-product {
   overflow: hidden;
-  height: 180px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  margin-bottom: 20px;
 }
 
-.scenario-card-product img {
-  height: 100%;
-  width: 120px;
+.scenario-card-product img.rounded-square {
+  height: 180px;
+  width: 180px;
   object-fit: cover;
+  border-radius: 4px;
 }
 
-.scenario-card-product h2 {
+.dotted-line {
+  border-top: 1px dotted #ccc;
+  margin: 10px 0;
+}
+
+.text-left {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-right {
+  text-align: right;
+}
+
+
+.text-right h3 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
-.scenario-card-product p {
+.text-right p {
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
-}
-
-.scenario-card-product .scenario-card-product-infos {
-  padding: 16px;
 }
