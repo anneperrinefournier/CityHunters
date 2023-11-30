@@ -25,9 +25,11 @@ class GamesController < ApplicationController
     # @clue = Clue.where(riddle_id: @riddle.id)[0]
 
     @places = Place.where(storyline: @storyline)
-    @riddle = Riddle.where(place: @places[1])[0]
+    @riddles = [Riddle.where(place: @places[1])[0]]
     @participations = Participation.where(game: @game)
     @starting_point = Storyline.find(@game.storyline_id)
+
+    # raise
 
     @places_markers = @places.geocoded.map do |place|
       {
