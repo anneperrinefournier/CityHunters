@@ -3,7 +3,7 @@ import { createConsumer } from "@rails/actioncable"
 
 // Connects to data-controller="lobby"
 export default class extends Controller {
-  static values = { id: Number }
+  static values = { id: Number, participationId: Number }
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -11,6 +11,12 @@ export default class extends Controller {
       { received: data => console.log(data) }
     )
 
-    console.log(`Subscribed to the chatroom with the id ${this.idValue}.`)
+    navigator.geolocation.getCurrentPosition((data) => {
+      console.log({
+        longitude: data.coords.longitude,
+        latitude: data.coords.latitude,
+        participation_id: this.participationIdValue
+      })
+    })
   }
 }
