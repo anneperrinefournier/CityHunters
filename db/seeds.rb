@@ -316,6 +316,30 @@ riddle6 = Riddle.new(
   question: 'Comment s’appelle le chat de Diane ?',
   place: place2
 )
+
+riddle4 = Riddle.new(
+  title: 'Horse color',
+  description: 'riddle 1 : horse color',
+  solution: 'crème',
+  question: 'Quelle est la couleur du chat d’Alexis ?',
+  place: place1
+)
+
+riddle5 = Riddle.new(
+  title: 'Horse color',
+  description: 'riddle 1 : horse color',
+  solution: 'brun',
+  question: 'Quelle est la couleur du chat d’AP ?',
+  place: place1
+)
+
+riddle6 = Riddle.new(
+  title: 'Horse color',
+  description: 'riddle 1 : horse color',
+  solution: 'snow',
+  question: 'Comment s’appelle le chat de Diane ?',
+  place: place1
+)
 riddle1.save!
 riddle2.save!
 riddle3.save!

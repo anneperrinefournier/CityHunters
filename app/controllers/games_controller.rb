@@ -20,16 +20,10 @@ class GamesController < ApplicationController
   def show
     @game.update(status: :running)
     @storyline = Storyline.find(@game.storyline_id)
-    # @place = Place.where(storyline_id: @storyline.id)[1]
-    # @riddle = Riddle.where(place_id: @place.id)[0]
-    # @clue = Clue.where(riddle_id: @riddle.id)[0]
 
-    @places = Place.where(storyline: @storyline)
-    @riddles = [Riddle.where(place: @places[1])[0]]
+    @places = Place.where(storyline: @storyline).order(created_at: :asc)
     @participations = Participation.where(game: @game)
     @starting_point = Storyline.find(@game.storyline_id)
-
-    # raise
 
     @places_markers = @places.geocoded.map do |place|
       {
