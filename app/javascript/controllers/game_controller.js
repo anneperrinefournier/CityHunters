@@ -37,6 +37,5 @@ export default class extends Controller {
     this.placePanelTargets.find( (panel) => {
       return panel.dataset.index == tabIndex
     }).classList.remove('d-none')
-
   }
 }

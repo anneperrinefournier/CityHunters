@@ -6,6 +6,6 @@ class Riddle < ApplicationRecord
   has_one_attached :photo, dependent: :destroy
 
   def validated?(game)
-    !!game.answers.find_by(correct: true)
+    !!game.answers.find_by(correct: true, riddle_id: id)
   end
 end

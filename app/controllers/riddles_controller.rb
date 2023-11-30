@@ -5,10 +5,11 @@ class RiddlesController < ApplicationController
 
     user_answer = Answer.new(
       game: game,
-      user: current_user,
+      participation: Participation.find_by(user: current_user),
       riddle_id: riddle_id,
       content: params.dig(:question, :answer)
     )
+    user_answer.save!
     riddle = Riddle.find(riddle_id)
 
     debugger

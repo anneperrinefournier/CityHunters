@@ -21,7 +21,7 @@ class GamesController < ApplicationController
     @game.update(status: :running)
     @storyline = Storyline.find(@game.storyline_id)
 
-    @places = Place.where(storyline: @storyline).order(created_at: :asc)
+    @places = Place.where(storyline: @storyline)
     @participations = Participation.where(game: @game)
     @starting_point = Storyline.find(@game.storyline_id)
 
@@ -33,7 +33,6 @@ class GamesController < ApplicationController
         marker_html: render_to_string(partial: "marker", locals: { marker_class: "marker marker-blue" })
       }
     end
-
 
     @participations_markers = @participations.map do |participation|
       {
