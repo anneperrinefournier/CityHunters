@@ -14,19 +14,32 @@ class RiddlesController < ApplicationController
     next_riddle = Riddle.all[next_riddle_index]
 
 
+    if next_riddle_index < riddles.count
+    end
+
     # check if the answer is correct
     if user_answer == riddle_answer
+
+      GameChannel.broadcast_to(
+        "game-#{@game.id}",
+        render_to_string(partial: "riddles", locals: { riddles: riddles })
+      )
       render json: {
         status: :ok,
         next_riddle: render_to_string(partial: 'next_riddle', formats: [:html], locals: { riddle: next_riddle })
       }
 
+      # render json: {
+      #   status: :ok,
+      #   next_riddle: render_to_string(partial: 'next_riddle', formats: [:html], locals: { riddle: next_riddle })
+      # }
     else
       render json: {
         status: :error,
         message: "Incorrect answer. Please try again."
       }
     end
+  end
 
     # debugger
 
@@ -49,5 +62,4 @@ class RiddlesController < ApplicationController
     # else
     #   render json: { status: :error, message: "Incorrect answer. Try again." }
     # end
-  end
 end
