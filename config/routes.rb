@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   resources :storylines, only: [:index, :show] do
     resources :games, only: [:create]
   end
+
+  post '/verify', to: 'riddles#verify'
 end

@@ -1,12 +1,24 @@
-.lobby-players {
+.lobby-players-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lobby-player {
   display: flex;
   background-color: $pastel-blue;
   justify-content: space-between;
   border-radius: 4px;
   padding: 0 4px;
-  width: 100%;
+  width: 90%;
+  margin: auto;
   height: 75px;
+  box-shadow: 0 0 5px black;
+}
 
+.lobby-avatar {
+  width: 75px;
+  height: 75px;
 }
 
 .lobby-player-name {
