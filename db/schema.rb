@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_29_165153) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_30_150643) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_165153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "pin"
+    t.integer "current_place_id"
+    t.integer "current_riddle_id"
     t.index ["storyline_id"], name: "index_games_on_storyline_id"
     t.index ["user_id"], name: "index_games_on_user_id"
   end

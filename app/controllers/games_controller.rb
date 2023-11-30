@@ -24,12 +24,23 @@ class GamesController < ApplicationController
     # @riddle = Riddle.where(place_id: @place.id)[0]
     # @clue = Clue.where(riddle_id: @riddle.id)[0]
 
-    @places = Place.where(storyline: @storyline)
-    @riddles = [Riddle.where(place: @places[1])[0]]
+    @places = Place.where(storyline: @storyline).order(created_at: :asc)
+    # @riddles = [Riddle.where(place: @places[1]).order(created_at: :asc)[0]]
     @participations = Participation.where(game: @game)
     @starting_point = Storyline.find(@game.storyline_id)
 
-    # raise
+    @game_current_place_index = @game.storyline.places.order(created_at: :asc).index { |place| place.id == @game.current_place_id }
+    @game_current_riddle_index = @game.storyline.places.find(@game.current_place_id).riddles.order(created_at: :asc).index { |riddle| riddle.id == @game.current_riddle_id }
+
+
+    if @game_current_riddle_index.nil?
+      @game_current_riddle_index = 0
+    end
+
+    @game_current_place_index = 1
+    @game_current_riddle_index = 0
+
+
 
     @places_markers = @places.geocoded.map do |place|
       {
