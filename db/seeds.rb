@@ -248,32 +248,77 @@ place8.save!
 riddle1 = Riddle.new(
   title: 'Horse color',
   description: 'riddle 1 : horse color',
-  content: 'blanc',
+  solution: 'blanc',
   question: 'Quelle est la couleur du cheval blanc d’Henri 4?',
   place: place2
 )
 riddle2 = Riddle.new(
   title: 'Dog color',
   description: 'riddle 2 : dog color',
-  content: 'rouge',
+  solution: 'rouge',
   question: 'Quelle est la couleur de Pif le chien rouge?',
   place: place2
 )
 riddle3 = Riddle.new(
   title: 'Cat color',
   description: 'riddle 3 : cat color',
-  content: 'noir',
+  solution: 'noir',
   question: 'Quelle est la couleur du chat noir de la voisine?',
   place: place2
+)
+
+riddle4 = Riddle.new(
+  title: 'Horse color',
+  description: 'riddle 1 : horse color',
+  solution: 'crème',
+  question: 'Quelle est la couleur du chat d’Alexis ?',
+  place: place1
+)
+
+riddle5 = Riddle.new(
+  title: 'Horse color',
+  description: 'riddle 1 : horse color',
+  solution: 'brun',
+  question: 'Quelle est la couleur du chat d’AP ?',
+  place: place1
+)
+
+riddle6 = Riddle.new(
+  title: 'Horse color',
+  description: 'riddle 1 : horse color',
+  solution: 'snow',
+  question: 'Comment s’appelle le chat de Diane ?',
+  place: place1
 )
 riddle1.save!
 riddle2.save!
 riddle3.save!
+riddle4.save!
+riddle5.save!
+riddle6.save!
+
 clue = Clue.new(
-  content: 'il suffit d’écrire la couleur en fait dummy',
+  solution: 'il suffit d’écrire la couleur en fait dummy',
   riddle: riddle1
 )
 clue.save!
+
+game1 = Game.new(
+  status: 0,
+  start_time: DateTime.now,
+  end_time: DateTime.now + 1.hour,
+  user: monica,
+  storyline: storyline1
+)
+game1.save!
+
+participation = Participation.new(
+  latitude: 48.8641,
+  longitude: 2.3753,
+  user: monica,
+  game: Game.last
+)
+participation.save!
 
 p "created #{Game.all.count} games"
 p "created #{Participation.all.count} participations"
