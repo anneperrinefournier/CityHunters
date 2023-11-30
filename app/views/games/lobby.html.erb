@@ -1,31 +1,10 @@
-<div class="container">
+<div class="container" data-controller="lobby" data-lobby-id-value="<%= @game.id %>">
   <h1 class="mt-3 text-center lobby-title"><%= @storyline_title %></h1>
   <div class="lobby-qrcode"></div>
   <h2 class="mt-5 text-center lobby-pin">PIN: <%= @game.pin %></h2>
 
-  <div class="mt-5">
-    <div class="lobby-players mt-2">
-      <div class="d-flex">
-        <img src="https://cdn2.iconfinder.com/data/icons/instagram-outline/19/11-1024.png" alt="user-picture" class="avatar">
-        <p class="lobby-player-name">Joey</p>
-      </div>
-      <div class="d-flex align-items-end">
-        <a href="#" class="delete-player-btn">delete</a>
-      </div>
-      <%#= cl_image_tag(@user.) %>
-      <%#= user.name %>
-    </div>
-    <div class="lobby-players mt-2">
-      <div class="d-flex">
-        <img src="https://cdn2.iconfinder.com/data/icons/instagram-outline/19/11-1024.png" alt="user-picture" class="avatar">
-        <p class="lobby-player-name">Joey</p>
-      </div>
-      <div class="d-flex align-items-end">
-        <a href="#" class="delete-player-btn">delete</a>
-      </div>
-      <%#= cl_image_tag(@user.) %>
-      <%#= user.name %>
-    </div>
+  <div class="mt-5 lobby-players-list" data-lobby-target="players">
+    <%= render(partial: "player", locals: { users: @users }) %>
   </div>
 
   <div class="mt-3 d-flex justify-content-center">

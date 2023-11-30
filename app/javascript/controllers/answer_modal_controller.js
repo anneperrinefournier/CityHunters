@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="answer-modal"
 export default class extends Controller {
-  static targets = ["useranswer", "response", "form"];
+  static targets = ["useranswer", "response", "form", "displayriddle"];
   static values = { riddleId: String }
 
   connect() {
@@ -38,8 +38,8 @@ export default class extends Controller {
     const data = await response.json()
     console.log(data)
     this.closeModal();
-    // const replace = this.displayriddleTarget
-    // replace.innerHTML = data.next_riddle
+    const replace = this.displayriddleTarget
+    replace.innerHTML = data.next_riddle
 
 
     // const userAnswer = this.useranswerTarget.value.trim();
