@@ -7,9 +7,16 @@
     <%= render(partial: "player", locals: { users: @users }) %>
   </div>
 
-  <div class="mt-3 d-flex justify-content-center">
-    <form action="/games/<%= @game.id %>/">
-      <button type="submit" class="btn btn-primary">Lancer la partie</button>
-    </form>
-  </div>
+  <% if current_user == @game.user %>
+    <div class="mt-3 d-flex justify-content-center">
+      <form action="/games/<%= @game.id %>/">
+        <button type="submit" class="btn btn-primary">Lancer la partie</button>
+      </form>
+    </div>
+  <% else %>
+    <div class="mt-3 d-flex justify-content-center">
+      <p>Witing for host to lunch the game</p>
+    </div>
+  <% end %>
+
 </div>

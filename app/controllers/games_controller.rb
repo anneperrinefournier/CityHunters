@@ -18,7 +18,12 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game.update(status: :running)
+    if @game.status == "not_started" && current_user == @game.user
+      @game.update(status: :running)
+    end
+
+    raise unless @game.status == "running"
+
     @storyline = Storyline.find(@game.storyline_id)
 
     @places = Place.where(storyline: @storyline)
