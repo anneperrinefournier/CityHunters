@@ -24,7 +24,7 @@ class RiddlesController < ApplicationController
     else
       render json: {
         status: :error,
-        message: "Incorrect answer. Please try again."
+        message: "Incorrect answer. You can try again!"
       }
     end
 

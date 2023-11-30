@@ -10,13 +10,8 @@
       <div class="modal-body">
         <%= simple_form_for :question, url: "#", html: { data: { answer_modal_target: "form", action: "submit->answer-modal#verifyAnswer" } } do |f| %>
           <%= f.input :answer %>
-          <%= f.input :riddle_id, input_html: { value: riddle.id } %>
           <%= f.submit "Submit your answer" %>
         <% end %>
-
-        <div class="d-none" data-answer-modal-target="response">
-          <%= @riddle.content %>
-        </div>
 
       </div>
       <div class="modal-footer">

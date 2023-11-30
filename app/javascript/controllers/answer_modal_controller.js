@@ -36,10 +36,15 @@ export default class extends Controller {
 
     const response =  await fetch(`/verify`, options);
     const data = await response.json()
-    console.log(data)
-    this.closeModal();
-    const replace = this.displayriddleTarget
-    replace.innerHTML = data.next_riddle
+
+      if (data.status === "ok") {
+        this.closeModal();
+        const replace = this.displayriddleTarget
+        replace.innerHTML = data.next_riddle
+      } else {
+        console.log(data)
+        alert(data.message);
+      };
 
 
     // const userAnswer = this.useranswerTarget.value.trim();
