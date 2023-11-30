@@ -19,6 +19,7 @@ end
 Storyline.destroy_all
 Place.destroy_all
 Riddle.destroy_all
+Answer.destroy_all
 Clue.destroy_all
 p "destroyed #{Game.all.count} games"
 p "destroyed #{Participation.all.count} participations"
@@ -26,6 +27,7 @@ p "destroyed #{User.all.count} users"
 p "destroyed #{Storyline.all.count} storylines"
 p "destroyed #{Place.all.count} places"
 p "destroyed #{Riddle.all.count} riddles"
+p "destroyed #{Answer.all.count} answers"
 p "destroyed #{Clue.all.count} clues"
 
 monica = User.new(
@@ -248,27 +250,55 @@ place8.save!
 riddle1 = Riddle.new(
   title: 'Horse color',
   description: 'riddle 1 : horse color',
-  content: 'blanc',
+  solution: 'blanc',
   question: 'Quelle est la couleur du cheval blanc d’Henri 4?',
   place: place2
 )
 riddle2 = Riddle.new(
   title: 'Dog color',
   description: 'riddle 2 : dog color',
-  content: 'rouge',
+  solution: 'rouge',
   question: 'Quelle est la couleur de Pif le chien rouge?',
   place: place2
 )
 riddle3 = Riddle.new(
   title: 'Cat color',
   description: 'riddle 3 : cat color',
-  content: 'noir',
+  solution: 'noir',
   question: 'Quelle est la couleur du chat noir de la voisine?',
   place: place2
+)
+
+riddle4 = Riddle.new(
+  title: 'Horse color',
+  description: 'riddle 1 : horse color',
+  solution: 'crème',
+  question: 'Quelle est la couleur du chat d’Alexis ?',
+  place: place1
+)
+
+riddle5 = Riddle.new(
+  title: 'Horse color',
+  description: 'riddle 1 : horse color',
+  solution: 'brun',
+  question: 'Quelle est la couleur du chat d’AP ?',
+  place: place1
+)
+
+riddle6 = Riddle.new(
+  title: 'Horse color',
+  description: 'riddle 1 : horse color',
+  solution: 'snow',
+  question: 'Comment s’appelle le chat de Diane ?',
+  place: place1
 )
 riddle1.save!
 riddle2.save!
 riddle3.save!
+riddle4.save!
+riddle5.save!
+riddle6.save!
+
 clue = Clue.new(
   content: 'il suffit d’écrire la couleur en fait dummy',
   riddle: riddle1
@@ -292,10 +322,66 @@ participation = Participation.new(
 )
 participation.save!
 
+answer1 = Answer.new(
+  content: "Blablabla",
+  correct: true,
+  game: game1,
+  riddle: riddle1,
+  participation: participation
+)
+answer1.save!
+
+answer2 = Answer.new(
+  content: "Blablabla",
+  correct: true,
+  game: game1,
+  riddle: riddle2,
+  participation: participation
+)
+answer2.save!
+
+answer3 = Answer.new(
+  content: "Blablabla",
+  correct: true,
+  game: game1,
+  riddle: riddle3,
+  participation: participation
+)
+answer3.save!
+
+answer4 = Answer.new(
+  content: "Blablabla",
+  correct: true,
+  game: game1,
+  riddle: riddle4,
+  participation: participation
+)
+answer4.save!
+
+answer5 = Answer.new(
+  content: "Blablabla",
+  correct: false,
+  game: game1,
+  riddle: riddle5,
+  participation: participation
+)
+answer5.save!
+
+answer6 = Answer.new(
+  content: "Blablabla",
+  correct: false,
+  game: game1,
+  riddle: riddle6,
+  participation: participation
+)
+answer6.save!
+
+
 p "created #{Game.all.count} games"
 p "created #{Participation.all.count} participations"
 p "created #{User.all.count} users"
 p "created #{Storyline.all.count} storylines"
 p "created #{Place.all.count} places"
 p "created #{Riddle.all.count} riddles"
+p "created #{Answer.all.count} answers"
 p "created #{Clue.all.count} clues"
