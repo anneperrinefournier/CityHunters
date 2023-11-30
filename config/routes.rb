@@ -29,4 +29,5 @@ Rails.application.routes.draw do
   end
 
   post '/verify', to: 'riddles#verify'
+  patch '/update', to: 'participations#update'
 end
