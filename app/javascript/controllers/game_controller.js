@@ -4,7 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="game"
 export default class extends Controller {
   static values = { id: Number }
-  static targets = ['riddle', 'introduction', 'enigme', 'placeTabs', 'placeTab', 'placePanel'];
+  static targets = ['riddle', 'introduction', 'enigme', 'placeTabs', 'placeTab', 'placePanel', 'displayAnswerBtn'];
 
   connect() {
     this.channel = createConsumer().subscriptions.create(
@@ -16,6 +16,7 @@ export default class extends Controller {
   closeIntroduction() {
     this.riddleTarget.classList.remove('d-none')
     this.introductionTarget.classList.add('d-none')
+    this.displayAnswerBtnTarget.classList.remove('d-none')
   }
 
   activate(event) {
