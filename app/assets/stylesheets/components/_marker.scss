@@ -1,0 +1,34 @@
+.pin-container {
+  position: relative; /* Pour permettre le positionnement absolu de l'ombre */
+  display: inline-block; /* Pour que la taille du conteneur soit basée sur le contenu */
+}
+
+.pin-container::before {
+  content: '';
+  position: absolute;
+  z-index: -1; /* Placez l'ombre en arrière-plan du pinpoint */
+  bottom: -4.5px; /* Ajustez la distance entre l'icône et l'ombre */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 23px; /* Ajustez la largeur de l'ombre */
+  height: 10px; /* Ajustez la hauteur de l'ombre pour la rendre plus ovale */
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.2) 20%, rgba(0, 0, 0, 0.15) 40%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.05) 80%); /* Gradient inversé et éclairci pour une transition douce */
+  border-radius: 50%; /* Ajustez le border-radius pour donner à l'ombre une forme ovale */
+}
+
+.marker {
+  background: radial-gradient(white 50%, transparent 50%);
+  font-size: 36px;
+}
+
+.marker-red {
+  color: $red;
+  }
+
+.marker-blue {
+  color: $navy;
+}
+
+.marker-gold {
+  color: $gold;
+}
