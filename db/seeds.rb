@@ -57,7 +57,7 @@ joey.save!
 
 storyline1 = Storyline.new(
   title: "Le Secret du Louvre",
-  district: "1er arrondissement",
+  district: "1er arr.",
   duration: 60,
   distance: 2,
   theme: "historique",
@@ -73,7 +73,7 @@ storyline1.save!
 
 storyline2 = Storyline.new(
   title: "Les Énigmes du Marais",
-  district: "4e arrondissement",
+  district: "4e arr.",
   duration: 75,
   distance: 3,
   theme: "historique",
@@ -89,7 +89,7 @@ storyline2.save!
 
 storyline3 = Storyline.new(
   title: "L'Odyssée du Château",
-  district: "19e arrondissement",
+  district: "19e arr.",
   duration: 90,
   distance: 5,
   theme: "aventure",
@@ -105,7 +105,7 @@ storyline3.save!
 
 storyline4 = Storyline.new(
   title: "Les Légendes de Belleville",
-  district: "20e arrondissement",
+  district: "20e arr.",
   duration: 75,
   distance: 4,
   theme: "fantastique",
@@ -121,7 +121,7 @@ storyline4.save!
 
 storyline5 = Storyline.new(
   title: "Le Trésor du Panthéon",
-  district: "5e arrondissement",
+  district: "5e arr.",
   duration: 60,
   distance: 3,
   theme: "historique",
@@ -137,7 +137,7 @@ storyline5.save!
 
 storyline6 = Storyline.new(
   title: "L'Énigme de Montparnasse",
-  district: "14e arrondissement",
+  district: "14e arr.",
   duration: 75,
   distance: 4.5,
   theme: "mystère",
@@ -153,7 +153,7 @@ storyline6.save!
 
 storyline7 = Storyline.new(
   title: "Le Mystère des Invalides",
-  district: "7e arrondissement",
+  district: "7e arr.",
   duration: 60,
   distance: 3.5,
   theme: "historique",
@@ -169,7 +169,7 @@ storyline7.save!
 
 storyline8 = Storyline.new(
   title: "L'Aventure des Batignolles",
-  district: "17e arrondissement",
+  district: "17e arr.",
   duration: 90,
   distance: 6,
   theme: "aventure",
@@ -185,7 +185,7 @@ storyline8.save!
 
 storyline9 = Storyline.new(
   title: "Les Secrets du Canal Saint-Martin",
-  district: "10e arrondissement",
+  district: "10e arr.",
   duration: 75,
   distance: 5,
   theme: "mystère",
@@ -201,7 +201,7 @@ storyline9.save!
 
 storyline10 = Storyline.new(
   title: "L'Évasion de Montorgueil",
-  district: "2e arrondissement",
+  district: "2e arr.",
   duration: 60,
   distance: 3.5,
   theme: "aventure",
@@ -217,7 +217,7 @@ storyline10.save!
 
 storyline11 = Storyline.new(
   title: "Code Rouge",
-  district: "11e arrondissement",
+  district: "11e arr.",
   duration: 90,
   distance: 6,
   theme: "aventure numérique",
