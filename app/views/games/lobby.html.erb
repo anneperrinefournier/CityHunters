@@ -9,9 +9,7 @@
 
   <% if current_user == @game.user %>
     <div class="mt-3 d-flex justify-content-center">
-      <form action="/games/<%= @game.id %>/">
-        <button type="submit" class="btn btn-primary">Lancer la partie</button>
-      </form>
+      <%= link_to "Let's go", start_game_path(@game), data: { turbo_method: :patch } %>
     </div>
   <% else %>
     <div class="mt-3 d-flex justify-content-center">

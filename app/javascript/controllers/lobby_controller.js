@@ -10,7 +10,7 @@ export default class extends Controller {
     this.token = document.querySelector('meta[name="csrf-token"]').content
     this.channel = createConsumer().subscriptions.create(
       { channel: "LobbyChannel", id: this.idValue },
-      { received: data => this.#addPlayerLobby(data) }
+      { received: data => this.#handleData(data) }
     )
 
     navigator.geolocation.getCurrentPosition((dataUser) => {
@@ -45,5 +45,15 @@ export default class extends Controller {
   #addPlayerLobby(data) {
     this.playersTarget.innerText = ""
     this.playersTarget.insertAdjacentHTML("beforeend", data)
+  }
+
+  #handleData(data) {
+    if (data.type == 'html') {
+      this.#addPlayerLobby(data.html)
+    }
+
+    if (data.type == "redirect") {
+      window.location.href = data.url
+    }
   }
 }

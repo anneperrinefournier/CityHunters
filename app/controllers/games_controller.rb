@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: %i[lobby show]
+  before_action :set_game, only: %i[lobby show start]
   before_action :set_game_users, only: %i[lobby stats]
 
   def create
@@ -19,7 +19,7 @@ class GamesController < ApplicationController
 
   def show
     if @game.status == "not_started" && current_user == @game.user
-      @game.update(status: :running)
+      @game.running!
     end
 
     raise unless @game.status == "running"
@@ -75,13 +75,27 @@ class GamesController < ApplicationController
   def lobby
     LobbyChannel.broadcast_to(
       "lobby-#{@game.id}",
-      render_to_string(partial: "player", locals: { user: current_user })
+      {
+        type: "html",
+        html: render_to_string(partial: "player", locals: { user: current_user })
+      }
     )
     @storyline_title = Storyline.find(@game.storyline_id).title
   end
 
   def stats
     @storyline = Storyline.find(@game.storyline)
+  end
+
+  def start
+    @game.running!
+    LobbyChannel.broadcast_to(
+      "lobby-#{@game.id}",
+      {
+        type: "redirect",
+        url: game_path(@game)
+      }
+    )
   end
 
   private
