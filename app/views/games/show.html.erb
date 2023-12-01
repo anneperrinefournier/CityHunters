@@ -1,8 +1,8 @@
-<div class="container" data-controller="game" data-game-id-value="<%= @game.id %>">
+<div class="container m-3 p-3" data-controller="game" data-game-id-value="<%= @game.id %>">
   <%= render 'game_state', game: @game %>
 
-  <div class='d-flex justify-content-center' data-controller="answer-modal">
-    <button class="btn btn-primary" data-action="click->answer-modal#openModal" >Répondre</button>
+  <div class='d-flex justify-content-center d-none' data-controller="answer-modal">
+    <button class="btn btn-primary" data-action="click->answer-modal#openModal">Répondre</button>
       <%= render "answer_modal", riddle: @game.current_place.current_riddle(@game), game: @game %>
       <div data-answer-modal-target="displayriddle"></div>
   </div>

@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :games, dependent: :destroy
 
   has_one_attached :photo, dependent: :destroy
+
+  def find_participation_for(game)
+    Participation.find_by(game: game, user: self)
+  end
 end
