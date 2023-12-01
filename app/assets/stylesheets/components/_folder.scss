@@ -30,6 +30,7 @@
   border-top-left-radius: 2px;
   padding: 8px;
   background-color: white;
+  margin-bottom: -1px;
 }
 
 .odd {
@@ -38,7 +39,7 @@
   border-top-left-radius: 2px;
   padding: 8px;
   background-color: white;
-
+  margin-bottom: -1px;
 }
 
 .folder img {
@@ -52,4 +53,38 @@
   padding: 10px;
   font-size: 10px;
   line-height: 1.4;
+}
+
+.folder-icons {
+  display: flex;
+}
+
+.top-title {
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.top-title h1 {
+  font-size: 35px;
+}
+
+.background {
+  background-image: url(paper.png);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(paper.png);
+  opacity: 0.5; /* Adjust the opacity for transparency */
+  filter: sepia(1);
 }
