@@ -1,32 +1,22 @@
 <div class="container" data-controller="game" data-game-id-value="<%= @game.id %>">
-  <div class="riddle-container d-none" data-game-target="riddle">
-    <h1 class="mt-3 text-center border-bottom"><%= @riddle.title %></h1>
-    <div class="d-flex justify-content-center">
-      <%# if @riddle.photo.attached? %>
-        <%#= cl_image_tag(@riddle.photo.key, width: 300, height: 300, crop: fill) %>
-      <%# else %>
-        <%= cl_image_tag('compass', width: 300, height: 300, crop: 'fill', class:"riddle-picture") %>
-      <%# end %>
-    </div>
-    <div class="mt-3">
-      <p><%= @riddle.question %></p>
-    </div>
-    <div class='d-flex justify-content-center' data-controller="answer-modal">
-      <button class="btn btn-primary" data-action="click->answer-modal#openModal" >Répondre</button>
-       <%= render "answer_modal", riddle: @riddle %>
-       <div data-answer-modal-target="displayriddle"></div>
-    </div>
+  <%= render 'game_state', game: @game %>
+
+  <div class='d-flex justify-content-center d-none' data-game-target="displayAnswerBtn" data-controller="answer-modal">
+    <button class="btn btn-primary" data-action="click->answer-modal#openModal">Répondre</button>
+      <%= render "answer_modal", riddle: @game.current_place.current_riddle(@game), game: @game %>
+      <div data-answer-modal-target="displayriddle"></div>
   </div>
 
-
-  <div class="mt-3 story-introduction" data-game-target="introduction">
+  <div class="mt-3 mb-3 story-introduction" data-game-target="introduction">
     <h1>Introduction</h1>
+    <%= cl_image_tag @storyline.photo.key, alt: (@storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
     <p><%= @storyline.introduction %></p>
     <div class="d-flex justify-content-center">
       <button class="btn btn-primary" data-action="click->game#closeIntroduction">C'est parti!</button>
     </div>
   </div>
 
-<%= render "map"%>
-
- </div>
+  <div class="map-position">
+  <%= render 'map' %>
+  </div>
+</div>

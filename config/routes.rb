@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :games, only: [:show] do
     member do
+      patch '/start', to: "games#start"
       get '/lobby', to: "games#lobby"
     end
   end
