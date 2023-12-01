@@ -167,69 +167,69 @@ file = URI.open("https://i.ibb.co/1q2Cdg7/paris-2775393-1280.jpg")
 storyline7.photo.attach(io: file, filename: "Le Mystère des Invalides", content_type: "image/jpg")
 storyline7.save!
 
-storyline8 = Storyline.new(
-  title: "L'Aventure des Batignolles",
-  district: "17e arr.",
-  duration: 90,
-  distance: 6,
-  theme: "aventure",
-  difficulty: 3,
-  starting_point: "Les Batignolles, 17th arrondissement, Paris, France",
-  short_description: "Vivez une aventure épiques dans les Batignolles. Résolvez des énigmes audacieuses et explorez les parcs pittoresques de ce quartier bohème.",
-  long_description: "Entrez dans l'aventure au cœur du 17e arrondissement. Les Batignolles, quartier bohème, regorgent de mystères et de défis audacieux. Résolvez des énigmes complexes, explorez les parcs pittoresques et vivez une aventure épiques dans ce coin de Paris plein de charme.",
-  introduction: "Bienvenue dans 'L'Aventure des Batignolles', une aventure épique dans le 17e arrondissement de Paris. Les Batignolles, quartier bohème, regorgent de mystères et de défis audacieux. Résolvez des énigmes complexes, explorez les parcs pittoresques et vivez une aventure épiques dans ce coin de Paris plein de charme."
-)
-file = URI.open("https://i.ibb.co/6P5yCJ0/louvre-5767708-1280.jpg")
-storyline8.photo.attach(io: file, filename: "L'Aventure des Batignolles", content_type: "image/jpg")
-storyline8.save!
+# storyline8 = Storyline.new(
+#   title: "L'Aventure des Batignolles",
+#   district: "17e arr.",
+#   duration: 90,
+#   distance: 6,
+#   theme: "aventure",
+#   difficulty: 3,
+#   starting_point: "Les Batignolles, 17th arrondissement, Paris, France",
+#   short_description: "Vivez une aventure épiques dans les Batignolles. Résolvez des énigmes audacieuses et explorez les parcs pittoresques de ce quartier bohème.",
+#   long_description: "Entrez dans l'aventure au cœur du 17e arrondissement. Les Batignolles, quartier bohème, regorgent de mystères et de défis audacieux. Résolvez des énigmes complexes, explorez les parcs pittoresques et vivez une aventure épiques dans ce coin de Paris plein de charme.",
+#   introduction: "Bienvenue dans 'L'Aventure des Batignolles', une aventure épique dans le 17e arrondissement de Paris. Les Batignolles, quartier bohème, regorgent de mystères et de défis audacieux. Résolvez des énigmes complexes, explorez les parcs pittoresques et vivez une aventure épiques dans ce coin de Paris plein de charme."
+# )
+# file = URI.open("https://i.ibb.co/6P5yCJ0/louvre-5767708-1280.jpg")
+# storyline8.photo.attach(io: file, filename: "L'Aventure des Batignolles", content_type: "image/jpg")
+# storyline8.save!
 
-storyline9 = Storyline.new(
-  title: "Les Secrets du Canal Saint-Martin",
-  district: "10e arr.",
-  duration: 75,
-  distance: 5,
-  theme: "mystère",
-  difficulty: 2,
-  starting_point: "Canal Saint-Martin, 10th arrondissement, Paris, France",
-  short_description: "Découvrez les secrets cachés du Canal Saint-Martin. Résolvez des énigmes mystérieuses et explorez les rives pittoresques de ce quartier branché.",
-  long_description: "Plongez dans les mystères du 10e arrondissement le long du Canal Saint-Martin. Des énigmes fascinantes vous guideront à travers les rives pittoresques de ce quartier branché. Découvrez les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique.",
-  introduction: "Bienvenue dans 'Les Secrets du Canal Saint-Martin', une aventure mystérieuse dans le 10e arrondissement de Paris. Des énigmes fascinantes vous guideront à travers les rives pittoresques de ce quartier branché. Découvrez les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique."
-)
-file = URI.open("https://i.ibb.co/R442g8F/image.jpg")
-storyline9.photo.attach(io: file, filename: "Les Secrets du Canal Saint-Martin", content_type: "image/jpg")
-storyline9.save!
+# storyline9 = Storyline.new(
+#   title: "Les Secrets du Canal Saint-Martin",
+#   district: "10e arr.",
+#   duration: 75,
+#   distance: 5,
+#   theme: "mystère",
+#   difficulty: 2,
+#   starting_point: "Canal Saint-Martin, 10th arrondissement, Paris, France",
+#   short_description: "Découvrez les secrets cachés du Canal Saint-Martin. Résolvez des énigmes mystérieuses et explorez les rives pittoresques de ce quartier branché.",
+#   long_description: "Plongez dans les mystères du 10e arrondissement le long du Canal Saint-Martin. Des énigmes fascinantes vous guideront à travers les rives pittoresques de ce quartier branché. Découvrez les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique.",
+#   introduction: "Bienvenue dans 'Les Secrets du Canal Saint-Martin', une aventure mystérieuse dans le 10e arrondissement de Paris. Des énigmes fascinantes vous guideront à travers les rives pittoresques de ce quartier branché. Découvrez les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique."
+# )
+# file = URI.open("https://i.ibb.co/R442g8F/image.jpg")
+# storyline9.photo.attach(io: file, filename: "Les Secrets du Canal Saint-Martin", content_type: "image/jpg")
+# storyline9.save!
 
-storyline10 = Storyline.new(
-  title: "L'Évasion de Montorgueil",
-  district: "2e arr.",
-  duration: 60,
-  distance: 3.5,
-  theme: "aventure",
-  difficulty: 2,
-  starting_point: "Montorgueil Street, 75002 Paris, France",
-  short_description: "Partez pour une aventure dans le 2e arrondissement. Résolvez des énigmes captivantes et explorez les passages secrets de Montorgueil.",
-  long_description: "Vivez l'évasion au cœur du 2e arrondissement. Montorgueil, quartier dynamique, recèle des énigmes captivantes et des passages secrets à découvrir. Parcourez les rues animées, résolvez des défis intriguants et plongez dans une aventure inoubliable au cœur de ce quartier emblématique de Paris.",
-  introduction: "Bienvenue dans 'L'Évasion de Montorgueil', une aventure captivante dans le 2e arrondissement de Paris. Montorgueil, quartier dynamique, recèle des énigmes captivantes et des passages secrets à découvrir. Parcourez les rues animées, résolvez des défis intriguants et plongez dans une aventure inoubliable au cœur de ce quartier emblématique de Paris."
-)
-file = URI.open("https://i.ibb.co/6P5yCJ0/louvre-5767708-1280.jpg")
-storyline10.photo.attach(io: file, filename: "L'Évasion de Montorgueil", content_type: "image/jpg")
-storyline10.save!
+# storyline10 = Storyline.new(
+#   title: "L'Évasion de Montorgueil",
+#   district: "2e arr.",
+#   duration: 60,
+#   distance: 3.5,
+#   theme: "aventure",
+#   difficulty: 2,
+#   starting_point: "Montorgueil Street, 75002 Paris, France",
+#   short_description: "Partez pour une aventure dans le 2e arrondissement. Résolvez des énigmes captivantes et explorez les passages secrets de Montorgueil.",
+#   long_description: "Vivez l'évasion au cœur du 2e arrondissement. Montorgueil, quartier dynamique, recèle des énigmes captivantes et des passages secrets à découvrir. Parcourez les rues animées, résolvez des défis intriguants et plongez dans une aventure inoubliable au cœur de ce quartier emblématique de Paris.",
+#   introduction: "Bienvenue dans 'L'Évasion de Montorgueil', une aventure captivante dans le 2e arrondissement de Paris. Montorgueil, quartier dynamique, recèle des énigmes captivantes et des passages secrets à découvrir. Parcourez les rues animées, résolvez des défis intriguants et plongez dans une aventure inoubliable au cœur de ce quartier emblématique de Paris."
+# )
+# file = URI.open("https://i.ibb.co/6P5yCJ0/louvre-5767708-1280.jpg")
+# storyline10.photo.attach(io: file, filename: "L'Évasion de Montorgueil", content_type: "image/jpg")
+# storyline10.save!
 
-storyline11 = Storyline.new(
-  title: "Code Rouge",
-  district: "11e arr.",
-  duration: 90,
-  distance: 6,
-  theme: "aventure numérique",
-  difficulty: 3,
-  starting_point: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
-  short_description: "Partez à la recherche du Code Perdu du Wagon, une aventure numérique dans le 11e arrondissement. Décryptez des énigmes liées à Ruby on Rails et explorez les secrets du quartier.",
-  long_description: "Plongez-vous dans l'univers numérique du 11e arrondissement avec 'Le Code Perdu du Wagon'. Suivez les énigmes cryptiques laissées par un professeur passionné de Ruby on Rails et explorez les ruelles du quartier pour dévoiler le trésor caché. Une aventure où le mystère et la programmation se rencontrent.",
-  introduction: "Le Wagon, école renommée de programmation à Paris, est en émoi. Un professeur passionné a découvert un vieux manuscrit renfermant un code Ruby on Rails légendaire, mais a mystérieusement disparu. Les participants doivent décoder ses indices dispersés dans le 11e arrondissement pour révéler le trésor caché et démasquer les forces adverses cherchant à s'emparer du précieux code. La course pour le ‘Code Rouge’ commence maintenant !"
-)
-file = URI.open("https://i.ibb.co/6P5yCJ0/louvre-5767708-1280.jpg")
-storyline11.photo.attach(io: file, filename: "Code Rouge", content_type: "image/jpg")
-storyline11.save!
+# storyline11 = Storyline.new(
+#   title: "Code Rouge",
+#   district: "11e arr.",
+#   duration: 90,
+#   distance: 6,
+#   theme: "aventure numérique",
+#   difficulty: 3,
+#   starting_point: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
+#   short_description: "Partez à la recherche du Code Perdu du Wagon, une aventure numérique dans le 11e arrondissement. Décryptez des énigmes liées à Ruby on Rails et explorez les secrets du quartier.",
+#   long_description: "Plongez-vous dans l'univers numérique du 11e arrondissement avec 'Le Code Perdu du Wagon'. Suivez les énigmes cryptiques laissées par un professeur passionné de Ruby on Rails et explorez les ruelles du quartier pour dévoiler le trésor caché. Une aventure où le mystère et la programmation se rencontrent.",
+#   introduction: "Le Wagon, école renommée de programmation à Paris, est en émoi. Un professeur passionné a découvert un vieux manuscrit renfermant un code Ruby on Rails légendaire, mais a mystérieusement disparu. Les participants doivent décoder ses indices dispersés dans le 11e arrondissement pour révéler le trésor caché et démasquer les forces adverses cherchant à s'emparer du précieux code. La course pour le ‘Code Rouge’ commence maintenant !"
+# )
+# file = URI.open("https://i.ibb.co/6P5yCJ0/louvre-5767708-1280.jpg")
+# storyline11.photo.attach(io: file, filename: "Code Rouge", content_type: "image/jpg")
+# storyline11.save!
 
 
 place1 = Place.new(
@@ -238,8 +238,8 @@ place1 = Place.new(
   description: "La Place Royale, également connue sous le nom de Place des Vosges, est une place historique entourée d'élégants pavillons. Construite au XVIIe siècle, elle est le joyau du Marais.",
   storyline: storyline1
 )
-file = URI.open("https://www.unjourdeplusaparis.com/wp-content/uploads/2012/03/place-des-vosges-jardin-paris.jpg")
-place1.photo.attach(io: file, filename: "Vosges", content_type: "image/jpg")
+# file = URI.open("https://www.unjourdeplusaparis.com/wp-content/uploads/2012/03/place-des-vosges-jardin-paris.jpg")
+# place1.photo.attach(io: file, filename: "Vosges", content_type: "image/jpg")
 place1.save!
 
 place2 = Place.new(
@@ -248,8 +248,8 @@ place2 = Place.new(
   description: "Le Palais du Louvre, ancienne résidence royale, est aujourd'hui l'un des plus grands musées du monde. Avec ses vastes collections artistiques, il est un incontournable du 1er arrondissement.",
   storyline: storyline1
 )
-file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
-place2.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+# file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
+# place2.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place2.save!
 
 place3 = Place.new(
@@ -258,8 +258,8 @@ place3 = Place.new(
   description: "Cette église, située à proximité du Louvre, est connue pour son architecture gothique et son histoire étroitement liée à la royauté française. Un lieu empreint de spiritualité et d'histoire.",
   storyline: storyline1
 )
-file = URI.open("https://media.artabsolument.com/image/place/big/st%20ger.jpg")
-place3.photo.attach(io: file, filename: "St germain", content_type: "image/jpg")
+# file = URI.open("https://media.artabsolument.com/image/place/big/st%20ger.jpg")
+# place3.photo.attach(io: file, filename: "St germain", content_type: "image/jpg")
 place3.save!
 
 place4 = Place.new(
@@ -268,8 +268,8 @@ place4 = Place.new(
   description: "La Fontaine des Innocents est une fontaine Renaissance richement décorée. Construite au XVIe siècle, elle a été déplacée à son emplacement actuel au cœur du 1er arrondissement.",
   storyline: storyline1
 )
-file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
-place4.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+# file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
+# place4.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place4.save!
 
 place5 = Place.new(
@@ -278,8 +278,8 @@ place5 = Place.new(
   description: "Le Théâtre du Châtelet est un théâtre historique au style Belle Époque. Il est réputé pour ses productions musicales et sa contribution à la scène artistique parisienne.",
   storyline: storyline1
 )
-file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
-place5.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+# file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
+# place5.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place5.save!
 
 place6 = Place.new(
@@ -288,8 +288,8 @@ place6 = Place.new(
   description: "Le Palais Royal, résidence autrefois royale, est entouré de jardins élégants. Avec ses colonnes rayées emblématiques et son histoire fascinante, il reste un joyau du 1er arrondissement.",
   storyline: storyline1
 )
-file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
-place6.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+# file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
+# place6.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place6.save!
 
 place7 = Place.new(
@@ -298,8 +298,8 @@ place7 = Place.new(
   description: "Les Colonnes de Buren, situées dans la cour du Palais Royal, sont une installation artistique contemporaine. Leurs colonnes rayées offrent un contraste unique avec l'histoire du lieu.",
   storyline: storyline1
 )
-file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
-place7.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+# file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
+# place7.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place7.save!
 
 place8 = Place.new(
@@ -308,8 +308,8 @@ place8 = Place.new(
   description: "Les Jardins des Tuileries, adjacents au Louvre, sont des jardins à la française classiques. Leur conception élégante et leurs statues impressionnantes en font un lieu de promenade incontournable.",
   storyline: storyline1
 )
-file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
-place8.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+# file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
+# place8.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place8.save!
 
 riddle1 = Riddle.new(
