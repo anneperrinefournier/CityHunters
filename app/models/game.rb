@@ -35,6 +35,6 @@ class Game < ApplicationRecord
   private
 
   def set_game_pin
-    self.pin = 7.times.map { ('A'..'Z').to_a.sample }.join
+    self.pin = 4.times.map { ('A'..'Z').to_a.sample }.join
   end
 end
