@@ -23,7 +23,11 @@
             <p><%= storyline.short_description %></p>
           </div>
           <div class="text-right">
-            <%= image_tag("https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg", alt: "Image", class: "rounded-square") %>
+            <% if storyline.photo.attached? %>
+              <%= cl_image_tag(storyline.photo.key, class: "rounded-square") %>
+            <% else %>
+              <%= image_tag("https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg", alt: "Image", class: "rounded-square") %>
+            <% end %>
           </div>
         </div>
         <hr class="dotted-line">

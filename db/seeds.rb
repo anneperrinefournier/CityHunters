@@ -232,13 +232,12 @@ storyline2.photo.attach(io: file, filename: "Code Rouge", content_type: "image/j
 storyline11.save!
 
 
-place1 = Place.new(
-  name: "Place Royale",
-  address: "1 Place des Vosges, 75004 Paris, France",
-  description: "La Place Royale, également connue sous le nom de Place des Vosges, est une place historique entourée d'élégants pavillons. Construite au XVIIe siècle, elle est le joyau du Marais.",
-  storyline: storyline1
-)
+
+place1 = Place.new(name: "Place Royale",address: "1 Place des Vosges, 75004 Paris, France",description: "La Place Royale, également connue sous le nom de Place des Vosges, est une place historique entourée d'élégants pavillons. Construite au XVIIe siècle, elle est le joyau du Marais.",storyline: storyline1)
+file = URI.open("https://www.unjourdeplusaparis.com/wp-content/uploads/2012/03/place-des-vosges-jardin-paris.jpg")
+place1.photo.attach(io: file, filename: "Vosges", content_type: "image/jpg")
 place1.save!
+
 
 place2 = Place.new(
   name: "Palais du Louvre",
@@ -246,6 +245,8 @@ place2 = Place.new(
   description: "Le Palais du Louvre, ancienne résidence royale, est aujourd'hui l'un des plus grands musées du monde. Avec ses vastes collections artistiques, il est un incontournable du 1er arrondissement.",
   storyline: storyline1
 )
+file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
+place2.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place2.save!
 
 place3 = Place.new(
@@ -254,6 +255,8 @@ place3 = Place.new(
   description: "Cette église, située à proximité du Louvre, est connue pour son architecture gothique et son histoire étroitement liée à la royauté française. Un lieu empreint de spiritualité et d'histoire.",
   storyline: storyline1
 )
+file = URI.open("https://media.artabsolument.com/image/place/big/st%20ger.jpg")
+place3.photo.attach(io: file, filename: "St germain", content_type: "image/jpg")
 place3.save!
 
 place4 = Place.new(
@@ -262,6 +265,8 @@ place4 = Place.new(
   description: "La Fontaine des Innocents est une fontaine Renaissance richement décorée. Construite au XVIe siècle, elle a été déplacée à son emplacement actuel au cœur du 1er arrondissement.",
   storyline: storyline1
 )
+file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
+place4.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place4.save!
 
 place5 = Place.new(
@@ -270,6 +275,8 @@ place5 = Place.new(
   description: "Le Théâtre du Châtelet est un théâtre historique au style Belle Époque. Il est réputé pour ses productions musicales et sa contribution à la scène artistique parisienne.",
   storyline: storyline1
 )
+file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
+place5.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place5.save!
 
 place6 = Place.new(
@@ -278,6 +285,8 @@ place6 = Place.new(
   description: "Le Palais Royal, résidence autrefois royale, est entouré de jardins élégants. Avec ses colonnes rayées emblématiques et son histoire fascinante, il reste un joyau du 1er arrondissement.",
   storyline: storyline1
 )
+file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
+place6.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place6.save!
 
 place7 = Place.new(
@@ -286,6 +295,8 @@ place7 = Place.new(
   description: "Les Colonnes de Buren, situées dans la cour du Palais Royal, sont une installation artistique contemporaine. Leurs colonnes rayées offrent un contraste unique avec l'histoire du lieu.",
   storyline: storyline1
 )
+file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
+place7.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place7.save!
 
 place8 = Place.new(
@@ -294,6 +305,8 @@ place8 = Place.new(
   description: "Les Jardins des Tuileries, adjacents au Louvre, sont des jardins à la française classiques. Leur conception élégante et leurs statues impressionnantes en font un lieu de promenade incontournable.",
   storyline: storyline1
 )
+file = URI.open("https://api-www.louvre.fr/sites/default/files/2021-01/cour-napoleon-et-pyramide_1.jpg")
+place8.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place8.save!
 
 riddle1 = Riddle.new(

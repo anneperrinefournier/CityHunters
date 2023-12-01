@@ -30,8 +30,11 @@
   width: 100%;
   max-width: 250px;
   height: 250px;
-  background-color: $blue;
   margin: auto;
+  background-image: url("qrcode.png");
+  background-position: center;
+  background-size:cover;
+  ;
 }
 
 .delete-player-btn {
