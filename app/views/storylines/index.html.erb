@@ -1,6 +1,20 @@
 <div class="container mt-3">
-  <h1>Storylines</h1>
+  <h1>Choose your storyline </h1>
+  <% @storylines.each_with_index do |storyline, index| %>
+  <div class="<%= index.even? ? 'regroup' : 'regroup-reverse' %>">
+    <%= link_to storyline_path(storyline), class: "links" do %>
+    <div class="<%= index.even? ? 'pair' : 'odd' %>">
+      <%= storyline.title %>
+    </div>
+    <div class="folder">
+      <img src="https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg" />
+      <div class= "folder-info"><%= storyline.short_description %></div>
+    </div>
+    <% end %>
+  </div>
+<% end %>
 </div>
+
 
 
 <% @storylines.each do |storyline| %>

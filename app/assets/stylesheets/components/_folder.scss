@@ -1,0 +1,55 @@
+.regroup {
+  width: 400px;
+  height: 100%;
+  transform: rotate(2deg);
+  margin-bottom: 12px;
+}
+
+.regroup-reverse {
+  width: 400px;
+  height: 100%;
+  transform: rotate(-2deg);
+  margin-bottom: 15px;
+}
+
+.folder {
+  display: flex;
+  justify-content: normal;
+  width: 400px;
+  padding: 20px;
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color: white;
+}
+
+.pair {
+  float: right;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  padding: 8px;
+  background-color: white;
+}
+
+.odd {
+  float: left;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  padding: 8px;
+  background-color: white;
+
+}
+
+.folder img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+  align-items: start;
+}
+
+.folder-info {
+  padding: 10px;
+  font-size: 10px;
+  line-height: 1.4;
+}
