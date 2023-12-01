@@ -1,0 +1,97 @@
+.regroup {
+  width: 400px;
+  height: 100%;
+  transform: rotate(2deg);
+  margin-bottom: 12px;
+}
+
+.regroup-reverse {
+  width: 400px;
+  height: 100%;
+  transform: rotate(-2deg);
+  margin-bottom: 15px;
+}
+
+.folder {
+  display: flex;
+  justify-content: normal;
+  width: 400px;
+  padding: 20px;
+  border-bottom-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color: papayawhip;
+}
+
+.pair {
+  float: right;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  padding: 8px;
+  background-color: white;
+  margin-bottom: -1px;
+  background-color: papayawhip;
+}
+
+.odd {
+  float: left;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  padding: 8px;
+  background-color: white;
+  margin-bottom: -1px;
+  background-color: papayawhip;
+}
+
+.folder img {
+  height: 100%;
+  width: 120px;
+  object-fit: cover;
+  align-items: start;
+}
+
+.folder-info {
+  padding: 10px;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.folder-icons {
+  display: flex;
+}
+
+.top-title {
+  min-height: 14vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  background-image: url(papertorn.png);
+  background-size: 190%;
+  background-position: -340px -66px;
+  margin-bottom: -44px;
+  mix-blend-mode: difference;
+}
+.top-title h1 {
+  font-size: 35px;
+}
+
+.background {
+  background-image: url(paper.png);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(paper.png);
+  opacity: 0.5; /* Adjust the opacity for transparency */
+  filter: sepia(1);
+}
