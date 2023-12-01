@@ -17,7 +17,7 @@
 
   <div class="tabs-place">
     <% game.places.each_with_index do |place, place_index| %>
-      <% if place.validated?(game) || game.current_place %>
+      <% if place.validated?(game) || place == game.current_place %>
         <div class="riddles-content-container <%= place_index == 0 ? '' : 'd-none' %>" data-game-target="placePanel" data-index="<%= place_index %>">
           <% place.riddles.each do |riddle| %>
             <% if riddle.validated?(game) || place.current_riddle(game) == riddle %>
