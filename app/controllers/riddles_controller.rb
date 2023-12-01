@@ -1,25 +1,25 @@
 class RiddlesController < ApplicationController
   def verify
     riddle_id = params[:question][:riddle_id].to_i
-    user_answer = params.dig(:question, :answer)
+    game = Game.find(params[:question][:game_id].to_i)
 
-    # params # DATA form the form
-
+    user_answer = Answer.new(
+      game: game,
+      participation: Participation.find_by(user: current_user),
+      riddle_id: riddle_id,
+      content: params.dig(:question, :answer)
+    )
+    user_answer.save!
     riddle = Riddle.find(riddle_id)
-    riddle_answer = riddle.content
-
-    place = Place.find(riddle.place_id)
-    riddles = Riddle.where(place: place)
-    next_riddle_index = riddles.index(riddle) + 1
-    next_riddle = Riddle.all[next_riddle_index]
-
 
     # check if the answer is correct
-    if user_answer == riddle_answer
-      render json: {
-        status: :ok,
-        next_riddle: render_to_string(partial: 'next_riddle', formats: [:html], locals: { riddle: next_riddle })
-      }
+    if user_answer.content == riddle.solution
+      # user_answer.update(correct: true)
+
+      GameChannel.broadcast_to(
+        "game-#{game.id}",
+        render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: game })
+      )
 
     else
       render json: {
@@ -27,27 +27,5 @@ class RiddlesController < ApplicationController
         message: "Incorrect answer. You can try again!"
       }
     end
-
-    # debugger
-
-    # if next_riddle_index < riddles.size
-    #   next_riddle = Riddle.all[next_riddle_index]
-    # else
-    #   puts "prout"
-    # end
-
-
-
-    # if correct
-     # respond a json object with the html of the next riddle
-    # else
-      # respond a json object with error message
-     # end
-
-    # if user_answer == riddle.content
-    #   render json: { status: :ok, next_riddle_html: render_to_string(partial: 'next_riddle', locals: { riddle: next_riddle }) }
-    # else
-    #   render json: { status: :error, message: "Incorrect answer. Try again." }
-    # end
   end
 end

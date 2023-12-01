@@ -1,10 +1,17 @@
-// Specific CSS for your home-page
 .title-home {
   text-align: center;
+<<<<<<< HEAD
 }
 
 .backscreen {
   background-image: url(home.png);
+=======
+  margin-right: 20px;
+}
+
+.backscreen {
+  background-image: url(testap.png);
+>>>>>>> ce64fecfac01d86dab4cab5b9e2a84bb25389e65
   background-size: 100%;
   height: 100%;
   background-repeat: no-repeat;
@@ -14,14 +21,14 @@
 .title-home h1 {
   font-size: 150px;
   font-weight: 900;
-  letter-spacing: 1px;
+  letter-spacing: 4px;
   color: $navy;
   margin-bottom: 23px;
   position: relative;
   display: inline-block;
-  margin-right: -19px;
+  margin-right: -20px;
   transform: scaleY(2);
-  margin-top: 60px;
+  margin-top: 80px;
 }
 
 .waviy {
@@ -51,6 +58,6 @@
   margin-top: 200px;
 }
 
-.container {
+.home-container {
   background-color: #F4F4F4;
 }
