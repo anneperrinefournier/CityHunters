@@ -21,7 +21,7 @@
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  background-color: white;
+  background-color: papayawhip;
 }
 
 .pair {
@@ -31,6 +31,7 @@
   padding: 8px;
   background-color: white;
   margin-bottom: -1px;
+  background-color: papayawhip;
 }
 
 .odd {
@@ -40,6 +41,7 @@
   padding: 8px;
   background-color: white;
   margin-bottom: -1px;
+  background-color: papayawhip;
 }
 
 .folder img {
@@ -60,11 +62,16 @@
 }
 
 .top-title {
-  min-height: 10vh;
+  min-height: 14vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
+  background-image: url(papertorn.png);
+  background-size: 190%;
+  background-position: -340px -66px;
+  margin-bottom: -44px;
+  mix-blend-mode: difference;
 }
 .top-title h1 {
   font-size: 35px;

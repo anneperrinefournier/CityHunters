@@ -1,36 +1,39 @@
-<div class="container background">
-  <div class="top-title">
+<div class=" background">
+  <div class="pt-3 top-title">
     <h1>Choose your storyline </h1>
   </div>
-  <% @storylines.each_with_index do |storyline, index| %>
-  <div class="<%= index.even? ? 'regroup' : 'regroup-reverse' %>">
-    <%= link_to storyline_path(storyline), class: "links" do %>
-    <div class="<%= index.even? ? 'pair' : 'odd' %>">
-      <%= storyline.title %>
-    </div>
-    <div class="folder">
-      <img src="https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg" />
-
-      <div class= "folder-info">
-        <div class="folder-icons">
-          <p><i class="fa-solid fa-location-dot mx-1"></i><%= storyline.district %></p>
-          <p class="mx-2"><i class="fa-solid fa-puzzle-piece"></i>
-              <% difficulty = storyline.difficulty %>
-              <% case difficulty %>
-                <% when 1..2 %>
-                  facile
-                <% when 3 %>
-                  intermédiaire
-                <% when 4..5 %>
-                  difficile
-                <% else %>
-                  unknown
-              <% end %></p>
+  <div class="p-3">
+    <% @storylines.each_with_index do |storyline, index| %>
+      <div class="<%= index.even? ? 'regroup' : 'regroup-reverse' %>">
+        <%= link_to storyline_path(storyline), class: "links" do %>
+        <div class="<%= index.even? ? 'pair' : 'odd' %>">
+          <%= storyline.title %>
         </div>
-        <%= storyline.short_description %>
+        <div class="folder">
+          <img src="https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg" />
+
+          <div class= "folder-info">
+            <div class="folder-icons">
+              <p><i class="fa-solid fa-location-dot mx-1"></i><%= storyline.district %></p>
+              <p class="mx-2"><i class="fa-solid fa-puzzle-piece"></i>
+                  <% difficulty = storyline.difficulty %>
+                  <% case difficulty %>
+                    <% when 1..2 %>
+                      facile
+                    <% when 3 %>
+                      intermédiaire
+                    <% when 4..5 %>
+                      difficile
+                    <% else %>
+                      unknown
+                  <% end %></p>
+            </div>
+            <%= storyline.short_description %>
+          </div>
+        </div>
+        <% end %>
       </div>
-    </div>
     <% end %>
-  </div>
-<% end %>
+</div>
+
 </div>
