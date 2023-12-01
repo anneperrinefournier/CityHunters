@@ -1,4 +1,4 @@
-<div class="container m-3" data-controller="game" data-game-id-value="<%= @game.id %>">
+<div class="container" data-controller="game" data-game-id-value="<%= @game.id %>">
   <%= render 'game_state', game: @game %>
 
   <div class='d-flex justify-content-center d-none' data-game-target="displayAnswerBtn" data-controller="answer-modal">
@@ -7,11 +7,8 @@
       <div data-answer-modal-target="displayriddle"></div>
   </div>
 
-  <div class="mt-3 story-introduction" data-game-target="introduction">
+  <div class="mt-3 mb-3 story-introduction" data-game-target="introduction">
     <h1>Introduction</h1>
-    <%= puts "Storyline: #{@storyline.inspect}" %>
-<%= puts "Title: #{@storyline.title.inspect}" %>
-<%= puts "Photo Key: #{@storyline.photo.key.inspect}" %>
     <%= cl_image_tag @storyline.photo.key, alt: (@storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
     <p><%= @storyline.introduction %></p>
     <div class="d-flex justify-content-center">
