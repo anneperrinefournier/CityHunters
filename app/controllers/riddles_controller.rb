@@ -12,35 +12,15 @@ class RiddlesController < ApplicationController
     user_answer.save!
     riddle = Riddle.find(riddle_id)
 
-    debugger
-
-
-    place = Place.find(riddle.place_id)
-    riddles = Riddle.where(place: place)
-    next_riddle_index = riddles.index(riddle) + 1
-    next_riddle = Riddle.all[next_riddle_index]
-
-
-    if next_riddle_index < riddles.count
-    end
-
     # check if the answer is correct
     if user_answer.content == riddle.solution
-      user_answer.correct = true
+      # user_answer.update(correct: true)
 
       GameChannel.broadcast_to(
-        "game-#{@game.id}",
-        render_to_string(partial: "riddles", locals: { riddles: riddles })
+        "game-#{game.id}",
+        render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: game })
       )
-      render json: {
-        status: :ok,
-        next_riddle: render_to_string(partial: 'game_state', formats: [:html], locals: { riddle: next_riddle })
-      }
 
-      # render json: {
-      #   status: :ok,
-      #   next_riddle: render_to_string(partial: 'next_riddle', formats: [:html], locals: { riddle: next_riddle })
-      # }
     else
       render json: {
         status: :error,

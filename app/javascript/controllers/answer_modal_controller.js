@@ -40,23 +40,5 @@ export default class extends Controller {
     this.closeModal();
     const replace = this.displayriddleTarget
     replace.innerHTML = data.next_riddle
-
-
-    // const userAnswer = this.useranswerTarget.value.trim();
-    // const answer = this.responseTarget.innerHTML.trim();
-    // console.log(userAnswer);
-    // console.log(answer);
-
-    // if ( userAnswer == answer ) {
-    //   console.log("well done, the answer is correct");
-    //   const congrats = document.querySelector('.useranswer')
-    //   const message = "Congrats! your answer is the good one!"
-    //   const remove = document.querySelector('.remove')
-    //   remove.classList.add("d-none")
-    //   congrats.replaceWith(message)
-
-    // } else {
-    //   console.log("try again!");
-    // }
   }
 }

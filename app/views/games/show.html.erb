@@ -1,5 +1,5 @@
 <div class="container" data-controller="game" data-game-id-value="<%= @game.id %>">
-  <%= render 'game_state' %>
+  <%= render 'game_state', game: @game %>
 
   <div class='d-flex justify-content-center' data-controller="answer-modal">
     <button class="btn btn-primary" data-action="click->answer-modal#openModal" >Répondre</button>
@@ -14,4 +14,6 @@
       <button class="btn btn-primary" data-action="click->game#closeIntroduction">C'est parti!</button>
     </div>
   </div>
+
+  <%= render 'map' %>
 </div>

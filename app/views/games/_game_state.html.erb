@@ -1,8 +1,8 @@
 <div class="riddles-container d-none" data-game-target="riddle">
   <div class="places-tabs">
     <ul class="nav nav-pills nav-justified border-bottom" data-game-target="placeTabs" data-action="click->game#switchPanel">
-      <% @places.each_with_index do |place, index| %>
-        <% if place.validated?(@game) || @game.current_place %>
+      <% game.places.each_with_index do |place, index| %>
+        <% if place.validated?(game) || game.current_place %>
           <li class="nav-item">
             <button class="nav-link <%= index == 0 ? 'active' : '' %>" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate"><%= place.name %></button>
           </li>
@@ -16,11 +16,11 @@
   </div>
 
   <div class="tabs-place">
-    <% @places.each_with_index do |place, place_index| %>
-      <% if place.validated?(@game) || @game.current_place %>
+    <% game.places.each_with_index do |place, place_index| %>
+      <% if place.validated?(game) || game.current_place %>
         <div class="riddles-content-container <%= place_index == 0 ? '' : 'd-none' %>" data-game-target="placePanel" data-index="<%= place_index %>">
           <% place.riddles.each do |riddle| %>
-            <% if riddle.validated?(@game) || place.current_riddle(@game) == riddle %>
+            <% if riddle.validated?(game) || place.current_riddle(game) == riddle %>
               <div class="riddle-container">
                 <h1 class="mt-3 text-center border-bottom"><%= riddle.title %></h1>
                 <div class="d-flex justify-content-center">
@@ -40,6 +40,4 @@
       <% end %>
     <% end %>
   </div>
-
-  <%= render 'map' %>
 </div>
