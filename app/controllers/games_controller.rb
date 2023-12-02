@@ -110,3 +110,17 @@ class GamesController < ApplicationController
     @users = User.where(id: users_id)
   end
 end
+
+# # pseudocode
+# fin de jeu
+# stats
+# geoloc
+# systeme d experience
+# chrono
+# carte jolie sans geoloc
+# websocket pour:
+# - carte
+# - enigme
+# - fin de jeu
+
+# + seeder avec l enigme
