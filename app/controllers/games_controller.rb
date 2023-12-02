@@ -98,6 +98,29 @@ class GamesController < ApplicationController
     )
   end
 
+  # def end_game
+  #   # Add logic for handling the end of the game
+  #   # For example, set the game status to "ended"
+  #   @game.update(status: :ended)
+
+  #   # Redirect to the end of the game screen
+  #   redirect_to end_game_game_path(@game)
+  # end
+
+  def end_game
+    # Add logic for handling the end of the game
+    # For example, set the game status to "ended"
+    @game.ended!
+    # Broadcast to the lobby about the game ending
+    LobbyChannel.broadcast_to(
+      "lobby-#{@game.id}",
+      {
+        type: "redirect",
+        url: end_game_path(@game)
+      }
+    )
+  end
+
   private
 
   def set_game

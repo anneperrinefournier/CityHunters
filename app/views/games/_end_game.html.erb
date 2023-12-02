@@ -1,0 +1,12 @@
+
+<div class="container" data-controller="game" data-game-id-value="<%= @game.id %>">
+  <div class="mt-3 mb-3 story-conclusion d-none" data-game-target="conclusion">
+    <!-- Content for the "Fin de partie" screen -->
+    <h1>Fin de partie test</h1>
+    <!-- Add any additional content you want to display at the end of the game -->
+
+    <!-- Back button to return to the lobby or perform other actions -->
+    <%= link_to "Retour au menu principal", root_path, class:"btn btn-secondary" %>
+
+  </div>
+</div>

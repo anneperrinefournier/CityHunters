@@ -11,7 +11,7 @@ class Game < ApplicationRecord
   enum status: {
     not_started: 0,
     running: 1,
-    over: 2
+    ended: 2
   }
 
   def validated_places
