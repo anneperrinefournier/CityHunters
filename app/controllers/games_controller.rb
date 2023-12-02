@@ -122,5 +122,4 @@ end
 # - carte
 # - enigme
 # - fin de jeu
-
 # + seeder avec l enigme
