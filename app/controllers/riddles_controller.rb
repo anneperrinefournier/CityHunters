@@ -1,25 +1,46 @@
 class RiddlesController < ApplicationController
   def verify
-    riddle_id = params[:question][:riddle_id].to_i
-    game = Game.find(params[:question][:game_id].to_i)
+    riddle = Riddle.find(params[:riddle_id].to_i)
+    game = Game.find(params[:game_id].to_i)
 
     user_answer = Answer.new(
       game: game,
       participation: Participation.find_by(user: current_user),
-      riddle_id: riddle_id,
+      riddle: riddle,
       content: params.dig(:question, :answer)
     )
     user_answer.save!
-    riddle = Riddle.find(riddle_id)
 
     # check if the answer is correct
     if user_answer.content == riddle.solution
-      # user_answer.update(correct: true)
+      user_answer.update(correct: true)
 
-      GameChannel.broadcast_to(
-        "game-#{game.id}",
-        render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: game })
-      )
+      render json: {
+        status: :ok,
+        message: "Correct answer!"
+      }
+
+      if game.current_place.nil?
+        game.update(status: :over)
+
+        GameChannel.broadcast_to(
+          "game-#{game.id}",
+          {
+            type: 'html',
+            game_status: game.status,
+            content: render_to_string(partial: "/games/game_review", formats: [:html], locals: { game: game })
+          }
+        )
+      else
+        GameChannel.broadcast_to(
+          "game-#{game.id}",
+          {
+            type: 'html',
+            game_status: game.status,
+            content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: game })
+          }
+        )
+      end
 
     else
       render json: {
