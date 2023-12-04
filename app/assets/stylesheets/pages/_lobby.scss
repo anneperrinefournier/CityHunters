@@ -1,17 +1,64 @@
+.lobby-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.lobby-backscreen {
+  background-image: url(5-test-back.png);
+  background-size: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  }
+
+.lobby-title {
+  color: $navy;
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 100px;
+  padding-top: 20px;
+  text-align: start;
+  margin-left: 20px;
+}
+
+.lobby-qrcode {
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  background-image: url("qrcode.png");
+  background-position: center;
+  background-size:cover;
+}
+
+.lobby-pin-share {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.lobby-pin {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.lobby-img-margin {
+  margin-bottom: 10px;
+}
+
 .lobby-players-list {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 25px;
   margin: 0 auto;
-}
-
-.lobby-player {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  margin: 0 auto;
+  margin-bottom: 100px;
 }
 
 .lobby-player-center {
@@ -19,6 +66,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
 .lobby-player-infos-row {
@@ -27,7 +75,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: end;
-  gap: 5px;
+  gap: 10px;
+}
+
+.small-caps {
+  font-variant: small-caps;
 }
 
 .lobby-player-name {
@@ -35,42 +87,34 @@
   font-weight: 500;
 }
 
-.lobby-qrcode {
-  width: 100%;
-  max-width: 250px;
-  height: 250px;
-  margin: auto;
-  background-image: url("qrcode.png");
-  background-position: center;
-  background-size:cover;
-  ;
-}
-
 .delete-player-btn {
-  color: $gold;
+  color: $navy;
   text-align: center;
-
-}
-
-.lobby-title {
-  font-size: 32px;
-  font-weight: 500;
-  margin-top: 30px;
-  text-align: center;
-}
-
-.lobby-pin {
-  font-size: 22px;
-  font-weight: 600;
-  text-align: center;
-  margin-top: 50px;
-  margin-bottom: 100px;
 }
 
 .lobby-launch {
-  margin-top: 150px;
   text-align: center;
   font-size: 20px;
   display: flex;
   justify-content: center;
+}
+
+.lobby-top-title {
+  min-height: 14vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: url(background-blue.svg);
+  background-size: 190%;
+  background-position: -360px -66px;
+  margin-bottom: -44px;
+  color: $gold;
+  font-size: 26px;
+  font-weight: 900;
+  padding-bottom: 35px;
+  margin-bottom: 100px;
+}
+.lobby-top-title h1 {
+  font-size: 35px;
 }

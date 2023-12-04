@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: %i[lobby show start]
+  before_action :set_game, only: %i[lobby show start end_game]
   before_action :set_game_users, only: %i[lobby stats]
 
   def create
@@ -23,7 +23,6 @@ class GamesController < ApplicationController
     end
 
     if @game.status == "running"
-
       if @game.current_place.nil?
         @game.update(status: :over)
         redirect_to game_path(@game), status: :internal_server_error
@@ -48,6 +47,7 @@ class GamesController < ApplicationController
         {
           lat: participation.latitude,
           lng: participation.longitude,
+          participation_id: participation.id,
           info_window_html: render_to_string(partial: "participations_info_window", locals: { participation: participation }),
           marker_html: render_to_string(partial: "marker", locals: { marker_class: "marker marker-gold" })
         }
@@ -61,10 +61,11 @@ class GamesController < ApplicationController
         marker_html: render_to_string(partial: "marker", locals: { marker_class: "marker marker-red" })
       }
 
-      @markers = @places_markers + @participations_markers + [@starting_point_marker]
+      @markers = @places_markers + [@starting_point_marker]
+      # @participations_markers
 
-    elsif @game.status == 'over'
-      render '_game_review', locals: { game: @game }
+    elsif @game.status == 'ended'
+      render 'end_game', locals: { game: @game }
     end
   end
 
@@ -103,6 +104,19 @@ class GamesController < ApplicationController
       {
         type: "redirect",
         url: game_path(@game)
+      }
+    )
+  end
+
+  def end_game
+    @game.ended!
+
+    GameChannel.broadcast_to(
+      "game-#{game.id}",
+      {
+        type: 'html',
+        game_status: game.status,
+        content: render_to_string(partial: "/games/end_game", formats: [:html], locals: { game: game })
       }
     )
   end

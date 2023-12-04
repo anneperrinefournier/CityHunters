@@ -1,24 +1,30 @@
+<div class="lobby-backscreen" style="min-height: 100vh">
+      <h1 class="lobby-top-title"><%= @storyline_title %></h1>
 <div class="container" data-controller="lobby" data-lobby-id-value="<%= @game.id %>" data-lobby-participation-id-value="<%= current_user.find_participation_for(@game).id %>">
-  <div class="lobby-content">
-    <h1 class="lobby-title"><%= @storyline_title %></h1>
-    <div class="lobby-qrcode"></div>
-    <h2 class="lobby-pin">PIN: <%= @game.pin %></h2>
+    <div class="lobby-content">
+      <div class="lobby-qrcode"></div>
 
-    <div class="lobby-players-list" data-lobby-target="players">
-      <%= render(partial: "player", locals: { users: @users }) %>
+      <div class="lobby-pin-share">
+        <h2 class="lobby-pin">PIN: <%= @game.pin %></h2>
+        <%= image_tag('dotted-lines.svg', class: 'lobby-img-margin') %>
+        <div class="lobby-share">Partager ce code</div>
+      </div>
+
+      <div class="lobby-players-list" data-lobby-target="players">
+        <%= render(partial: "player", locals: { users: @users }) %>
+      </div>
+
+      <div class="lobby-launch">
+        <% if current_user == @game.user %>
+          <div>
+            <%= link_to "Lancer la partie", start_game_path(@game), data: { turbo_method: :patch }, class: "btn-home" %>
+          </div>
+        <% else %>
+          <div>
+            <p>Waiting for host to launch the game</p>
+          </div>
+        <% end %>
+      </div>
     </div>
-
-    <div class="lobby-launch">
-      <% if current_user == @game.user %>
-        <div>
-          <%= link_to "Lancer la partie", start_game_path(@game), data: { turbo_method: :patch }, class: "btn-home" %>
-        </div>
-      <% else %>
-        <div>
-          <p>Waiting for host to lunch the game</p>
-        </div>
-      <% end %>
-    <div>
   </div>
-</div>
 </div>
