@@ -20,11 +20,12 @@ class GamesController < ApplicationController
   def show
     if @game.status == "not_started" && current_user == @game.user
       @game.running!
+      @start_time = Time.now
     end
 
     if @game.status == "running"
       if @game.current_place.nil?
-        @game.update(status: :over)
+        @game.update(status: :ended)
         redirect_to game_path(@game), status: :internal_server_error
       end
 
@@ -111,6 +112,7 @@ class GamesController < ApplicationController
 
   def end_game
     @game.ended!
+    @end_time = Time.now
 
     GameChannel.broadcast_to(
       "game-#{@game.id}",

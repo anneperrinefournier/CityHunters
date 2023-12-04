@@ -7,12 +7,13 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
   </head>
 
   <body>
     <%= render "shared/flashes" %>
-
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <%= yield %>
   </body>
 </html>

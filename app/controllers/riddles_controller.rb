@@ -20,6 +20,15 @@ class RiddlesController < ApplicationController
         message: "Correct answer!"
       }
 
+      GameChannel.broadcast_to(
+        "game-#{game.id}",
+        {
+          action: 'toast',
+          type: 'html',
+          text: "#{current_user.name} a trouvé l’énigme!"
+        }
+      )
+
       if game.current_place.nil?
         game.update(status: :ended)
 
@@ -30,6 +39,15 @@ class RiddlesController < ApplicationController
             type: 'html',
             game_status: game.status,
             content: render_to_string(partial: "/games/end_game", formats: [:html], locals: { game: game })
+          }
+        )
+
+        GameChannel.broadcast_to(
+          "game-#{game.id}",
+          {
+            action: 'toast',
+            type: 'html',
+            text: "Vous avez gagné la partie!"
           }
         )
       else

@@ -83,7 +83,20 @@ export default class extends Controller {
       this.pageHandleTarget.innerHTML = data.content;
       return;
     }
+
+    if (data.action === 'toast') {
+      this.#showToast(data.text);
+      return;
+    }
   }
+
+  #showToast(text) {
+    Toastify({
+      text: text,
+      duration: 3000
+    }).showToast()
+  }
+
 
   closeIntroduction() {
     this.riddlesHandleTarget.classList.remove('d-none')
