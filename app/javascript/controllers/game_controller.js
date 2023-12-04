@@ -45,10 +45,11 @@ export default class extends Controller {
     console.log(this.participationsMarkersValue);
 
     const fakeData = {
-      type: "update_position",
+      action: "update_position",
       player: {
         lat: 48,
-        lng: 2
+        lng: 2,
+        participation_id: this.participationsMarkersValue[0].participation_id
       }
     }
     this.#handleData(fakeData);
@@ -65,8 +66,22 @@ export default class extends Controller {
     this.#addMarkersToMap()
     this.#addPlayerMakersToMap()
     this.#fitMapToMarkers()
-  }
 
+    this.map.on('move', this.handleMapMove.bind(this));
+
+    if ('geolocation' in navigator) {
+      navigator.geolocation.watchPosition((position) => {
+        console.log('Nouvelle position détectée :', position.coords.latitude, position.coords.longitude);
+        // Faites quelque chose avec les nouvelles coordonnées ici
+
+        
+      }, function(error) {
+        console.error('Erreur de géolocalisation :', error.message);
+      });
+    } else {
+      console.log('La géolocalisation n\'est pas disponible sur ce navigateur.');
+    }
+  }
 
   #handleData(data) {
     if (data.action === 'redirect') {
@@ -74,12 +89,8 @@ export default class extends Controller {
     }
 
     else if (data.action === "update_position") {
-      let player = this.playerMarkers
-        .filter(item => item.participation_id === data.player.participation_id)
-
-      console.log(player)
-
-      // player.setLngLat([ data.lng, data.lat ])
+      let player = this.playerMarkers.filter(item => item.participation_id === data.player.participation_id)[0]
+      player.marker.setLngLat([data.player.lng, data.player.lat])
 
     } else if (data.action == 'update_riddle') {
       this.riddlesHandleTarget.innerHTML = data.content;
