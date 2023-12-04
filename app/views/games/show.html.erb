@@ -22,4 +22,12 @@
   <div class="map-position d-none" data-game-target="map">
     <%= render 'map' %>
   </div>
+
+  <div class="mt-3 mb-3 d-none" data-game-target="endGameButton">
+    <button class="btn btn-danger" data-action="click->game#endGame">Fin de partie</button>
+  </div>
+  <div class="mt-3 mb-3 d-none" data-game-target="endGame">
+    <h1>Fin de partie</h1>
+    <%# infos de fin de game%>
+    <%= link_to "Retour au menu principal", root_path, class:"btn btn-secondary" %>
 </div>

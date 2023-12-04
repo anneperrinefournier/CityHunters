@@ -22,7 +22,7 @@ class GamesController < ApplicationController
       @game.running!
     end
 
-    # raise unless @game.status == "running"
+    # raise
 
     @storyline = Storyline.find(@game.storyline_id)
 
@@ -101,8 +101,8 @@ class GamesController < ApplicationController
   def end_game
     @game.ended!
     # Stop broadcasting to the lobby channel
-    LobbyChannel.broadcast_to(
-      "lobby-#{@game.id}",
+    GameChannel.broadcast_to(
+      "game-#{@game.id}",
       {
         type: "redirect",
         url: end_game_path

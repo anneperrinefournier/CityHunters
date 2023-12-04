@@ -44,42 +44,51 @@ export default class extends Controller {
     }).classList.remove('d-none')
   }
 
-  async endGame() {
-    const options = {
-      method: 'POST',
-      headers: {
-        "Accept": "application/json",
-        "X-CSRF-TOKEN": this.token
-      },
-      body: JSON.stringify({})
-    };
+async endGame() {
+  const options = {
+    method: 'POST',
+    headers: {
+      "Accept": "application/json",
+      "X-CSRF-TOKEN": this.token
+    },
+    body: JSON.stringify({})
+  };
 
-    try {
-      const response = await fetch(`/games/${this.idValue}/end`, options);
+  try {
+    const response = await fetch(`/games/${this.idValue}/end`, options);
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const contentType = response.headers.get('content-type');
-      if (contentType && contentType.includes('application/json')) {
-        const data = await response.json();
-
-        if (data.status === 'ok') {
-          console.log('End game status is ok');
-          this.channel.perform('end_game', { game_id: this.idValue });
-        } else {
-          console.log(data);
-          alert(data.message || 'Une erreur s\'est produite.');
-        }
-      } else {
-        console.error('La réponse n\'est pas au format JSON.');
-        console.log(await response.text()); // Afficher le contenu de la réponse
-        alert('Une erreur s\'est produite. Veuillez réessayer.');
-      }
-    } catch (error) {
-      console.error('Une erreur s\'est produite lors de la requête POST :', error);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
+
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      const data = await response.json();
+
+      if (data.status === 'ok') {
+        console.log('End game status ok');
+        this.channel.perform('end_game', { game_id: this.idValue });
+      } else {
+        console.log(data);
+        alert(data.message || 'Une erreur s\'est produite.');
+      }
+    } else {
+      console.error('La réponse n\'est pas au format JSON.');
+      console.log(await response.text()); // Afficher le contenu de la réponse
+      alert('Une erreur s\'est produite. Veuillez réessayer.');
+    }
+  } catch (error) {
+    console.error('Une erreur s\'est produite lors de la requête POST :', error);
   }
 
+  this.introductionTarget.classList.add('d-none')
+  this.displayAnswerBtnTarget.classList.add('d-none')
+  this.endGameButtonTarget.classList.add("d-none")
+  this.endGameTarget.classList.remove('d-none')
+  this.riddleTarget.classList.add('d-none')
+  this.mapTarget.classList.add('d-none')
+  if (this.displayAnswerBtnTarget) {
+    this.displayAnswerBtnTarget.classList.add('d-none')
+  }
+  }
 }
