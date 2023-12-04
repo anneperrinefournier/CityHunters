@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: %i[lobby show start]
+  before_action :set_game, only: %i[lobby show start end_game]
   before_action :set_game_users, only: %i[lobby stats]
 
   def create
@@ -22,7 +22,7 @@ class GamesController < ApplicationController
       @game.running!
     end
 
-    raise unless @game.status == "running"
+    # raise unless @game.status == "running"
 
     @storyline = Storyline.find(@game.storyline_id)
 
@@ -98,27 +98,17 @@ class GamesController < ApplicationController
     )
   end
 
-  # def end_game
-  #   # Add logic for handling the end of the game
-  #   # For example, set the game status to "ended"
-  #   @game.update(status: :ended)
-
-  #   # Redirect to the end of the game screen
-  #   redirect_to end_game_game_path(@game)
-  # end
-
   def end_game
-    # Add logic for handling the end of the game
-    # For example, set the game status to "ended"
     @game.ended!
-    # Broadcast to the lobby about the game ending
+    # Stop broadcasting to the lobby channel
     LobbyChannel.broadcast_to(
       "lobby-#{@game.id}",
       {
         type: "redirect",
-        url: end_game_path(@game)
+        url: end_game_path
       }
     )
+    render json: { status: 'ok' }, status: :ok
   end
 
   private
