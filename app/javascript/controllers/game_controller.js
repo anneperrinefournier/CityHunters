@@ -9,8 +9,14 @@ export default class extends Controller {
     this.token = document.querySelector('meta[name="csrf-token"]').content
     this.channel = createConsumer().subscriptions.create(
       { channel: "GameChannel", id: this.idValue },
-      { received: data => console.log(data) }
+      { received: data => this.handleData(data) }
     )
+  }
+
+  handleData(data) {
+    if (data.type === 'redirect') {
+      window.location.href = data.url;
+    }
   }
 
   closeIntroduction() {
@@ -18,6 +24,7 @@ export default class extends Controller {
     this.introductionTarget.classList.add('d-none')
     this.mapTarget.classList.remove('d-none')
     this.endGameButtonTarget.classList.remove("d-none")
+
     if (this.displayAnswerBtnTarget) {
       this.displayAnswerBtnTarget.classList.remove('d-none')
     }
@@ -44,51 +51,49 @@ export default class extends Controller {
     }).classList.remove('d-none')
   }
 
-async endGame() {
-  const options = {
-    method: 'POST',
-    headers: {
-      "Accept": "application/json",
-      "X-CSRF-TOKEN": this.token
-    },
-    body: JSON.stringify({})
-  };
+  async endGame() {
+    const options = {
+      method: 'GET',
+      headers: {
+        "Accept": "application/json",
+        "X-CSRF-TOKEN": this.token
+      },
+    };
 
-  try {
     const response = await fetch(`/games/${this.idValue}/end`, options);
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+  //   if (!response.ok) {
+  //     throw new Error(`HTTP error! Status: ${response.status}`);
+  //   }
 
-    const contentType = response.headers.get('content-type');
-    if (contentType && contentType.includes('application/json')) {
-      const data = await response.json();
+  //   const contentType = response.headers.get('content-type');
+  //   if (contentType && contentType.includes('application/json')) {
+  //     const data = await response.json();
 
-      if (data.status === 'ok') {
-        console.log('End game status ok');
-        this.channel.perform('end_game', { game_id: this.idValue });
-      } else {
-        console.log(data);
-        alert(data.message || 'Une erreur s\'est produite.');
-      }
-    } else {
-      console.error('La réponse n\'est pas au format JSON.');
-      console.log(await response.text()); // Afficher le contenu de la réponse
-      alert('Une erreur s\'est produite. Veuillez réessayer.');
-    }
-  } catch (error) {
-    console.error('Une erreur s\'est produite lors de la requête POST :', error);
-  }
+  //     if (data.status === 'ok') {
+  //       console.log('End game status ok');
+  //       this.channel.perform('end_game', { game_id: this.idValue });
+  //     } else {
+  //       console.log(data);
+  //       alert(data.message || 'Une erreur s\'est produite.');
+  //     }
+  //   } else {
+  //     console.error('La réponse n\'est pas au format JSON.');
+  //     console.log(await response.text());
+  //     alert('Une erreur s\'est produite. Veuillez réessayer.');
+  //   }
+  // } catch (error) {
+  //   console.error('Une erreur s\'est produite lors de la requête POST :', error);
+  // }
 
-  this.introductionTarget.classList.add('d-none')
-  this.displayAnswerBtnTarget.classList.add('d-none')
-  this.endGameButtonTarget.classList.add("d-none")
-  this.endGameTarget.classList.remove('d-none')
-  this.riddleTarget.classList.add('d-none')
-  this.mapTarget.classList.add('d-none')
-  if (this.displayAnswerBtnTarget) {
-    this.displayAnswerBtnTarget.classList.add('d-none')
-  }
+  // this.introductionTarget.classList.add('d-none')
+  // this.displayAnswerBtnTarget.classList.add('d-none')
+  // this.endGameButtonTarget.classList.add("d-none")
+  // this.endGameTarget.classList.remove('d-none')
+  // this.riddleTarget.classList.add('d-none')
+  // this.mapTarget.classList.add('d-none')
+  // if (this.displayAnswerBtnTarget) {
+  //   this.displayAnswerBtnTarget.classList.add('d-none')
+  // }
   }
 }

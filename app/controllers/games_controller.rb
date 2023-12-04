@@ -100,7 +100,6 @@ class GamesController < ApplicationController
 
   def end_game
     @game.ended!
-    # Stop broadcasting to the lobby channel
     GameChannel.broadcast_to(
       "game-#{@game.id}",
       {
@@ -108,7 +107,6 @@ class GamesController < ApplicationController
         url: end_game_path
       }
     )
-    render json: { status: 'ok' }, status: :ok
   end
 
   private
