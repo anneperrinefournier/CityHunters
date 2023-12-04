@@ -5,7 +5,6 @@ import mapboxgl from 'mapbox-gl' // Don't forget this!
 export default class extends Controller {
   static values = {
     id: Number,
-    participationId: Number,
     apiKey: String,
     markers: Array,
     participationsMarkers: Array
@@ -51,7 +50,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/anneperrine/clpqzbmzu014v01pk74h2euyy"
     })
 
     this.#addMarkersToMap()
@@ -66,7 +65,7 @@ export default class extends Controller {
 
     if (data.type === "update_position") {
       this.playerMarkers
-        .filter(item => item.participation_id === data.participation_id)
+        .filter(item => item.participation_id === data.participationsMarkersValue.participation_id)
         .setLngLat([ data.lng, data.lat ])
 
       if (data.game_status == 'ended') {
@@ -125,10 +124,14 @@ export default class extends Controller {
   #addPlayerMakersToMap() {
     this.playerMarkers = []
 
+    const customMarker = document.createElement('div');
+      customMarker.className = `marker ${marker.marker_class}`;
+      customMarker.innerHTML = marker.marker_html
+
     this.participationsMarkersValue.forEach((marker) => {
       this.playerMarkers.push({
         participation_id: marker.participation_id,
-        marker: new mapboxgl.Marker()
+        marker: new mapboxgl.Marker(customMarker)
                             .setLngLat([ marker.lng, marker.lat ])
                             .addTo(this.map)
       })
