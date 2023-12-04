@@ -7,7 +7,8 @@ export default class extends Controller {
     id: Number,
     apiKey: String,
     markers: Array,
-    participationsMarkers: Array
+    participationsMarkers: Array,
+    participationId: Number
   }
 
   static targets = [
@@ -34,25 +35,16 @@ export default class extends Controller {
 
   connect() {
     navigator.geolocation.watchPosition((coordinates) => {
+      console.log('position changed')
+
       this.channel.send({
-        participation_id: participation_id,
+        participation_id: this.participationIdValue,
         longitude: coordinates.coords.longitude,
         latitude: coordinates.coords.latitude,
       })
     })
 
     this._initMap();
-    console.log(this.participationsMarkersValue);
-
-    const fakeData = {
-      action: "update_position",
-      player: {
-        lat: 48,
-        lng: 2,
-        participation_id: this.participationsMarkersValue[0].participation_id
-      }
-    }
-    this.#handleData(fakeData);
   }
 
   _initMap() {
@@ -66,39 +58,30 @@ export default class extends Controller {
     this.#addMarkersToMap()
     this.#addPlayerMakersToMap()
     this.#fitMapToMarkers()
-
-    this.map.on('move', this.handleMapMove.bind(this));
-
-    if ('geolocation' in navigator) {
-      navigator.geolocation.watchPosition((position) => {
-        console.log('Nouvelle position détectée :', position.coords.latitude, position.coords.longitude);
-        // Faites quelque chose avec les nouvelles coordonnées ici
-
-        
-      }, function(error) {
-        console.error('Erreur de géolocalisation :', error.message);
-      });
-    } else {
-      console.log('La géolocalisation n\'est pas disponible sur ce navigateur.');
-    }
   }
 
   #handleData(data) {
     if (data.action === 'redirect') {
       window.location.href = data.url;
+      return;
     }
 
-    else if (data.action === "update_position") {
-      let player = this.playerMarkers.filter(item => item.participation_id === data.player.participation_id)[0]
-      player.marker.setLngLat([data.player.lng, data.player.lat])
+    if (data.action === "update_position") {
+      const player = this.playerMarkers.find(item => item.participation_id === data.participation_id)
+      player.marker.setLngLat([data.longitude, data.latitude])
+      return;
+    }
 
-    } else if (data.action == 'update_riddle') {
+    if (data.action == 'update_riddle') {
       this.riddlesHandleTarget.innerHTML = data.content;
       this.displayAnswerBtnTarget.classList.remove('d-none');
       this.displayAnswerBtnTarget.scrollIntoView(true)
+      return;
+    }
 
-    } else if (data.action == 'update_game_content') {
-          this.pageHandleTarget.innerHTML = data.content;
+    if (data.action == 'update_game_content') {
+      this.pageHandleTarget.innerHTML = data.content;
+      return;
     }
   }
 

@@ -12,7 +12,7 @@ class GameChannel < ApplicationCable::Channel
     participation.reload
 
     GameChannel.broadcast_to("game-#{game.id}", {
-      action: 'update_participation',
+      action: 'update_position',
       participation_id: participation.id,
       longitude: participation.longitude,
       latitude: participation.latitude
