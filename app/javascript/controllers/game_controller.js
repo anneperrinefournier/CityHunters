@@ -2,19 +2,17 @@ import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 import mapboxgl from 'mapbox-gl' // Don't forget this!
 
-// Connects to data-controller="game"
-// Connects to data-controller="map"
-
 export default class extends Controller {
   static values = {
     id: Number,
     apiKey: String,
     markers: Array
   }
-  static targets = ['pageHandle', 'riddlesHandle', 'introduction', 'enigme', 'placeTabs', 'placeTab', 'placePanel', 'displayAnswerBtn'];
+  static targets = ['pageHandle', 'riddlesHandle', 'introduction', 'enigme', 'placeTabs', 'placeTab', 'placePanel', 'displayAnswerBtn', 'map', 'endGameButton', 'endGame'];
 
   connect() {
     console.log('Game controller connected')
+    this.token = document.querySelector('meta[name="csrf-token"]').content
     this.channel = createConsumer().subscriptions.create(
       { channel: "GameChannel", id: this.idValue },
       { received: data => this.#handleData(data) }
@@ -39,20 +37,21 @@ export default class extends Controller {
     this.#fitMapToMarkers()
   }
 
-  #handleData(data) {
-    // if (data.action === 'update_participation') {
-    //   this.playerMarkers
-    //       .find(item => item.id == data.participation_id)
-    //       .marker.setLngLat([data.longitude, data.latitude])
-
-    //   return;
-    // }
+  handleData(data) {
+    if (data.type === 'redirect') {
+      window.location.href = data.url;
+    }
   }
 
   closeIntroduction() {
     this.riddlesHandleTarget.classList.remove('d-none')
     this.introductionTarget.classList.add('d-none')
-    this.displayAnswerBtnTarget.classList.remove('d-none')
+    this.mapTarget.classList.remove('d-none')
+    this.endGameButtonTarget.classList.remove("d-none")
+
+    if (this.displayAnswerBtnTarget) {
+      this.displayAnswerBtnTarget.classList.remove('d-none')
+    }
   }
 
   activate(event) {
@@ -76,7 +75,11 @@ export default class extends Controller {
   }
 
   #handleData(data) {
-    if (data.game_status == 'over') {
+    if (data.type === 'redirect') {
+      window.location.href = data.url;
+    }
+
+    if (data.game_status == 'ended') {
       this.pageHandleTarget.innerHTML = data.content;
     } else if (data.game_status == 'running') {
       this.riddlesHandleTarget.innerHTML = data.content;
@@ -86,6 +89,18 @@ export default class extends Controller {
         behavior: 'smooth'
       })
     }
+  }
+  
+  async endGame() {
+    const options = {
+      method: 'GET',
+      headers: {
+        "Accept": "application/json",
+        "X-CSRF-TOKEN": this.token
+      },
+    };
+
+    const response = await fetch(`/games/${this.idValue}/end`, options);
   }
 
   #addMarkersToMap() {

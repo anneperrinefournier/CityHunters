@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: %i[lobby show start]
+  before_action :set_game, only: %i[lobby show start end_game]
   before_action :set_game_users, only: %i[lobby stats]
 
   def create
@@ -63,7 +63,7 @@ class GamesController < ApplicationController
       @markers = @places_markers + @participations_markers + [@starting_point_marker]
 
     elsif @game.status == 'ended'
-      render '_game_review', locals: { game: @game }
+      render 'end_game', locals: { game: @game }
     end
   end
 
@@ -106,6 +106,19 @@ class GamesController < ApplicationController
     )
   end
 
+  def end_game
+    @game.ended!
+
+    GameChannel.broadcast_to(
+      "game-#{game.id}",
+      {
+        type: 'html',
+        game_status: game.status,
+        content: render_to_string(partial: "/games/end_game", formats: [:html], locals: { game: game })
+      }
+    )
+  end
+
   private
 
   def set_game
@@ -118,3 +131,16 @@ class GamesController < ApplicationController
     @users = User.where(id: users_id)
   end
 end
+
+# # pseudocode
+# fin de jeu
+# stats
+# geoloc
+# systeme d experience
+# chrono
+# carte jolie sans geoloc
+# websocket pour:
+# - carte
+# - enigme
+# - fin de jeu
+# + seeder avec l enigme
