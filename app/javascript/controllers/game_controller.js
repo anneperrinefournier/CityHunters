@@ -84,13 +84,10 @@ export default class extends Controller {
     } else if (data.game_status == 'running') {
       this.riddlesHandleTarget.innerHTML = data.content;
       this.displayAnswerBtnTarget.classList.remove('d-none');
-      this.pageHandle.scrollTo({
-        top: this.pageHandleTarget.scrollHeight,
-        behavior: 'smooth'
-      })
+      this.displayAnswerBtnTarget.scrollIntoView(true)
     }
   }
-  
+
   async endGame() {
     const options = {
       method: 'GET',
