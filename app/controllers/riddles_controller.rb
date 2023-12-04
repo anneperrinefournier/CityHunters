@@ -35,8 +35,9 @@ class RiddlesController < ApplicationController
         GameChannel.broadcast_to(
           "game-#{game.id}",
           {
-            type: 'toat',
-            text: "wefewfwefgwefew"
+           action: 'toast',
+           type: 'html',
+            text: "#{User.name} "
           }
         )
       else
