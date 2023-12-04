@@ -16,12 +16,12 @@ export default class extends Controller {
   connect() {
     this.channel = createConsumer().subscriptions.create(
       { channel: "GameChannel", id: this.idValue },
-      { received: data => #handleData(data) }
+      { received: data => this.#handleData(data) }
     )
 
     navigator.geolocation.watchPosition((coordinates) => {
       this.channel.send({
-        participation_id: // participation_id,
+        participation_id: 1,// participation_id,
         longitude: coordinates.coords.longitude,
         latitude: coordinates.coords.latitude,
       })
