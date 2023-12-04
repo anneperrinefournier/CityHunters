@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     member do
       patch '/start', to: "games#start"
       get '/lobby', to: "games#lobby"
+      get '/end', to: "games#end_game"
     end
   end
 

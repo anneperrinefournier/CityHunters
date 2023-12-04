@@ -1,0 +1,19 @@
+<%#= render 'shared/scripts/toastify' %>
+
+<div class="mt-3 mb-3">
+    <h1>Félicitations! Vous avez terminé <% @game.storyline.title %> </h1>
+    <%= cl_image_tag @game.storyline.photo.key, alt: (@game.storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
+    <h2>Temps de jeu</h2>
+    <p>Durée: <%#= format_duration(@game.end_time - @game.start_time) %></p>
+    <p>Un temps record!</p>
+
+    <h2>Ton score</h2>
+    <h1 style="color: gold;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></h1>
+    <p>Tu as fini en un <strong>temps record!</strong> </p>
+    <p>Incroyable, tu as eu besoin de moins de <strong>3 indices</strong> pour terminer!</p>
+
+    <h2>Expérience</h2>
+    <p>Tu as gagné <strong>380 xp</strong> !</p>
+
+    <%= link_to "Retour au menu principal", root_path, class:"btn btn-secondary" %>
+  </div>

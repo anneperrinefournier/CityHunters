@@ -53,6 +53,7 @@ gem "sassc-rails"
 gem "cloudinary"
 gem "geocoder"
 gem 'redis', '~> 5.0', '>= 5.0.8'
+gem 'rqrcode'
 
 group :development, :test do
   gem "dotenv-rails"

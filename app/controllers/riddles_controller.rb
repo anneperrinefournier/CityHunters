@@ -1,25 +1,67 @@
 class RiddlesController < ApplicationController
   def verify
-    riddle_id = params[:question][:riddle_id].to_i
-    game = Game.find(params[:question][:game_id].to_i)
+    riddle = Riddle.find(params[:riddle_id].to_i)
+    game = Game.find(params[:game_id].to_i)
+    @game = game
 
     user_answer = Answer.new(
       game: game,
       participation: Participation.find_by(user: current_user),
-      riddle_id: riddle_id,
+      riddle: riddle,
       content: params.dig(:question, :answer)
     )
     user_answer.save!
-    riddle = Riddle.find(riddle_id)
 
     # check if the answer is correct
     if user_answer.content == riddle.solution
-      # user_answer.update(correct: true)
+      user_answer.update(correct: true)
+
+      render json: {
+        status: :ok,
+        message: "Correct answer!"
+      }
 
       GameChannel.broadcast_to(
         "game-#{game.id}",
-        render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: game })
+        {
+          action: 'toast',
+          type: 'html',
+          text: "#{current_user.name} a trouvé l’énigme!"
+        }
       )
+
+      if game.current_place.nil?
+        game.update(status: :ended)
+
+        GameChannel.broadcast_to(
+          "game-#{game.id}",
+          {
+            action: 'update_game_content',
+            type: 'html',
+            game_status: game.status,
+            content: render_to_string(partial: "/games/end_game", formats: [:html])
+          }
+        )
+
+        GameChannel.broadcast_to(
+          "game-#{game.id}",
+          {
+            action: 'toast',
+            type: 'html',
+            text: "Vous avez gagné la partie!"
+          }
+        )
+      else
+        GameChannel.broadcast_to(
+          "game-#{game.id}",
+          {
+            action: 'update_riddle',
+            type: 'html',
+            game_status: game.status,
+            content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: game })
+          }
+        )
+      end
 
     else
       render json: {
