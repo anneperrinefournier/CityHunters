@@ -47,6 +47,8 @@
   data-answer-modal-riddle-id-value="<%= game.current_place.current_riddle(game).id %>">
 
   <button class="btn btn-primary" data-action="click->answer-modal#openModal">Répondre</button>
-    <%= render "games/answer_modal", riddle: game.current_place.current_riddle(game), game: game %>
+    <% if @game.current_place.present? %>
+      <%= render "games/answer_modal", riddle: game.current_place.current_riddle(game), game: game %>
+    <% end %>
     <div data-answer-modal-target="displayriddle"></div>
 </div>

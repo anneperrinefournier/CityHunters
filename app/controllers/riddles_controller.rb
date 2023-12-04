@@ -28,7 +28,7 @@ class RiddlesController < ApplicationController
           {
             type: 'html',
             game_status: game.status,
-            content: render_to_string(partial: "/games/game_review", formats: [:html], locals: { game: game })
+            content: render_to_string(partial: "/games/end_game", formats: [:html], locals: { game: game })
           }
         )
       else
