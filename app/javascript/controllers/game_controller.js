@@ -5,6 +5,7 @@ import mapboxgl from 'mapbox-gl' // Don't forget this!
 export default class extends Controller {
   static values = {
     id: Number,
+    participationId: Number,
     apiKey: String,
     markers: Array,
     participationsMarkers: Array
@@ -35,7 +36,7 @@ export default class extends Controller {
   connect() {
     navigator.geolocation.watchPosition((coordinates) => {
       this.channel.send({
-        participation_id: 1, // participation_id,
+        participation_id: participation_id,
         longitude: coordinates.coords.longitude,
         latitude: coordinates.coords.latitude,
       })
@@ -64,16 +65,17 @@ export default class extends Controller {
     }
 
     if (data.type === "update_position") {
-      const marker = this.playerMarkers.filter(item => item.participation_id === data.participation_id)
-      marker.setLngLat([ data.lng, data.lat ])
-    }
+      this.playerMarkers
+        .filter(item => item.participation_id === data.participation_id)
+        .setLngLat([ data.lng, data.lat ])
 
-    if (data.game_status == 'ended') {
-      this.pageHandleTarget.innerHTML = data.content;
-    } else if (data.game_status == 'running') {
-      this.riddlesHandleTarget.innerHTML = data.content;
-      this.displayAnswerBtnTarget.classList.remove('d-none');
-      this.displayAnswerBtnTarget.scrollIntoView(true)
+      if (data.game_status == 'ended') {
+        this.pageHandleTarget.innerHTML = data.content;
+      } else if (data.game_status == 'running') {
+        this.riddlesHandleTarget.innerHTML = data.content;
+        this.displayAnswerBtnTarget.classList.remove('d-none');
+        this.displayAnswerBtnTarget.scrollIntoView(true)
+      }
     }
   }
 
