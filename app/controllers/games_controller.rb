@@ -48,6 +48,7 @@ class GamesController < ApplicationController
         {
           lat: participation.latitude,
           lng: participation.longitude,
+          participation_id: participation.id,
           info_window_html: render_to_string(partial: "participations_info_window", locals: { participation: participation }),
           marker_html: render_to_string(partial: "marker", locals: { marker_class: "marker marker-gold" })
         }
@@ -61,7 +62,8 @@ class GamesController < ApplicationController
         marker_html: render_to_string(partial: "marker", locals: { marker_class: "marker marker-red" })
       }
 
-      @markers = @places_markers + @participations_markers + [@starting_point_marker]
+      @markers = @places_markers + [@starting_point_marker]
+      # @participations_markers
 
     elsif @game.status == 'ended'
       render 'end_game', locals: { game: @game }
@@ -133,16 +135,3 @@ class GamesController < ApplicationController
     @users = User.where(id: users_id)
   end
 end
-
-# # pseudocode
-# fin de jeu
-# stats
-# geoloc
-# systeme d experience
-# chrono
-# carte jolie sans geoloc
-# websocket pour:
-# - carte
-# - enigme
-# - fin de jeu
-# + seeder avec l enigme
