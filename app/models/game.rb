@@ -32,6 +32,17 @@ class Game < ApplicationRecord
     end
   end
 
+  def format_duration(duration)
+    hours = (duration / 3600).to_i
+    minutes = ((duration % 3600) / 60).to_i
+    seconds = (duration % 60).to_i
+    duration_string = ""
+    duration_string += "#{hours} #{'heure'.pluralize(hours)} " if hours > 0
+    duration_string += "#{minutes} #{'minute'.pluralize(minutes)} " if minutes > 0
+    duration_string += "#{seconds} #{'seconde'.pluralize(seconds)}" if seconds > 0
+    return duration_string.strip
+  end
+
   private
 
   def set_game_pin

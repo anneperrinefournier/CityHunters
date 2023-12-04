@@ -31,6 +31,14 @@ class RiddlesController < ApplicationController
             content: render_to_string(partial: "/games/end_game", formats: [:html], locals: { game: game })
           }
         )
+
+        GameChannel.broadcast_to(
+          "game-#{game.id}",
+          {
+            type: 'toat',
+            text: "wefewfwefgwefew"
+          }
+        )
       else
         GameChannel.broadcast_to(
           "game-#{game.id}",
