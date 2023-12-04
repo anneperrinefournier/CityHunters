@@ -66,7 +66,7 @@ class GamesController < ApplicationController
       # @participations_markers
 
     elsif @game.status == 'ended'
-      render 'end_game', locals: { game: @game }
+      render 'games/_end_game', locals: { game: @game }
     end
   end
 
@@ -87,6 +87,7 @@ class GamesController < ApplicationController
     LobbyChannel.broadcast_to(
       "lobby-#{@game.id}",
       {
+        action: 'add_player',
         type: "html",
         html: render_to_string(partial: "player", locals: { user: current_user })
       }
@@ -103,7 +104,7 @@ class GamesController < ApplicationController
     LobbyChannel.broadcast_to(
       "lobby-#{@game.id}",
       {
-        type: "redirect",
+        action: "redirect",
         url: game_path(@game)
       }
     )
@@ -114,11 +115,12 @@ class GamesController < ApplicationController
     @end_time = Time.now
 
     GameChannel.broadcast_to(
-      "game-#{game.id}",
+      "game-#{@game.id}",
       {
+        action: "update_game_content",
         type: 'html',
-        game_status: game.status,
-        content: render_to_string(partial: "/games/end_game", formats: [:html], locals: { game: game })
+        game_status: @game.status,
+        content: render_to_string(partial: "/games/end_game", formats: [:html], locals: { game: @game })
       }
     )
   end

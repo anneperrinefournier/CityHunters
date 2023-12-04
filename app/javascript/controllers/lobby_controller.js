@@ -48,11 +48,11 @@ export default class extends Controller {
   }
 
   #handleData(data) {
-    if (data.type == 'html') {
+    if (data.action == 'add_player') {
       this.#addPlayerLobby(data.html)
     }
 
-    if (data.type == "redirect") {
+    if (data.action == "redirect") {
       window.location.href = data.url
     }
   }

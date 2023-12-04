@@ -26,6 +26,7 @@ class RiddlesController < ApplicationController
         GameChannel.broadcast_to(
           "game-#{game.id}",
           {
+            action: 'update_game_content',
             type: 'html',
             game_status: game.status,
             content: render_to_string(partial: "/games/end_game", formats: [:html], locals: { game: game })
@@ -44,6 +45,7 @@ class RiddlesController < ApplicationController
         GameChannel.broadcast_to(
           "game-#{game.id}",
           {
+            action: 'update_riddle',
             type: 'html',
             game_status: game.status,
             content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: game })

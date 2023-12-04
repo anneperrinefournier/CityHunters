@@ -5,7 +5,6 @@ import mapboxgl from 'mapbox-gl' // Don't forget this!
 export default class extends Controller {
   static values = {
     id: Number,
-    participationId: Number,
     apiKey: String,
     markers: Array,
     participationsMarkers: Array
@@ -44,6 +43,15 @@ export default class extends Controller {
 
     this._initMap();
     console.log(this.participationsMarkersValue);
+
+    const fakeData = {
+      type: "update_position",
+      player: {
+        lat: 48,
+        lng: 2
+      }
+    }
+    this.#handleData(fakeData);
   }
 
   _initMap() {
@@ -59,23 +67,27 @@ export default class extends Controller {
     this.#fitMapToMarkers()
   }
 
+
   #handleData(data) {
-    if (data.type === 'redirect') {
+    if (data.action === 'redirect') {
       window.location.href = data.url;
     }
 
-    if (data.type === "update_position") {
-      this.playerMarkers
-        .filter(item => item.participation_id === data.participation_id)
-        .setLngLat([ data.lng, data.lat ])
+    else if (data.action === "update_position") {
+      let player = this.playerMarkers
+        .filter(item => item.participation_id === data.player.participation_id)
 
-      if (data.game_status == 'ended') {
-        this.pageHandleTarget.innerHTML = data.content;
-      } else if (data.game_status == 'running') {
-        this.riddlesHandleTarget.innerHTML = data.content;
-        this.displayAnswerBtnTarget.classList.remove('d-none');
-        this.displayAnswerBtnTarget.scrollIntoView(true)
-      }
+      console.log(player)
+
+      // player.setLngLat([ data.lng, data.lat ])
+
+    } else if (data.action == 'update_riddle') {
+      this.riddlesHandleTarget.innerHTML = data.content;
+      this.displayAnswerBtnTarget.classList.remove('d-none');
+      this.displayAnswerBtnTarget.scrollIntoView(true)
+
+    } else if (data.action == 'update_game_content') {
+          this.pageHandleTarget.innerHTML = data.content;
     }
   }
 
@@ -126,10 +138,17 @@ export default class extends Controller {
     this.playerMarkers = []
 
     this.participationsMarkersValue.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
+
+      const customMarker = document.createElement('div');
+      customMarker.className = `marker ${marker.marker_class}`;
+      customMarker.innerHTML = marker.marker_html
+
       this.playerMarkers.push({
         participation_id: marker.participation_id,
-        marker: new mapboxgl.Marker()
+        marker: new mapboxgl.Marker(customMarker)
                             .setLngLat([ marker.lng, marker.lat ])
+                            .setPopup(popup)
                             .addTo(this.map)
       })
     })
@@ -153,6 +172,7 @@ export default class extends Controller {
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.participationsMarkersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 }
