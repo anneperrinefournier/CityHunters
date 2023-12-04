@@ -3,17 +3,18 @@ import { createConsumer } from "@rails/actioncable"
 import mapboxgl from 'mapbox-gl' // Don't forget this!
 
 // Connects to data-controller="game"
-// Connects to data-controller="map"
 
 export default class extends Controller {
   static values = {
     id: Number,
+    participationId: Number,
     apiKey: String,
     markers: Array
   }
-  static targets = ['riddle', 'introduction', 'enigme', 'placeTabs', 'placeTab', 'placePanel', 'displayAnswerBtn'];
+  static targets = ['pageHandle', 'riddlesHandle', 'introduction', 'enigme', 'placeTabs', 'placeTab', 'placePanel', 'displayAnswerBtn'];
 
   connect() {
+    console.log('Game controller connected')
     this.channel = createConsumer().subscriptions.create(
       { channel: "GameChannel", id: this.idValue },
       { received: data => this.#handleData(data) }
@@ -21,7 +22,7 @@ export default class extends Controller {
 
     navigator.geolocation.watchPosition((coordinates) => {
       this.channel.send({
-        participation_id: 1,// participation_id,
+        participation_id: participation_id,
         longitude: coordinates.coords.longitude,
         latitude: coordinates.coords.latitude,
       })
@@ -38,25 +39,14 @@ export default class extends Controller {
     this.#fitMapToMarkers()
   }
 
-  #handleData(data) {
-    // if (data.action === 'update_participation') {
-    //   this.playerMarkers
-    //       .find(item => item.id == data.participation_id)
-    //       .marker.setLngLat([data.longitude, data.latitude])
-
-    //   return;
-    // }
-  }
-
   closeIntroduction() {
-    this.riddleTarget.classList.remove('d-none')
+    this.riddlesHandleTarget.classList.remove('d-none')
     this.introductionTarget.classList.add('d-none')
     this.displayAnswerBtnTarget.classList.remove('d-none')
   }
 
   activate(event) {
     event.preventDefault()
-
     this.placeTabTargets.forEach(tab => {
       tab.classList.remove('active')
     });
@@ -66,7 +56,6 @@ export default class extends Controller {
 
   switchPanel(event) {
     const tabIndex = event.target.dataset.index
-    console.log(tabIndex)
 
     this.placePanelTargets.forEach(panel => {
       panel.classList.add('d-none')
@@ -74,6 +63,27 @@ export default class extends Controller {
     this.placePanelTargets.find( (panel) => {
       return panel.dataset.index == tabIndex
     }).classList.remove('d-none')
+  }
+
+  #handleData(data) {
+    if (data.game_status == 'over') {
+      this.pageHandleTarget.innerHTML = data.content;
+    } else if (data.game_status == 'running') {
+      this.riddlesHandleTarget.innerHTML = data.content;
+      this.displayAnswerBtnTarget.classList.remove('d-none');
+      this.pageHandle.scrollTo({
+        top: this.pageHandleTarget.scrollHeight,
+        behavior: 'smooth'
+      })
+    }
+
+    if (data.action === 'update_participation') {
+  this.playerMarkers
+      .find(item => item.id == data.participation_id)
+      .participation_marker.setLngLat([data.longitude, data.latitude])
+
+    return ;
+  }
   }
 
   #addMarkersToMap() {

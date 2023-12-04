@@ -22,41 +22,49 @@ class GamesController < ApplicationController
       @game.running!
     end
 
-    raise unless @game.status == "running"
+    if @game.status == "running"
+      if @game.current_place.nil?
+        @game.update(status: :over)
+        redirect_to game_path(@game), status: :internal_server_error
+      end
 
-    @storyline = Storyline.find(@game.storyline_id)
+      @storyline = Storyline.find(@game.storyline_id)
 
-    @places = Place.where(storyline: @storyline)
-    @participations = Participation.where(game: @game)
-    @starting_point = Storyline.find(@game.storyline_id)
+      @places = Place.where(storyline: @storyline)
+      @participations = Participation.where(game: @game)
+      @starting_point = Storyline.find(@game.storyline_id)
 
-    @places_markers = @places.geocoded.map do |place|
-      {
-        lat: place.latitude,
-        lng: place.longitude,
-        info_window_html: render_to_string(partial: "places_info_window", locals: { place: place }),
-        marker_html: render_to_string(partial: "marker", locals: { marker_class: "marker marker-blue" })
+      @places_markers = @places.geocoded.map do |place|
+        {
+          lat: place.latitude,
+          lng: place.longitude,
+          info_window_html: render_to_string(partial: "places_info_window", locals: { place: place }),
+          marker_html: render_to_string(partial: "marker", locals: { marker_class: "marker marker-blue" })
+        }
+      end
+
+      @participations_markers = @participations.map do |participation|
+        {
+          lat: participation.latitude,
+          lng: participation.longitude,
+          info_window_html: render_to_string(partial: "participations_info_window", locals: { participation: participation }),
+          marker_html: render_to_string(partial: "marker", locals: { marker_class: "marker marker-gold" })
+        }
+      end
+
+      @starting_point.geocode
+      @starting_point_marker = {
+        lat: @starting_point.latitude,
+        lng: @starting_point.longitude,
+        info_window_html: render_to_string(partial: "starting_point_info_window", locals: { starting_point: @starting_point }),
+        marker_html: render_to_string(partial: "marker", locals: { marker_class: "marker marker-red" })
       }
+
+      @markers = @places_markers + @participations_markers + [@starting_point_marker]
+
+    elsif @game.status == 'ended'
+      render '_game_review', locals: { game: @game }
     end
-
-    @participations_markers = @participations.map do |participation|
-      {
-        lat: participation.latitude,
-        lng: participation.longitude,
-        info_window_html: render_to_string(partial: "participations_info_window", locals: { participation: participation }),
-        marker_html: render_to_string(partial: "marker", locals: { marker_class: "marker marker-gold" })
-      }
-    end
-
-    @starting_point.geocode
-    @starting_point_marker = {
-      lat: @starting_point.latitude,
-      lng: @starting_point.longitude,
-      info_window_html: render_to_string(partial: "starting_point_info_window", locals: { starting_point: @starting_point }),
-      marker_html: render_to_string(partial: "marker", locals: { marker_class: "marker marker-red" })
-    }
-
-    @markers = @places_markers + @participations_markers + [@starting_point_marker]
   end
 
   def join
