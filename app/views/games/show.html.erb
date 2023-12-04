@@ -1,4 +1,4 @@
-<div data-controller="game" data-game-target="pageHandle" data-game-id-value="<%= @game.id %>">
+<div data-controller="game" data-game-target="pageHandle" data-game-id-value="<%= @game.id %>" data-game-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-game-markers-value="<%= @markers.to_json %>" data-game-participations-markers-value="<%= @participations_markers.to_json %>">
   <div class="container">
     <div class="riddles-container d-none" data-game-target="riddlesHandle">
       <%= render 'game_state', game: @game %>
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="map-position d-none" data-game-target="map">
+    <div class="map-position d-none">
       <%= render 'map' %>
     </div>
 
