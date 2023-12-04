@@ -23,7 +23,6 @@ class GamesController < ApplicationController
     end
 
     if @game.status == "running"
-
       if @game.current_place.nil?
         @game.update(status: :over)
         redirect_to game_path(@game), status: :internal_server_error
@@ -63,7 +62,7 @@ class GamesController < ApplicationController
 
       @markers = @places_markers + @participations_markers + [@starting_point_marker]
 
-    elsif @game.status == 'over'
+    elsif @game.status == 'ended'
       render '_game_review', locals: { game: @game }
     end
   end
