@@ -25,7 +25,7 @@ class GamesController < ApplicationController
 
     if @game.status == "running"
       if @game.current_place.nil?
-        @game.update(status: :over)
+        @game.update(status: :ended)
         redirect_to game_path(@game), status: :internal_server_error
       end
 

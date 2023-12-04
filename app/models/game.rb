@@ -40,7 +40,7 @@ class Game < ApplicationRecord
     duration_string += "#{hours} #{'heure'.pluralize(hours)} " if hours > 0
     duration_string += "#{minutes} #{'minute'.pluralize(minutes)} " if minutes > 0
     duration_string += "#{seconds} #{'seconde'.pluralize(seconds)}" if seconds > 0
-    return duration_string.strip
+    duration_string.strip
   end
 
   private

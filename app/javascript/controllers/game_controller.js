@@ -87,9 +87,20 @@ export default class extends Controller {
       this.displayAnswerBtnTarget.scrollIntoView(true)
 
     } else if (data.action == 'update_game_content') {
-          this.pageHandleTarget.innerHTML = data.content;
+      this.pageHandleTarget.innerHTML = data.content;
+
+    } else if (data.action === 'toast') {
+      this.#showToast(data.text);
     }
   }
+
+  #showToast(text) {
+    Toastify({
+      text: text,
+      duration: 3000
+    }).showToast()
+  }
+
 
   closeIntroduction() {
     this.riddlesHandleTarget.classList.remove('d-none')
