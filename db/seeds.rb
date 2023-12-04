@@ -36,7 +36,7 @@ p "destroyed #{Clue.all.count} clues"
 monica = User.new(
   email: 'monica@gmail.com',
   password: 'password',
-  name: 'Anne-Perrine',
+  name: 'Monica',
   level: 3,
   xp: 310
 )
@@ -70,21 +70,21 @@ file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
 storyline1.photo.attach(io: file, filename: "Le Secret du Louvre", content_type: "image/jpg")
 storyline1.save!
 
-storyline2 = Storyline.new(
-  title: "Code Rouge",
-  district: "11e arr.",
-  duration: 90,
-  distance: 6,
-  theme: "aventure numérique",
-  difficulty: 3,
-  starting_point: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
-  short_description: "Recherchez le Code Perdu du Wagon. Aventure numérique dans le 11e arrondissement. Dévoilez le trésor caché.",
-  long_description: "Plongez-vous dans l'univers numérique du 11e arrondissement avec 'Le Code Perdu du Wagon'. Suivez les énigmes cryptiques laissées par un professeur passionné de Ruby on Rails et explorez les ruelles du quartier pour dévoiler le trésor caché. Une aventure où le mystère et la programmation se rencontrent.",
-  introduction: "Le Wagon, école renommée de programmation à Paris, est en émoi. Un professeur passionné a découvert un vieux manuscrit renfermant un code Ruby on Rails légendaire, mais a mystérieusement disparu. Les participants doivent décoder ses indices dispersés dans le 11e arrondissement pour révéler le trésor caché et démasquer les forces adverses cherchant à s'emparer du précieux code. La course pour le ‘Code Rouge’ commence maintenant !"
-)
-file = URI.open("https://i.ibb.co/YWccLFW/re-publique.jpg")
-storyline2.photo.attach(io: file, filename: "Code Rouge", content_type: "image/jpg")
-storyline2.save!
+# storyline2 = Storyline.new(
+#   title: "Code Rouge",
+#   district: "11e arr.",
+#   duration: 90,
+#   distance: 6,
+#   theme: "aventure numérique",
+#   difficulty: 3,
+#   starting_point: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
+#   short_description: "Recherchez le Code Perdu du Wagon. Aventure numérique dans le 11e arrondissement. Dévoilez le trésor caché.",
+#   long_description: "Plongez-vous dans l'univers numérique du 11e arrondissement avec 'Le Code Perdu du Wagon'. Suivez les énigmes cryptiques laissées par un professeur passionné de Ruby on Rails et explorez les ruelles du quartier pour dévoiler le trésor caché. Une aventure où le mystère et la programmation se rencontrent.",
+#   introduction: "Le Wagon, école renommée de programmation à Paris, est en émoi. Un professeur passionné a découvert un vieux manuscrit renfermant un code Ruby on Rails légendaire, mais a mystérieusement disparu. Les participants doivent décoder ses indices dispersés dans le 11e arrondissement pour révéler le trésor caché et démasquer les forces adverses cherchant à s'emparer du précieux code. La course pour le ‘Code Rouge’ commence maintenant !"
+# )
+# file = URI.open("https://i.ibb.co/YWccLFW/re-publique.jpg")
+# storyline2.photo.attach(io: file, filename: "Code Rouge", content_type: "image/jpg")
+# storyline2.save!
 
 storyline11 = Storyline.new(
   title: "Les Énigmes du Marais",
@@ -166,21 +166,21 @@ file = URI.open("https://i.ibb.co/0YDtK2d/montparnasse.webp")
 storyline6.photo.attach(io: file, filename: "L'Énigme de Montparnasse", content_type: "image/jpg")
 storyline6.save!
 
-storyline7 = Storyline.new(
-  title: "Le Mystère des Invalides",
-  district: "7e arr.",
-  duration: 60,
-  distance: 3.5,
-  theme: "historique",
-  difficulty: 2,
-  starting_point: "Les Invalides, 75007 Paris, France",
-  short_description: "Explorez le mystère des Invalides. Résolvez des énigmes historiques dans ce quartier emblématique.",
-  long_description: "Découvrez le mystère caché derrière les murs des Invalides, au cœur du 7e arrondissement. Des énigmes historiques vous guideront à travers ce quartier empreint d'histoire militaire. Plongez dans le passé et dévoilez les secrets qui ont forgé la destinée de ce lieu emblématique.",
-  introduction: "Bienvenue dans 'Le Mystère des Invalides', une aventure historique au cœur du 7e arrondissement de Paris. Des énigmes historiques vous guideront à travers ce quartier empreint d'histoire militaire. Plongez dans le passé et dévoilez les secrets qui ont forgé la destinée de ce lieu emblématique."
-)
-file = URI.open("https://i.ibb.co/1q2Cdg7/paris-2775393-1280.jpg")
-storyline7.photo.attach(io: file, filename: "Le Mystère des Invalides", content_type: "image/jpg")
-storyline7.save!
+# storyline7 = Storyline.new(
+#   title: "Le Mystère des Invalides",
+#   district: "7e arr.",
+#   duration: 60,
+#   distance: 3.5,
+#   theme: "historique",
+#   difficulty: 2,
+#   starting_point: "Les Invalides, 75007 Paris, France",
+#   short_description: "Explorez le mystère des Invalides. Résolvez des énigmes historiques dans ce quartier emblématique.",
+#   long_description: "Découvrez le mystère caché derrière les murs des Invalides, au cœur du 7e arrondissement. Des énigmes historiques vous guideront à travers ce quartier empreint d'histoire militaire. Plongez dans le passé et dévoilez les secrets qui ont forgé la destinée de ce lieu emblématique.",
+#   introduction: "Bienvenue dans 'Le Mystère des Invalides', une aventure historique au cœur du 7e arrondissement de Paris. Des énigmes historiques vous guideront à travers ce quartier empreint d'histoire militaire. Plongez dans le passé et dévoilez les secrets qui ont forgé la destinée de ce lieu emblématique."
+# )
+# file = URI.open("https://i.ibb.co/1q2Cdg7/paris-2775393-1280.jpg")
+# storyline7.photo.attach(io: file, filename: "Le Mystère des Invalides", content_type: "image/jpg")
+# storyline7.save!
 
 storyline8 = Storyline.new(
   title: "L'Aventure des Batignolles",
@@ -210,7 +210,7 @@ storyline9 = Storyline.new(
   long_description: "Plongez dans les mystères du 10e arrondissement le long du Canal Saint-Martin. Des énigmes fascinantes vous guideront à travers les rives pittoresques de ce quartier branché. Découvrez les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique.",
   introduction: "Bienvenue dans 'Les Secrets du Canal Saint-Martin', une aventure mystérieuse dans le 10e arrondissement de Paris. Des énigmes fascinantes vous guideront à travers les rives pittoresques de ce quartier branché. Découvrez les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique."
 )
-file = URI.open("https://i.ibb.co/R442g8F/image.jpg")
+file = URI.open("https://www.pariszigzag.fr/wp-content/uploads/2021/06/shutterstock_247992964-e1624458172598.jpg")
 storyline9.photo.attach(io: file, filename: "Les Secrets du Canal Saint-Martin", content_type: "image/jpg")
 storyline9.save!
 #
