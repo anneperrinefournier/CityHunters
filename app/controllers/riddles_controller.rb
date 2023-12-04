@@ -2,6 +2,7 @@ class RiddlesController < ApplicationController
   def verify
     riddle = Riddle.find(params[:riddle_id].to_i)
     game = Game.find(params[:game_id].to_i)
+    @game = game
 
     user_answer = Answer.new(
       game: game,
@@ -38,7 +39,7 @@ class RiddlesController < ApplicationController
             action: 'update_game_content',
             type: 'html',
             game_status: game.status,
-            content: render_to_string(partial: "/games/end_game", formats: [:html], locals: { game: game })
+            content: render_to_string(partial: "/games/end_game", formats: [:html])
           }
         )
 
