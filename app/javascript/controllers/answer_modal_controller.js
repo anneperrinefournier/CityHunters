@@ -3,17 +3,20 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="answer-modal"
 export default class extends Controller {
   static targets = ["useranswer", "response", "form", "displayriddle"];
-  static values = { riddleId: String }
+  static values = {
+    gameId: String,
+    riddleId: String
+  }
 
   connect() {
-    console.log(this.riddleIdValue)
+    console.log('Answer modal controller connected')
     this.token = document.querySelector('meta[name="csrf-token"]').content
-    console.log(this.displayriddleTarget)
   }
 
   openModal(event) {
     const modal = document.getElementById("myModal");
     modal.style.display = "block";
+    this.formTarget.querySelector('input').focus(); // Ne fonctionne pas...
   }
   closeModal() {
     const modal = document.getElementById("myModal");
@@ -23,7 +26,10 @@ export default class extends Controller {
   async verifyAnswer(evt) {
     evt.preventDefault();
     evt.stopPropagation();
-    console.log(this.riddleIdValue);
+
+    let userResponse = new FormData(this.formTarget)
+    userResponse.append('game_id', this.gameIdValue)
+    userResponse.append('riddle_id', this.riddleIdValue)
 
     const options = {
       method: 'POST',
@@ -31,7 +37,7 @@ export default class extends Controller {
         "Accept": "application/json",
         "X-CSRF-TOKEN": this.token
       },
-      body: new FormData(this.formTarget)
+      body: userResponse
     }
 
     const response =  await fetch(`/verify`, options);
