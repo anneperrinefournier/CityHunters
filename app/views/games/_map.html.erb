@@ -2,7 +2,7 @@
   <%= simple_form_for :question, url: "#", html: { data: { game_target: "mapForm", action: "submit->game#verifyPosition" } } do |f| %>
     <%= f.submit "Send position" %>
   <% end %>
-  <div id="map" style="width: 100%; height: 600px;" data-game-target="map">
+  <div id="map" style="width: 100%; height: <%= controller_name == 'storylines' ? '200px' : '600px' %>;" data-game-target="map">
     <!-- L'élément de la carte doit être vide ici -->
   </div>
 </div>

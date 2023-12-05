@@ -82,7 +82,7 @@ storyline2 = Storyline.new(
   long_description: "Plonge dans l'univers numérique du 11e arrondissement avec 'Le Code Perdu du Wagon'. Suis les énigmes cryptiques laissées par un professeur passionné de Ruby on Rails et explore les ruelles du quartier pour dévoiler le trésor caché. Une aventure où le mystère et la programmation se rencontrent.",
   introduction: "Le Wagon, école renommée de programmation à Paris, est en émoi. Un professeur passionné a découvert un vieux manuscrit renfermant un code Ruby on Rails légendaire, mais a mystérieusement disparu. Les participants doivent décoder ses indices dispersés dans le 11e arrondissement pour révéler le trésor caché et démasquer les forces adverses cherchant à s'emparer du précieux code. La course pour le ‘Code Rouge’ commence maintenant !"
 )
-file = URI.open("https://i.ibb.co/YWccLFW/re-publique.jpg")
+file = URI.open("https://i.ibb.co/SXNkWx0/re-publique.jpg")
 storyline2.photo.attach(io: file, filename: "Code Rouge", content_type: "image/jpg")
 storyline2.save!
 
@@ -143,8 +143,8 @@ storyline6 = Storyline.new(
   difficulty: 2,
   starting_point: "Montparnasse, 14th arrondissement, Paris, France",
   short_description: "Explore les ruelles pour découvrir les secrets cachés.",
-  long_description: "Plonge dans l'atmosphère mystérieuse du 14e arrondissement. Montparnasse, quartier bohème, cache une énigme intrigante. Parcours les cafés emblématiques, explore les ruelles cachées et dévoile les secrets qui se cachent dans les coins méconnus de ce quartier unique.",
-  introduction: "Bienvenue dans 'L'Énigme de Montparnasse', une aventure mystérieuse dans le 14e arrondissement de Paris. Montparnasse, quartier bohème, cache une énigme intrigante. Parcours les cafés emblématiques, explore les ruelles cachées et dévoile les secrets qui se cachent dans les coins méconnus de ce quartier unique."
+  long_description: "Plonge dans l'atmosphère mystérieuse du 14ᵉ arrondissement. Montparnasse, quartier bohème, cache une énigme intrigante. Parcours les cafés emblématiques, explore les ruelles cachées et dévoile les secrets qui se cachent dans les coins méconnus de ce quartier unique.",
+  introduction: "Bienvenue dans 'L'Énigme de Montparnasse', une aventure mystérieuse dans le 14ᵉ arrondissement de Paris. Montparnasse, quartier bohème, cache une énigme intrigante. Parcours les cafés emblématiques, explore les ruelles cachées et dévoile les secrets qui se cachent dans les coins méconnus de ce quartier unique."
 )
 file = URI.open("https://i.ibb.co/0YDtK2d/montparnasse.webp")
 storyline6.photo.attach(io: file, filename: "L'Énigme de Montparnasse", content_type: "image/jpg")
@@ -159,8 +159,8 @@ storyline7 = Storyline.new(
   difficulty: 2,
   starting_point: "Les Invalides, 75007 Paris, France",
   short_description: "Explore le mystère des Invalides et son histoire.",
-  long_description: "Découvre le mystère caché derrière les murs des Invalides, au cœur du 7e arrondissement. Des énigmes historiques te guideront à travers ce quartier empreint d'histoire militaire. Plonge dans le passé et dévoile les secrets qui ont forgé la destinée de ce lieu emblématique.",
-  introduction: "Bienvenue dans 'Le Mystère des Invalides', une aventure historique au cœur du 7e arrondissement de Paris. Des énigmes historiques te guideront à travers ce quartier empreint d'histoire militaire. Plonge dans le passé et dévoile les secrets qui ont forgé la destinée de ce lieu emblématique."
+  long_description: "Découvre le mystère caché derrière les murs des Invalides, au cœur du 7ᵉ arrondissement. Des énigmes historiques te guideront à travers ce quartier empreint d'histoire militaire. Plonge dans le passé et dévoile les secrets qui ont forgé la destinée de ce lieu emblématique.",
+  introduction: "Bienvenue dans 'Le Mystère des Invalides', une aventure historique au cœur du 7ᵉ arrondissement de Paris. Des énigmes historiques te guideront à travers ce quartier empreint d'histoire militaire. Plonge dans le passé et dévoile les secrets qui ont forgé la destinée de ce lieu emblématique."
 )
 file = URI.open("https://i.ibb.co/1q2Cdg7/paris-2775393-1280.jpg")
 storyline7.photo.attach(io: file, filename: "Le Mystère des Invalides", content_type: "image/jpg")
@@ -175,8 +175,8 @@ storyline8 = Storyline.new(
   difficulty: 3,
   starting_point: "Les Batignolles, 17th arrondissement, Paris, France",
   short_description: "Vis une aventure épique dans les Batignolles.",
-  long_description: "Entre dans l'aventure au cœur du 17e arrondissement. Les Batignolles, quartier bohème, regorgent de mystères et de défis audacieux. Résous des énigmes complexes, explore les parcs pittoresques et vis une aventure épique dans ce coin de Paris plein de charme.",
-  introduction: "Bienvenue dans 'L'Aventure des Batignolles', une aventure épique dans le 17e arrondissement de Paris. Les Batignolles, quartier bohème, regorgent de mystères et de défis audacieux. Résous des énigmes complexes, explore les parcs pittoresques et vis une aventure épique dans ce coin de Paris plein de charme."
+  long_description: "Entre dans l'aventure au cœur du 17ᵉ arrondissement. Les Batignolles, quartier bohème, regorgent de mystères et de défis audacieux. Résous des énigmes complexes, explore les parcs pittoresques et vis une aventure épique dans ce coin de Paris plein de charme.",
+  introduction: "Bienvenue dans 'L'Aventure des Batignolles', une aventure épique dans le 17ᵉ arrondissement de Paris. Les Batignolles, quartier bohème, regorgent de mystères et de défis audacieux. Résous des énigmes complexes, explore les parcs pittoresques et vis une aventure épique dans ce coin de Paris plein de charme."
 )
 file = URI.open("https://i.ibb.co/cv86qGz/17e.webp")
 storyline8.photo.attach(io: file, filename: "L'Aventure des Batignolles", content_type: "image/jpg")
@@ -191,8 +191,8 @@ storyline9 = Storyline.new(
   difficulty: 2,
   starting_point: "Canal Saint-Martin, 10th arrondissement, Paris, France",
   short_description: "Découvre les secrets du Canal Saint-Martin.",
-  long_description: "Plonge dans les mystères du 10e arrondissement le long du Canal Saint-Martin. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique.",
-  introduction: "Bienvenue dans 'Les Secrets du Canal Saint-Martin', une aventure mystérieuse dans le 10e arrondissement de Paris. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique."
+  long_description: "Plonge dans les mystères du 10ᵉ arrondissement le long du Canal Saint-Martin. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique.",
+  introduction: "Bienvenue dans 'Les Secrets du Canal Saint-Martin', une aventure mystérieuse dans le 10ᵉ arrondissement de Paris. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique."
 )
 file = URI.open("https://www.pariszigzag.fr/wp-content/uploads/2021/06/shutterstock_247992964-e1624458172598.jpg")
 storyline9.photo.attach(io: file, filename: "Les Secrets du Canal Saint-Martin", content_type: "image/jpg")
@@ -245,7 +245,7 @@ place1.save!
 place2 = Place.new(
   name: "Palais du Louvre",
   address: "Rue de Rivoli, 75001 Paris, France",
-  description: "Le Palais du Louvre, ancienne résidence royale, est aujourd'hui l'un des plus grands musées du monde. Avec ses vastes collections artistiques, il est un incontournable du 1er arrondissement.",
+  description: "Le Palais du Louvre, ancienne résidence royale, est aujourd'hui l'un des plus grands musées du monde. Avec ses vastes collections artistiques, il est un incontournable du 1ᵉʳ arrondissement.",
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
@@ -265,7 +265,7 @@ place3.save!
 place4 = Place.new(
   name: "Fontaine des Innocents",
   address: "Place Joachim du Bellay, 75001 Paris, France",
-  description: "La Fontaine des Innocents est une fontaine Renaissance richement décorée. Construite au XVIe siècle, elle a été déplacée à son emplacement actuel au cœur du 1er arrondissement.",
+  description: "La Fontaine des Innocents est une fontaine Renaissance richement décorée. Construite au XVIe siècle, elle a été déplacée à son emplacement actuel au cœur du 1ᵉʳ arrondissement.",
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
@@ -285,7 +285,7 @@ place5.save!
 place6 = Place.new(
   name: "Palais Royal",
   address: "8 Rue de Montpensier, 75001 Paris, France",
-  description: "Le Palais Royal, résidence autrefois royale, est entouré de jardins élégants. Avec ses colonnes rayées emblématiques et son histoire fascinante, il reste un joyau du 1er arrondissement.",
+  description: "Le Palais Royal, résidence autrefois royale, est entouré de jardins élégants. Avec ses colonnes rayées emblématiques et son histoire fascinante, il reste un joyau du 1ᵉʳ arrondissement.",
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")

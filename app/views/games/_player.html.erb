@@ -3,7 +3,7 @@
     <% if user.photo.attached? %>
       <%= cl_image_tag(user.photo.key, class:'avatar-large') %>
     <% else %>
-      <img src="https://cdn2.iconfinder.com/data/icons/instagram-outline/19/11-1024.png" alt="user-picture" class="avatar-large">
+      <img src="https://i.ibb.co/PFHbc3Z/profilephoto.png" alt="user-picture" class="avatar-large">
     <% end %>
     <div class="lobby-player-infos-row">
     <p class="lobby-player-name mb-0"><%= small_caps_text(user.name.downcase) %></p>

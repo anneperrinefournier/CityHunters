@@ -186,7 +186,7 @@ export default class extends Controller {
 
       const customMarker = document.createElement('div');
       customMarker.className = `marker ${marker.marker_class}`;
-      customMarker.innerHTML = marker.marker_html
+      customMarker.innerHTML = marker.participation_marker_html
 
       this.playerMarkers.push({
         participation_id: marker.participation_id,
@@ -214,6 +214,7 @@ export default class extends Controller {
   }
 
   #fitMapToMarkers() {
+    
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.concat(this.participationsMarkersValue).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     // this.participationsMarkersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
