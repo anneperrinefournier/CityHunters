@@ -4,8 +4,6 @@ class RiddlesController < ApplicationController
 
     user_answer = create_answer(params)
 
-    # debugger if user_answer.nil?
-
     # check if the answer is correct
     if user_answer&.correct
       user_answer.update(correct: true)
@@ -82,7 +80,8 @@ class RiddlesController < ApplicationController
       )
       user_answer.save!
 
-      places_near = Place.near([participation.latitude, participation.longitude], 0.5)
+      default_radius = 0.03 #km
+      places_near = Place.near([participation.latitude, participation.longitude], default_radius)
       next_place = @game.upcoming_places[1] # The index 0 is the current place
 
       user_answer.update(correct: true) unless places_near.count(next_place.id).zero?

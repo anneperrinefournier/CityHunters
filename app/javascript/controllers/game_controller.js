@@ -36,8 +36,6 @@ export default class extends Controller {
 
   connect() {
     navigator.geolocation.watchPosition((coordinates) => {
-      console.log('position changed')
-
       this.channel.send({
         action: 'set_player_position',
         participation_id: this.participationIdValue,
@@ -128,7 +126,6 @@ export default class extends Controller {
     if (data.status === "ok") {
       // this.closeModal();
     } else {
-      console.log(data)
       alert(data.message);
     };
   }
@@ -212,11 +209,8 @@ export default class extends Controller {
   }
 
   #fitMapToMarkers() {
-
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.concat(this.participationsMarkersValue).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    // this.participationsMarkersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    console.log(bounds);
     this.map.fitBounds(bounds, { padding: 80, maxZoom: 15, duration: 0 })
   }
 }

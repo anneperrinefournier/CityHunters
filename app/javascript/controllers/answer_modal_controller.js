@@ -9,7 +9,6 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log('Answer modal controller connected')
     this.token = document.querySelector('meta[name="csrf-token"]').content
   }
 
@@ -47,7 +46,6 @@ export default class extends Controller {
     if (data.status === "ok") {
       this.closeModal();
     } else {
-      console.log(data)
       alert(data.message);
     };
   }
