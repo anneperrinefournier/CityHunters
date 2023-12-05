@@ -199,7 +199,7 @@ storyline8.photo.attach(io: file, filename: "L'Aventure des Batignolles", conten
 storyline8.save!
 #
 storyline9 = Storyline.new(
-  title: "Les Secrets du Canal Saint-Martin",
+  title: "Les Secrets du Canal Saint-Martin",
   district: "10e arr.",
   duration: 75,
   distance: 5,

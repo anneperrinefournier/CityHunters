@@ -52,11 +52,11 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      style: "mapbox://styles/anneperrine/clpqzbmzu014v01pk74h2euyy"
+      style: "mapbox://styles/anneperrine/clpqvu9za014201pke2o7alpm"
     })
 
     this.#addMarkersToMap()
-    this.#addPlayerMakersToMap()
+    this.#addPlayerMarkersToMap()
     this.#fitMapToMarkers()
   }
 
@@ -141,12 +141,8 @@ export default class extends Controller {
     const response = await fetch(`/games/${this.idValue}/end`, options);
   }
 
-  #addPlayerMakersToMap() {
+  #addPlayerMarkersToMap() {
     this.playerMarkers = []
-
-    const customMarker = document.createElement('div');
-      customMarker.className = `marker ${marker.marker_class}`;
-      customMarker.innerHTML = marker.marker_html
 
     this.participationsMarkersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
@@ -182,8 +178,11 @@ export default class extends Controller {
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.participationsMarkersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+    console.log(this.markersValue)
+    console.log(this.markersValue.concat(this.participationsMarkersValue))
+    this.markersValue.concat(this.participationsMarkersValue).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    // this.participationsMarkersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    console.log(bounds);
+    this.map.fitBounds(bounds, { padding: 80, maxZoom: 15, duration: 0 })
   }
 }
