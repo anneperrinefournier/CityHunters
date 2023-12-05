@@ -38,6 +38,7 @@ export default class extends Controller {
       console.log('position changed')
 
       this.channel.send({
+        action: 'set_player_position',
         participation_id: this.participationIdValue,
         longitude: coordinates.coords.longitude,
         latitude: coordinates.coords.latitude,
@@ -97,6 +98,44 @@ export default class extends Controller {
     }).showToast()
   }
 
+  async verifyPosition(evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+
+    console.log(this.playerMarkers)
+    const player = this.playerMarkers.find(item => item.participation_id === data.participation_id)
+    console.log(player.marker.longitude)
+    console.log(player.marker.latitude)
+
+    let userResponse = new FormData();
+    userResponse.append('action', 'new_shifting_answer');
+    userResponse.append('game_id', this.gameIdValue);
+    userResponse.append('riddle_id', this.riddleIdValue);
+    userResponse.append('participation_id:', this.participationIdValue);
+    userResponse.append('longitude:', coordinates.coords.longitude);
+    userResponse.append('latitude:', coordinates.coords.latitude);
+
+    console.log(userResponse)
+
+    const options = {
+      method: 'POST',
+      headers: {
+        "Accept": "application/json",
+        "X-CSRF-TOKEN": this.token
+      },
+      body: userResponse
+    }
+
+    const response = await fetch(`/verify`, options);
+    const data = await response.json()
+
+    if (data.status === "ok") {
+      // this.closeModal();
+    } else {
+      console.log(data)
+      alert(data.message);
+    };
+  }
 
   closeIntroduction() {
     this.riddlesHandleTarget.classList.remove('d-none')

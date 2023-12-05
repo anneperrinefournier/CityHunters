@@ -28,6 +28,7 @@ export default class extends Controller {
     evt.stopPropagation();
 
     let userResponse = new FormData(this.formTarget)
+    userResponse.append('action', 'new_static_answer');
     userResponse.append('game_id', this.gameIdValue)
     userResponse.append('riddle_id', this.riddleIdValue)
 
@@ -43,11 +44,11 @@ export default class extends Controller {
     const response =  await fetch(`/verify`, options);
     const data = await response.json()
 
-      if (data.status === "ok") {
-        this.closeModal();
-      } else {
-        console.log(data)
-        alert(data.message);
-      };
+    if (data.status === "ok") {
+      this.closeModal();
+    } else {
+      console.log(data)
+      alert(data.message);
+    };
   }
 }

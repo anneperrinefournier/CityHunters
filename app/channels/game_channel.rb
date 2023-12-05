@@ -6,16 +6,20 @@ class GameChannel < ApplicationCable::Channel
 
   def receive(data)
     participation = Participation.find(data['participation_id'])
-    participation.update(latitude: data['latitude'], longitude: data['longitude'])
-    game = participation.game
 
-    participation.reload
+    if data['action'] == "set_player_position"
+      participation.update(latitude: data['latitude'], longitude: data['longitude'])
+      game = participation.game
 
-    GameChannel.broadcast_to("game-#{game.id}", {
-      action: 'update_position',
-      participation_id: participation.id,
-      longitude: participation.longitude,
-      latitude: participation.latitude
-    })
+      participation.reload
+
+      GameChannel.broadcast_to("game-#{game.id}", {
+        action: 'update_position',
+        participation_id: participation.id,
+        longitude: participation.longitude,
+        latitude: participation.latitude
+      })
+      return
+    end
   end
 end
