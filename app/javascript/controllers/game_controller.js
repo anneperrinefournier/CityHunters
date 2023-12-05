@@ -52,7 +52,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/anneperrine/clpqzbmzu014v01pk74h2euyy"
     })
 
     this.#addMarkersToMap()
@@ -143,6 +143,10 @@ export default class extends Controller {
 
   #addPlayerMakersToMap() {
     this.playerMarkers = []
+
+    const customMarker = document.createElement('div');
+      customMarker.className = `marker ${marker.marker_class}`;
+      customMarker.innerHTML = marker.marker_html
 
     this.participationsMarkersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)

@@ -1,0 +1,29 @@
+.pages-backscreen {
+  background-image: url(background5.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  }
+
+.background-top-title {
+  min-height: 14vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: url(background-blue.svg);
+  background-size: 190%;
+  background-position: -360px -66px;
+  color: $white;
+  font-weight: 900;
+}
+
+.background-lobby-top-title {
+  margin-bottom: 80px;
+}
+
+.background-top-title h1 {
+  font-size: 26px;
+  color: white;
+  margin-top: 30px;
+}

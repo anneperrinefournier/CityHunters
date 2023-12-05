@@ -6,7 +6,6 @@
   data-game-participations-markers-value="<%= @participations_markers.to_json %>"
   data-game-participation-id-value="<%= current_user.find_participation_for(@game).id %>">
 
-
   <div class="container">
     <div class="riddles-container d-none" data-game-target="riddlesHandle">
       <%= render 'game_state', game: @game %>
