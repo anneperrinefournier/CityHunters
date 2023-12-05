@@ -4,10 +4,10 @@ class RiddlesController < ApplicationController
 
     user_answer = create_answer(params)
 
-    raise if user_answer.nil?
+    # debugger if user_answer.nil?
 
     # check if the answer is correct
-    if user_answer.correct
+    if user_answer&.correct
       user_answer.update(correct: true)
 
       render json: {
@@ -71,38 +71,28 @@ class RiddlesController < ApplicationController
     riddle = Riddle.find(params[:riddle_id].to_i)
     participation = Participation.find_by(user: current_user)
 
-    if riddle.motion_type == 'shifting'
+    if riddle.motion_type == 'shifting' &&
+       params['answer_type'] == 'new_shifting_answer'
+
       user_answer = Answer.new(
         game: @game,
         participation: Participation.find_by(user: current_user),
         riddle: riddle,
-        content: "Lat:#{params['latitude']},Lng:#{params['longitude']}" #params.dig(:question, :answer)
+        content: "Lat:#{params['latitude']},Lng:#{params['longitude']}"
       )
       user_answer.save!
 
-      # Compute the answer proximity to the place
-      # distance_degree_equator = 111_319.0 # Distance in meters per latitude/longitude degree at equator
-      # distance_degree_lat = distance_degree_equator
-      # distance_degree_lng = Math.cos(riddle.place.latitude) * distance_degree_equator
-
-      # # Hypothèse de proximité circulaire et non elipsoïdal
-      # default_radius = 500.0
-      # delta_angle_lat = default_radius / distance_degree_lat
-      # delta_angle_lng = default_radius / distance_degree_lng
-
-      # debugger
-
-      # if (participation.latitude - riddle.place.latitude).abs <= delta_angle_lat &&
-      #    (participation.longitude - riddle.place.longitude).abs <= delta_angle_lng
-
       places_near = Place.near([participation.latitude, participation.longitude], 0.5)
+      next_place = @game.upcoming_places[1] # The index 0 is the current place
 
-      user_answer.update(correct: true) unless places_near.count(riddle.place.id).zero?
+      user_answer.update(correct: true) unless places_near.count(next_place.id).zero?
 
       return user_answer
     end
 
-    if riddle.motion_type == 'static'
+    if riddle.motion_type == 'static' &&
+       params['answer_type'] == 'new_static_answer'
+
       user_answer = Answer.new(
         game: @game,
         participation: Participation.find_by(user: current_user),
@@ -111,7 +101,10 @@ class RiddlesController < ApplicationController
       )
       user_answer.save!
 
-      user_answer.update(correct: true) if user_answer.content == riddle.solution
+      solutions_words = riddle.solution.downcase.split
+      if riddle.solution.empty? || user_answer.content.downcase.split.any? { |word| solutions_words.include?(word) }
+        user_answer.update(correct: true)
+      end
 
       return user_answer
     end

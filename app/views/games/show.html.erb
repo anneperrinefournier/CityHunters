@@ -10,9 +10,7 @@
     data-game-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
     data-game-markers-value="<%= @markers.to_json %>"
     data-game-participations-markers-value="<%= @participations_markers.to_json %>"
-    data-game-participation-id-value="<%= current_user.find_participation_for(@game).id %>"
-    data-game-abc-value="3"
-    data-game-riddle-id-value="<%=@game.current_place.current_riddle(@game).id%>">
+    data-game-participation-id-value="<%= current_user.find_participation_for(@game).id %>">
 
     <div class="second-big-container" style="width: 200vw; display: flex; transition: all ease 0.5s; overflow-y: auto;"  data-swipe-map-target="unroll">
 
@@ -33,11 +31,9 @@
         </div>
       </div>
 
-
       <div class="" style="width: 100vw; overflow-y: auto;">
         <div class="parent sticky">
             <%= render 'map' %>
-
         </div>
       </div>
     </div>

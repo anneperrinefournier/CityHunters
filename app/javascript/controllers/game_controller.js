@@ -5,12 +5,10 @@ import mapboxgl from 'mapbox-gl' // Don't forget this!
 export default class extends Controller {
   static values = {
     gameId: Number,
-    riddleId: Number,
     apiKey: String,
     markers: Array,
     participationsMarkers: Array,
-    participationId: Number,
-    abc: Number
+    participationId: Number
   }
 
   static targets = [
@@ -110,7 +108,7 @@ export default class extends Controller {
     let userResponse = new FormData();
     userResponse.append('answer_type', 'new_shifting_answer');
     userResponse.append('game_id', this.gameIdValue);
-    userResponse.append('riddle_id', this.riddleIdValue);
+    userResponse.append('riddle_id', this.mapFormTarget.dataset.riddleId);
     userResponse.append('participation_id', this.participationIdValue);
     userResponse.append('longitude:', player.marker._lngLat.lng);
     userResponse.append('latitude:', player.marker._lngLat.lat);
@@ -214,7 +212,7 @@ export default class extends Controller {
   }
 
   #fitMapToMarkers() {
-    
+
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.concat(this.participationsMarkersValue).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     // this.participationsMarkersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
