@@ -13,7 +13,7 @@
   </div>
     <div class="text-center">
       <% if @storyline.photo.attached? %>
-        <%= cl_image_tag(@storyline.photo.key, alt: @storyline.title+'-picture', class: "rounded-square") %>
+        <%= cl_image_tag(@storyline.photo.key, alt: "#{@storyline.title} -picture", class: "rounded-square") %>
       <% else %>
         <%= image_tag("https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg", alt: "Image", class: "rounded-square") %>
       <% end %>
