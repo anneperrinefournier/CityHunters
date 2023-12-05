@@ -63,7 +63,6 @@ class GamesController < ApplicationController
       }
 
       @markers = @places_markers + [@starting_point_marker]
-      # @participations_markers
 
     elsif @game.status == 'ended'
       render 'games/_end_game', locals: { game: @game }
@@ -84,6 +83,8 @@ class GamesController < ApplicationController
   end
 
   def lobby
+    redirect_to game_path(@game) unless @game.status == 'not_started'
+
     LobbyChannel.broadcast_to(
       "lobby-#{@game.id}",
       {

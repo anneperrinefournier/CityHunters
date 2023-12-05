@@ -4,11 +4,13 @@ import mapboxgl from 'mapbox-gl' // Don't forget this!
 
 export default class extends Controller {
   static values = {
-    id: Number,
+    gameId: Number,
+    riddleId: Number,
     apiKey: String,
     markers: Array,
     participationsMarkers: Array,
-    participationId: Number
+    participationId: Number,
+    abc: Number
   }
 
   static targets = [
@@ -21,6 +23,7 @@ export default class extends Controller {
     'placePanel',
     'displayAnswerBtn',
     'map',
+    'mapForm',
     'endGameButton',
     'endGame'
   ];
@@ -28,7 +31,7 @@ export default class extends Controller {
   initialize() {
     this.token = document.querySelector('meta[name="csrf-token"]').content
     this.channel = createConsumer().subscriptions.create(
-      { channel: "GameChannel", id: this.idValue },
+      { channel: "GameChannel", id: this.gameIdValue },
       { received: data => this.#handleData(data) }
     )
   }
@@ -98,24 +101,19 @@ export default class extends Controller {
     }).showToast()
   }
 
-  async verifyPosition(evt) {
-    evt.preventDefault();
-    evt.stopPropagation();
+  async verifyPosition(event) {
+    event.preventDefault();
+    event.stopPropagation();
 
-    console.log(this.playerMarkers)
-    const player = this.playerMarkers.find(item => item.participation_id === data.participation_id)
-    console.log(player.marker.longitude)
-    console.log(player.marker.latitude)
+    const player = this.playerMarkers.find(item => item.participation_id === this.participationIdValue)
 
     let userResponse = new FormData();
-    userResponse.append('action', 'new_shifting_answer');
+    userResponse.append('answer_type', 'new_shifting_answer');
     userResponse.append('game_id', this.gameIdValue);
     userResponse.append('riddle_id', this.riddleIdValue);
-    userResponse.append('participation_id:', this.participationIdValue);
-    userResponse.append('longitude:', coordinates.coords.longitude);
-    userResponse.append('latitude:', coordinates.coords.latitude);
-
-    console.log(userResponse)
+    userResponse.append('participation_id', this.participationIdValue);
+    userResponse.append('longitude:', player.marker._lngLat.lng);
+    userResponse.append('latitude:', player.marker._lngLat.lat);
 
     const options = {
       method: 'POST',
@@ -177,7 +175,7 @@ export default class extends Controller {
       },
     };
 
-    const response = await fetch(`/games/${this.idValue}/end`, options);
+    const response = await fetch(`/games/${this.gameIdValue}/end`, options);
   }
 
   #addPlayerMarkersToMap() {
