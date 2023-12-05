@@ -178,8 +178,6 @@ export default class extends Controller {
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    console.log(this.markersValue)
-    console.log(this.markersValue.concat(this.participationsMarkersValue))
     this.markersValue.concat(this.participationsMarkersValue).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     // this.participationsMarkersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     console.log(bounds);
