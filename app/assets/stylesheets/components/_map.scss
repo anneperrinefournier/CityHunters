@@ -26,3 +26,39 @@
 .map-position img {
   max-width: 100%; /* Ajoutez cette règle pour limiter la largeur de l'image générée par Mapbox */
 }
+
+.transform {
+  width: 100vw;
+}
+
+.rectangle-swipe {
+  border-radius: 15px;
+  width: 60px;
+  height: 20vh;
+  z-index: 1000;
+  background-color: $navy;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 33%;
+  margin-left: 400px;
+}
+
+.rectangle-swipe p {
+  color: white;
+  writing-mode: vertical-lr;
+  margin-left: -14px;
+  text-orientation: upright;
+  letter-spacing: 8px;
+}
+
+.font-police {
+  margin-right: -15px;
+}
+
+
+.sticky {
+  position: fixed;
+  /* Add any additional styles you need for the sticky state */
+}
