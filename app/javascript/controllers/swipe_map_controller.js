@@ -13,7 +13,6 @@ export default class extends Controller {
       this.unrollTarget.style.transform = "translateX(0vw)";
     } else {
       this.unrollTarget.style.transform = "translateX(-100vw)";
-      this.policeTarget.style.paddingLeft = "15px";
     }
     // this.swipeTarget.style.transform = "translateX(100%)";
   }
