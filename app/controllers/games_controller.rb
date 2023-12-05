@@ -50,7 +50,7 @@ class GamesController < ApplicationController
           lng: participation.longitude,
           participation_id: participation.id,
           info_window_html: render_to_string(partial: "participations_info_window", locals: { participation: participation }),
-          marker_html: render_to_string(partial: "marker", locals: { marker_class: "marker marker-gold" })
+          participation_marker_html: render_to_string(partial: "participation_marker", locals: { participation_user: participation.user })
         }
       end
 

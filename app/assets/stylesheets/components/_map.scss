@@ -6,3 +6,23 @@
   text-align: center;
   font-family: "Work Sans", "Helvetica", "sans-serif";
 }
+
+.map-storyline-show {
+    // height: 250px;
+    max-width: 100%;
+    overflow: hidden;
+    margin-bottom: 50px;
+  }
+
+.map-position {
+  height: 100%;
+  max-width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+}
+
+.map-position img {
+  max-width: 100%; /* Ajoutez cette règle pour limiter la largeur de l'image générée par Mapbox */
+}

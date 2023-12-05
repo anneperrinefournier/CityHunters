@@ -1,50 +1,68 @@
-<div class="container py-5">
-  <div class="m-3 show-card-product">
-    <div class="row justify-content-between align-items-center">
-      <div class="col-auto">
-        <a href="<%= storylines_path %>">
-          <%= image_tag asset_path('back_arrow.svg'), alt: 'home' %>
-        </a>
-      </div>
-      <div class="col-auto text-center">
-        <h3><%= @storyline.title %></h3>
-      </div>
-      <div class="col-auto"></div>
-  </div>
-    <div class="text-center">
-      <% if @storyline.photo.attached? %>
-        <%= cl_image_tag(@storyline.photo.key, alt: "#{@storyline.title} -picture", class: "rounded-square") %>
-      <% else %>
-        <%= image_tag("https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg", alt: "Image", class: "rounded-square") %>
-      <% end %>
+<div class= "pages-backscreen">
+  <div class="background-top-title">
+    <div class="menu">
+      <a href="<%= storylines_path %>" class="arrow-menu">
+        <%= image_tag("arrow.png", alt: "back arrow", class:"arrow-menu") %>
+      </a>
+      <div class="menu-title"><h4>Choose your storyline </h4></div>
+      <div class="burger-menu"><i class="fa-solid fa-bars"></i></div>
     </div>
+  </div>
+
+  <div class="p-3 my-3">
+
+    <div class="pair">
+      <div class="show-title"><h4><%= @storyline.title %></h4></div>
+    </div>
+
+    <div class="folder-show">
+        <div>
+        <% if @storyline.photo.attached? %>
+          <%= cl_image_tag(@storyline.photo.key, alt: "#{@storyline.title} -picture") %>
+        <% else %>
+          <%= image_tag("https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg", alt: "Image") %>
+        <% end %>
+      </div>
+
+            <div class="folder-icons">
+              <div class="icons-inline">
+                <p><i class="fa-solid fa-location-dot mx-1"></i> <%= @storyline.district %></p>
+                <p><i class="fa-regular fa-clock"></i> <%= @storyline.duration.to_i %> min</p>
+              <p><i class="fa-solid fa-puzzle-piece"></i>
+                <% difficulty = @storyline.difficulty %>
+                <% case difficulty %>
+                  <% when 1..2 %>
+                    facile
+                  <% when 3 %>
+                    intermédiaire
+                  <% when 4..5 %>
+                    difficile
+                  <% else %>
+                    unknown
+                <% end %></p>
+                </div>
+              </div>
+            <div>
+        Thème :</strong> <%= @storyline.theme %>
+            <p>Avis : <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></p>
+              </div>
     <div class="text-left">
       <p><%= @storyline.long_description %></p>
     </div>
-    <hr class="dotted-line">
-    <div class="d-flex justify-content-between">
-      <div class="text-right">
-        <strong>Où?</strong> <%= @storyline.district %>
+
+    <div data-controller="game"
+    data-game-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    data-game-markers-value="<%= @markers.to_json %>"
+>
+      <div class="map-storyline-show">
+      <div class="map-position">
+        <%= render 'games/map' %>
       </div>
     </div>
-    <hr class="dotted-line">
-    <div class="d-flex justify-content-between">
-      <div class="text-right">
-        <strong>Durée:</strong> <%= @storyline.duration.to_i %> min
+    <form class="lobby-launch" action="/storylines/<%=@storyline.id%>/games" method="POST">
+      <button class="btn-home"><strong>Créer la partie</strong></button>
+      </form>
       </div>
-      <div><strong>Difficulté:</strong> <% @storyline.difficulty.times do %>
-        <i class="star-rating fa-regular fa-star"></i>
-        <% end %>
       </div>
     </div>
-    <hr class="dotted-line">
-    <div class="d-flex justify-content-between">
-      <div class="text-right">
-        <strong>Thème:</strong> <%= @storyline.theme %>
-      </div>
-    </div>
-    <form class="text-center" action="/storylines/<%=@storyline.id%>/games" method="POST">
-      <button class=" btn btn-primary"><strong>Créer la partie</strong></button>
-    </form>
   </div>
-</div>

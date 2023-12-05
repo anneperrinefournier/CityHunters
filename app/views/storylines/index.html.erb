@@ -1,7 +1,10 @@
 <div class= "pages-backscreen">
+
   <div class="background-top-title">
-  <div class="menu">
-  <div class="arrow-menu"><%= image_tag("arrow.png", alt: "back arrow") %></div>
+    <div class="menu">
+      <a href="<%= root_path %>" class="arrow-menu">
+        <%= image_tag("arrow.png", alt: "back arrow", class:"arrow-menu") %>
+      </a>
     <div class="menu-title"><h4>Choose your storyline </h4></div>
     <div class="burger-menu"><i class="fa-solid fa-bars"></i></div>
     </div>
@@ -58,7 +61,11 @@
         <% end %>
       </div>
     <% end %>
+
   </div>
 
-  <%# <div class="footer-img"><%= image_tag("footer", alt: "skyline-paris") %></div>
+  <div class="footer-img">
+    <%= image_tag("skyline", alt: "skyline-paris", width: "100%") %>
+  </div>
+
 </div>
