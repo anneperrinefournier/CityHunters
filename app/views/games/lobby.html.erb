@@ -1,11 +1,11 @@
-<div class="lobby-backscreen" style="min-height: 100vh">
-      <h1 class="lobby-top-title"><%= @storyline_title %></h1>
+<div class="pages-backscreen" style="min-height: 100vh">
+      <h1 class="background-top-title background-lobby-top-title"><%= @storyline_title %></h1>
 <div class="container" data-controller="lobby" data-lobby-id-value="<%= @game.id %>" data-lobby-participation-id-value="<%= current_user.find_participation_for(@game).id %>">
     <div class="lobby-content">
       <div class="lobby-qrcode"></div>
 
       <div class="lobby-pin-share">
-        <h2 class="lobby-pin">PIN: <%= @game.pin %></h2>
+        <div class="h3 lobby-pin">PIN: <%= @game.pin %></div>
         <%= image_tag('dotted-lines.svg', class: 'lobby-img-margin') %>
         <div class="lobby-share">Partager ce code</div>
       </div>
