@@ -37,7 +37,7 @@ export default class extends Controller {
   connect() {
     navigator.geolocation.watchPosition((coordinates) => {
       this.channel.send({
-        action: 'set_player_position',
+        data_type: 'set_player_position',
         participation_id: this.participationIdValue,
         longitude: coordinates.coords.longitude,
         latitude: coordinates.coords.latitude,
@@ -61,30 +61,30 @@ export default class extends Controller {
   }
 
   #handleData(data) {
-    if (data.action === 'redirect') {
+    if (data.data_type === 'redirect') {
       window.location.href = data.url;
       return;
     }
 
-    if (data.action === "update_position") {
+    if (data.data_type === "update_position") {
       const player = this.playerMarkers.find(item => item.participation_id === data.participation_id)
       player.marker.setLngLat([data.longitude, data.latitude])
       return;
     }
 
-    if (data.action == 'update_riddle') {
+    if (data.data_type == 'update_riddle') {
       this.riddlesHandleTarget.innerHTML = data.content;
       this.displayAnswerBtnTarget.classList.remove('d-none');
       this.displayAnswerBtnTarget.scrollIntoView(true)
       return;
     }
 
-    if (data.action == 'update_game_content') {
+    if (data.data_type == 'update_game_content') {
       this.pageHandleTarget.innerHTML = data.content;
       return;
     }
 
-    if (data.action === 'toast') {
+    if (data.data_type === 'toast') {
       this.#showToast(data.text);
       return;
     }
@@ -134,7 +134,7 @@ export default class extends Controller {
     this.riddlesHandleTarget.classList.remove('d-none')
     this.introductionTarget.classList.add('d-none')
     this.mapTarget.classList.remove('d-none')
-    this.endGameButtonTarget.classList.remove("d-none")
+    // this.endGameButtonTarget.classList.remove("d-none")
 
     if (this.displayAnswerBtnTarget) {
       this.displayAnswerBtnTarget.classList.remove('d-none')
