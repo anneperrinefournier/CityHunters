@@ -16,7 +16,7 @@ export default class extends Controller {
   swipe() {
     if (this.unrollTarget.style.transform === "translateX(-100vw)") {
       this.unrollTarget.style.transform = "translateX(0vw)";
-      this.policeTarget.style.marginLeft = "400px";
+      this.policeTarget.style.marginLeft = "360px";
       this.showmapTarget.classList.remove("font-police");
       this.showmapTarget.style.marginLeft = "-14px";
       this.showmapTarget.innerText = "MAP"

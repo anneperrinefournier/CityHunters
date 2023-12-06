@@ -6,6 +6,10 @@ export default class extends Controller {
     console.log("Happy meal or maxi best of?")
   }
 
+  goProfile() {
+
+  }
+
   async endGame() {
     const options = {
       method: 'GET',
