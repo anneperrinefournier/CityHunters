@@ -33,8 +33,9 @@ Rails.application.routes.draw do
   post '/verify', to: 'riddles#verify'
   patch '/update', to: 'participations#update'
 
-  get '/404', to: 'errors#not_found'
-  get '/500', to: 'errors#internal_server'
-  get '/422', to: 'errors#unprocessable'
 
+  match '/404', to: 'errors#not_found', via: :all
+  match '/500', to: 'errors#internal_server', via: :all
+  match '/422', to: 'errors#unprocessable', via: :all
+  match '/406', to: 'errors#unacceptable', via: :all
 end
