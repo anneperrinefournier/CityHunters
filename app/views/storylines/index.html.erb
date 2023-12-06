@@ -1,43 +1,71 @@
-<div class= "background">
-  <div class="pt-3 top-title">
-    <h1>Choose your storyline </h1>
+<div class= "pages-backscreen">
+
+  <div class="background-top-title">
+    <div class="menu">
+      <a href="<%= root_path %>" class="arrow-menu">
+        <%= image_tag("arrow.png", alt: "back arrow", class:"arrow-menu") %>
+      </a>
+    <div class="menu-title"><h4>Choose your storyline </h4></div>
+    <div class="burger-menu"><i class="fa-solid fa-bars"></i></div>
+    </div>
   </div>
+
   <div class="p-3 my-3">
     <% @storylines.each_with_index do |storyline, index| %>
       <div class="<%= index.even? ? 'regroup' : 'regroup-reverse' %>">
         <%= link_to storyline_path(storyline), class: "links" do %>
-        <div class="<%= index.even? ? 'pair' : 'odd' %>">
-          <%= storyline.title %>
-        </div>
-        <div class="folder">
-          <% if storyline.photo.attached? %>
-            <%= cl_image_tag(storyline.photo.key, class: "rounded-square") %>
-          <% else %>
-            <%= image_tag("https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg", alt: "Image", class: "rounded-square") %>
-          <% end %>
+
+          <div class="<%= index.even? ? 'pair' : 'odd' %>">
+            <div class="storyline-title"><h4><%= storyline.title %></h4></div>
+          </div>
+
+          <div class="folder <%= index.even? ? 'folder-pair' : 'folder-odd' %>">
+
+            <div class="photo-parent-rating">
+              <% if storyline.photo.attached? %>
+              <%= cl_image_tag(storyline.photo.key, class: "rounded-square") %>
+              <% else %>
+                <%= image_tag("https://i.ibb.co/RcyVLfd/paris-4546007-1280.jpg", alt: "Image", class: "rounded-square") %>
+              <% end %>
+
+            <div class="rating-child-position"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+            </div>
 
           <div class= "folder-info">
             <div class="folder-icons">
-              <p><i class="fa-solid fa-location-dot mx-1"></i><%= storyline.district %></p>
-              <p class="mx-2"><i class="fa-solid fa-puzzle-piece"></i>
-                  <% difficulty = storyline.difficulty %>
-                  <% case difficulty %>
-                    <% when 1..2 %>
-                      facile
-                    <% when 3 %>
-                      intermédiaire
-                    <% when 4..5 %>
-                      difficile
-                    <% else %>
-                      unknown
-                  <% end %></p>
+              <div class="icons-inline">
+                <p><i class="fa-solid fa-location-dot mx-1"></i> <%= storyline.district %></p>
+                <p><i class="fa-regular fa-clock"></i> <%= storyline.duration.to_i %> min</p>
+              </div>
+            <div>
+              <p><i class="fa-solid fa-puzzle-piece"></i>
+                <% difficulty = storyline.difficulty %>
+                <% case difficulty %>
+                  <% when 1..2 %>
+                    facile
+                  <% when 3 %>
+                    intermédiaire
+                  <% when 4..5 %>
+                    difficile
+                  <% else %>
+                    unknown
+                <% end %></p>
+                </div>
+              </div>
+
+              <p><%= storyline.short_description %></p>
+
             </div>
-            <%= storyline.short_description %>
           </div>
-        </div>
+
         <% end %>
       </div>
     <% end %>
-</div>
+
+  </div>
+
+  <div class="footer-img">
+    <%= image_tag("skyline", alt: "skyline-paris", width: "100%") %>
+  </div>
 
 </div>

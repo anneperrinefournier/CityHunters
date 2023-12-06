@@ -9,25 +9,25 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log('Answer modal controller connected')
     this.token = document.querySelector('meta[name="csrf-token"]').content
   }
 
   openModal(event) {
     const modal = document.getElementById("myModal");
     modal.style.display = "block";
-    this.formTarget.querySelector('input').focus(); // Ne fonctionne pas...
+    this.formTarget.querySelector('#question_answer').focus();
   }
   closeModal() {
     const modal = document.getElementById("myModal");
     modal.style.display = "none";
   }
 
-  async verifyAnswer(evt) {
-    evt.preventDefault();
-    evt.stopPropagation();
+  async verifyAnswer(event) {
+    event.preventDefault();
+    event.stopPropagation();
 
     let userResponse = new FormData(this.formTarget)
+    userResponse.append('answer_type', 'new_static_answer');
     userResponse.append('game_id', this.gameIdValue)
     userResponse.append('riddle_id', this.riddleIdValue)
 
@@ -40,14 +40,13 @@ export default class extends Controller {
       body: userResponse
     }
 
-    const response =  await fetch(`/verify`, options);
+    const response = await fetch(`/verify`, options);
     const data = await response.json()
 
-      if (data.status === "ok") {
-        this.closeModal();
-      } else {
-        console.log(data)
-        alert(data.message);
-      };
+    if (data.status === "ok") {
+      this.closeModal();
+    } else {
+      alert(data.message);
+    };
   }
 }

@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl' // Don't forget this!
 
 export default class extends Controller {
   static values = {
-    id: Number,
+    gameId: Number,
     apiKey: String,
     markers: Array,
     participationsMarkers: Array,
@@ -21,6 +21,7 @@ export default class extends Controller {
     'placePanel',
     'displayAnswerBtn',
     'map',
+    'mapForm',
     'endGameButton',
     'endGame'
   ];
@@ -28,16 +29,15 @@ export default class extends Controller {
   initialize() {
     this.token = document.querySelector('meta[name="csrf-token"]').content
     this.channel = createConsumer().subscriptions.create(
-      { channel: "GameChannel", id: this.idValue },
+      { channel: "GameChannel", id: this.gameIdValue },
       { received: data => this.#handleData(data) }
     )
   }
 
   connect() {
     navigator.geolocation.watchPosition((coordinates) => {
-      console.log('position changed')
-
       this.channel.send({
+        action: 'set_player_position',
         participation_id: this.participationIdValue,
         longitude: coordinates.coords.longitude,
         latitude: coordinates.coords.latitude,
@@ -52,11 +52,11 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/anneperrine/clpqvu9za014201pke2o7alpm"
     })
 
     this.#addMarkersToMap()
-    this.#addPlayerMakersToMap()
+    this.#addPlayerMarkersToMap()
     this.#fitMapToMarkers()
   }
 
@@ -97,6 +97,38 @@ export default class extends Controller {
     }).showToast()
   }
 
+  async verifyPosition(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const player = this.playerMarkers.find(item => item.participation_id === this.participationIdValue)
+
+    let userResponse = new FormData();
+    userResponse.append('answer_type', 'new_shifting_answer');
+    userResponse.append('game_id', this.gameIdValue);
+    userResponse.append('riddle_id', this.mapFormTarget.dataset.riddleId);
+    userResponse.append('participation_id', this.participationIdValue);
+    userResponse.append('longitude:', player.marker._lngLat.lng);
+    userResponse.append('latitude:', player.marker._lngLat.lat);
+
+    const options = {
+      method: 'POST',
+      headers: {
+        "Accept": "application/json",
+        "X-CSRF-TOKEN": this.token
+      },
+      body: userResponse
+    }
+
+    const response = await fetch(`/verify`, options);
+    const data = await response.json()
+
+    if (data.status === "ok") {
+      // this.closeModal();
+    } else {
+      alert(data.message);
+    };
+  }
 
   closeIntroduction() {
     this.riddlesHandleTarget.classList.remove('d-none')
@@ -138,10 +170,10 @@ export default class extends Controller {
       },
     };
 
-    const response = await fetch(`/games/${this.idValue}/end`, options);
+    const response = await fetch(`/games/${this.gameIdValue}/end`, options);
   }
 
-  #addPlayerMakersToMap() {
+  #addPlayerMarkersToMap() {
     this.playerMarkers = []
 
     this.participationsMarkersValue.forEach((marker) => {
@@ -149,7 +181,7 @@ export default class extends Controller {
 
       const customMarker = document.createElement('div');
       customMarker.className = `marker ${marker.marker_class}`;
-      customMarker.innerHTML = marker.marker_html
+      customMarker.innerHTML = marker.participation_marker_html
 
       this.playerMarkers.push({
         participation_id: marker.participation_id,
@@ -178,8 +210,7 @@ export default class extends Controller {
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.participationsMarkersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+    this.markersValue.concat(this.participationsMarkersValue).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.map.fitBounds(bounds, { padding: 80, maxZoom: 15, duration: 0 })
   }
 }

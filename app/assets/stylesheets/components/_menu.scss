@@ -1,0 +1,19 @@
+
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0px 20px;
+}
+
+.arrow-menu img {
+  width: 50px;
+  margin-top: -5px;
+}
+
+.fa-bars {
+  font-size: 40px;
+  margin-top: -10px;
+}

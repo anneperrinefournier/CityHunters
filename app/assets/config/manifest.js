@@ -4,3 +4,8 @@
 //= link_tree ../../../vendor/javascript .js
 //= link popper.js
 //= link bootstrap.min.js
+//= link application.css
+
+// app/assets/config/manifest.js
+// ...
+//= link manifest.json

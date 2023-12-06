@@ -6,19 +6,10 @@
   margin-top: 30px;
 }
 
-.lobby-backscreen {
-  background-image: url(5-test-back.png);
-  background-size: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  }
-
 .lobby-title {
   color: $navy;
   font-size: 32px;
   font-weight: 900;
-  margin-bottom: 100px;
   padding-top: 20px;
   text-align: start;
   margin-left: 20px;
@@ -45,7 +36,8 @@
   text-align: center;
   text-transform: uppercase;
   font-weight: 700;
-  margin-bottom: 0px;
+  letter-spacing: 4px;
+  color: $navy;
 }
 
 .lobby-img-margin {
@@ -97,24 +89,4 @@
   font-size: 20px;
   display: flex;
   justify-content: center;
-}
-
-.lobby-top-title {
-  min-height: 14vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  background-image: url(background-blue.svg);
-  background-size: 190%;
-  background-position: -360px -66px;
-  margin-bottom: -44px;
-  color: $gold;
-  font-size: 26px;
-  font-weight: 900;
-  padding-bottom: 35px;
-  margin-bottom: 100px;
-}
-.lobby-top-title h1 {
-  font-size: 35px;
 }

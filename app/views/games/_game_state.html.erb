@@ -7,7 +7,7 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <button class="nav-link" href="#" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate" disabled><%= place.name %></button>
+          <button class="nav-link" href="#" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate" disabled>Not found yet</button>
         </li>
       <% end %>
     <% end %>
@@ -24,7 +24,7 @@
               <h1 class="mt-3 text-center border-bottom"><%= riddle.title %></h1>
               <div class="d-flex justify-content-center">
                 <% if riddle.photo.attached? %>
-                  <%= cl_image_tag(riddle.photo.key, width: 300, height: 300, crop: fill) %>
+                  <%= cl_image_tag(riddle.photo.key, width: 300, height: 300, crop: 'fill') %>
                 <% else %>
                   <%= cl_image_tag('compass', width: 300, height: 300, crop: 'fill', class:"riddle-picture") %>
                 <% end %>
@@ -47,8 +47,9 @@
   data-answer-modal-riddle-id-value="<%= game.current_place.current_riddle(game).id %>">
 
   <button class="btn btn-primary" data-action="click->answer-modal#openModal">Répondre</button>
-    <%# if game.current_place.nil? %>
-      <%= render "games/answer_modal", riddle: game.current_place.current_riddle(game), game: game %>
-    <%# end %>
-    <div data-answer-modal-target="displayriddle"></div>
+  <%= simple_form_for :question, url: "#", html: { data: { riddle_id: game.current_place.current_riddle(game).id, game_target: "mapForm", action: "submit->game#verifyPosition" } } do |f| %>
+    <%= f.submit "Send position", class: 'btn btn-warning' %>
+  <% end %>
+  <%= render "games/answer_modal", riddle: game.current_place.current_riddle(game), game: game %>
+  <div data-answer-modal-target="displayriddle"></div>
 </div>
