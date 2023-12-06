@@ -80,7 +80,9 @@
 
 }
 
-.folder img {
+// images pour les cards storylines
+
+.storylines-img {
   width: 160px;
   height: 160px;
   object-fit: cover;
@@ -88,11 +90,13 @@
   align-items: center;
 }
 
-.folder-show img {
+// images pour les autres pages en full largeur
+.photos-img {
   width: 100%;
   margin-bottom: 10px;
   border-radius: 5px;
 }
+
 .folder-info {
   padding-top: 10px;
   padding-bottom: 10px;

@@ -28,9 +28,9 @@
 
             <div class="photo-parent-rating">
               <% if storyline.photo.attached? %>
-              <%= cl_image_tag(storyline.photo.key, class: "rounded-square") %>
+              <%= cl_image_tag(storyline.photo.key, class: "storylines-img") %>
               <% else %>
-                <%= image_tag("https://i.ibb.co/RcyVLfd/paris-4546007-1280.jpg", alt: "Image", class: "rounded-square") %>
+                <%= image_tag("https://i.ibb.co/RcyVLfd/paris-4546007-1280.jpg", alt: "Image", class: "storylines-img") %>
               <% end %>
 
             <div class="rating-child-position"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
@@ -70,7 +70,6 @@
   </div>
 
   <div class="footer-img">
-    <%= image_tag("skyline.png", alt: "skyline-paris", width: "100%") %>
+    <%= image_tag("footer.png", alt: "skyline-paris", width: "100%") %>
   </div>
-
 </div>

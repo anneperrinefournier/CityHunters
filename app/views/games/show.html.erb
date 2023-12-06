@@ -1,13 +1,18 @@
+<div class= "pages-backscreen">
+  <div class="background-top-title">
+    <div class="menu">
+        <div class="burger-menu dropdown">
+        <i class="fa-solid fa-bars btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        </i>
+        <%= render 'shared/burger'%>
+        </div>
+    </div>
+  </div>
+
 <div class="big-container" style= "width: 100vw; overflow-x: hidden;" data-controller="swipe-map">
 
   <div class="rectangle-swipe swipe-right" data-action="click->swipe-map#swipe" data-swipe-map-target="police">
     <p data-swipe-map-target="showmap">MAP</p>
-  </div>
-
-  <div class="burger-menu dropdown">
-    <i class="fa-solid fa-bars btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    </i>
-    <%= render 'shared/burger'%>
   </div>
 
   <div data-controller="game"
@@ -26,13 +31,25 @@
             <%= render 'game_state', game: @game %>
           </div>
 
-          <div class="mt-3 mb-3 story-introduction" data-game-target="introduction">
-            <h1>Introduction</h1>
-            <%= cl_image_tag @storyline.photo.key, alt: (@storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
+
+          <div class="p-3 my-3 story-introduction" data-game-target="introduction">
+          <div class="pair">
+            <div class="show-title"><h4>Introduction</h4></div>
+          </div>
+
+        <div class="folder-show">
+            <%= cl_image_tag @storyline.photo.key, alt: (@storyline.title + "-picture"), class: "photos-img" %>
             <p><%= @storyline.introduction %></p>
+      <div class="map-storyline-show">
+      <div class="map-position">
+        <%= render 'games/map' %>
+      </div>
+    </div>
             <div class="d-flex justify-content-center">
-              <button class="btn btn-primary" data-action="click->game#closeIntroduction">C'est parti!</button>
+              <button class="btn-home" data-action="click->game#closeIntroduction">C’est parti !</button>
             </div>
+
+
           </div>
         </div>
       </div>
@@ -50,3 +67,5 @@
 </div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+</div>
