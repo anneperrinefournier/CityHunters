@@ -3,11 +3,19 @@
     <% game.places.each_with_index do |place, index| %>
       <% if place.validated?(game) || place == game.current_place %>
         <li class="nav-item">
-          <button class="nav-link <%= place == game.current_place ? 'active' : '' %>" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate"><%= place.name %></button>
+          <button class="nav-link <%= place == game.current_place ? 'active' : '' %>" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate">
+            <% if place.photo.attached? %>
+              <%= cl_image_tag(place.photo.key, width: 35, height: 35, crop: 'fill') %>
+            <% else %>
+              <%= image_tag('compas.png', width: 35, height: 35, crop: 'fill') %>
+            <% end %>
+          </button>
         </li>
       <% else %>
         <li class="nav-item">
-          <button class="nav-link" href="#" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate" disabled>Not found yet</button>
+          <button class="nav-link" href="#" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate" disabled>
+            <%= image_tag('place-locked.png', width: 35, height: 35, crop: 'fill') %>
+          </button>
         </li>
       <% end %>
     <% end %>
@@ -26,11 +34,11 @@
                 <% if place.photo.attached? %>
                   <%= cl_image_tag(place.photo.key, width: 300, height: 300, crop: 'fill') %>
                 <% else %>
-                  <%= cl_image_tag('compass', width: 300, height: 300, crop: 'fill', class:"riddle-picture") %>
+                  <%= image_tag('compass.png', width: 300, height: 300, crop: 'fill', class:"riddle-picture") %>
                 <% end %>
               </div>
               <div class="mt-3">
-                <p><%= riddle.description %></p>
+                <p><%= simple_format(riddle.description) %></p>
                 <p><%= riddle.question %></p>
               </div>
             </div>
@@ -47,10 +55,14 @@
   data-answer-modal-game-id-value="<%= game.id %>"
   data-answer-modal-riddle-id-value="<%= game.current_place.current_riddle(game).id %>">
 
-  <button class="btn btn-primary" data-action="click->answer-modal#openModal">Répondre</button>
-  <%= simple_form_for :question, url: "#", html: { data: { riddle_id: game.current_place.current_riddle(game).id, game_target: "mapForm", action: "submit->game#verifyPosition" } } do |f| %>
-    <%= f.submit "Send position", class: 'btn btn-warning' %>
+  <% if game.current_place.current_riddle(game).motion_type == 'static' %>
+    <button class="btn btn-primary" data-action="click->answer-modal#openModal">Répondre</button>
+    <%= render "games/answer_modal", riddle: game.current_place.current_riddle(game), game: game %>
+    <div data-answer-modal-target="displayriddle"></div>
+
+  <% elsif game.current_place.current_riddle(game).motion_type == 'shifting' %>
+    <%= simple_form_for :question, url: "#", html: { data: { riddle_id: game.current_place.current_riddle(game).id, game_target: "mapForm", action: "submit->game#verifyPosition" } } do |f| %>
+      <%= f.submit "Send position", class: 'btn btn-warning' %>
+    <% end %>
   <% end %>
-  <%= render "games/answer_modal", riddle: game.current_place.current_riddle(game), game: game %>
-  <div data-answer-modal-target="displayriddle"></div>
 </div>
