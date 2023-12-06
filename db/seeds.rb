@@ -69,6 +69,7 @@ storyline1 = Storyline.new(
   distance: 2,
   theme: "historique",
   difficulty: 2,
+  starting_point: "Rue de Rivoli, 75001 Paris, France",
   short_description: "Plonge au cœur de l'histoire du Louvre !",
   long_description: "Plonge dans l'histoire fascinante du 1ᵉʳ arrondissement de Paris, aux abords du célèbre Louvre. Pars à la découverte des ruelles pittoresques, des places historiques, et des mystères cachés entre les imposants bâtiments. À travers ce jeu de piste captivant, explore l'art urbain, déchiffre des énigmes architecturales, et perce le secret qui relie chaque coin de ce quartier empreint d'histoire et de culture.",
   introduction: "Bienvenue dans 'Le Mystère du 1ᵉʳ arrondissement', une aventure captivante qui te plongera au cœur du quartier entourant le Louvre. Loin des galeries du musée, ce jeu de piste vous invite à dévoiler les trésors cachés de l'architecture, à décoder les messages artistiques dissimulés dans les rues pavées, et à percer les mystères enfouis au sein de ce quartier emblématique de Paris. Que cette quête urbaine commence !"
@@ -84,6 +85,7 @@ storyline2 = Storyline.new(
   distance: 6,
   theme: "aventure numérique",
   difficulty: 3,
+  starting_point: "68 avenue Parmentier, 75011 Paris, France",
   short_description: "Pars à la recherche du Code Perdu du Wagon !",
   long_description: "Plonge dans l'univers numérique du 11ᵉ arrondissement avec 'Le Code Perdu du Wagon'. Suis les énigmes cryptiques laissées par un professeur passionné de Ruby on Rails et explore les ruelles du quartier pour dévoiler le trésor caché. Une aventure où le mystère et la programmation se rencontrent.",
   introduction: "Le Wagon, école renommée de programmation à Paris, est en émoi. Un professeur passionné a découvert un vieux manuscrit renfermant un code Ruby on Rails légendaire, mais a mystérieusement disparu. Les participants doivent décoder ses indices dispersés dans le 11ᵉ arrondissement pour révéler le trésor caché et démasquer les forces adverses cherchant à s'emparer du précieux code. La course pour le ‘Code Rouge’ commence maintenant !"
@@ -99,6 +101,7 @@ storyline3 = Storyline.new(
   distance: 5,
   theme: "aventure",
   difficulty: 3,
+  starting_point: "Parc des Buttes-Chaumont, 1 Rue Botzaris, 75019 Paris, France",
   short_description: "Pars à l'aventure dans ce parc exceptionnel !",
   long_description: "Embarque pour une odyssée inoubliable dans le 19ᵉ arrondissement. Le Parc des Buttes-Chaumont te réserve des défis épiques. Résous des énigmes, explore des recoins cachés et découvre les mystères qui se cachent au cœur de ce parc exceptionnel.",
   introduction: "Bienvenue dans 'L'Odyssée du Château', une aventure épique dans le 19ᵉ arrondissement de Paris. Le Parc des Buttes-Chaumont te réserve des défis épiques. Résous des énigmes, explore des recoins cachés et découvre les mystères qui se cachent au cœur de ce parc exceptionnel."
@@ -114,6 +117,7 @@ storyline4 = Storyline.new(
   distance: 4,
   theme: "fantastique",
   difficulty: 2,
+  starting_point: "Belleville, 20th arrondissement, Paris, France",
   short_description: "Chasse les créatures fantastiques !",
   long_description: "Plonge dans un monde fantastique au cœur du 20ᵉ arrondissement. Belleville, quartier vibrant, abrite des créatures enchantées et des mystères féériques. Suis les énigmes enchantées, explore les rues animées et découvre les légendes qui peuplent ce quartier hors du commun.",
   introduction: "Bienvenue dans 'Les Légendes de Belleville', une aventure fantastique au cœur du 20ᵉ arrondissement. Belleville, quartier vibrant, abrite des créatures enchantées et des mystères féériques. Suis les énigmes enchantées, explore les rues animées et découvre les légendes qui peuplent ce quartier hors du commun."
@@ -129,6 +133,7 @@ storyline5 = Storyline.new(
   distance: 3,
   theme: "historique",
   difficulty: 2,
+  starting_point: "Panthéon, 75005 Paris, France",
   short_description: "Trouve le trésor légendaire du quartier latin !",
   long_description: "Explore l'histoire du 5ᵉ arrondissement à la recherche d'un trésor légendaire. Près du Panthéon, des énigmes historiques te guideront à travers le Quartier Latin. Plonge dans le passé glorieux de ce quartier emblématique et dévoile le trésor qui y est caché depuis des siècles.",
   introduction: "Bienvenue dans 'Le Trésor du Panthéon', une quête historique au cœur du 5ᵉ arrondissement de Paris. Près du Panthéon, des énigmes historiques te guideront à travers le Quartier Latin. Plonge dans le passé glorieux de ce quartier emblématique et dévoile le trésor qui y est caché depuis des siècles."
@@ -144,6 +149,7 @@ storyline6 = Storyline.new(
   distance: 4.5,
   theme: "mystère",
   difficulty: 2,
+  starting_point: "Montparnasse, 14th arrondissement, Paris, France",
   short_description: "Explore les ruelles pour découvrir les secrets cachés.",
   long_description: "Plonge dans l'atmosphère mystérieuse du 14ᵉ arrondissement. Montparnasse, quartier bohème, cache une énigme intrigante. Parcours les cafés emblématiques, explore les ruelles cachées et dévoile les secrets qui se cachent dans les coins méconnus de ce quartier unique.",
   introduction: "Bienvenue dans 'L'Énigme de Montparnasse', une aventure mystérieuse dans le 14ᵉ arrondissement de Paris. Montparnasse, quartier bohème, cache une énigme intrigante. Parcours les cafés emblématiques, explore les ruelles cachées et dévoile les secrets qui se cachent dans les coins méconnus de ce quartier unique."
@@ -159,6 +165,7 @@ storyline7 = Storyline.new(
   distance: 3.5,
   theme: "historique",
   difficulty: 2,
+  starting_point: "Les Invalides, 75007 Paris, France",
   short_description: "Explore le mystère des Invalides et son histoire.",
   long_description: "Découvre le mystère caché derrière les murs des Invalides, au cœur du 7ᵉ arrondissement. Des énigmes historiques te guideront à travers ce quartier empreint d'histoire militaire. Plonge dans le passé et dévoile les secrets qui ont forgé la destinée de ce lieu emblématique.",
   introduction: "Bienvenue dans 'Le Mystère des Invalides', une aventure historique au cœur du 7ᵉ arrondissement de Paris. Des énigmes historiques te guideront à travers ce quartier empreint d'histoire militaire. Plonge dans le passé et dévoile les secrets qui ont forgé la destinée de ce lieu emblématique."
@@ -174,6 +181,7 @@ storyline8 = Storyline.new(
   distance: 6,
   theme: "aventure",
   difficulty: 3,
+  starting_point: "Les Batignolles, 17th arrondissement, Paris, France",
   short_description: "Vis une aventure épique dans les Batignolles.",
   long_description: "Entre dans l'aventure au cœur du 17ᵉ arrondissement. Les Batignolles, quartier bohème, regorgent de mystères et de défis audacieux. Résous des énigmes complexes, explore les parcs pittoresques et vis une aventure épique dans ce coin de Paris plein de charme.",
   introduction: "Bienvenue dans 'L'Aventure des Batignolles', une aventure épique dans le 17ᵉ arrondissement de Paris. Les Batignolles, quartier bohème, regorgent de mystères et de défis audacieux. Résous des énigmes complexes, explore les parcs pittoresques et vis une aventure épique dans ce coin de Paris plein de charme."
@@ -189,6 +197,7 @@ storyline9 = Storyline.new(
   distance: 5,
   theme: "mystère",
   difficulty: 2,
+  starting_point: "Canal Saint-Martin, 10th arrondissement, Paris, France",
   short_description: "Découvre les secrets du Canal Saint-Martin.",
   long_description: "Plonge dans les mystères du 10ᵉ arrondissement le long du Canal Saint-Martin. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique.",
   introduction: "Bienvenue dans 'Les Secrets du Canal Saint-Martin', une aventure mystérieuse dans le 10ᵉ arrondissement de Paris. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique."
@@ -204,6 +213,7 @@ storyline10 = Storyline.new(
   distance: 3.5,
   theme: "aventure",
   difficulty: 2,
+  starting_point: "Montorgueil Street, 75002 Paris, France",
   short_description: "Découvre les passages secrets de Montorgueil !",
   long_description: "Vis l'évasion au cœur du 2ᵉ arrondissement. Montorgueil, quartier dynamique, recèle des énigmes captivantes et des passages secrets à découvrir. Parcours les rues animées, résous des défis intriguants et plonge dans une aventure inoubliable au cœur de ce quartier emblématique de Paris.",
   introduction: "Bienvenue dans 'L'Évasion de Montorgueil', une aventure captivante dans le 2ᵉ arrondissement de Paris. Montorgueil, quartier dynamique, recèle des énigmes captivantes et des passages secrets à découvrir. Parcours les rues animées, résous des défis intriguants et plonge dans une aventure inoubliable au cœur de ce quartier emblématique de Paris."
@@ -219,6 +229,7 @@ storyline11 = Storyline.new(
   distance: 3,
   theme: "historique",
   difficulty: 2,
+  starting_point: "Place des Vosges, 75004 Paris, France",
   short_description: "Explore l'histoire médiévale du Marais !",
   long_description: "Explore le charme médiéval du 4ᵉ arrondissement. Le Marais, témoin de l'histoire de Paris, recèle des secrets à chaque coin de rue. Suis les énigmes historiques, parcours les ruelles pavées et dévoile les mystères cachés de ce quartier emblématique.",
   introduction: "Bienvenue dans 'Les Énigmes du Marais', une aventure historique dans le 4ᵉ arrondissement de Paris. Les ruelles pavées du Marais cachent des secrets médiévaux à découvrir. Résous les énigmes historiques et plonge-toi dans l'atmosphère envoûtante de ce quartier emblématique."
@@ -308,11 +319,33 @@ file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
 place8.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place8.save!
 
+place9 = Place.new(
+  name: "Le Wagon",
+  address: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
+  description: "Le Wagon est un espace dédié à l'apprentissage de la programmation informatique. Situé au 68 Avenue Parmentier dans le 11e arrondissement de Paris, Le Wagon offre un environnement dynamique où les participants peuvent découvrir et développer leurs compétences en matière de codage. Que vous soyez débutant ou expérimenté, Le Wagon propose des programmes éducatifs stimulants pour tous les niveaux, faisant de cet endroit un lieu incontournable pour les passionnés de technologie et d'innovation.",
+  storyline: storyline2
+)
+file = URI.open("https://i.ibb.co/Kmjtv1T/le-wagon.jpg")
+place9.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place9.save!
+
+place10 = Place.new(
+  name: "Église Saint-Ambroise",
+  address: "71 bis Bd Voltaire, 75011 Paris",
+  description: "Bienvenue à l'Église Saint-Ambroise, un trésor caché au cœur du 11e arrondissement de Paris ! Cette merveille architecturale au 71 bis Boulevard Voltaire est bien plus qu'un simple édifice religieux. Plongez dans l'histoire captivante de ce lieu chargé de mystères.",
+  storyline: storyline2
+)
+file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
+place10.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place10.save!
+
+
 riddle1 = Riddle.new(
   title: 'Horse color',
   description: 'riddle 1 : horse color',
   solution: 'blanc',
   question: 'Quelle est la couleur du cheval blanc d’Henri 4?',
+  motion_type: 'static',
   place: place1
 )
 riddle2 = Riddle.new(
@@ -320,6 +353,7 @@ riddle2 = Riddle.new(
   description: 'riddle 2 : dog color',
   solution: 'rouge',
   question: 'Quelle est la couleur de Pif le chien rouge?',
+  motion_type: 'static',
   place: place1
 )
 riddle3 = Riddle.new(
@@ -327,6 +361,7 @@ riddle3 = Riddle.new(
   description: 'riddle 3 : neighbor cat color',
   solution: 'noir',
   question: 'Quelle est la couleur du chat noir de la voisine?',
+  motion_type: 'static',
   place: place1
 )
 
@@ -335,6 +370,7 @@ riddle4 = Riddle.new(
   description: 'riddle 1 : alexis cat color',
   solution: 'crème',
   question: 'Quelle est la couleur du chat d’Alexis ?',
+  motion_type: 'static',
   place: place2
 )
 
@@ -343,26 +379,78 @@ riddle5 = Riddle.new(
   description: 'riddle 1 : ap cat color',
   solution: 'brun',
   question: 'Quelle est la couleur du chat d’AP ?',
+  motion_type: 'static',
   place: place2
 )
 
 riddle6 = Riddle.new(
   title: 'Horse color',
   description: 'riddle 1 : horse color',
-  solution: 'snow',
+  solution: 'swan',
   question: 'Comment s’appelle le chat de Diane ?',
+  motion_type: 'static',
   place: place2
 )
+
+riddle7 = Riddle.new(
+  title: 'Le blason du Wagon',
+  description: 'Te voilà arrivé au point de départ, où tout a commencé : Le Wagon. C’est ici que le vol a eu lieu. Les témoins t’indiquent que le blason du Wagon, qui est affiché, semble avoir été déplacé. Tu t’approches, dans l’espoir de trouver un indice.',
+  solution: 'un bus',
+  question: 'Quel est le blason du Wagon ?',
+  motion_type: 'static',
+  place: place9
+)
+
+riddle8 = Riddle.new(
+  title: 'À la poursuite du voleur',
+  description: "Tu trouves derrière le blason un papier. Une énigme a été écrite dessus :\n
+  'Où l’esprit de Voltaire flirte avec la foi,\n
+  Au cœur du mystère, dans le 11ᵉ,\n
+  Le voleur du code se cache, prêt à fuir.' ?",
+  solution: 'blablabla',
+  question: 'Trouve le lieu où se cache le voleur.',
+  motion_type: 'shifting',
+  place: place9
+)
+
+riddle9 = Riddle.new(
+  title: 'Le nom du voleur',
+  description: "Quand tu arrives sur place, le voleur a déjà disparu, mais il a laissé le code volé avec un mot dessus :\n
+  'Je suis l’énigmatique gentleman des ombres, où l’intrigue s’épanouit,\n
+  Mes prouesses brillent dans la nuit, mystère d’une époque révolue.\n
+  Création d’une plume habile, mon nom résonne dans l’écho,\n
+  Charmeur des larcins, je voulais le code, je le rends avec flegme.?",
+  solution: 'Arsène Lupin',
+  question: 'Quel est le nom du voleur ?',
+  motion_type: 'static',
+  place: place10
+)
+
 riddle1.save!
 riddle2.save!
 riddle3.save!
 riddle4.save!
 riddle5.save!
 riddle6.save!
+riddle7.save!
+riddle8.save!
+riddle9.save!
 
 clue = Clue.new(
-  content: 'il suffit d’écrire la couleur en fait dummy',
-  riddle: riddle1
+  content: 'Je suis un moyen de locomotion.',
+  riddle: riddle7
+)
+clue.save!
+
+clue = Clue.new(
+  content: 'Je porte le même nom que la station de métro et la rue où je me trouve.',
+  riddle: riddle8
+)
+clue.save!
+
+clue = Clue.new(
+  content: 'Mon nom de famille fait écho au loup.',
+  riddle: riddle9
 )
 clue.save!
 
@@ -440,6 +528,140 @@ answer6 = Answer.new(
 answer6.save!
 
 
+# Storyline: L'appel de la bouffe
+storyline = Storyline.new(
+  title: "Alerte Estomac!",
+  district: "11e arr.",
+  duration: 15,
+  distance: 1,
+  theme: "aventure alimentaire",
+  difficulty: 1,
+  starting_point: "68 Ave Parmentier, 75011 Paris, France",
+  short_description: "Pars à la recherche de ta nouriture !",
+  long_description: "Ca y est, nous y sommes! Il est 13h et l'estomac souffre et agonise, il a besoin de manger. Une seule solution, partir à la quête de nourriture! Suivez cette aventure exceptiionnelle à laquelle tout le monde reviens satisfait, mais surtout, le ventre plein!",
+  introduction: "Dans une ville grouillante d'activité, où les rues pavées bruissaient sous les pas pressés des passants, une quête essentielle vous animait : assouvir votre faim grandissante. Ignorant l'agitation ambiante, votre estomac vous rappelait impérieusement à l'ordre, vous incitant à trouver cette nourriture revigorante qui apaiserait votre appétit croissant.
+
+  Les senteurs alléchantes émanaient des cuisines dissimulées derrière les devantures des restaurants, des échoppes et des étals de marché. Chaque recoin de cette ville vous attirait, vous offrant des promesses gastronomiques et l'espoir de combler votre faim insatiable.
+
+  Entre les badauds affairés et les passants pressés, vous poursuiviez votre quête, scrutant les enseignes alléchantes, à la recherche du festin parfait. Chaque boulangerie, chaque café et chaque stand coloré éveillait votre appétit et faisait frémir vos sens. Vous étiez déterminé à découvrir ce met délicieux, à dénicher ce plat réconfortant capable de satisfaire vos désirs les plus profonds."
+)
+file = URI.open("https://www.sofoodmag.fr/wp-content/uploads/2013/02/wpid-3161-avoir-faim.jpg")
+storyline.photo.attach(io: file, filename: "Alerte_Estomac", content_type: "image/jpg")
+storyline.save!
+place1 = Place.new(
+  name: "Le Wagon",
+  address: "68 Ave Parmentier, 75011 Paris, France",
+  description: "On y pleur, on y rit, mais surtout, on s'y sent bien!",
+  storyline: storyline
+)
+file = URI.open("https://studysmarter-mediafiles.s3.amazonaws.com/media/uploads/froala_editor/images/fa7583826ca3-Paris_Campus_3__3_.png")
+place1.photo.attach(io: file, filename: "lewagon", content_type: "image/jpg")
+place1.save!
+place2 = Place.new(
+  name: "Metro Parmentier",
+  address: "86 avenue Parmentier, 75004 Paris, France",
+  description: "Cette bouche de metro... que dire dessus si non que je ne l'ai jamais prise!",
+  storyline: storyline
+)
+file = URI.open("https://p.monumentum.fr/galerie/maxi/00446/446476-francais-entree-de-la-station-de-metro-parmentier-avenue-parmentier-paris.jpg")
+place2.photo.attach(io: file, filename: "metro parmentier", content_type: "image/jpg")
+place2.save!
+place3 = Place.new(
+  name: "Boulangerie Oberkampf",
+  address: "54 rue Oberkampf, 75001 Paris, France",
+  description: "Cette boulangerie me surprendra toujours, non pas par sa quantité des portion, mais par sa qualité de service et son prix!",
+  storyline: storyline
+)
+file = URI.open("https://st.hzcdn.com/simgs/32d1769f03edfebf_16-1634/home-design.jpg")
+place3.photo.attach(io: file, filename: "boulangerie graine", content_type: "image/jpg")
+place3.save!
+place4 = Place.new(
+  name: place1.name,
+  address: place1.address,
+  description: place1.description,
+  storyline: storyline
+)
+file = URI.open("https://studysmarter-mediafiles.s3.amazonaws.com/media/uploads/froala_editor/images/fa7583826ca3-Paris_Campus_3__3_.png")
+place4.photo.attach(io: file, filename: "lewagon", content_type: "image/jpg")
+place4.save!
+
+riddle1 = Riddle.new(
+  title: "Ce que je préfère à 13h",
+  description: 'Find the next place',
+  question: "S'il y a bien une chose que je préfère quand l'heure de la souppe arrive, c'est...?",
+  solution: "manger",
+  motion_type: 'static',
+  place: place1
+)
+file = URI.open('https://fondationolo.ca/wp-content/uploads/2017/07/fondation-olo-bebe-a-faim.jpg')
+riddle1.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+riddle1.save!
+riddle2 = Riddle.new(
+  title: "Trouvez le prochain lieu",
+  description: 'Find the next place',
+  question: "Notre premier enigme est une bifurcation, l'intercection de tous les chemins de notre aventure, l'origine des séparations mais aussi parfois un point de rencontres...",
+  solution: "Lat:XXX, Lng:YYY",
+  motion_type: 'shifting',
+  place: place1
+)
+file = URI.open('https://www.unmondedaventures.fr/wp-content/uploads/2015/01/281530234-Copier.jpg')
+riddle2.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+riddle2.save!
+riddle3 = Riddle.new(
+  title: 'Find next place',
+  description: 'Find the next place',
+  question: "Bravo! Mais cet endroit n'est que le point de passage, d'un lieu plus important encore!\nOn dit qu'on y fait les meilleurs gateaux mais mon dieu que c'est chère!",
+  solution: "Lat:XXX, Lng:YYY",
+  motion_type: 'shifting',
+  place: place2
+)
+file = URI.open('https://www.podcastfrancaisfacile.com/wp-content/uploads/2013/05/demander-son-chemin.jpg')
+riddle3.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+riddle3.save!
+riddle4 = Riddle.new(
+  title: 'What a cake!',
+  description: 'Find cake price',
+  question: "Félicitation! Vous avez trouvé le lieux exacte de notre aventure! Parmis les gateaux que je préfère, il y en a un particulièrement que je préfère et que je prends presque à chaque fois, saurez vous trouver lequel? Seuls les vrais savent!",
+  solution: "citron pavot",
+  motion_type: 'static',
+  place: place3
+)
+file = URI.open('https://cdn.pratico-pratiques.com/app/uploads/sites/2/2022/05/02113329/gateau-au-citron-et-huile-d-olive.jpg')
+riddle4.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+riddle4.save!
+riddle5 = Riddle.new(
+  title: 'What a cake!',
+  description: 'Find cake price',
+  question: "Et oui, j'adore ce gateau! Pourriez vous notez le prix du sandwish au poulet pour moi s'il vous plaît? (A l'euro près)",
+  solution: "6€",
+  motion_type: 'static',
+  place: place3
+)
+file = URI.open('https://static.750g.com/images/600-600/0fa217fa9300b4fbea5919f9f7f38bdf/adobestock-430086029.jpg')
+riddle5.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+riddle5.save!
+riddle6 = Riddle.new(
+  title: 'Rentrer manger',
+  description: 'Find cake price',
+  question: "Bon, je pense que l'on a tout ce qu'il nous faut pour s'assoir autour d'une table pour manger tous ensemble! Il va falloir en trouver une...",
+  solution: "LatLng",
+  motion_type: 'shifting',
+  place: place3
+)
+file = URI.open('https://images.ricardocuisine.com/services/articles/1200x630_manger-ensemble-1400.jpg')
+riddle6.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+riddle6.save!
+riddle7 = Riddle.new(
+  title: 'Conclusion',
+  description: 'Conclusion aventure',
+  question: "Félicitation! Votre expédition s'arrête ici, il est temps maintenant de savourer votre précieux butin! Bon appétit!\nEnvoyer 'thanks' pour terminer l'aventure :D",
+  solution: "thanks",
+  motion_type: 'static',
+  place: place4
+)
+file = URI.open('https://images.ricardocuisine.com/services/articles/1200x630_manger-ensemble-1400.jpg')
+riddle7.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+riddle7.save!
 
 p "created #{Game.all.count} games"
 p "created #{Participation.all.count} participations"
