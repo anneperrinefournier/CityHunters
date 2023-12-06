@@ -134,7 +134,7 @@ export default class extends Controller {
     this.riddlesHandleTarget.classList.remove('d-none')
     this.introductionTarget.classList.add('d-none')
     this.mapTarget.classList.remove('d-none')
-    this.endGameButtonTarget.classList.remove("d-none")
+    // this.endGameButtonTarget.classList.remove("d-none")
 
     if (this.displayAnswerBtnTarget) {
       this.displayAnswerBtnTarget.classList.remove('d-none')
