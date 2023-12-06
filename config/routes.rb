@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :storylines, only: [:index, :show] do
+  resources :storylines, only: %i[index show] do
     resources :games, only: [:create]
   end
 

@@ -1,19 +1,11 @@
 class RiddlesController < ApplicationController
   def verify
-    riddle = Riddle.find(params[:riddle_id].to_i)
-    game = Game.find(params[:game_id].to_i)
-    @game = game
+    @game = Game.find(params[:game_id].to_i)
 
-    user_answer = Answer.new(
-      game: game,
-      participation: Participation.find_by(user: current_user),
-      riddle: riddle,
-      content: params.dig(:question, :answer)
-    )
-    user_answer.save!
+    user_answer = create_answer(params)
 
     # check if the answer is correct
-    if user_answer.content == riddle.solution
+    if user_answer&.correct
       user_answer.update(correct: true)
 
       render json: {
@@ -22,29 +14,29 @@ class RiddlesController < ApplicationController
       }
 
       GameChannel.broadcast_to(
-        "game-#{game.id}",
+        "game-#{@game.id}",
         {
           action: 'toast',
           type: 'html',
-          text: "#{current_user.name} a trouvé l’énigme!"
+          text: "#{current_user.name} a résolu l’énigme!"
         }
       )
 
-      if game.current_place.nil?
-        game.update(status: :ended)
+      if @game.current_place.nil?
+        @game.update(status: :ended)
 
         GameChannel.broadcast_to(
-          "game-#{game.id}",
+          "game-#{@game.id}",
           {
             action: 'update_game_content',
             type: 'html',
-            game_status: game.status,
+            game_status: @game.status,
             content: render_to_string(partial: "/games/end_game", formats: [:html])
           }
         )
 
         GameChannel.broadcast_to(
-          "game-#{game.id}",
+          "game-#{@game.id}",
           {
             action: 'toast',
             type: 'html',
@@ -53,12 +45,12 @@ class RiddlesController < ApplicationController
         )
       else
         GameChannel.broadcast_to(
-          "game-#{game.id}",
+          "game-#{@game.id}",
           {
             action: 'update_riddle',
             type: 'html',
-            game_status: game.status,
-            content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: game })
+            game_status: @game.status,
+            content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: @game })
           }
         )
       end
@@ -68,6 +60,52 @@ class RiddlesController < ApplicationController
         status: :error,
         message: "Incorrect answer. You can try again!"
       }
+    end
+  end
+
+  private
+
+  def create_answer(params)
+    riddle = Riddle.find(params[:riddle_id].to_i)
+    participation = Participation.find_by(user: current_user)
+
+    if riddle.motion_type == 'shifting' &&
+       params['answer_type'] == 'new_shifting_answer'
+
+      user_answer = Answer.new(
+        game: @game,
+        participation: Participation.find_by(user: current_user),
+        riddle: riddle,
+        content: "Lat:#{params['latitude']},Lng:#{params['longitude']}"
+      )
+      user_answer.save!
+
+      default_radius = 1 #km
+      places_near = Place.near([participation.latitude, participation.longitude], default_radius)
+      next_place = @game.upcoming_places[1] # The index 0 is the current place
+
+      user_answer.update(correct: true) unless places_near.count(next_place.id).zero?
+
+      return user_answer
+    end
+
+    if riddle.motion_type == 'static' &&
+       params['answer_type'] == 'new_static_answer'
+
+      user_answer = Answer.new(
+        game: @game,
+        participation: Participation.find_by(user: current_user),
+        riddle: riddle,
+        content: params.dig(:question, :answer)
+      )
+      user_answer.save!
+
+      solutions_words = riddle.solution.downcase.split
+      if riddle.solution.empty? || user_answer.content.downcase.split.any? { |word| solutions_words.include?(word) }
+        user_answer.update(correct: true)
+      end
+
+      return user_answer
     end
   end
 end

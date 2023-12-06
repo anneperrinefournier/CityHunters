@@ -1,19 +1,48 @@
 <%#= render 'shared/scripts/toastify' %>
 
-<div class="container m-3">
+<div class="container m-3 pages-backscreen">
     <h1>Félicitations! Vous avez terminé <% @game.storyline.title %> </h1>
     <%= cl_image_tag @game.storyline.photo.key, alt: (@game.storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
     <h2>Temps de jeu</h2>
     <%# <p>Durée:<%#= format_duration(@game.end_time - @game.start_time) %></p>
     <p>Un temps record!</p>
+<%# <div class= "pages-backscreen"> %>
 
-    <h2>Ton score</h2>
-    <h1 style="color: gold;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></h1>
-    <p>Tu as fini en un <strong>temps record!</strong> </p>
-    <p>Incroyable, tu as eu besoin de moins de <strong>3 indices</strong> pour terminer!</p>
+  <div class="background-top-title">
+    <div class="menu">
+      <div class="menu-title"><h4><%= @game.storyline.title %></h4></div>
+
+    </div>
+  </div>
+
+  <div class="p-3 my-3">
+    <div class="folder-endgame">
+      <%= cl_image_tag @game.storyline.photo.key, alt: (@game.storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
+    <div><h5>Félicitations !</h5>
+    <p>Vous avez terminé le jeu de piste <%= @game.storyline.title %> !</p>
+    </div>
+
+    <div class="scoring">
+      <div class="d-flex gap-2">
+        <h5>Ton score :</h5><p style="color: gold;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></h1>
+      </div>
+
+      <p>Tu as fini en un <strong>temps record!</strong> </p>
+      <p>Incroyable, tu as eu besoin de moins de <strong>3 indices</strong> pour terminer!</p>
+      <p>Temps de jeu :</p> 
+      <p>Durée : <%#= format_duration(@game.end_time - @game.start_time) %></p>
+      <p>Un temps record !</p>
+    </div>
 
     <h2>Expérience</h2>
     <p>Tu as gagné <strong>380 xp</strong> !</p>
+<<<<<<< HEAD
 
     <%= link_to "Retour au menu principal", root_path, class:"btn-home" %>
+=======
+</div>
+    <%= link_to "Retour au menu principal", root_path, class:"btn btn-secondary" %>
+    </div>
+>>>>>>> d9c3c957a5dc7c19365dc009fe79224f1fb44ae4
   </div>
+</div>

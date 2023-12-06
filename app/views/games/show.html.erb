@@ -1,32 +1,48 @@
-<div data-controller="game"
-  data-game-target="pageHandle"
-  data-game-id-value="<%= @game.id %>"
-  data-game-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-  data-game-markers-value="<%= @markers.to_json %>"
-  data-game-participations-markers-value="<%= @participations_markers.to_json %>"
-  data-game-participation-id-value="<%= current_user.find_participation_for(@game).id %>">
+<div class="big-container" style= "width: 100vw; overflow-x: hidden;" data-controller="swipe-map">
 
-  <div class="container">
-    <div class="riddles-container d-none" data-game-target="riddlesHandle">
-      <%= render 'game_state', game: @game %>
-    </div>
+  <div class="rectangle-swipe" data-action="click->swipe-map#swipe" data-swipe-map-target="police">
+    <p data-swipe-map-target="showmap">MAP</p>
+  </div>
 
-    <div class="intro-card">
-      <div class="mt-3 mb-3 story-introduction" data-game-target="introduction">
-        <h1>Introduction</h1>
-        <%= cl_image_tag @storyline.photo.key, alt: (@storyline.title + "-picture"), class: "intro-img"%>
-        <p><%= @storyline.introduction %></p>
-        <div class="d-flex justify-content-center">
-          <button class="btn-home" data-action="click->game#closeIntroduction">C'est parti!</button>
+  <div class="burger-menu dropdown">
+    <i class="fa-solid fa-bars btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    </i>
+    <%= render 'shared/burger'%>
+  </div>
+
+  <div data-controller="game"
+    data-game-target="pageHandle"
+    data-game-game-id-value="<%= @game.id %>"
+    data-game-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    data-game-markers-value="<%= @markers.to_json %>"
+    data-game-participations-markers-value="<%= @participations_markers.to_json %>"
+    data-game-participation-id-value="<%= current_user.find_participation_for(@game).id %>">
+
+    <div class="second-big-container" style="width: 200vw; display: flex; transition: all ease 0.5s; overflow-y: auto;"  data-swipe-map-target="unroll">
+
+      <div style="width: 100vw; overflow: hidden;">
+        <div class="container">
+          <div class="riddles-container d-none" data-game-target="riddlesHandle">
+            <%= render 'game_state', game: @game %>
+          </div>
+
+          <div class="mt-3 mb-3 story-introduction" data-game-target="introduction">
+            <h1>Introduction</h1>
+            <%= cl_image_tag @storyline.photo.key, alt: (@storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
+            <p><%= @storyline.introduction %></p>
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-primary" data-action="click->game#closeIntroduction">C'est parti!</button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="map-position">
-        <%= render 'map' %>
+      <div class="" style="width: 100vw; overflow-y: auto;">
+        <div class="parent sticky">
+            <%= render 'map' %>
+        </div>
       </div>
     </div>
-
-
     <div class="mt-3 mb-3 d-none" data-game-target="endGameButton">
       <button class="btn btn-danger" data-action="click->game#endGame">Fin de partie</button>
     </div>

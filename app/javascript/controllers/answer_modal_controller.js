@@ -9,24 +9,29 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log('Answer modal controller connected')
     this.token = document.querySelector('meta[name="csrf-token"]').content
   }
 
-  openModal() {
-    this.element.style.display = "block";
-    this.formTarget.querySelector('input').focus();
+  // openModal() {
+  //   this.element.style.display = "block";
+  //   this.formTarget.querySelector('input').focus();
+
+  openModal(event) {
+    const modal = document.getElementById("myModal");
+    modal.style.display = "block";
+    this.formTarget.querySelector('#question_answer').focus();
   }
 
   closeModal() {
     this.element.style.display = "none";
   }
 
-  async verifyAnswer(evt) {
-    evt.preventDefault();
-    evt.stopPropagation();
+  async verifyAnswer(event) {
+    event.preventDefault();
+    event.stopPropagation();
 
     let userResponse = new FormData(this.formTarget)
+    userResponse.append('answer_type', 'new_static_answer');
     userResponse.append('game_id', this.gameIdValue)
     userResponse.append('riddle_id', this.riddleIdValue)
 
@@ -39,9 +44,10 @@ export default class extends Controller {
       body: userResponse
     }
 
-    const response =  await fetch(`/verify`, options);
+    const response = await fetch(`/verify`, options);
     const data = await response.json()
 
+<<<<<<< HEAD
       if (data.status === "ok") {
         this.closeModalTarget.click();
         this.closeModal();
@@ -49,5 +55,12 @@ export default class extends Controller {
         console.log(data)
         alert(data.message);
       };
+=======
+    if (data.status === "ok") {
+      this.closeModal();
+    } else {
+      alert(data.message);
+    };
+>>>>>>> d9c3c957a5dc7c19365dc009fe79224f1fb44ae4
   }
 }
