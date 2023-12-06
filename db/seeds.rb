@@ -527,6 +527,7 @@ answer6 = Answer.new(
 )
 answer6.save!
 
+
 # Storyline: L'appel de la bouffe
 storyline = Storyline.new(
   title: "Alerte Estomac!",
@@ -661,7 +662,6 @@ riddle7 = Riddle.new(
 file = URI.open('https://images.ricardocuisine.com/services/articles/1200x630_manger-ensemble-1400.jpg')
 riddle7.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
 riddle7.save!
-
 
 p "created #{Game.all.count} games"
 p "created #{Participation.all.count} participations"
