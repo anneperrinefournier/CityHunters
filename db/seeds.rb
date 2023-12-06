@@ -308,6 +308,7 @@ file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
 place8.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place8.save!
 
+
 riddle1 = Riddle.new(
   title: 'Horse color',
   description: 'riddle 1 : horse color',
