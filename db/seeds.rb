@@ -395,7 +395,7 @@ riddle6 = Riddle.new(
 riddle7 = Riddle.new(
   title: 'Le blason du Wagon',
   description: 'Te voilà arrivé au point de départ, où tout a commencé : Le Wagon. C’est ici que le vol a eu lieu. Les témoins t’indiquent que le blason du Wagon, qui est affiché, semble avoir été déplacé. Tu t’approches, dans l’espoir de trouver un indice.',
-  solution: 'un wagon',
+  solution: 'un bus',
   question: 'Quel est le blason du Wagon ?',
   motion_type: 'static',
   place: place9
@@ -403,23 +403,23 @@ riddle7 = Riddle.new(
 
 riddle8 = Riddle.new(
   title: 'À la poursuite du voleur',
-  description: "Tu trouves derrière le blason un papier. Une énigme a été écrite dessus :
-  'Où l’esprit de Voltaire flirte avec la foi,
-  Au cœur du mystère, dans le 11ᵉ,
+  description: "Tu trouves derrière le blason un papier. Une énigme a été écrite dessus :\n
+  'Où l’esprit de Voltaire flirte avec la foi,\n
+  Au cœur du mystère, dans le 11ᵉ,\n
   Le voleur du code se cache, prêt à fuir.' ?",
-  solution: 'Arsène Lupin',
-  question: 'Trouve ',
+  solution: 'blablabla',
+  question: 'Trouve le lieu où se cache le voleur.',
   motion_type: 'shifting',
   place: place9
 )
 
 riddle9 = Riddle.new(
   title: 'Le nom du voleur',
-  description: "Quand tu arrives sur place, le voleur a déjà disparu, mais il a laissé le code volé avec un mot dessus :
-  'Je suis l’énigmatique gentleman des ombres, où l’intrigue s’épanouit,
-  Mes prouesses brillent dans la nuit, mystère d’une époque révolue.
-  Création d’une plume habile, mon nom résonne dans l’écho,
-  Charmeur des larcins, je voulais le code, je le rends avec flegme. Qui suis-je ?",
+  description: "Quand tu arrives sur place, le voleur a déjà disparu, mais il a laissé le code volé avec un mot dessus :\n
+  'Je suis l’énigmatique gentleman des ombres, où l’intrigue s’épanouit,\n
+  Mes prouesses brillent dans la nuit, mystère d’une époque révolue.\n
+  Création d’une plume habile, mon nom résonne dans l’écho,\n
+  Charmeur des larcins, je voulais le code, je le rends avec flegme.?",
   solution: 'Arsène Lupin',
   question: 'Quel est le nom du voleur ?',
   motion_type: 'static',
