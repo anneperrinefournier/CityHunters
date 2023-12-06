@@ -77,7 +77,6 @@ storyline2 = Storyline.new(
   distance: 6,
   theme: "aventure numérique",
   difficulty: 3,
-  starting_point: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
   short_description: "Pars à la recherche du Code Perdu du Wagon !",
   long_description: "Plonge dans l'univers numérique du 11e arrondissement avec 'Le Code Perdu du Wagon'. Suis les énigmes cryptiques laissées par un professeur passionné de Ruby on Rails et explore les ruelles du quartier pour dévoiler le trésor caché. Une aventure où le mystère et la programmation se rencontrent.",
   introduction: "Le Wagon, école renommée de programmation à Paris, est en émoi. Un professeur passionné a découvert un vieux manuscrit renfermant un code Ruby on Rails légendaire, mais a mystérieusement disparu. Les participants doivent décoder ses indices dispersés dans le 11e arrondissement pour révéler le trésor caché et démasquer les forces adverses cherchant à s'emparer du précieux code. La course pour le ‘Code Rouge’ commence maintenant !"
