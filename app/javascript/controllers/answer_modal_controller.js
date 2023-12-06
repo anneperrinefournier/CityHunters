@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="answer-modal"
 export default class extends Controller {
-  static targets = ["useranswer", "response", "form", "displayriddle"];
+  static targets = ["useranswer", "response", "form", "displayriddle", "closeModal"];
   static values = {
     gameId: String,
     riddleId: String
@@ -13,14 +13,13 @@ export default class extends Controller {
     this.token = document.querySelector('meta[name="csrf-token"]').content
   }
 
-  openModal(event) {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "block";
-    this.formTarget.querySelector('input').focus(); // Ne fonctionne pas...
+  openModal() {
+    this.element.style.display = "block";
+    this.formTarget.querySelector('input').focus();
   }
+
   closeModal() {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "none";
+    this.element.style.display = "none";
   }
 
   async verifyAnswer(evt) {
@@ -44,6 +43,7 @@ export default class extends Controller {
     const data = await response.json()
 
       if (data.status === "ok") {
+        this.closeModalTarget.click();
         this.closeModal();
       } else {
         console.log(data)

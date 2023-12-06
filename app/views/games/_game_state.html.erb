@@ -1,54 +1,65 @@
-<div class="places-tabs">
-  <ul class="nav nav-pills nav-justified border-bottom" data-game-target="placeTabs" data-action="click->game#switchPanel">
-    <% game.places.each_with_index do |place, index| %>
+<div class="riddle-container d-flex flex-column align-items-center">
+  <div class="places-tabs">
+    <ul class="nav nav-pills nav-justified border-bottom" data-game-target="placeTabs" data-action="click->game#switchPanel">
+      <% game.places.each_with_index do |place, index| %>
+        <% if place.validated?(game) || place == game.current_place %>
+          <li class="nav-item">
+            <button class="nav-link <%= place == game.current_place ? 'active' : '' %>" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate"><%= place.name %></button>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <button class="nav-link" href="#" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate" disabled><%= place.name %></button>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="riddle-card tabs-place mb-3">
+    <% game.places.each_with_index do |place, place_index| %>
       <% if place.validated?(game) || place == game.current_place %>
-        <li class="nav-item">
-          <button class="nav-link <%= place == game.current_place ? 'active' : '' %>" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate"><%= place.name %></button>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <button class="nav-link" href="#" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate" disabled><%= place.name %></button>
-        </li>
+        <div class="riddles-content-container <%= place == game.current_place ? '' : 'd-none' %>" data-game-target="placePanel" data-index="<%= place_index %>">
+          <% place.riddles.each do |riddle| %>
+            <% if riddle.validated?(game) || place.current_riddle(game) == riddle %>
+              <div class="riddle-container">
+                <h1 class="mt-3 text-center border-bottom"><%= riddle.title %></h1>
+                <div class="d-flex justify-content-center">
+                  <% if riddle.photo.attached? %>
+                    <%= cl_image_tag(riddle.photo.key, width: 300, height: 300, crop: fill) %>
+                  <% else %>
+                    <%= cl_image_tag('compass', width: 300, height: 300, crop: 'fill', class:"riddle-picture") %>
+                  <% end %>
+                </div>
+                <div class="mt-3">
+                  <p><%= riddle.question %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
-  </ul>
+  </div>
+
+  <br>
+
+  <div class='d-flex justify-content-center d-none'
+    data-controller="answer-modal"
+    data-game-target="displayAnswerBtn"
+    data-answer-modal-game-id-value="<%= game.id %>"
+    data-answer-modal-riddle-id-value="<%= game.current_place.current_riddle(game).id %>">
+
+    <button type="button" class="btn-home" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Répondre
+    </button>
+      <%# if game.current_place.nil? %>
+        <%= render "games/answer_modal", riddle: game.current_place.current_riddle(game), game: game %>
+      <%# end %>
+      <div data-answer-modal-target="displayriddle"></div>
+  </div>
 </div>
 
-<div class="tabs-place">
-  <% game.places.each_with_index do |place, place_index| %>
-    <% if place.validated?(game) || place == game.current_place %>
-      <div class="riddles-content-container <%= place == game.current_place ? '' : 'd-none' %>" data-game-target="placePanel" data-index="<%= place_index %>">
-        <% place.riddles.each do |riddle| %>
-          <% if riddle.validated?(game) || place.current_riddle(game) == riddle %>
-            <div class="riddle-container">
-              <h1 class="mt-3 text-center border-bottom"><%= riddle.title %></h1>
-              <div class="d-flex justify-content-center">
-                <% if riddle.photo.attached? %>
-                  <%= cl_image_tag(riddle.photo.key, width: 300, height: 300, crop: fill) %>
-                <% else %>
-                  <%= cl_image_tag('compass', width: 300, height: 300, crop: 'fill', class:"riddle-picture") %>
-                <% end %>
-              </div>
-              <div class="mt-3">
-                <p><%= riddle.question %></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
 
-<div class='d-flex justify-content-center d-none'
-  data-controller="answer-modal"
-  data-game-target="displayAnswerBtn"
-  data-answer-modal-game-id-value="<%= game.id %>"
-  data-answer-modal-riddle-id-value="<%= game.current_place.current_riddle(game).id %>">
+<!-- Button trigger modal -->
 
-  <button class="btn btn-primary" data-action="click->answer-modal#openModal">Répondre</button>
-    <%# if game.current_place.nil? %>
-      <%= render "games/answer_modal", riddle: game.current_place.current_riddle(game), game: game %>
-    <%# end %>
-    <div data-answer-modal-target="displayriddle"></div>
-</div>
+<!-- Modal -->

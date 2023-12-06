@@ -11,18 +11,21 @@
       <%= render 'game_state', game: @game %>
     </div>
 
-    <div class="mt-3 mb-3 story-introduction" data-game-target="introduction">
-      <h1>Introduction</h1>
-      <%= cl_image_tag @storyline.photo.key, alt: (@storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
-      <p><%= @storyline.introduction %></p>
-      <div class="d-flex justify-content-center">
-        <button class="btn btn-primary" data-action="click->game#closeIntroduction">C'est parti!</button>
+    <div class="intro-card">
+      <div class="mt-3 mb-3 story-introduction" data-game-target="introduction">
+        <h1>Introduction</h1>
+        <%= cl_image_tag @storyline.photo.key, alt: (@storyline.title + "-picture"), class: "intro-img"%>
+        <p><%= @storyline.introduction %></p>
+        <div class="d-flex justify-content-center">
+          <button class="btn-home" data-action="click->game#closeIntroduction">C'est parti!</button>
+        </div>
+      </div>
+
+      <div class="map-position">
+        <%= render 'map' %>
       </div>
     </div>
 
-    <div class="map-position">
-      <%= render 'map' %>
-    </div>
 
     <div class="mt-3 mb-3 d-none" data-game-target="endGameButton">
       <button class="btn btn-danger" data-action="click->game#endGame">Fin de partie</button>
