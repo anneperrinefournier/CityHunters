@@ -2,8 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="burger"
 export default class extends Controller {
+  static values = { gameId: Number };
+
   connect() {
-    console.log("Happy meal or maxi best of?")
+    console.log("Happy meal or maxi best of?");
+    console.log(this.gameIdValue);
   }
 
   goProfile() {
@@ -11,6 +14,7 @@ export default class extends Controller {
   }
 
   async endGame() {
+    console.log(this.gameIdValue)
     const options = {
       method: 'GET',
       headers: {
