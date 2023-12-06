@@ -23,8 +23,8 @@
             <div class="riddle-container">
               <h1 class="mt-3 text-center border-bottom"><%= riddle.title %></h1>
               <div class="d-flex justify-content-center">
-                <% if riddle.photo.attached? %>
-                  <%= cl_image_tag(riddle.photo.key, width: 300, height: 300, crop: 'fill') %>
+                <% if place.photo.attached? %>
+                  <%= cl_image_tag(place.photo.key, width: 300, height: 300, crop: 'fill') %>
                 <% else %>
                   <%= cl_image_tag('compass', width: 300, height: 300, crop: 'fill', class:"riddle-picture") %>
                 <% end %>
