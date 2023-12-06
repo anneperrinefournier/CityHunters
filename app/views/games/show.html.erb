@@ -4,6 +4,12 @@
     <p data-swipe-map-target="showmap">MAP</p>
   </div>
 
+  <div class="burger-menu dropdown">
+    <i class="fa-solid fa-bars btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    </i>
+    <%= render 'shared/burger'%>
+  </div>
+
   <div data-controller="game"
     data-game-target="pageHandle"
     data-game-game-id-value="<%= @game.id %>"
