@@ -19,12 +19,17 @@ export default class extends Controller {
       this.policeTarget.style.marginLeft = "400px";
       this.showmapTarget.classList.remove("font-police");
       this.showmapTarget.style.marginLeft = "-14px";
+      this.showmapTarget.innerText = "MAP"
+      this.showmapTarget.style.letterSpacing = "8px";
+
 
     } else {
       this.unrollTarget.style.transform = "translateX(-100vw)";
       this.policeTarget.style.marginLeft = "-30px";
       this.showmapTarget.classList.add("font-police");
       this.showmapTarget.style.marginLeft = "14px";
+      this.showmapTarget.innerText = "ENIGMES"
+      this.showmapTarget.style.letterSpacing = "2px";
     }
   };
 }
