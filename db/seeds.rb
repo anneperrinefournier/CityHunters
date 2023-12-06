@@ -85,7 +85,7 @@ storyline2 = Storyline.new(
   distance: 6,
   theme: "aventure numérique",
   difficulty: 3,
-  starting_point: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
+  starting_point: "68 avenue Parmentier, 75011 Paris, France",
   short_description: "Pars à la recherche du Code Perdu du Wagon !",
   long_description: "Plonge dans l'univers numérique du 11ᵉ arrondissement avec 'Le Code Perdu du Wagon'. Suis les énigmes cryptiques laissées par un professeur passionné de Ruby on Rails et explore les ruelles du quartier pour dévoiler le trésor caché. Une aventure où le mystère et la programmation se rencontrent.",
   introduction: "Le Wagon, école renommée de programmation à Paris, est en émoi. Un professeur passionné a découvert un vieux manuscrit renfermant un code Ruby on Rails légendaire, mais a mystérieusement disparu. Les participants doivent décoder ses indices dispersés dans le 11ᵉ arrondissement pour révéler le trésor caché et démasquer les forces adverses cherchant à s'emparer du précieux code. La course pour le ‘Code Rouge’ commence maintenant !"
@@ -319,12 +319,33 @@ file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
 place8.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
 place8.save!
 
+place9 = Place.new(
+  name: "Le Wagon",
+  address: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
+  description: "Le Wagon est un espace dédié à l'apprentissage de la programmation informatique. Situé au 68 Avenue Parmentier dans le 11e arrondissement de Paris, Le Wagon offre un environnement dynamique où les participants peuvent découvrir et développer leurs compétences en matière de codage. Que vous soyez débutant ou expérimenté, Le Wagon propose des programmes éducatifs stimulants pour tous les niveaux, faisant de cet endroit un lieu incontournable pour les passionnés de technologie et d'innovation.",
+  storyline: storyline2
+)
+file = URI.open("https://i.ibb.co/Kmjtv1T/le-wagon.jpg")
+place9.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place9.save!
+
+place10 = Place.new(
+  name: "Église Saint-Ambroise",
+  address: "71 bis Bd Voltaire, 75011 Paris",
+  description: "Bienvenue à l'Église Saint-Ambroise, un trésor caché au cœur du 11e arrondissement de Paris ! Cette merveille architecturale au 71 bis Boulevard Voltaire est bien plus qu'un simple édifice religieux. Plongez dans l'histoire captivante de ce lieu chargé de mystères.",
+  storyline: storyline2
+)
+file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
+place10.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place10.save!
+
 
 riddle1 = Riddle.new(
   title: 'Horse color',
   description: 'riddle 1 : horse color',
   solution: 'blanc',
   question: 'Quelle est la couleur du cheval blanc d’Henri 4?',
+  motion_type: 'static',
   place: place1
 )
 riddle2 = Riddle.new(
@@ -332,6 +353,7 @@ riddle2 = Riddle.new(
   description: 'riddle 2 : dog color',
   solution: 'rouge',
   question: 'Quelle est la couleur de Pif le chien rouge?',
+  motion_type: 'static',
   place: place1
 )
 riddle3 = Riddle.new(
@@ -339,6 +361,7 @@ riddle3 = Riddle.new(
   description: 'riddle 3 : neighbor cat color',
   solution: 'noir',
   question: 'Quelle est la couleur du chat noir de la voisine?',
+  motion_type: 'static',
   place: place1
 )
 
@@ -347,6 +370,7 @@ riddle4 = Riddle.new(
   description: 'riddle 1 : alexis cat color',
   solution: 'crème',
   question: 'Quelle est la couleur du chat d’Alexis ?',
+  motion_type: 'static',
   place: place2
 )
 
@@ -355,26 +379,78 @@ riddle5 = Riddle.new(
   description: 'riddle 1 : ap cat color',
   solution: 'brun',
   question: 'Quelle est la couleur du chat d’AP ?',
+  motion_type: 'static',
   place: place2
 )
 
 riddle6 = Riddle.new(
   title: 'Horse color',
   description: 'riddle 1 : horse color',
-  solution: 'snow',
+  solution: 'swan',
   question: 'Comment s’appelle le chat de Diane ?',
+  motion_type: 'static',
   place: place2
 )
+
+riddle7 = Riddle.new(
+  title: 'Le blason du Wagon',
+  description: 'Te voilà arrivé au point de départ, où tout a commencé : Le Wagon. C’est ici que le vol a eu lieu. Les témoins t’indiquent que le blason du Wagon, qui est affiché, semble avoir été déplacé. Tu t’approches, dans l’espoir de trouver un indice.',
+  solution: 'un wagon',
+  question: 'Quel est le blason du Wagon ?',
+  motion_type: 'static',
+  place: place9
+)
+
+riddle8 = Riddle.new(
+  title: 'À la poursuite du voleur',
+  description: "Tu trouves derrière le blason un papier. Une énigme a été écrite dessus :
+  'Où l’esprit de Voltaire flirte avec la foi,
+  Au cœur du mystère, dans le 11ᵉ,
+  Le voleur du code se cache, prêt à fuir.' ?",
+  solution: 'Arsène Lupin',
+  question: 'Trouve ',
+  motion_type: 'shifting',
+  place: place9
+)
+
+riddle9 = Riddle.new(
+  title: 'Le nom du voleur',
+  description: "Quand tu arrives sur place, le voleur a déjà disparu, mais il a laissé le code volé avec un mot dessus :
+  'Je suis l’énigmatique gentleman des ombres, où l’intrigue s’épanouit,
+  Mes prouesses brillent dans la nuit, mystère d’une époque révolue.
+  Création d’une plume habile, mon nom résonne dans l’écho,
+  Charmeur des larcins, je voulais le code, je le rends avec flegme. Qui suis-je ?",
+  solution: 'Arsène Lupin',
+  question: 'Quel est le nom du voleur ?',
+  motion_type: 'static',
+  place: place10
+)
+
 riddle1.save!
 riddle2.save!
 riddle3.save!
 riddle4.save!
 riddle5.save!
 riddle6.save!
+riddle7.save!
+riddle8.save!
+riddle9.save!
 
 clue = Clue.new(
-  content: 'il suffit d’écrire la couleur en fait dummy',
-  riddle: riddle1
+  content: 'Je suis un moyen de locomotion.',
+  riddle: riddle7
+)
+clue.save!
+
+clue = Clue.new(
+  content: 'Je porte le même nom que la station de métro et la rue où je me trouve.',
+  riddle: riddle8
+)
+clue.save!
+
+clue = Clue.new(
+  content: 'Mon nom de famille fait écho au loup.',
+  riddle: riddle9
 )
 clue.save!
 
@@ -450,7 +526,6 @@ answer6 = Answer.new(
   participation: participation
 )
 answer6.save!
-
 
 
 p "created #{Game.all.count} games"
