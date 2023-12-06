@@ -3,7 +3,7 @@
     <% game.places.each_with_index do |place, index| %>
       <% if place.validated?(game) || place == game.current_place %>
         <li class="nav-item">
-          <button class="nav-link <%= place == game.current_place ? 'active' : '' %>" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate">
+          <button class="nav-link <%= place == game.current_place ? 'active' : '' %>" data-game-target="placeTab" data-index="<%= index %>" data-action="click->game#activate">
             <% if place.photo.attached? %>
               <%= cl_image_tag(place.photo.key, width: 35, height: 35, crop: 'fill') %>
             <% else %>
@@ -13,7 +13,7 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <button class="nav-link" href="#" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate" disabled>
+          <button class="nav-link" href="#" data-game-target="placeTab" data-index="<%= index %>" data-action="click->game#activate" disabled>
             <%= image_tag('place-locked.png', width: 35, height: 35, crop: 'fill') %>
           </button>
         </li>
