@@ -3,11 +3,19 @@
     <% game.places.each_with_index do |place, index| %>
       <% if place.validated?(game) || place == game.current_place %>
         <li class="nav-item">
-          <button class="nav-link <%= place == game.current_place ? 'active' : '' %>" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate"><%= place.name %></button>
+          <button class="nav-link <%= place == game.current_place ? 'active' : '' %>" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate">
+            <% if place.photo.attached? %>
+              <%= cl_image_tag(place.photo.key, width: 35, height: 35, crop: 'fill') %>
+            <% else %>
+              <%= image_tag('compas.png', width: 35, height: 35, crop: 'fill') %>
+            <% end %>
+          </button>
         </li>
       <% else %>
         <li class="nav-item">
-          <button class="nav-link" href="#" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate" disabled>Not found yet</button>
+          <button class="nav-link" href="#" data-game-target="placeTab"  data-index="<%= index %>" data-action="click->game#activate" disabled>
+            <%= image_tag('place-locked.png', width: 35, height: 35, crop: 'fill') %>
+          </button>
         </li>
       <% end %>
     <% end %>
@@ -26,7 +34,7 @@
                 <% if place.photo.attached? %>
                   <%= cl_image_tag(place.photo.key, width: 300, height: 300, crop: 'fill') %>
                 <% else %>
-                  <%= cl_image_tag('compass', width: 300, height: 300, crop: 'fill', class:"riddle-picture") %>
+                  <%= image_tag('compass.png', width: 300, height: 300, crop: 'fill', class:"riddle-picture") %>
                 <% end %>
               </div>
               <div class="mt-3">
