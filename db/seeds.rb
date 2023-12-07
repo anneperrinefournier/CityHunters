@@ -341,57 +341,6 @@ file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
 place10.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place10.save!
 
-# riddle1 = Riddle.new(
-#   title: 'Horse color',
-#   description: 'riddle 1 : horse color',
-#   solution: 'blanc',
-#   question: 'Quelle est la couleur du cheval blanc d’Henri 4?',
-#   motion_type: 'static',
-#   place: place1
-# )
-# riddle2 = Riddle.new(
-#   title: 'Dog color',
-#   description: 'riddle 2 : dog color',
-#   solution: 'rouge',
-#   question: 'Quelle est la couleur de Pif le chien rouge?',
-#   motion_type: 'static',
-#   place: place1
-# )
-# riddle3 = Riddle.new(
-#   title: 'Cat color',
-#   description: 'riddle 3 : neighbor cat color',
-#   solution: 'noir',
-#   question: 'Quelle est la couleur du chat noir de la voisine?',
-#   motion_type: 'static',
-#   place: place1
-# )
-
-# riddle4 = Riddle.new(
-#   title: 'Horse color',
-#   description: 'riddle 1 : alexis cat color',
-#   solution: 'crème',
-#   question: 'Quelle est la couleur du chat d’Alexis ?',
-#   motion_type: 'static',
-#   place: place2
-# )
-
-# riddle5 = Riddle.new(
-#   title: 'Horse color',
-#   description: 'riddle 1 : ap cat color',
-#   solution: 'brun',
-#   question: 'Quelle est la couleur du chat d’AP ?',
-#   motion_type: 'static',
-#   place: place2
-# )
-
-# riddle6 = Riddle.new(
-#   title: 'Horse color',
-#   description: 'riddle 1 : horse color',
-#   solution: 'swan',
-#   question: 'Comment s’appelle le chat de Diane ?',
-#   motion_type: 'static',
-#   place: place2
-# )
 
 riddle7 = Riddle.new(
   title: 'Le logo du Wagon',
@@ -436,12 +385,6 @@ file = URI.open("https://i.ibb.co/7y22fs2/voleur-code.png")
 riddle9.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
 riddle8.save!
 
-riddle1.save!
-riddle2.save!
-riddle3.save!
-riddle4.save!
-riddle5.save!
-riddle6.save!
 riddle7.save!
 riddle8.save!
 riddle9.save!
@@ -463,80 +406,6 @@ clue = Clue.new(
   riddle: riddle9
 )
 clue.save!
-
-game1 = Game.new(
-  status: 0,
-  start_time: DateTime.now,
-  end_time: DateTime.now + 1.hour,
-  user: monica,
-  storyline: storyline1
-)
-game1.save!
-game1.pin = "AZER"
-game1.save
-
-participation = Participation.new(
-  latitude: 48.8641,
-  longitude: 2.3753,
-  user: monica,
-  game: Game.last
-)
-participation.save!
-
-answer1 = Answer.new(
-  content: "Blablabla",
-  correct: true,
-  game: game1,
-  riddle: riddle1,
-  participation: participation
-)
-answer1.save!
-
-answer2 = Answer.new(
-  content: "Blablabla",
-  correct: true,
-  game: game1,
-  riddle: riddle2,
-  participation: participation
-)
-answer2.save!
-
-answer3 = Answer.new(
-  content: "Blablabla",
-  correct: true,
-  game: game1,
-  riddle: riddle3,
-  participation: participation
-)
-answer3.save!
-
-answer4 = Answer.new(
-  content: "Blablabla",
-  correct: true,
-  game: game1,
-  riddle: riddle4,
-  participation: participation
-)
-answer4.save!
-
-answer5 = Answer.new(
-  content: "Blablabla",
-  correct: false,
-  game: game1,
-  riddle: riddle5,
-  participation: participation
-)
-answer5.save!
-
-answer6 = Answer.new(
-  content: "Blablabla",
-  correct: false,
-  game: game1,
-  riddle: riddle6,
-  participation: participation
-)
-answer6.save!
-
 
 # Storyline: L'appel de la bouffe
 # storyline = Storyline.new(
