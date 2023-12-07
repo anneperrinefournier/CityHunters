@@ -1,12 +1,12 @@
 .regroup {
-  width: 400px;
+  width: 100%;
   height: 100%;
   transform: rotate(-0.5deg);
   margin-bottom: 12px;
 }
 
 .regroup-reverse {
-  width: 400px;
+  width: 100%;
   height: 100%;
   transform: rotate(1deg);
   margin-bottom: 12px;
@@ -15,7 +15,8 @@
 .folder {
   display: flex;
   justify-content: space-between;
-  width: 400px;
+  align-items: center;
+  width: 100%;
   padding: 20px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -24,12 +25,13 @@
   margin-bottom: -40px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding-bottom: 50px;
+  flex-wrap: wrap;
 }
 
 .folder-show {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 100%;
   padding: 20px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -42,7 +44,7 @@
 .folder-endgame {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 100%;
   padding: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: $darkwhite;
@@ -77,17 +79,14 @@
   padding: 8px;
   margin-bottom: -1px;
   background-color: $lightgold;
-
 }
 
 // images pour les cards storylines
 
 .storylines-img {
-  width: 160px;
-  height: 160px;
+  width: 50vw;
+  height: 170px;
   object-fit: cover;
-  display: flex;
-  align-items: center;
 }
 
 // images pour les autres pages en full largeur
@@ -98,20 +97,20 @@
 }
 
 .folder-info {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 10px;
-  max-width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+  flex: 1;
+  width: 100%;
 }
 
 .folder-icons {
   font-size: 16px;
 }
 
-.icons-inline {
-  display: flex;
-  gap: 20px;
-}
+// .icons-inline {
+//   display: flex;
+//   gap: 20px;
+// }
 
 .storyline-title, .show-title {
   width: auto;
@@ -123,6 +122,9 @@
 
 .photo-parent-rating {
   position: relative;
+  max-width: 100%;
+  flex-grow: 2;
+  flex-basis: 0
 }
 
 .rating-child-position {
@@ -134,4 +136,14 @@
 .rating-child-position .fa-star {
   font-size: 14px;
   color: $white;
+}
+
+.folder-pair .folder-info {
+  display: flex;
+  justify-content: flex-end; /* Aligner à droite tout en maintenant aligné à gauche */
+  margin-left: auto; /* Ajout de cette ligne pour aligner à droite */
+}
+
+.folder-pair .folder-info-end {
+  text-align: left; /* Aligner à droite tout en maintenant aligné à gauche */
 }

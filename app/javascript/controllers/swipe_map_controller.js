@@ -32,7 +32,7 @@ export default class extends Controller {
       this.policeTarget.classList.add("swipe-left");
       this.showmapTarget.classList.add("font-police");
       this.showmapTarget.style.marginLeft = "14px";
-      this.showmapTarget.innerText = "ENIGMES"
+      this.showmapTarget.innerText = "ÉNIGMES"
       this.showmapTarget.style.letterSpacing = "2px";
     }
   };
