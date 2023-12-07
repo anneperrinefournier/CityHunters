@@ -2,24 +2,19 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Answer</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-action="click->answer-modal#closeModal">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title"><%= riddle.question %></h5>
       </div>
       <div class="modal-body">
         <%= simple_form_for :question, url: "#", html: { data: { answer_modal_target: "form", action: "submit->answer-modal#verifyAnswer" } } do |f| %>
-          <%= f.input :answer %>
-          <%= f.submit "Submit your answer" %>
+          <%= f.input :answer, label: "Ta réponse :", required: false %>
+          <%= f.submit "Envoyer ma réponse", class: "btn-home" %>
         <% end %>
-
         <div class="d-none" data-answer-modal-target="response">
           <%= riddle.solution %>
         </div>
-
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-action="click->answer-modal#closeModal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-action="click->answer-modal#closeModal">Retour</button>
       </div>
     </div>
   </div>
