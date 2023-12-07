@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
-import mapboxgl from 'mapbox-gl' // Don't forget this!
+import mapboxgl from 'mapbox-gl'
+import Swal from 'sweetalert2';
 
 export default class extends Controller {
   static values = {
@@ -61,6 +62,8 @@ export default class extends Controller {
   }
 
   #handleData(data) {
+    console.log(data)
+
     if (data.data_type === 'redirect') {
       window.location.href = data.url;
       return;
@@ -73,6 +76,7 @@ export default class extends Controller {
     }
 
     if (data.data_type == 'update_riddle') {
+      console.log()
       this.riddlesHandleTarget.innerHTML = data.content;
       this.displayAnswerBtnTarget.classList.remove('d-none');
       this.displayAnswerBtnTarget.scrollIntoView(true)
@@ -93,7 +97,10 @@ export default class extends Controller {
   #showToast(text) {
     Toastify({
       text: text,
-      duration: 3000
+      duration: 3000,
+      style: {
+        background: '#c4ae59'
+      }
     }).showToast()
   }
 
@@ -123,10 +130,17 @@ export default class extends Controller {
     const response = await fetch(`/verify`, options);
     const data = await response.json()
 
-    if (data.status === "ok") {
-      // this.closeModal();
-    } else {
-      alert(data.message);
+    if (data.status != 'ok') {
+
+      Swal.fire({
+        title: data.title,
+        text: data.message,
+        confirmButtonText: data.button_text,
+        customClass: {
+          popup: 'swal-modal',
+          confirmButton: 'btn-home'
+        }
+      })
     };
   }
 
@@ -134,7 +148,6 @@ export default class extends Controller {
     this.riddlesHandleTarget.classList.remove('d-none')
     this.introductionTarget.classList.add('d-none')
     this.mapTarget.classList.remove('d-none')
-    // this.endGameButtonTarget.classList.remove("d-none")
 
     if (this.displayAnswerBtnTarget) {
       this.displayAnswerBtnTarget.classList.remove('d-none')

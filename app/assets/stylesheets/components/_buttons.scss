@@ -22,29 +22,29 @@ margin: 250px auto 0;
   align-items: center;
 
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 22px;
   padding: 12px 20px;
   width: 300px;
   height: 70px;
-  background: $navy;
+  background: $navy !important;
   text-decoration: none;
 }
 
 .btn-home:active{
   background-color: $gold;
-  color: white;
-  border: 4px solide white;
+  color: $darkwhite;
+  border: 4px solide $darkwhite;
 
 }
 
 
 .btn-ugly{
   clip-path: polygon(1% 34%, 4% 10%, 17% 3%, 38% 1%, 68% 4%, 96% 0%, 100% 27%, 99% 71%, 92% 99%, 55% 90%, 23% 100%, 1% 95%);
-  color: white;
+  color: $darkwhite;
   background-color: $navy;
   font-family: Nova Square;
   border-radius: 10px;
-  font-size: 12px;
+  font-size: 16px;
   padding: 12px 20px;
   margin-top: 10px;
   float: right;
@@ -52,5 +52,5 @@ margin: 250px auto 0;
 }
 
 .btn-ugly:active{
-  background-color: red;
+  background-color: #313b4f;
 }

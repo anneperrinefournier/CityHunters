@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import Swal from 'sweetalert2';
 
 // Connects to data-controller="answer-modal"
 export default class extends Controller {
@@ -15,11 +16,13 @@ export default class extends Controller {
   openModal(event) {
     const modal = document.getElementById("myModal");
     modal.style.display = "block";
+    document.body.classList.add("modal-open");
     this.formTarget.querySelector('#question_answer').focus();
   }
   closeModal() {
     const modal = document.getElementById("myModal");
     modal.style.display = "none";
+    document.body.classList.remove("modal-open");
   }
 
   async verifyAnswer(event) {
@@ -46,8 +49,15 @@ export default class extends Controller {
     if (data.status === "ok") {
       this.closeModal();
     } else {
-      console.log(this.formTarget.querySelector('#question_answer').value)
-      alert(data.message);
+      Swal.fire({
+        title: data.title,
+        text: data.message,
+        confirmButtonText: data.button_text,
+        customClass: {
+          popup: 'swal-modal',
+          confirmButton: 'btn-home'
+        }
+      })
       this.formTarget.querySelector('#question_answer').value = '';
       this.formTarget.querySelector('#question_answer').focus();
     };

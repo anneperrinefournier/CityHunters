@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: %i[lobby show start end_game]
-  before_action :set_game_users, only: %i[lobby stats]
+  before_action :set_game_users, only: %i[lobby stats end_game]
 
   def create
     game = Game.create!(
@@ -20,7 +20,6 @@ class GamesController < ApplicationController
   def show
     if @game.status == "not_started" && current_user == @game.user
       @game.running!
-      @start_time = Time.now
     end
 
     if @game.status == "running"
@@ -73,13 +72,19 @@ class GamesController < ApplicationController
   end
 
   def access
-    game = Game.find_by(pin: params[:game][:pin].upcase)
-    participation = Participation.new(
-      game: game,
-      user: current_user
-    )
-    participation.save
-    redirect_to lobby_game_path(game)
+    game_pin = params[:game][:pin].delete(" \t\r\n").upcase
+    game = Game.find_by(pin: game_pin)
+    if game
+      participation = Participation.new(
+        game: game,
+        user: current_user
+      )
+      participation.save
+      redirect_to lobby_game_path(game)
+    else
+      flash[:alert] = "No game with PIN: #{game_pin}"
+      redirect_to join_game_path
+    end
   end
 
   def lobby
@@ -88,7 +93,7 @@ class GamesController < ApplicationController
     LobbyChannel.broadcast_to(
       "lobby-#{@game.id}",
       {
-        action: 'add_player',
+        data_type: 'add_player',
         type: "html",
         html: render_to_string(partial: "player", locals: { user: current_user })
       }
@@ -102,10 +107,11 @@ class GamesController < ApplicationController
 
   def start
     @game.running!
+    @game.update(start_time: Time.now)
     LobbyChannel.broadcast_to(
       "lobby-#{@game.id}",
       {
-        action: "redirect",
+        data_type: "redirect",
         url: game_path(@game)
       }
     )
@@ -113,12 +119,13 @@ class GamesController < ApplicationController
 
   def end_game
     @game.ended!
-    @end_time = Time.now
+
+    @participations = Participation.where(game: @game)
 
     GameChannel.broadcast_to(
       "game-#{@game.id}",
       {
-        action: "update_game_content",
+        data_type: "update_game_content",
         type: 'html',
         game_status: @game.status,
         content: render_to_string(partial: "/games/end_game", formats: [:html], locals: { game: @game })

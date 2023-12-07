@@ -16,19 +16,20 @@ class RiddlesController < ApplicationController
       GameChannel.broadcast_to(
         "game-#{@game.id}",
         {
-          action: 'toast',
+          data_type: 'toast',
           type: 'html',
           text: "#{current_user.name} a résolu l’énigme!"
         }
       )
 
       if @game.current_place.nil?
-        @game.update(status: :ended)
+        # @game.update(status: :ended, end_time: Time.now)
+        @game.ended!
 
         GameChannel.broadcast_to(
           "game-#{@game.id}",
           {
-            action: 'update_game_content',
+            data_type: 'update_game_content',
             type: 'html',
             game_status: @game.status,
             content: render_to_string(partial: "/games/end_game", formats: [:html])
@@ -38,7 +39,7 @@ class RiddlesController < ApplicationController
         GameChannel.broadcast_to(
           "game-#{@game.id}",
           {
-            action: 'toast',
+            data_type: 'toast',
             type: 'html',
             text: "Vous avez gagné la partie!"
           }
@@ -47,7 +48,7 @@ class RiddlesController < ApplicationController
         GameChannel.broadcast_to(
           "game-#{@game.id}",
           {
-            action: 'update_riddle',
+            data_type: 'update_riddle',
             type: 'html',
             game_status: @game.status,
             content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: @game })
@@ -56,9 +57,14 @@ class RiddlesController < ApplicationController
       end
 
     else
+      titles = ["Sapristi !", "Fichtre !", "Pardi !", "Saperlipopette !", "Saperlotte !", "Tonnerre de brest !"]
+      texts = ["La bonne réponse n'est certainement pas loin", "Je suis sûr que tu l'as sur le bout de la langue"]
+      button_text = ["Je ne laisse pas tomber", "Je cherche, je cherche...", "Hum..."]
       render json: {
         status: :error,
-        message: "Incorrect answer. You can try again!"
+        title: titles.sample,
+        message: texts.sample,
+        button_text: button_text.sample
       }
     end
   end
