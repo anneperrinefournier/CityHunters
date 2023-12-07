@@ -20,7 +20,7 @@ export default class extends Controller {
       this.policeTarget.classList.add("swipe-right");
       this.showmapTarget.classList.remove("font-police");
       this.showmapTarget.style.marginLeft = "-14px";
-      this.showmapTarget.innerText = "MAP"
+      this.showmapTarget.innerHTML = '<i class="fa-solid fa-caret-left"></i>';
       this.showmapTarget.style.letterSpacing = "8px";
 
 
@@ -32,7 +32,7 @@ export default class extends Controller {
       this.policeTarget.classList.add("swipe-left");
       this.showmapTarget.classList.add("font-police");
       this.showmapTarget.style.marginLeft = "14px";
-      this.showmapTarget.innerText = "ÉNIGMES"
+      this.showmapTarget.innerHTML = '<i class="fa-solid fa-caret-right"></i>'
       this.showmapTarget.style.letterSpacing = "2px";
     }
   };

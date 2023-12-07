@@ -14,15 +14,18 @@ export default class extends Controller {
   }
 
   openModal(event) {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "block";
-    document.body.classList.add("modal-open");
-    this.formTarget.querySelector('#question_answer').focus();
+    setTimeout(() => {
+      const modal = document.getElementById("myModal");
+      modal.style.display = "block";
+      document.body.classList.add("modal-open");
+      this.formTarget.querySelector('#question_answer').focus();
+    }, 300);
   }
+
   closeModal() {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "none";
     document.body.classList.remove("modal-open");
+    const modal = document.getElementById("myModal");
+    if (modal) modal.style.display = "none";
   }
 
   async verifyAnswer(event) {
