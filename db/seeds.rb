@@ -88,9 +88,9 @@ storyline2 = Storyline.new(
   starting_point: "68 avenue Parmentier, 75011 Paris, France",
   short_description: "Pars à la recherche du Code Perdu du Wagon !",
   long_description: "Suis les énigmes cryptiques pour retrouver le code perdu du wagon à travers les ruelles du quartier. Une aventure où le mystère et la programmation se rencontrent.",
-  introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !
-  Pierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.
-  Heureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !"
+  introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !\n
+  Pierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.\n
+  Heureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !"
 )
 file = URI.open("https://i.ibb.co/SXNkWx0/re-publique.jpg")
 storyline2.photo.attach(io: file, filename: "Code Rouge", content_type: "image/jpg")
@@ -145,7 +145,7 @@ storyline5.photo.attach(io: file, filename: "Le Trésor du Panthéon", content_t
 storyline5.save!
 
 storyline6 = Storyline.new(
-  title: "L'Énigme de Montparnasse",
+  title: "Meurtre à Montparnasse",
   district: "14ᵉ arr.",
   duration: 75,
   distance: 4.5,
@@ -177,7 +177,7 @@ storyline7.photo.attach(io: file, filename: "Le Mystère des Invalides", content
 storyline7.save!
 
 storyline8 = Storyline.new(
-  title: "L'Aventure des Batignolles",
+  title: "Le Secret des Batignolles",
   district: "17ᵉ arr.",
   duration: 90,
   distance: 6,
@@ -191,25 +191,25 @@ storyline8 = Storyline.new(
 file = URI.open("https://i.ibb.co/cv86qGz/17e.webp")
 storyline8.photo.attach(io: file, filename: "L'Aventure des Batignolles", content_type: "image/jpg")
 storyline8.save!
-#
-storyline9 = Storyline.new(
-  title: "Les Secrets du Canal Saint-Martin",
-  district: "10ᵉ arr.",
-  duration: 75,
-  distance: 5,
-  theme: "policier",
-  difficulty: 2,
-  starting_point: "Canal Saint-Martin, 10th arrondissement, Paris, France",
-  short_description: "Découvre les secrets du Canal Saint-Martin.",
-  long_description: "Plonge dans les mystères du 10ᵉ arrondissement le long du Canal Saint-Martin. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique.",
-  introduction: "Bienvenue dans 'Les Secrets du Canal Saint-Martin', une aventure mystérieuse dans le 10ᵉ arrondissement de Paris. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique."
-)
-file = URI.open("https://www.pariszigzag.fr/wp-content/uploads/2021/06/shutterstock_247992964-e1624458172598.jpg")
-storyline9.photo.attach(io: file, filename: "Les Secrets du Canal Saint-Martin", content_type: "image/jpg")
-storyline9.save!
-#
+
+# storyline9 = Storyline.new(
+#   title: "Piège au Canal Saint-Martin",
+#   district: "10ᵉ arr.",
+#   duration: 75,
+#   distance: 5,
+#   theme: "policier",
+#   difficulty: 2,
+#   starting_point: "Canal Saint-Martin, 10th arrondissement, Paris, France",
+#   short_description: "Découvre les secrets du Canal Saint-Martin.",
+#   long_description: "Plonge dans les mystères du 10ᵉ arrondissement le long du Canal Saint-Martin. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique.",
+#   introduction: "Bienvenue dans 'Les Secrets du Canal Saint-Martin', une aventure mystérieuse dans le 10ᵉ arrondissement de Paris. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique."
+# )
+# file = URI.open("https://www.pariszigzag.fr/wp-content/uploads/2021/06/shutterstock_247992964-e1624458172598.jpg")
+# storyline9.photo.attach(io: file, filename: "Les Secrets du Canal Saint-Martin", content_type: "image/jpg")
+# storyline9.save!
+
 storyline10 = Storyline.new(
-  title: "L'Évasion de Montorgueil",
+  title: "L’Évasion de Montorgueil",
   district: "2ᵉ arr.",
   duration: 60,
   distance: 3.5,
@@ -225,7 +225,7 @@ storyline10.photo.attach(io: file, filename: "L'Évasion de Montorgueil", conten
 storyline10.save!
 
 storyline11 = Storyline.new(
-  title: "Les Énigmes du Marais",
+  title: "Le Mystère du Marais",
   district: "4ᵉ arr.",
   duration: 75,
   distance: 3,
@@ -241,179 +241,133 @@ storyline11.photo.attach(io: file, filename: "Les Énigmes du Marais", content_t
 storyline11.save!
 
 
-place1 = Place.new(
-  name: "Place Royale",
-  address: "1 Place des Vosges, 75004 Paris, France",
-  description: "La Place Royale, également connue sous le nom de Place des Vosges, est une place historique entourée d'élégants pavillons. Construite au XVIIe siècle, elle est le joyau du Marais.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/zPRMvVy/vosges.jpg")
-place1.photo.attach(io: file, filename: "Vosges", content_type: "image/jpg")
-place1.save!
+# place1 = Place.new(
+#   name: "Place Royale",
+#   address: "1 Place des Vosges, 75004 Paris, France",
+#   description: "La Place Royale, également connue sous le nom de Place des Vosges, est une place historique entourée d'élégants pavillons. Construite au XVIIe siècle, elle est le joyau du Marais.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/zPRMvVy/vosges.jpg")
+# place1.photo.attach(io: file, filename: "Vosges", content_type: "image/jpg")
+# place1.save!
 
-place2 = Place.new(
-  name: "Palais du Louvre",
-  address: "Rue de Rivoli, 75001 Paris, France",
-  description: "Le Palais du Louvre, ancienne résidence royale, est aujourd'hui l'un des plus grands musées du monde. Avec ses vastes collections artistiques, il est un incontournable du 1ᵉʳ arrondissement.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place2.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
-place2.save!
+# place2 = Place.new(
+#   name: "Palais du Louvre",
+#   address: "Rue de Rivoli, 75001 Paris, France",
+#   description: "Le Palais du Louvre, ancienne résidence royale, est aujourd'hui l'un des plus grands musées du monde. Avec ses vastes collections artistiques, il est un incontournable du 1ᵉʳ arrondissement.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
+# place2.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
+# place2.save!
 
-place3 = Place.new(
-  name: "Église Saint-Germain-l'Auxerrois",
-  address: "2 Place du Louvre, 75001 Paris, France",
-  description: "Cette église, située à proximité du Louvre, est connue pour son architecture gothique et son histoire étroitement liée à la royauté française. Un lieu empreint de spiritualité et d'histoire.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/KhjR0L8/saint-germains.jpg")
-place3.photo.attach(io: file, filename: "St germain", content_type: "image/jpg")
-place3.save!
+# place3 = Place.new(
+#   name: "Église Saint-Germain-l'Auxerrois",
+#   address: "2 Place du Louvre, 75001 Paris, France",
+#   description: "Cette église, située à proximité du Louvre, est connue pour son architecture gothique et son histoire étroitement liée à la royauté française. Un lieu empreint de spiritualité et d'histoire.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/KhjR0L8/saint-germains.jpg")
+# place3.photo.attach(io: file, filename: "St germain", content_type: "image/jpg")
+# place3.save!
 
-place4 = Place.new(
-  name: "Fontaine des Innocents",
-  address: "Place Joachim du Bellay, 75001 Paris, France",
-  description: "La Fontaine des Innocents est une fontaine Renaissance richement décorée. Construite au XVIe siècle, elle a été déplacée à son emplacement actuel au cœur du 1ᵉʳ arrondissement.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place4.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
-place4.save!
+# place4 = Place.new(
+#   name: "Fontaine des Innocents",
+#   address: "Place Joachim du Bellay, 75001 Paris, France",
+#   description: "La Fontaine des Innocents est une fontaine Renaissance richement décorée. Construite au XVIe siècle, elle a été déplacée à son emplacement actuel au cœur du 1ᵉʳ arrondissement.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
+# place4.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
+# place4.save!
 
-place5 = Place.new(
-  name: "Théâtre du Châtelet",
-  address: "1 Place du Châtelet, 75001 Paris, France",
-  description: "Le Théâtre du Châtelet est un théâtre historique au style Belle Époque. Il est réputé pour ses productions musicales et sa contribution à la scène artistique parisienne.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place5.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
-place5.save!
+# place5 = Place.new(
+#   name: "Théâtre du Châtelet",
+#   address: "1 Place du Châtelet, 75001 Paris, France",
+#   description: "Le Théâtre du Châtelet est un théâtre historique au style Belle Époque. Il est réputé pour ses productions musicales et sa contribution à la scène artistique parisienne.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
+# place5.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
+# place5.save!
 
-place6 = Place.new(
-  name: "Palais Royal",
-  address: "8 Rue de Montpensier, 75001 Paris, France",
-  description: "Le Palais Royal, résidence autrefois royale, est entouré de jardins élégants. Avec ses colonnes rayées emblématiques et son histoire fascinante, il reste un joyau du 1ᵉʳ arrondissement.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place6.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
-place6.save!
+# place6 = Place.new(
+#   name: "Palais Royal",
+#   address: "8 Rue de Montpensier, 75001 Paris, France",
+#   description: "Le Palais Royal, résidence autrefois royale, est entouré de jardins élégants. Avec ses colonnes rayées emblématiques et son histoire fascinante, il reste un joyau du 1ᵉʳ arrondissement.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
+# place6.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
+# place6.save!
 
-place7 = Place.new(
-  name: "Colonnes de Buren",
-  address: "Palais Royal, 75001 Paris, France",
-  description: "Les Colonnes de Buren, situées dans la cour du Palais Royal, sont une installation artistique contemporaine. Leurs colonnes rayées offrent un contraste unique avec l'histoire du lieu.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place7.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
-place7.save!
+# place7 = Place.new(
+#   name: "Colonnes de Buren",
+#   address: "Palais Royal, 75001 Paris, France",
+#   description: "Les Colonnes de Buren, situées dans la cour du Palais Royal, sont une installation artistique contemporaine. Leurs colonnes rayées offrent un contraste unique avec l'histoire du lieu.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
+# place7.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
+# place7.save!
 
-place8 = Place.new(
-  name: "Jardins des Tuileries",
-  address: "Rue de Rivoli, 75001 Paris, France",
-  description: "Les Jardins des Tuileries, adjacents au Louvre, sont des jardins à la française classiques. Leur conception élégante et leurs statues impressionnantes en font un lieu de promenade incontournable.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place8.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
-place8.save!
+# place8 = Place.new(
+#   name: "Jardins des Tuileries",
+#   address: "Rue de Rivoli, 75001 Paris, France",
+#   description: "Les Jardins des Tuileries, adjacents au Louvre, sont des jardins à la française classiques. Leur conception élégante et leurs statues impressionnantes en font un lieu de promenade incontournable.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
+# place8.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
+# place8.save!
 
 place9 = Place.new(
   name: "Le Wagon",
-  address: "68 Avenue Parmentier, 75011 Paris, France",
-  description: "Le Wagon est un espace dédié à l'apprentissage de la programmation informatique. Situé au 68 Avenue Parmentier dans le 11e arrondissement de Paris, Le Wagon offre un environnement dynamique où les participants peuvent découvrir et développer leurs compétences en matière de codage. Que vous soyez débutant ou expérimenté, Le Wagon propose des programmes éducatifs stimulants pour tous les niveaux, faisant de cet endroit un lieu incontournable pour les passionnés de technologie et d'innovation.",
+  address: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
+  description: "Le Wagon est un espace dédié à l’apprentissage de la programmation informatique. Situé au 68 Avenue Parmentier dans le 11ᵉ arrondissement de Paris, l’école offre un environnement dynamique où les participants peuvent découvrir et développer leurs compétences en matière de codage. Le Wagon propose des programmes éducatifs stimulants pour tous les niveaux. C’est un lieu incontournable pour les passionnés de technologie et d’innovation.",
   storyline: storyline2
 )
 file = URI.open("https://i.ibb.co/Kmjtv1T/le-wagon.jpg")
-place9.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place9.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place9.save!
 
 place10 = Place.new(
   name: "Église Saint-Ambroise",
   address: "71 bis Bd Voltaire, 75011 Paris",
-  description: "Bienvenue à l'Église Saint-Ambroise, un trésor caché au cœur du 11e arrondissement de Paris ! Cette merveille architecturale au 71 bis Boulevard Voltaire est bien plus qu'un simple édifice religieux. Plongez dans l'histoire captivante de ce lieu chargé de mystères.",
+  description: "Bienvenue à l'Église Saint-Ambroise, un trésor caché au cœur du 11ᵉ arrondissement de Paris ! Cette merveille architecturale au 71 bis Boulevard Voltaire est bien plus qu'un simple édifice religieux. Plongez dans l'histoire captivante de ce lieu chargé de mystères.",
   storyline: storyline2
 )
 file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
-place10.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place10.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place10.save!
 
 
-riddle1 = Riddle.new(
-  title: 'Horse color',
-  description: 'riddle 1 : horse color',
-  solution: 'blanc',
-  question: 'Quelle est la couleur du cheval blanc d’Henri 4?',
-  motion_type: 'static',
-  place: place1
-)
-riddle2 = Riddle.new(
-  title: 'Dog color',
-  description: 'riddle 2 : dog color',
-  solution: 'rouge',
-  question: 'Quelle est la couleur de Pif le chien rouge?',
-  motion_type: 'static',
-  place: place1
-)
-riddle3 = Riddle.new(
-  title: 'Cat color',
-  description: 'riddle 3 : neighbor cat color',
-  solution: 'noir',
-  question: 'Quelle est la couleur du chat noir de la voisine?',
-  motion_type: 'static',
-  place: place1
-)
-
-riddle4 = Riddle.new(
-  title: 'Horse color',
-  description: 'riddle 1 : alexis cat color',
-  solution: 'crème',
-  question: 'Quelle est la couleur du chat d’Alexis ?',
-  motion_type: 'static',
-  place: place2
-)
-
-riddle5 = Riddle.new(
-  title: 'Horse color',
-  description: 'riddle 1 : ap cat color',
-  solution: 'brun',
-  question: 'Quelle est la couleur du chat d’AP ?',
-  motion_type: 'static',
-  place: place2
-)
-
-riddle6 = Riddle.new(
-  title: 'Horse color',
-  description: 'riddle 1 : horse color',
-  solution: 'swan',
-  question: 'Comment s’appelle le chat de Diane ?',
-  motion_type: 'static',
-  place: place2
-)
-
 riddle7 = Riddle.new(
-  title: 'Le blason du Wagon',
-  description: 'Te voilà arrivé au point de départ, où tout a commencé : Le Wagon. C’est ici que le vol a eu lieu. Les témoins t’indiquent que le blason du Wagon, qui est affiché, semble avoir été déplacé. Tu t’approches, dans l’espoir de trouver un indice.',
+  title: 'Le logo du Wagon',
+  description: 'Te voilà arrivé au point de départ, où tout a commencé : Le Wagon. C’est ici que le vol a eu lieu. Le témoin principal, Diane, t’indique que le coffre-fort était caché derrière le logo du Wagon. Tu t’approches, dans l’espoir de trouver un indice.',
   solution: 'un bus',
-  question: 'Quel est le blason du Wagon ?',
+  question: 'Quel est le logo du Wagon ?',
   motion_type: 'static',
   place: place9
 )
+file = URI.open("https://i.ibb.co/r36wK57/riddle-wagon.png")
+riddle7.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
+riddle7.save!
 
 riddle8 = Riddle.new(
   title: 'À la poursuite du voleur',
-  description: "Tu trouves derrière le blason un papier. Une énigme a été écrite dessus :\n
+  description: "Tu trouves derrière le logo un papier. Une énigme a été écrite dessus :\n
   « Où l’esprit de Voltaire flirte avec la foi,\n
   Au cœur du mystère, dans le 11ᵉ,\n
   Le voleur du code se cache, prêt à fuir. »",
   solution: 'blablabla',
-  question: 'Trouve le lieu où se cache le voleur.',
+  question: 'Trouve le lieu où se cache le voleur.',
   motion_type: 'shifting',
   place: place9
 )
+file = URI.open("https://i.ibb.co/Xj9vkgk/Capture-d-e-cran-2023-12-07-a-16-39-58.png")
+riddle8.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
+riddle8.save!
 
 riddle9 = Riddle.new(
   title: 'Le nom du voleur',
@@ -421,19 +375,16 @@ riddle9 = Riddle.new(
   « Je suis l’énigmatique gentleman des ombres, où l’intrigue s’épanouit, \n
   Mes prouesses brillent dans la nuit, mystère d’une époque révolue. \n
   Création d’une plume habile, mon nom résonne dans l’écho, \n
-  Charmeur des larcins, je voulais le code, je le rends avec flegme ? »",
+  Charmeur des larcins, je voulais le code, je le rends avec flegme. »",
   solution: 'Arsène Lupin',
-  question: 'Quel est le nom du voleur ?',
+  question: 'Quel est le nom du voleur ?',
   motion_type: 'static',
   place: place10
 )
+file = URI.open("https://i.ibb.co/7y22fs2/voleur-code.png")
+riddle9.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
+riddle8.save!
 
-riddle1.save!
-riddle2.save!
-riddle3.save!
-riddle4.save!
-riddle5.save!
-riddle6.save!
 riddle7.save!
 riddle8.save!
 riddle9.save!
@@ -455,215 +406,6 @@ clue = Clue.new(
   riddle: riddle9
 )
 clue.save!
-
-game1 = Game.new(
-  status: 0,
-  start_time: DateTime.now,
-  end_time: DateTime.now + 1.hour,
-  user: monica,
-  storyline: storyline1
-)
-game1.save!
-game1.pin = "AZER"
-game1.save
-
-participation = Participation.new(
-  latitude: 48.8641,
-  longitude: 2.3753,
-  user: monica,
-  game: Game.last
-)
-participation.save!
-
-answer1 = Answer.new(
-  content: "Blablabla",
-  correct: true,
-  game: game1,
-  riddle: riddle1,
-  participation: participation
-)
-answer1.save!
-
-answer2 = Answer.new(
-  content: "Blablabla",
-  correct: true,
-  game: game1,
-  riddle: riddle2,
-  participation: participation
-)
-answer2.save!
-
-answer3 = Answer.new(
-  content: "Blablabla",
-  correct: true,
-  game: game1,
-  riddle: riddle3,
-  participation: participation
-)
-answer3.save!
-
-answer4 = Answer.new(
-  content: "Blablabla",
-  correct: true,
-  game: game1,
-  riddle: riddle4,
-  participation: participation
-)
-answer4.save!
-
-answer5 = Answer.new(
-  content: "Blablabla",
-  correct: false,
-  game: game1,
-  riddle: riddle5,
-  participation: participation
-)
-answer5.save!
-
-answer6 = Answer.new(
-  content: "Blablabla",
-  correct: false,
-  game: game1,
-  riddle: riddle6,
-  participation: participation
-)
-answer6.save!
-
-
-# Storyline: L'appel de la bouffe
-storyline = Storyline.new(
-  title: "Alerte Estomac!",
-  district: "11e arr.",
-  duration: 15,
-  distance: 1,
-  theme: "aventure alimentaire",
-  difficulty: 1,
-  starting_point: "68 avenue Parmentier, 75011 Paris, France",
-  short_description: "Pars à la recherche de ta nouriture !",
-  long_description: "Ca y est, nous y sommes! Il est 13h et l'estomac souffre et agonise, il a besoin de manger. Une seule solution, partir en quête de nourriture! Suivez cette aventure exceptiionnelle à laquelle tout le monde revient satisfait, mais surtout, le ventre plein!",
-  introduction: "Dans une ville grouillante d'activité, où les rues pavées bruissent sous les pas pressés des passants, une quête essentielle vous anime : assouvir votre faim grandissante. Ignorant l'agitation ambiante, votre estomac vous rappelle impérieusement à l'ordre, vous incitant à trouver cette nourriture revigorante qui apaisera votre appétit croissant.
-
-  Des senteurs alléchantes émanent des cuisines dissimulées derrière les devantures de restaurant, des échoppes et des étals de marché. Chaque recoin de cette ville vous attire et vous offre des promesses gastronomiques, avec l'espoir de combler votre faim insatiable.
-
-  Entre les badauds affairés et les passants pressés, vous poursuivez votre quête, scrutant les enseignes alléchantes, à la recherche du festin parfait. Chaque boulangerie, chaque café et chaque stand coloré éveille votre appétit et fait frémir vos sens. Vous êtes déterminé à découvrir ce met délicieux, à dénicher ce plat réconfortant capable de satisfaire vos désirs les plus profonds."
-)
-file = URI.open("https://www.sofoodmag.fr/wp-content/uploads/2013/02/wpid-3161-avoir-faim.jpg")
-storyline.photo.attach(io: file, filename: "Alerte_Estomac", content_type: "image/jpg")
-storyline.save!
-place1 = Place.new(
-  name: "Le Wagon",
-  address: "68 Avenue Parmentier, 75011 Paris, France",
-  description: "On y pleure, on y rit, mais surtout, on s'y sent bien!",
-  storyline: storyline
-)
-file = URI.open("https://studysmarter-mediafiles.s3.amazonaws.com/media/uploads/froala_editor/images/fa7583826ca3-Paris_Campus_3__3_.png")
-place1.photo.attach(io: file, filename: "lewagon", content_type: "image/jpg")
-place1.save!
-place2 = Place.new(
-  name: "Metro Parmentier",
-  address: "86 avenue Parmentier, 75004 Paris, France",
-  description: "Cette bouche de metro... que dire dessus sinon que je ne l'ai jamais prise!",
-  storyline: storyline
-)
-file = URI.open("https://p.monumentum.fr/galerie/maxi/00446/446476-francais-entree-de-la-station-de-metro-parmentier-avenue-parmentier-paris.jpg")
-place2.photo.attach(io: file, filename: "metro parmentier", content_type: "image/jpg")
-place2.save!
-place3 = Place.new(
-  name: "Boulangerie Oberkampf",
-  address: "54 rue Oberkampf, 75001 Paris, France",
-  description: "Cette boulangerie me surprendra toujours, non pas tant par la quantité de ses portions, mais par sa qualité de service et son prix!",
-  storyline: storyline
-)
-file = URI.open("https://st.hzcdn.com/simgs/32d1769f03edfebf_16-1634/home-design.jpg")
-place3.photo.attach(io: file, filename: "boulangerie graine", content_type: "image/jpg")
-place3.save!
-place4 = Place.new(
-  name: place1.name,
-  address: place1.address,
-  description: place1.description,
-  storyline: storyline
-)
-file = URI.open("https://studysmarter-mediafiles.s3.amazonaws.com/media/uploads/froala_editor/images/fa7583826ca3-Paris_Campus_3__3_.png")
-place4.photo.attach(io: file, filename: "lewagon", content_type: "image/jpg")
-place4.save!
-
-riddle1 = Riddle.new(
-  title: "Ce que je préfère à 13h",
-  description: 'Find the next place',
-  question: "S'il y a bien une chose que je préfère quand l'heure de la soupe arrive, c'est...?",
-  solution: "manger",
-  motion_type: 'static',
-  place: place1
-)
-file = URI.open('https://fondationolo.ca/wp-content/uploads/2017/07/fondation-olo-bebe-a-faim.jpg')
-riddle1.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle1.save!
-riddle2 = Riddle.new(
-  title: "Trouvez le prochain lieu",
-  description: 'Find the next place',
-  question: "Notre première enigme est une bifurcation, l'intersection de tous les chemins de notre aventure, l'origine des séparations mais aussi parfois un point de rencontre...",
-  solution: "Lat:XXX, Lng:YYY",
-  motion_type: 'shifting',
-  place: place1
-)
-file = URI.open('https://www.unmondedaventures.fr/wp-content/uploads/2015/01/281530234-Copier.jpg')
-riddle2.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle2.save!
-riddle3 = Riddle.new(
-  title: 'Find next place',
-  description: 'Find the next place',
-  question: "Bravo! Mais cet endroit n'est que le point de passage, d'un lieu plus important encore!\nOn dit qu'on y fait les meilleurs gateaux mais mon dieu que c'est cher!",
-  solution: "Lat:XXX, Lng:YYY",
-  motion_type: 'shifting',
-  place: place2
-)
-file = URI.open('https://www.podcastfrancaisfacile.com/wp-content/uploads/2013/05/demander-son-chemin.jpg')
-riddle3.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle3.save!
-riddle4 = Riddle.new(
-  title: 'What a cake!',
-  description: 'Find cake price',
-  question: "Félicitation! Vous avez trouvé le lieux exact de notre aventure! Parmi les gateaux que je préfère, il y en a un particulièrement que je prends presque à chaque fois, saurez-vous trouver lequel? Seuls les vrais savent!",
-  solution: "citron pavot",
-  motion_type: 'static',
-  place: place3
-)
-file = URI.open('https://cdn.pratico-pratiques.com/app/uploads/sites/2/2022/05/02113329/gateau-au-citron-et-huile-d-olive.jpg')
-riddle4.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle4.save!
-riddle5 = Riddle.new(
-  title: 'What a cake!',
-  description: 'Find cake price',
-  question: "Et oui, j'adore ce gateau! Pourriez-vous noter le prix du sandwich au poulet pour moi s'il vous plaît? (A l'euro près)",
-  solution: "6€",
-  motion_type: 'static',
-  place: place3
-)
-file = URI.open('https://static.750g.com/images/600-600/0fa217fa9300b4fbea5919f9f7f38bdf/adobestock-430086029.jpg')
-riddle5.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle5.save!
-riddle6 = Riddle.new(
-  title: 'Rentrer manger',
-  description: 'Find cake price',
-  question: "Bon, je pense que l'on a tout ce qu'il faut pour s'assoir autour d'une table et manger tous ensemble! Il va falloir en trouver une...",
-  solution: "LatLng",
-  motion_type: 'shifting',
-  place: place3
-)
-file = URI.open('https://images.ricardocuisine.com/services/articles/1200x630_manger-ensemble-1400.jpg')
-riddle6.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle6.save!
-riddle7 = Riddle.new(
-  title: 'Conclusion',
-  description: 'Conclusion aventure',
-  question: "Félicitation! Votre expédition s'arrête ici, il est temps maintenant de savourer votre précieux butin! Bon appétit!\nEnvoyer 'thanks' pour terminer l'aventure :D",
-  solution: "thanks",
-  motion_type: 'static',
-  place: place4
-)
-file = URI.open('https://images.ricardocuisine.com/services/articles/1200x630_manger-ensemble-1400.jpg')
-riddle7.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle7.save!
 
 p "created #{Game.all.count} games"
 p "created #{Participation.all.count} participations"

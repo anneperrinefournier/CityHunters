@@ -2,7 +2,7 @@
 
 <div class= "pages-backscreen">
 
-      <div class="burger-menu dropdown">
+    <div class="burger-menu dropdown">
         <i class="fa-solid fa-bars btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         </i>
         <%= render 'shared/burger'%>
@@ -16,48 +16,52 @@
   <div class="p-3 my-3">
     <div class="folder-endgame">
       <%= cl_image_tag @game.storyline.photo.key, alt: (@game.storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
-    <div class="playtime">
+    <div class="riddle-solving">
       <h4>Félicitations !</h4>
-      <p>Vous avez terminé le jeu de piste <%= @game.storyline.title %> !</p>
+      <div class="">
+        <p>Vous avez terminé le jeu de piste <%= @game.storyline.title %> !</p>
+      </div>
     </div>
 
+  <h4>Joueurs</h4>
   <div class="playtime">
-    <h4>Joueurs</h4>
-    <ul>
-      <% @game.participations.each do |participation|%>
-        <li><%=  participation.user.name %> <%= cl_image_tag(participation.user.photo.key, class:'avatar-large') %></li>
-      <% end %>
-    </ul>
+    <% @game.participations.each do |player| %>
+    <div class="playtime-info">
+          <%= cl_image_tag(player.user.photo.key, class:'avatar') %>
+          <%= (player.user.name.downcase) %>
+      </div>
+    <% end %>
   </div>
 
-    <div class="scoring">
-      <div class="playtime">
-        <h4>Ton score :</h4><p style="color: gold;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></h1>
+    <div class="score-time">
+      <div class="">
+        <h4>Score</h4>
+        <p style="color: gold;">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </p>
       </div>
-      <div class="playtime">
-        <h4>Temps de jeu: </h4>
-        <p><%= @game.format_duration(@game.end_time - @game.start_time) %></p>
+      <div>
+        <h4>Temps de jeu </h4>
+          <%= @game.format_duration(@game.end_time - @game.start_time) %>
       </div>
     </div>
 
-<div class="playtime">
-    <h4> Énigmes résolues :</h4>
-    <p><%= @game.riddles.count%></p>
-    <% @game.answers.where(correct: true).group_by(&:solver).each do |solver, answer| %>
-    <%= solver.name %> a résolu <%= answer.count %> énigmes.
-    <% end %>
-    <ul>
-      <%  @game.answers.each do |answer|%>
-        <li>  <%= answer.solver.name %> a résolu <%= answer.riddle.title %> </li>
-      <% end %>
-    </ul>
-</div>
-
-
-    <h4>Expérience</h4>
-    <p>Tu as gagné <strong>380 xp</strong> !</p>
-</div>
-    <%= link_to "Retour au menu principal", root_path, class:"btn-ugly" %>
+    <div class="riddle-solving">
+      <h4> Énigmes résolues <%= @game.answers.count %>/<%= @game.riddles.count%></h4>
+        <p>
+          <% @game.answers.group_by(&:solver).each do |solver, answer| %>
+            <%= solver.name.capitalize %> a résolu <%= answer.count %> <%= answer.count > 1 ? 'énigmes' : 'énigme'%> <br>
+          <% end %>
+        </p>
+      <%# <ul class="">
+        <%  @game.answers.each do |answer|%>
+          <%# <li>  = answer.solver.name.capitalize a résolu = answer.riddle.title </li> %>
+        <%# end %>
+      <%# </ul> %>
     </div>
+ </div>
+     <%= link_to "Retour au menu principal", root_path, class:"btn-ugly" %>
   </div>
 </div>
