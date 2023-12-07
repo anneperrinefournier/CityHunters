@@ -333,7 +333,7 @@ place9.save!
 
 place10 = Place.new(
   name: "Église Saint-Ambroise",
-  address: "71 bis Bd Voltaire, 75011 Paris",
+  address: "33 Ave Parmentier, 75011 Paris",
   description: "Bienvenue à l'Église Saint-Ambroise, un trésor caché au cœur du 11ᵉ arrondissement de Paris ! Cette merveille architecturale au 71 bis Boulevard Voltaire est bien plus qu'un simple édifice religieux. Plongez dans l'histoire captivante de ce lieu chargé de mystères.",
   storyline: storyline2
 )
