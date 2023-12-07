@@ -15,3 +15,9 @@ p {
   font-size: 20px;
   color: $lightblack;
 }
+
+.place-title-container {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px $lightblack;
+}

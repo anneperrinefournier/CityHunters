@@ -57,9 +57,14 @@ class RiddlesController < ApplicationController
       end
 
     else
+      titles = ["Sapristi !", "Fichtre !", "Pardi !", "Saperlipopette !", "Saperlotte !", "Tonnerre de brest !"]
+      texts = ["La bonne réponse n'est certainement pas loin", "Je suis sûr que tu l'as sur le bout de la langue"]
+      button_text = ["Je ne laisse pas tomber", "Je cherche, je cherche...", "Hum..."]
       render json: {
         status: :error,
-        message: "Incorrect answer. You can try again!"
+        title: titles.sample,
+        message: texts.sample,
+        button_text: button_text.sample
       }
     end
   end
