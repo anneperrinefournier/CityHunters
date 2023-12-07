@@ -15,11 +15,13 @@ export default class extends Controller {
   openModal(event) {
     const modal = document.getElementById("myModal");
     modal.style.display = "block";
+    document.body.classList.add("modal-open");
     this.formTarget.querySelector('#question_answer').focus();
   }
   closeModal() {
     const modal = document.getElementById("myModal");
     modal.style.display = "none";
+    document.body.classList.remove("modal-open");
   }
 
   async verifyAnswer(event) {
