@@ -7,7 +7,9 @@
     <% end %>
     <div class="lobby-player-infos-row">
     <p class="lobby-player-name mb-0"><%= small_caps_text(user.name.downcase) %></p>
-    <a href="#" class="delete-player-btn"><i class="fa-solid fa-xmark"></i></a>
+    <% if @game.user == current_user %>
+      <a href="#" class="delete-player-btn"><i class="fa-solid fa-xmark"></i></a>
+    <% end %>
     </div>
   </div>
 <% end %>
