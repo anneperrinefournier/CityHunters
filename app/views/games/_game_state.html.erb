@@ -51,8 +51,8 @@
 
               <div class="folder-show">
                 <div>
-                  <% if place.photo.attached? %>
-                    <%= cl_image_tag(place.photo.key, alt: "#{place.name} -photo", class: "photos-img") %>
+                  <% if riddle.photo.attached? %>
+                    <%= cl_image_tag(riddle.photo.key, alt: "#{riddle.title} -photo", class: "photos-img") %>
                   <% else %>
                     <%= image_tag('compass.png', alt: "#{place.name} -photo", class: "photos-img") %>
                   <% end %>
