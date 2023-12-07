@@ -88,8 +88,8 @@ storyline2 = Storyline.new(
   starting_point: "68 avenue Parmentier, 75011 Paris, France",
   short_description: "Pars à la recherche du Code Perdu du Wagon !",
   long_description: "Suis les énigmes cryptiques pour retrouver le code perdu du wagon à travers les ruelles du quartier. Une aventure où le mystère et la programmation se rencontrent.",
-  introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !
-  Pierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.
+  introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !\n
+  Pierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.\n
   Heureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !"
 )
 file = URI.open("https://i.ibb.co/SXNkWx0/re-publique.jpg")
@@ -145,7 +145,7 @@ storyline5.photo.attach(io: file, filename: "Le Trésor du Panthéon", content_t
 storyline5.save!
 
 storyline6 = Storyline.new(
-  title: "L'Énigme de Montparnasse",
+  title: "Meurtre à Montparnasse",
   district: "14ᵉ arr.",
   duration: 75,
   distance: 4.5,
@@ -177,7 +177,7 @@ storyline7.photo.attach(io: file, filename: "Le Mystère des Invalides", content
 storyline7.save!
 
 storyline8 = Storyline.new(
-  title: "L'Aventure des Batignolles",
+  title: "Le Secret des Batignolles",
   district: "17ᵉ arr.",
   duration: 90,
   distance: 6,
@@ -193,7 +193,7 @@ storyline8.photo.attach(io: file, filename: "L'Aventure des Batignolles", conten
 storyline8.save!
 #
 storyline9 = Storyline.new(
-  title: "Les Secrets du Canal Saint-Martin",
+  title: "Le piège du Canal Saint-Martin",
   district: "10ᵉ arr.",
   duration: 75,
   distance: 5,
@@ -209,7 +209,7 @@ storyline9.photo.attach(io: file, filename: "Les Secrets du Canal Saint-Martin",
 storyline9.save!
 #
 storyline10 = Storyline.new(
-  title: "L'Évasion de Montorgueil",
+  title: "L’Évasion de Montorgueil",
   district: "2ᵉ arr.",
   duration: 60,
   distance: 3.5,
@@ -225,7 +225,7 @@ storyline10.photo.attach(io: file, filename: "L'Évasion de Montorgueil", conten
 storyline10.save!
 
 storyline11 = Storyline.new(
-  title: "Les Énigmes du Marais",
+  title: "Les Mystères du Marais",
   district: "4ᵉ arr.",
   duration: 75,
   distance: 3,
@@ -324,7 +324,7 @@ place8.save!
 place9 = Place.new(
   name: "Le Wagon",
   address: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
-  description: "Le Wagon est un espace dédié à l'apprentissage de la programmation informatique. Situé au 68 Avenue Parmentier dans le 11e arrondissement de Paris, Le Wagon offre un environnement dynamique où les participants peuvent découvrir et développer leurs compétences en matière de codage. Que vous soyez débutant ou expérimenté, Le Wagon propose des programmes éducatifs stimulants pour tous les niveaux, faisant de cet endroit un lieu incontournable pour les passionnés de technologie et d'innovation.",
+  description: "Le Wagon est un espace dédié à l’apprentissage de la programmation informatique. Situé au 68 Avenue Parmentier dans le 11ᵉ arrondissement de Paris, l’école offre un environnement dynamique où les participants peuvent découvrir et développer leurs compétences en matière de codage. Le Wagon propose des programmes éducatifs stimulants pour tous les niveaux. C’est un lieu incontournable pour les passionnés de technologie et d’innovation.",
   storyline: storyline2
 )
 file = URI.open("https://i.ibb.co/Kmjtv1T/le-wagon.jpg")
@@ -334,7 +334,7 @@ place9.save!
 place10 = Place.new(
   name: "Église Saint-Ambroise",
   address: "71 bis Bd Voltaire, 75011 Paris",
-  description: "Bienvenue à l'Église Saint-Ambroise, un trésor caché au cœur du 11e arrondissement de Paris ! Cette merveille architecturale au 71 bis Boulevard Voltaire est bien plus qu'un simple édifice religieux. Plongez dans l'histoire captivante de ce lieu chargé de mystères.",
+  description: "Bienvenue à l'Église Saint-Ambroise, un trésor caché au cœur du 11ᵉ arrondissement de Paris ! Cette merveille architecturale au 71 bis Boulevard Voltaire est bien plus qu'un simple édifice religieux. Plongez dans l'histoire captivante de ce lieu chargé de mystères.",
   storyline: storyline2
 )
 file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
@@ -396,7 +396,7 @@ riddle6 = Riddle.new(
 
 riddle7 = Riddle.new(
   title: 'Le blason du Wagon',
-  description: 'Te voilà arrivé au point de départ, où tout a commencé : Le Wagon. C’est ici que le vol a eu lieu. Les témoins t’indiquent que le blason du Wagon, qui est affiché, semble avoir été déplacé. Tu t’approches, dans l’espoir de trouver un indice.',
+  description: 'Te voilà arrivé au point de départ, où tout a commencé : Le Wagon. C’est ici que le vol a eu lieu. Le témoin principal, Diane, t’indique que le coffre-fort était caché derrière le blason du Wagon. Tu t’approches, dans l’espoir de trouver un indice.',
   solution: 'un bus',
   question: 'Quel est le blason du Wagon ?',
   motion_type: 'static',
@@ -421,7 +421,7 @@ riddle9 = Riddle.new(
   « Je suis l’énigmatique gentleman des ombres, où l’intrigue s’épanouit, \n
   Mes prouesses brillent dans la nuit, mystère d’une époque révolue. \n
   Création d’une plume habile, mon nom résonne dans l’écho, \n
-  Charmeur des larcins, je voulais le code, je le rends avec flegme ? »",
+  Charmeur des larcins, je voulais le code, je le rends avec flegme. »",
   solution: 'Arsène Lupin',
   question: 'Quel est le nom du voleur ?',
   motion_type: 'static',
@@ -532,11 +532,11 @@ answer6.save!
 
 # Storyline: L'appel de la bouffe
 storyline = Storyline.new(
-  title: "Alerte Estomac!",
-  district: "11e arr.",
+  title: "Alerte Estomac !",
+  district: "11ᵉ arr.",
   duration: 15,
   distance: 1,
-  theme: "aventure alimentaire",
+  theme: "urbain",
   difficulty: 1,
   starting_point: "68 avenue Parmentier, 75011 Paris, France",
   short_description: "Pars à la recherche de ta nouriture !",
