@@ -193,7 +193,7 @@ storyline8.photo.attach(io: file, filename: "L'Aventure des Batignolles", conten
 storyline8.save!
 #
 storyline9 = Storyline.new(
-  title: "Le piège du Canal Saint-Martin",
+  title: "Piège au Canal Saint-Martin",
   district: "10ᵉ arr.",
   duration: 75,
   distance: 5,
@@ -209,7 +209,7 @@ storyline9.photo.attach(io: file, filename: "Les Secrets du Canal Saint-Martin",
 storyline9.save!
 #
 storyline10 = Storyline.new(
-  title: "L’Évasion de Montorgueil",
+  title: "L’évasion de Montorgueil",
   district: "2ᵉ arr.",
   duration: 60,
   distance: 3.5,
@@ -225,7 +225,7 @@ storyline10.photo.attach(io: file, filename: "L'Évasion de Montorgueil", conten
 storyline10.save!
 
 storyline11 = Storyline.new(
-  title: "Les Mystères du Marais",
+  title: "Le mystère du Marais",
   district: "4ᵉ arr.",
   duration: 75,
   distance: 3,
