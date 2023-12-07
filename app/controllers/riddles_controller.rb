@@ -80,7 +80,7 @@ class RiddlesController < ApplicationController
       )
       user_answer.save!
 
-      default_radius = 10 #km
+      default_radius = 1 #km
       places_near = Place.near([participation.latitude, participation.longitude], default_radius)
       next_place = @game.upcoming_places[1] # The index 0 is the current place
 
