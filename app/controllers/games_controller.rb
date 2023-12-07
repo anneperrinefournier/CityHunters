@@ -94,7 +94,7 @@ class GamesController < ApplicationController
     LobbyChannel.broadcast_to(
       "lobby-#{@game.id}",
       {
-        action: 'add_player',
+        data_type: 'add_player',
         type: "html",
         html: render_to_string(partial: "player", locals: { user: current_user })
       }
@@ -111,7 +111,7 @@ class GamesController < ApplicationController
     LobbyChannel.broadcast_to(
       "lobby-#{@game.id}",
       {
-        action: "redirect",
+        data_type: "redirect",
         url: game_path(@game)
       }
     )
@@ -124,7 +124,7 @@ class GamesController < ApplicationController
     GameChannel.broadcast_to(
       "game-#{@game.id}",
       {
-        action: "update_game_content",
+        data_type: "update_game_content",
         type: 'html',
         game_status: @game.status,
         content: render_to_string(partial: "/games/end_game", formats: [:html], locals: { game: @game })
