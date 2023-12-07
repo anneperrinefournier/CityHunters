@@ -56,7 +56,7 @@ export default class extends Controller {
       style: "mapbox://styles/anneperrine/clpqvu9za014201pke2o7alpm"
     })
 
-    this.#addMarkersToMap()
+    this.#addAllMarkersToMap()
     this.#addPlayerMarkersToMap()
     this.#fitMapToMarkers()
   }
@@ -76,7 +76,8 @@ export default class extends Controller {
     if (data.data_type == 'update_riddle') {
       this.riddlesHandleTarget.innerHTML = data.content;
       this.displayAnswerBtnTarget.classList.remove('d-none');
-      this.displayAnswerBtnTarget.scrollIntoView(true)
+      this.displayAnswerBtnTarget.scrollIntoView(true);
+      this.#addMarkerToMap(data.place_marker);
       return;
     }
 
@@ -202,19 +203,23 @@ export default class extends Controller {
     })
   }
 
-  #addMarkersToMap() {
+  #addAllMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
-
-      const customMarker = document.createElement('div');
-      customMarker.className = `marker ${marker.marker_class}`;
-      customMarker.innerHTML = marker.marker_html
-
-      new mapboxgl.Marker(customMarker)
-                  .setLngLat([ marker.lng, marker.lat ])
-                  .setPopup(popup)
-                  .addTo(this.map)
+      this.#addMarkerToMap(marker)
     })
+  }
+
+  #addMarkerToMap(marker) {
+    const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
+
+    const customMarker = document.createElement('div');
+    customMarker.className = `marker ${marker.marker_class}`;
+    customMarker.innerHTML = marker.marker_html
+
+    new mapboxgl.Marker(customMarker)
+                .setLngLat([ marker.lng, marker.lat ])
+                .setPopup(popup)
+                .addTo(this.map)
   }
 
   #fitMapToMarkers() {

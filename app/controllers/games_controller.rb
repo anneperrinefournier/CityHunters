@@ -34,6 +34,12 @@ class GamesController < ApplicationController
       @participations = Participation.where(game: @game)
       @starting_point = Storyline.find(@game.storyline_id)
 
+      @places_to_mark = @places.select do |place|
+        place == @game.current_place || place.validated?(@game)
+      end
+
+      @places = Place.where(id: @places_to_mark.map(&:id))
+
       @places_markers = @places.geocoded.map do |place|
         {
           lat: place.latitude,

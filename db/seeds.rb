@@ -323,7 +323,7 @@ place8.save!
 
 place9 = Place.new(
   name: "Le Wagon",
-  address: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
+  address: "68 Avenue Parmentier, 75011 Paris, France",
   description: "Le Wagon est un espace dédié à l'apprentissage de la programmation informatique. Situé au 68 Avenue Parmentier dans le 11e arrondissement de Paris, Le Wagon offre un environnement dynamique où les participants peuvent découvrir et développer leurs compétences en matière de codage. Que vous soyez débutant ou expérimenté, Le Wagon propose des programmes éducatifs stimulants pour tous les niveaux, faisant de cet endroit un lieu incontournable pour les passionnés de technologie et d'innovation.",
   storyline: storyline2
 )
@@ -552,7 +552,7 @@ storyline.photo.attach(io: file, filename: "Alerte_Estomac", content_type: "imag
 storyline.save!
 place1 = Place.new(
   name: "Le Wagon",
-  address: "68 Ave Parmentier, 75011 Paris, France",
+  address: "68 Avenue Parmentier, 75011 Paris, France",
   description: "On y pleure, on y rit, mais surtout, on s'y sent bien!",
   storyline: storyline
 )
