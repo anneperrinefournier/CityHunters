@@ -17,13 +17,13 @@ export default class extends Controller {
     setTimeout(() => {
       const modal = document.getElementById("myModal");
       modal.style.display = "block";
-      document.body.classList.add("modal-open");
+      // document.body.classList.add("modal-open");
       this.formTarget.querySelector('#question_answer').focus();
     }, 300);
   }
 
   closeModal() {
-    document.body.classList.remove("modal-open");
+    // document.body.classList.remove("modal-open");
     const modal = document.getElementById("myModal");
     if (modal) modal.style.display = "none";
   }
