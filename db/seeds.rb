@@ -88,9 +88,9 @@ storyline2 = Storyline.new(
   starting_point: "68 avenue Parmentier, 75011 Paris, France",
   short_description: "Pars à la recherche du Code Perdu du Wagon !",
   long_description: "Suis les énigmes cryptiques pour retrouver le code perdu du wagon à travers les ruelles du quartier. Une aventure où le mystère et la programmation se rencontrent.",
-  introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !
-  Pierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.
-  Heureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !"
+  introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !\n
+  Pierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.\n
+  Heureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !"
 )
 file = URI.open("https://i.ibb.co/SXNkWx0/re-publique.jpg")
 storyline2.photo.attach(io: file, filename: "Code Rouge", content_type: "image/jpg")
@@ -145,7 +145,7 @@ storyline5.photo.attach(io: file, filename: "Le Trésor du Panthéon", content_t
 storyline5.save!
 
 storyline6 = Storyline.new(
-  title: "L'Énigme de Montparnasse",
+  title: "Meurtre à Montparnasse",
   district: "14ᵉ arr.",
   duration: 75,
   distance: 4.5,
@@ -177,7 +177,7 @@ storyline7.photo.attach(io: file, filename: "Le Mystère des Invalides", content
 storyline7.save!
 
 storyline8 = Storyline.new(
-  title: "L'Aventure des Batignolles",
+  title: "Le Secret des Batignolles",
   district: "17ᵉ arr.",
   duration: 90,
   distance: 6,
@@ -193,7 +193,7 @@ storyline8.photo.attach(io: file, filename: "L'Aventure des Batignolles", conten
 storyline8.save!
 #
 storyline9 = Storyline.new(
-  title: "Les Secrets du Canal Saint-Martin",
+  title: "Piège au Canal Saint-Martin",
   district: "10ᵉ arr.",
   duration: 75,
   distance: 5,
@@ -209,7 +209,7 @@ storyline9.photo.attach(io: file, filename: "Les Secrets du Canal Saint-Martin",
 storyline9.save!
 #
 storyline10 = Storyline.new(
-  title: "L'Évasion de Montorgueil",
+  title: "L’évasion de Montorgueil",
   district: "2ᵉ arr.",
   duration: 60,
   distance: 3.5,
@@ -225,7 +225,7 @@ storyline10.photo.attach(io: file, filename: "L'Évasion de Montorgueil", conten
 storyline10.save!
 
 storyline11 = Storyline.new(
-  title: "Les Énigmes du Marais",
+  title: "Le mystère du Marais",
   district: "4ᵉ arr.",
   duration: 75,
   distance: 3,
@@ -258,7 +258,7 @@ place2 = Place.new(
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place2.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place2.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place2.save!
 
 place3 = Place.new(
@@ -278,7 +278,7 @@ place4 = Place.new(
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place4.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place4.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place4.save!
 
 place5 = Place.new(
@@ -288,7 +288,7 @@ place5 = Place.new(
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place5.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place5.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place5.save!
 
 place6 = Place.new(
@@ -298,7 +298,7 @@ place6 = Place.new(
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place6.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place6.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place6.save!
 
 place7 = Place.new(
@@ -308,7 +308,7 @@ place7 = Place.new(
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place7.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place7.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place7.save!
 
 place8 = Place.new(
@@ -318,27 +318,27 @@ place8 = Place.new(
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place8.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place8.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place8.save!
 
 place9 = Place.new(
   name: "Le Wagon",
   address: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
-  description: "Le Wagon est un espace dédié à l'apprentissage de la programmation informatique. Situé au 68 Avenue Parmentier dans le 11e arrondissement de Paris, Le Wagon offre un environnement dynamique où les participants peuvent découvrir et développer leurs compétences en matière de codage. Que vous soyez débutant ou expérimenté, Le Wagon propose des programmes éducatifs stimulants pour tous les niveaux, faisant de cet endroit un lieu incontournable pour les passionnés de technologie et d'innovation.",
+  description: "Le Wagon est un espace dédié à l’apprentissage de la programmation informatique. Situé au 68 Avenue Parmentier dans le 11ᵉ arrondissement de Paris, l’école offre un environnement dynamique où les participants peuvent découvrir et développer leurs compétences en matière de codage. Le Wagon propose des programmes éducatifs stimulants pour tous les niveaux. C’est un lieu incontournable pour les passionnés de technologie et d’innovation.",
   storyline: storyline2
 )
 file = URI.open("https://i.ibb.co/Kmjtv1T/le-wagon.jpg")
-place9.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place9.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place9.save!
 
 place10 = Place.new(
   name: "Église Saint-Ambroise",
   address: "71 bis Bd Voltaire, 75011 Paris",
-  description: "Bienvenue à l'Église Saint-Ambroise, un trésor caché au cœur du 11e arrondissement de Paris ! Cette merveille architecturale au 71 bis Boulevard Voltaire est bien plus qu'un simple édifice religieux. Plongez dans l'histoire captivante de ce lieu chargé de mystères.",
+  description: "Bienvenue à l'Église Saint-Ambroise, un trésor caché au cœur du 11ᵉ arrondissement de Paris ! Cette merveille architecturale au 71 bis Boulevard Voltaire est bien plus qu'un simple édifice religieux. Plongez dans l'histoire captivante de ce lieu chargé de mystères.",
   storyline: storyline2
 )
 file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
-place10.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place10.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place10.save!
 
 
@@ -396,12 +396,15 @@ riddle6 = Riddle.new(
 
 riddle7 = Riddle.new(
   title: 'Le blason du Wagon',
-  description: 'Te voilà arrivé au point de départ, où tout a commencé : Le Wagon. C’est ici que le vol a eu lieu. Les témoins t’indiquent que le blason du Wagon, qui est affiché, semble avoir été déplacé. Tu t’approches, dans l’espoir de trouver un indice.',
+  description: 'Te voilà arrivé au point de départ, où tout a commencé : Le Wagon. C’est ici que le vol a eu lieu. Le témoin principal, Diane, t’indique que le coffre-fort était caché derrière le blason du Wagon. Tu t’approches, dans l’espoir de trouver un indice.',
   solution: 'un bus',
-  question: 'Quel est le blason du Wagon ?',
+  question: 'Quel est le blason du Wagon ?',
   motion_type: 'static',
   place: place9
 )
+file = URI.open("https://i.ibb.co/r36wK57/riddle-wagon.png")
+riddle7.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
+riddle7.save!
 
 riddle8 = Riddle.new(
   title: 'À la poursuite du voleur',
@@ -410,10 +413,13 @@ riddle8 = Riddle.new(
   Au cœur du mystère, dans le 11ᵉ,\n
   Le voleur du code se cache, prêt à fuir. »",
   solution: 'blablabla',
-  question: 'Trouve le lieu où se cache le voleur.',
+  question: 'Trouve le lieu où se cache le voleur.',
   motion_type: 'shifting',
   place: place9
 )
+file = URI.open("https://i.ibb.co/6vsFQtF/paris11.webp")
+riddle8.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
+riddle8.save!
 
 riddle9 = Riddle.new(
   title: 'Le nom du voleur',
@@ -421,12 +427,15 @@ riddle9 = Riddle.new(
   « Je suis l’énigmatique gentleman des ombres, où l’intrigue s’épanouit, \n
   Mes prouesses brillent dans la nuit, mystère d’une époque révolue. \n
   Création d’une plume habile, mon nom résonne dans l’écho, \n
-  Charmeur des larcins, je voulais le code, je le rends avec flegme ? »",
+  Charmeur des larcins, je voulais le code, je le rends avec flegme. »",
   solution: 'Arsène Lupin',
-  question: 'Quel est le nom du voleur ?',
+  question: 'Quel est le nom du voleur ?',
   motion_type: 'static',
   place: place10
 )
+file = URI.open("https://i.ibb.co/gdz0z7s/code-707069-1280-1.jpg")
+riddle9.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
+riddle8.save!
 
 riddle1.save!
 riddle2.save!
@@ -532,11 +541,11 @@ answer6.save!
 
 # Storyline: L'appel de la bouffe
 storyline = Storyline.new(
-  title: "Alerte Estomac!",
-  district: "11e arr.",
+  title: "Alerte Estomac !",
+  district: "11ᵉ arr.",
   duration: 15,
   distance: 1,
-  theme: "aventure alimentaire",
+  theme: "urbain",
   difficulty: 1,
   starting_point: "68 avenue Parmentier, 75011 Paris, France",
   short_description: "Pars à la recherche de ta nouriture !",
@@ -645,7 +654,7 @@ riddle5.save!
 riddle6 = Riddle.new(
   title: 'Rentrer manger',
   description: 'Find cake price',
-  question: "Bon, je pense que l'on a tout ce qu'il faut pour s'assoir autour d'une table et manger tous ensemble! Il va falloir en trouver une...",
+  question: "Bon, je pense que l’on a tout ce qu’il faut pour s’assoir autour d’une table et manger tous ensemble ! Il va falloir en trouver une…",
   solution: "LatLng",
   motion_type: 'shifting',
   place: place3
@@ -656,7 +665,7 @@ riddle6.save!
 riddle7 = Riddle.new(
   title: 'Conclusion',
   description: 'Conclusion aventure',
-  question: "Félicitation! Votre expédition s'arrête ici, il est temps maintenant de savourer votre précieux butin! Bon appétit!\nEnvoyer 'thanks' pour terminer l'aventure :D",
+  question: "Félicitation ! Votre expédition s'arrête ici, il est temps maintenant de savourer votre précieux butin! Bon appétit!\nEnvoyer 'thanks' pour terminer l'aventure :D",
   solution: "thanks",
   motion_type: 'static',
   place: place4
