@@ -343,10 +343,10 @@ place10.save!
 
 
 riddle7 = Riddle.new(
-  title: 'Le blason du Wagon',
-  description: 'Te voilà arrivé au point de départ, où tout a commencé : Le Wagon. C’est ici que le vol a eu lieu. Le témoin principal, Diane, t’indique que le coffre-fort était caché derrière le blason du Wagon. Tu t’approches, dans l’espoir de trouver un indice.',
+  title: 'Le logo du Wagon',
+  description: 'Te voilà arrivé au point de départ, où tout a commencé : Le Wagon. C’est ici que le vol a eu lieu. Le témoin principal, Diane, t’indique que le coffre-fort était caché derrière le logo du Wagon. Tu t’approches, dans l’espoir de trouver un indice.',
   solution: 'un bus',
-  question: 'Quel est le blason du Wagon ?',
+  question: 'Quel est le logo du Wagon ?',
   motion_type: 'static',
   place: place9
 )
@@ -356,7 +356,7 @@ riddle7.save!
 
 riddle8 = Riddle.new(
   title: 'À la poursuite du voleur',
-  description: "Tu trouves derrière le blason un papier. Une énigme a été écrite dessus :\n
+  description: "Tu trouves derrière le logo un papier. Une énigme a été écrite dessus :\n
   « Où l’esprit de Voltaire flirte avec la foi,\n
   Au cœur du mystère, dans le 11ᵉ,\n
   Le voleur du code se cache, prêt à fuir. »",
