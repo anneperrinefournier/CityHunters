@@ -16,13 +16,14 @@ export default class extends Controller {
   openModal(event) {
     const modal = document.getElementById("myModal");
     modal.style.display = "block";
-    document.body.classList.add("modal-open");
     this.formTarget.querySelector('#question_answer').focus();
+    document.body.classList.add("modal-open");
   }
+
   closeModal() {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "none";
     document.body.classList.remove("modal-open");
+    const modal = document.getElementById("myModal");
+    if (modal) modal.style.display = "none";
   }
 
   async verifyAnswer(event) {
