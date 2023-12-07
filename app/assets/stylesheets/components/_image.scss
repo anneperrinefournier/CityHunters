@@ -2,3 +2,9 @@
  width: 100%;
  margin-bottom: 10px;
 }
+
+.place-picture {
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 0 0 10px $lightblack;
+}

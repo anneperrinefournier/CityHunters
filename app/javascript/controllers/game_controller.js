@@ -131,7 +131,6 @@ export default class extends Controller {
     const data = await response.json()
 
     if (data.status != 'ok') {
-
       Swal.fire({
         title: data.title,
         text: data.message,
