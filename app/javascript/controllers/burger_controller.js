@@ -2,7 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="burger"
 export default class extends Controller {
-  static values = { gameId: Number };
+  static values = { gameId: Number, gamePin: String };
+  static targets = ["pin"];
 
   connect() {
     console.log("Happy meal or maxi best of?");
@@ -14,7 +15,7 @@ export default class extends Controller {
   }
 
   async endGame() {
-    console.log(this.gameIdValue)
+    console.log(this.gameIdValue);
     const options = {
       method: 'GET',
       headers: {
@@ -24,5 +25,6 @@ export default class extends Controller {
     };
 
     const response = await fetch(`/games/${this.gameIdValue}/end`, options);
+    console.log(response);
   }
 }
