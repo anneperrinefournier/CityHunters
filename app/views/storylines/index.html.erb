@@ -25,41 +25,40 @@
           </div>
 
           <div class="folder <%= index.even? ? 'folder-pair' : 'folder-odd' %>">
-
             <div class="photo-parent-rating">
               <% if storyline.photo.attached? %>
-              <%= cl_image_tag(storyline.photo.key, class: "rounded-square") %>
+              <%= cl_image_tag(storyline.photo.key, class: "storylines-img") %>
               <% else %>
-                <%= image_tag("https://i.ibb.co/RcyVLfd/paris-4546007-1280.jpg", alt: "Image", class: "rounded-square") %>
+                <%= image_tag("https://i.ibb.co/RcyVLfd/paris-4546007-1280.jpg", alt: "Image", class: "storylines-img") %>
               <% end %>
 
             <div class="rating-child-position"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
             </div>
 
           <div class= "folder-info">
-            <div class="folder-icons">
-              <div class="icons-inline">
-                <p><i class="fa-solid fa-location-dot mx-1"></i> <%= storyline.district %></p>
-                <p><i class="fa-regular fa-clock"></i> <%= storyline.duration.to_i %> min</p>
-              </div>
-            <div>
-              <p><i class="fa-solid fa-puzzle-piece"></i>
-                <% difficulty = storyline.difficulty %>
-                <% case difficulty %>
-                  <% when 1..2 %>
-                    facile
-                  <% when 3 %>
-                    intermédiaire
-                  <% when 4..5 %>
-                    difficile
-                  <% else %>
-                    unknown
-                <% end %></p>
+            <div class= "folder-info-end">
+              <div class="folder-icons">
+                  <p><i class="fa-solid fa-location-dot mx-1"></i> <%= storyline.district %></p>
+                  <p><i class="fa-regular fa-clock"></i> <%= storyline.duration.to_i %> min</p>
+              <div>
+                <p><i class="fa-solid fa-puzzle-piece"></i>
+                  <% difficulty = storyline.difficulty %>
+                    <% case difficulty %>
+                      <% when 1..2 %>
+                        facile
+                      <% when 3 %>
+                        moyen
+                      <% when 4..5 %>
+                        difficile
+                      <% else %>
+                        inconnu
+                    <% end %></p>
+                  </div>
                 </div>
+
+                <%# <p><%= storyline.theme</p> %>
+
               </div>
-
-              <p><%= storyline.short_description %></p>
-
             </div>
           </div>
 
@@ -70,7 +69,6 @@
   </div>
 
   <div class="footer-img">
-    <%= image_tag("skyline.png", alt: "skyline-paris", width: "100%") %>
+    <%= image_tag("footer.png", alt: "skyline-paris", width: "100%") %>
   </div>
-
 </div>

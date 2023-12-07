@@ -4,12 +4,16 @@
       <a href="<%= storylines_path %>" class="arrow-menu">
         <%= image_tag("arrow.png", alt: "back arrow", class:"arrow-menu") %>
       </a>
-      <div class="menu-title"><h4>Choose your storyline </h4></div>
+
+      <div class="menu-title">
+        <h4>Choose your storyline </h4>
+      </div>
+
       <div class="dropdown">
         <i class="fa-solid fa-bars btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         </i>
         <%= render 'shared/burger'%>
-        </div>
+      </div>
     </div>
   </div>
 
@@ -20,53 +24,61 @@
     </div>
 
     <div class="folder-show">
-        <div>
-        <% if @storyline.photo.attached? %>
-          <%= cl_image_tag(@storyline.photo.key, alt: "#{@storyline.title} -picture") %>
-        <% else %>
-          <%= image_tag("https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg", alt: "Image") %>
-        <% end %>
+      <div>
+      <% if @storyline.photo.attached? %>
+        <%= cl_image_tag(@storyline.photo.key, alt: "#{@storyline.title} -picture", class: "photos-img") %>
+      <% else %>
+        <%= image_tag("https://cdn.pixabay.com/photo/2019/10/13/12/35/paris-4546007_1280.jpg", alt: "Image", class: "photos-img") %>
+      <% end %>
+    </div>
+
+    <div class="folder-icons">
+      <div class="icons-inline">
+        <p><i class="fa-solid fa-location-dot mx-1"></i> <%= @storyline.district %></p>
+        <p><i class="fa-regular fa-clock"></i> <%= @storyline.duration.to_i %> min</p>
+      <p><i class="fa-solid fa-puzzle-piece"></i>
+        <% difficulty = @storyline.difficulty %>
+        <% case difficulty %>
+          <% when 1..2 %>
+            facile
+          <% when 3 %>
+            moyen
+          <% when 4..5 %>
+            difficile
+          <% else %>
+            inconnu
+        <% end %></p>
+        </div>
       </div>
 
-            <div class="folder-icons">
-              <div class="icons-inline">
-                <p><i class="fa-solid fa-location-dot mx-1"></i> <%= @storyline.district %></p>
-                <p><i class="fa-regular fa-clock"></i> <%= @storyline.duration.to_i %> min</p>
-              <p><i class="fa-solid fa-puzzle-piece"></i>
-                <% difficulty = @storyline.difficulty %>
-                <% case difficulty %>
-                  <% when 1..2 %>
-                    facile
-                  <% when 3 %>
-                    intermédiaire
-                  <% when 4..5 %>
-                    difficile
-                  <% else %>
-                    unknown
-                <% end %></p>
-                </div>
-              </div>
-            <div>
+      <div>
         Thème :</strong> <%= @storyline.theme %>
-            <p>Avis : <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></p>
-              </div>
-    <div class="text-left">
-      <p><%= @storyline.long_description %></p>
-    </div>
+        <p>Avis : <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></p>
+      </div>
 
-    <div data-controller="game"
-    data-game-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    data-game-markers-value="<%= @markers.to_json %>"
+      <div class="text-left">
+       <p><%= @storyline.long_description %></p>
+      </div>
+
+      <div data-controller="game"
+      data-game-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      data-game-markers-value="<%= @markers.to_json %>"
 >
-      <div class="map-storyline-show">
-      <div class="map-position">
-        <%= render 'games/map' %>
-      </div>
-    </div>
-    <form class="lobby-launch" action="/storylines/<%=@storyline.id%>/games" method="POST">
-      <button class="btn-home"><strong>Créer la partie</strong></button>
-      </form>
-      </div>
+        <div class="map-storyline-show">
+          <div class="map-position">
+            <%= render 'games/map' %>
+          </div>
+        </div>
+
+        <form class="lobby-launch" action="/storylines/<%=@storyline.id%>/games" method="POST">
+          <button class="btn-home">Créer la partie</button>
+        </form>
       </div>
     </div>
   </div>
+
+  <div class="footer-show-img">
+    <%= image_tag("footer.png", alt: "skyline-paris", width: "100%") %>
+  </div>
+
+</div>

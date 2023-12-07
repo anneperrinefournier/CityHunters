@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
-import mapboxgl from 'mapbox-gl' // Don't forget this!
+import mapboxgl from 'mapbox-gl'
 
 export default class extends Controller {
   static values = {
@@ -61,6 +61,8 @@ export default class extends Controller {
   }
 
   #handleData(data) {
+    console.log(data)
+
     if (data.data_type === 'redirect') {
       window.location.href = data.url;
       return;
@@ -73,6 +75,7 @@ export default class extends Controller {
     }
 
     if (data.data_type == 'update_riddle') {
+      console.log()
       this.riddlesHandleTarget.innerHTML = data.content;
       this.displayAnswerBtnTarget.classList.remove('d-none');
       this.displayAnswerBtnTarget.scrollIntoView(true)
@@ -126,9 +129,7 @@ export default class extends Controller {
     const response = await fetch(`/verify`, options);
     const data = await response.json()
 
-    if (data.status === "ok") {
-      // this.closeModal();
-    } else {
+    if (data.status != 'ok') {
       alert(data.message);
     };
   }
@@ -137,7 +138,6 @@ export default class extends Controller {
     this.riddlesHandleTarget.classList.remove('d-none')
     this.introductionTarget.classList.add('d-none')
     this.mapTarget.classList.remove('d-none')
-    // this.endGameButtonTarget.classList.remove("d-none")
 
     if (this.displayAnswerBtnTarget) {
       this.displayAnswerBtnTarget.classList.remove('d-none')
