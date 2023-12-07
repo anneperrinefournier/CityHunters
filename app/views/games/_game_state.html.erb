@@ -60,7 +60,7 @@
   data-answer-modal-riddle-id-value="<%= game.current_place.current_riddle(game).id %>">
 
   <% if game.current_place.current_riddle(game).motion_type == 'static' %>
-    <button class="btn btn-primary" data-action="click->answer-modal#openModal">Répondre</button>
+    <button class="btn-home" data-action="click->answer-modal#openModal">Répondre</button>
     <%= render "games/answer_modal", riddle: game.current_place.current_riddle(game), game: game %>
     <div data-answer-modal-target="displayriddle"></div>
 
