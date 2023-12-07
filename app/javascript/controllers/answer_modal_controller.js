@@ -14,10 +14,12 @@ export default class extends Controller {
   }
 
   openModal(event) {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "block";
-    this.formTarget.querySelector('#question_answer').focus();
-    document.body.classList.add("modal-open");
+    setTimeout(() => {
+      const modal = document.getElementById("myModal");
+      modal.style.display = "block";
+      document.body.classList.add("modal-open");
+      this.formTarget.querySelector('#question_answer').focus();
+    }, 300);
   }
 
   closeModal() {
