@@ -23,7 +23,8 @@ class RiddlesController < ApplicationController
       )
 
       if @game.current_place.nil?
-        @game.update(status: :ended)
+        # @game.update(status: :ended, end_time: Time.now)
+        @game.ended!
 
         GameChannel.broadcast_to(
           "game-#{@game.id}",
