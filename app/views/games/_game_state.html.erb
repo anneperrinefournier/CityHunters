@@ -43,7 +43,7 @@
                 </div>
 
                 <%= simple_format(riddle.description) %>
-                <p><i class="fa-solid fa-puzzle-piece" style="color: #1d2b48;"></i> <%= riddle.question %></p>
+                <p><strong><i class="fa-solid fa-puzzle-piece" style="color: #1d2b48;"></i> <%= riddle.question %></strong></p>
 
                 <% if place.current_riddle(game) == riddle %>
                   <div class='d-flex justify-content-center d-none'

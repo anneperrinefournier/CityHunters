@@ -89,8 +89,8 @@ storyline2 = Storyline.new(
   short_description: "Pars à la recherche du Code Perdu du Wagon !",
   long_description: "Suis les énigmes cryptiques pour retrouver le code perdu du wagon à travers les ruelles du quartier. Une aventure où le mystère et la programmation se rencontrent.",
   introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !\n
-  Pierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.\n
-  Heureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !"
+  Pierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.\n
+  Heureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !"
 )
 file = URI.open("https://i.ibb.co/SXNkWx0/re-publique.jpg")
 storyline2.photo.attach(io: file, filename: "Code Rouge", content_type: "image/jpg")
@@ -258,7 +258,7 @@ place2 = Place.new(
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place2.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place2.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place2.save!
 
 place3 = Place.new(
@@ -278,7 +278,7 @@ place4 = Place.new(
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place4.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place4.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place4.save!
 
 place5 = Place.new(
@@ -288,7 +288,7 @@ place5 = Place.new(
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place5.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place5.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place5.save!
 
 place6 = Place.new(
@@ -298,7 +298,7 @@ place6 = Place.new(
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place6.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place6.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place6.save!
 
 place7 = Place.new(
@@ -308,7 +308,7 @@ place7 = Place.new(
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place7.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place7.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place7.save!
 
 place8 = Place.new(
@@ -318,7 +318,7 @@ place8 = Place.new(
   storyline: storyline1
 )
 file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place8.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place8.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place8.save!
 
 place9 = Place.new(
@@ -328,7 +328,7 @@ place9 = Place.new(
   storyline: storyline2
 )
 file = URI.open("https://i.ibb.co/Kmjtv1T/le-wagon.jpg")
-place9.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place9.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place9.save!
 
 place10 = Place.new(
@@ -338,7 +338,7 @@ place10 = Place.new(
   storyline: storyline2
 )
 file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
-place10.photo.attach(io: file, filename: "Louvres", content_type: "image/jpg")
+place10.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place10.save!
 
 
@@ -398,10 +398,13 @@ riddle7 = Riddle.new(
   title: 'Le blason du Wagon',
   description: 'Te voilà arrivé au point de départ, où tout a commencé : Le Wagon. C’est ici que le vol a eu lieu. Le témoin principal, Diane, t’indique que le coffre-fort était caché derrière le blason du Wagon. Tu t’approches, dans l’espoir de trouver un indice.',
   solution: 'un bus',
-  question: 'Quel est le blason du Wagon ?',
+  question: 'Quel est le blason du Wagon ?',
   motion_type: 'static',
   place: place9
 )
+file = URI.open("https://i.ibb.co/r36wK57/riddle-wagon.png")
+riddle7.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
+riddle7.save!
 
 riddle8 = Riddle.new(
   title: 'À la poursuite du voleur',
@@ -410,10 +413,13 @@ riddle8 = Riddle.new(
   Au cœur du mystère, dans le 11ᵉ,\n
   Le voleur du code se cache, prêt à fuir. »",
   solution: 'blablabla',
-  question: 'Trouve le lieu où se cache le voleur.',
+  question: 'Trouve le lieu où se cache le voleur.',
   motion_type: 'shifting',
   place: place9
 )
+file = URI.open("https://i.ibb.co/6vsFQtF/paris11.webp")
+riddle8.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
+riddle8.save!
 
 riddle9 = Riddle.new(
   title: 'Le nom du voleur',
@@ -423,10 +429,13 @@ riddle9 = Riddle.new(
   Création d’une plume habile, mon nom résonne dans l’écho, \n
   Charmeur des larcins, je voulais le code, je le rends avec flegme. »",
   solution: 'Arsène Lupin',
-  question: 'Quel est le nom du voleur ?',
+  question: 'Quel est le nom du voleur ?',
   motion_type: 'static',
   place: place10
 )
+file = URI.open("https://i.ibb.co/gdz0z7s/code-707069-1280-1.jpg")
+riddle9.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
+riddle8.save!
 
 riddle1.save!
 riddle2.save!
@@ -645,7 +654,7 @@ riddle5.save!
 riddle6 = Riddle.new(
   title: 'Rentrer manger',
   description: 'Find cake price',
-  question: "Bon, je pense que l'on a tout ce qu'il faut pour s'assoir autour d'une table et manger tous ensemble! Il va falloir en trouver une...",
+  question: "Bon, je pense que l’on a tout ce qu’il faut pour s’assoir autour d’une table et manger tous ensemble ! Il va falloir en trouver une…",
   solution: "LatLng",
   motion_type: 'shifting',
   place: place3
@@ -656,7 +665,7 @@ riddle6.save!
 riddle7 = Riddle.new(
   title: 'Conclusion',
   description: 'Conclusion aventure',
-  question: "Félicitation! Votre expédition s'arrête ici, il est temps maintenant de savourer votre précieux butin! Bon appétit!\nEnvoyer 'thanks' pour terminer l'aventure :D",
+  question: "Félicitation ! Votre expédition s'arrête ici, il est temps maintenant de savourer votre précieux butin! Bon appétit!\nEnvoyer 'thanks' pour terminer l'aventure :D",
   solution: "thanks",
   motion_type: 'static',
   place: place4

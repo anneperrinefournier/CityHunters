@@ -3,7 +3,7 @@ class Place < ApplicationRecord
   has_many :riddles, -> { order(created_at: :asc) }, dependent: :destroy
   validates :name, :address, presence: true
 
-  has_one_attached :photo
+  has_one_attached :photo, dependent: :destroy
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
