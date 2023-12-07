@@ -32,27 +32,27 @@
       <% end %>
     </div>
 
-    <div class="folder-icons">
+    <div class="folder-show-icons">
       <div class="icons-inline">
-        <p><i class="fa-solid fa-location-dot mx-1"></i> <%= @storyline.district %></p>
-        <p><i class="fa-regular fa-clock"></i> <%= @storyline.duration.to_i %> min</p>
-      <p><i class="fa-solid fa-puzzle-piece"></i>
-        <% difficulty = @storyline.difficulty %>
-        <% case difficulty %>
-          <% when 1..2 %>
-            facile
-          <% when 3 %>
-            moyen
-          <% when 4..5 %>
-            difficile
-          <% else %>
-            inconnu
-        <% end %></p>
-        </div>
+        <p class="storyline-location-dot-position"><i class="fa-solid fa-location-dot"></i> <%= @storyline.district %></p>
+        <p><i class="fa-solid fa-puzzle-piece"></i>
+          <% difficulty = @storyline.difficulty %>
+          <% case difficulty %>
+            <% when 1..2 %>
+              facile
+            <% when 3 %>
+              moyen
+            <% when 4..5 %>
+              difficile
+            <% else %>
+              inconnu
+          <% end %></p>
+          </div>
+        <p class="storyline-clock-position"><i class="fa-solid fa-clock"></i> <%= @storyline.duration.to_i %> min</p>
       </div>
 
       <div>
-        Thème :</strong> <%= @storyline.theme %>
+        <p>Thème :</strong> <%= @storyline.theme %></p>
         <p>Avis : <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></p>
       </div>
 

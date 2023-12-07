@@ -43,6 +43,15 @@ class Game < ApplicationRecord
     duration_string.strip
   end
 
+  def duration
+    end_time - start_time
+  end
+
+  def ended!
+    update(end_time: Time.now)
+    super
+  end
+
   private
 
   def set_game_pin

@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: %i[lobby show start end_game]
-  before_action :set_game_users, only: %i[lobby stats]
+  before_action :set_game_users, only: %i[lobby stats end_game]
 
   def create
     game = Game.create!(
@@ -20,7 +20,6 @@ class GamesController < ApplicationController
   def show
     if @game.status == "not_started" && current_user == @game.user
       @game.running!
-      @start_time = Time.now
     end
 
     if @game.status == "running"
@@ -108,6 +107,7 @@ class GamesController < ApplicationController
 
   def start
     @game.running!
+    @game.update(start_time: Time.now)
     LobbyChannel.broadcast_to(
       "lobby-#{@game.id}",
       {
@@ -119,7 +119,8 @@ class GamesController < ApplicationController
 
   def end_game
     @game.ended!
-    @end_time = Time.now
+
+    @participations = Participation.where(game: @game)
 
     GameChannel.broadcast_to(
       "game-#{@game.id}",
