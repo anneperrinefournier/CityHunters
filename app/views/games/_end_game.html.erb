@@ -16,29 +16,33 @@
   <div class="p-3 my-3">
     <div class="folder-endgame">
       <%= cl_image_tag @game.storyline.photo.key, alt: (@game.storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
-    <div class="d-flex">
+    <div class="playtime">
       <h4>Félicitations !</h4>
       <p>Vous avez terminé le jeu de piste <%= @game.storyline.title %> !</p>
     </div>
 
+  <div class="playtime">
     <h4>Joueurs</h4>
     <ul>
       <% @game.participations.each do |participation|%>
         <li><%=  participation.user.name %> <%= cl_image_tag(participation.user.photo.key, class:'avatar-large') %></li>
       <% end %>
     </ul>
+  </div>
 
     <div class="scoring">
-      <div class="d-flex gap-2">
+      <div class="playtime">
         <h4>Ton score :</h4><p style="color: gold;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></h1>
       </div>
-      <div class="playtime d-flex">
+      <div class="playtime">
         <h4>Temps de jeu: </h4>
         <p><%= @game.format_duration(@game.end_time - @game.start_time) %></p>
       </div>
     </div>
 
-    <h4> Énigmes résolues :<%= @game.riddles.count%></h4>
+<div class="playtime">
+    <h4> Énigmes résolues :</h4>
+    <p><%= @game.riddles.count%></p>
     <% @game.answers.where(correct: true).group_by(&:solver).each do |solver, answer| %>
     <%= solver.name %> a résolu <%= answer.count %> énigmes.
     <% end %>
@@ -47,6 +51,7 @@
         <li>  <%= answer.solver.name %> a résolu <%= answer.riddle.title %> </li>
       <% end %>
     </ul>
+</div>
 
 
     <h4>Expérience</h4>
