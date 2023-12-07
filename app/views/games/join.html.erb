@@ -1,8 +1,24 @@
-<div class="container">
-  <h1>Rejoindre une partie</h1>
+<div class="pages-backscreen" style="min-height: 100vh">
+  <h1 class="background-top-title background-lobby-top-title">Rejoindre une partie</h1>
+  <div class="container">
 
-  <%= simple_form_for :game, url: access_game_path do |f| %>
-    <%= f.input :pin %>
-    <%= f.submit %>
-  <% end %>
+    <div class="d-flex justify-content-center">
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag(current_user.photo.key, class:"avatar-very-large") %>
+      <% else %>
+        <img src="https://i.ibb.co/PFHbc3Z/profilephoto.png" alt="user-picture" class="avatar-large">
+      <% end %>
+    </div>
+
+    <div class="mt-5 d-flex justify-content-center">
+      <hr class="dotted-line">
+    </div>
+
+    <div class="mt-5">
+      <%= simple_form_for :game, url: access_game_path do |f| %>
+        <%= f.input :pin, label: false, placeholder: 'PIN' %>
+        <%= f.button :submit, 'Rejoindre la partie', class:"btn-home" %>
+      <% end %>
+    </div>
+  </div>
 </div>

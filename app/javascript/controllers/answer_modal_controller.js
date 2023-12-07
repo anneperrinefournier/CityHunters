@@ -46,7 +46,10 @@ export default class extends Controller {
     if (data.status === "ok") {
       this.closeModal();
     } else {
+      console.log(this.formTarget.querySelector('#question_answer').value)
       alert(data.message);
+      this.formTarget.querySelector('#question_answer').value = '';
+      this.formTarget.querySelector('#question_answer').focus();
     };
   }
 }
