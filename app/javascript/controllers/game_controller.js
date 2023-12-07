@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import { createConsumer } from "@rails/actioncable"
 import mapboxgl from 'mapbox-gl'
+import Swal from 'sweetalert2';
 
 export default class extends Controller {
   static values = {
@@ -130,7 +131,16 @@ export default class extends Controller {
     const data = await response.json()
 
     if (data.status != 'ok') {
-      alert(data.message);
+
+      Swal.fire({
+        title: data.title,
+        text: data.message,
+        confirmButtonText: data.button_text,
+        customClass: {
+          popup: 'swal-modal',
+          confirmButton: 'btn-home'
+        }
+      })
     };
   }
 
