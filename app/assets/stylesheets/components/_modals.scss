@@ -2,5 +2,39 @@
   height: 80%;
   width: 44vh;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 100px;
+
+
+
 }
+
+#myModal .btn-home {
+  margin: auto;
+  display: block;
+}
+
+.modal-content {
+  clip-path: polygon(95% 0%, 100% 5%, 100% 95%, 95% 99%, 5% 100%, 0% 96%, 0% 5%, 6% 0%);
+  background: linear-gradient(15deg, rgba(168, 148, 105, 0.77) -6.41%, rgba(168, 155, 105, 0.06) 99.53%), #FBFCFA;
+  filter: drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.05));
+  border: none;
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-footer {
+  border: none;
+}
+
+.modal-body {
+  border: none;
+}
+
+.modal {
+  border: none;
+}
+
+//fill: linear-gradient(180deg, rgba(29, 43, 72, 0.77) -27.65%, rgba(29, 43, 72, 0.00) 68.32%), #FBFCFA;
+//filter: drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.05));

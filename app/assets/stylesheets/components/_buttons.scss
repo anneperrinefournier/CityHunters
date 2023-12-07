@@ -22,11 +22,11 @@ margin: 250px auto 0;
   align-items: center;
 
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 22px;
   padding: 12px 20px;
   width: 300px;
   height: 70px;
-  background: $navy;
+  background: $navy !important;
   text-decoration: none;
 }
 
@@ -44,7 +44,7 @@ margin: 250px auto 0;
   background-color: $navy;
   font-family: Nova Square;
   border-radius: 10px;
-  font-size: 12px;
+  font-size: 16px;
   padding: 12px 20px;
   margin-top: 10px;
   float: right;
@@ -52,5 +52,5 @@ margin: 250px auto 0;
 }
 
 .btn-ugly:active{
-  background-color: red;
+  background-color: #313b4f;
 }
