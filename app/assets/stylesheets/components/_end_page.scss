@@ -1,6 +1,24 @@
 .playtime {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
-  justify-content: start;
-  align-items: flex-start;
+}
+
+.playtime-info {
+  display: inline-grid;
+  text-align: center;
+  margin-top: 1vh;
+}
+
+
+.score-time {
+  display: flex;
+  gap: 1rem;
+  text-align: center;
+  margin-top: 3vh;
+}
+
+.riddle-solving {
+margin-top: 3vh;
+margin-bottom: 2vh;
 }
