@@ -33,40 +33,42 @@
                 <div class="show-title"><h4><%= riddle.title %></h4></div>
               </div>
 
-            <div class="folder-show">
-              <div>
-                <% if place.photo.attached? %>
-                  <%= cl_image_tag(place.photo.key, alt: "#{place.name} -photo", class: "photos-img") %>
-                <% else %>
-                  <%= image_tag('compass.png', alt: "#{place.name} -photo", class: "photos-img") %>
-                <% end %>
-              </div>
+              <div class="folder-show">
+                <div>
+                  <% if place.photo.attached? %>
+                    <%= cl_image_tag(place.photo.key, alt: "#{place.name} -photo", class: "photos-img") %>
+                  <% else %>
+                    <%= image_tag('compass.png', alt: "#{place.name} -photo", class: "photos-img") %>
+                  <% end %>
+                </div>
 
                 <%= simple_format(riddle.description) %>
                 <p><i class="fa-solid fa-puzzle-piece" style="color: #1d2b48;"></i> <%= riddle.question %></p>
-            </div>
+
+                <% if place.current_riddle(game) == riddle %>
+                  <div class='d-flex justify-content-center d-none'
+                    data-controller="answer-modal"
+                    data-game-target="displayAnswerBtn"
+                    data-answer-modal-game-id-value="<%= game.id %>"
+                    data-answer-modal-riddle-id-value="<%= game.current_place.current_riddle(game).id %>">
+
+                    <% if game.current_place.current_riddle(game).motion_type == 'static' %>
+                      <button class="btn-home" data-action="click->answer-modal#openModal">Répondre</button>
+                      <%= render "games/answer_modal", riddle: game.current_place.current_riddle(game), game: game %>
+                      <div data-answer-modal-target="displayriddle"></div>
+
+                    <% elsif game.current_place.current_riddle(game).motion_type == 'shifting' %>
+                      <%= simple_form_for :question, url: "#", html: { data: { riddle_id: game.current_place.current_riddle(game).id, game_target: "mapForm", action: "submit->game#verifyPosition" } } do |f| %>
+                        <%= f.submit "Send position", class: 'btn-home' %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
             </div>
           <% end %>
         <% end %>
       </div>
-    <% end %>
-  <% end %>
-</div>
-
-<div class='d-flex justify-content-center d-none'
-  data-controller="answer-modal"
-  data-game-target="displayAnswerBtn"
-  data-answer-modal-game-id-value="<%= game.id %>"
-  data-answer-modal-riddle-id-value="<%= game.current_place.current_riddle(game).id %>">
-
-  <% if game.current_place.current_riddle(game).motion_type == 'static' %>
-    <button class="btn-home" data-action="click->answer-modal#openModal">Répondre</button>
-    <%= render "games/answer_modal", riddle: game.current_place.current_riddle(game), game: game %>
-    <div data-answer-modal-target="displayriddle"></div>
-
-  <% elsif game.current_place.current_riddle(game).motion_type == 'shifting' %>
-    <%= simple_form_for :question, url: "#", html: { data: { riddle_id: game.current_place.current_riddle(game).id, game_target: "mapForm", action: "submit->game#verifyPosition" } } do |f| %>
-      <%= f.submit "Send position", class: 'btn btn-warning' %>
     <% end %>
   <% end %>
 </div>
