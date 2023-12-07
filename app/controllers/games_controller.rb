@@ -73,13 +73,19 @@ class GamesController < ApplicationController
   end
 
   def access
-    game = Game.find_by(pin: params[:game][:pin].upcase)
-    participation = Participation.new(
-      game: game,
-      user: current_user
-    )
-    participation.save
-    redirect_to lobby_game_path(game)
+    game_pin = params[:game][:pin].delete(" \t\r\n").upcase
+    game = Game.find_by(pin: game_pin)
+    if game
+      participation = Participation.new(
+        game: game,
+        user: current_user
+      )
+      participation.save
+      redirect_to lobby_game_path(game)
+    else
+      flash[:alert] = "No game with PIN: #{game_pin}"
+      redirect_to join_game_path
+    end
   end
 
   def lobby
