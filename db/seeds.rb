@@ -191,25 +191,25 @@ storyline8 = Storyline.new(
 file = URI.open("https://i.ibb.co/cv86qGz/17e.webp")
 storyline8.photo.attach(io: file, filename: "L'Aventure des Batignolles", content_type: "image/jpg")
 storyline8.save!
-#
-storyline9 = Storyline.new(
-  title: "Piège au Canal Saint-Martin",
-  district: "10ᵉ arr.",
-  duration: 75,
-  distance: 5,
-  theme: "policier",
-  difficulty: 2,
-  starting_point: "Canal Saint-Martin, 10th arrondissement, Paris, France",
-  short_description: "Découvre les secrets du Canal Saint-Martin.",
-  long_description: "Plonge dans les mystères du 10ᵉ arrondissement le long du Canal Saint-Martin. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique.",
-  introduction: "Bienvenue dans 'Les Secrets du Canal Saint-Martin', une aventure mystérieuse dans le 10ᵉ arrondissement de Paris. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique."
-)
-file = URI.open("https://www.pariszigzag.fr/wp-content/uploads/2021/06/shutterstock_247992964-e1624458172598.jpg")
-storyline9.photo.attach(io: file, filename: "Les Secrets du Canal Saint-Martin", content_type: "image/jpg")
-storyline9.save!
-#
+
+# storyline9 = Storyline.new(
+#   title: "Piège au Canal Saint-Martin",
+#   district: "10ᵉ arr.",
+#   duration: 75,
+#   distance: 5,
+#   theme: "policier",
+#   difficulty: 2,
+#   starting_point: "Canal Saint-Martin, 10th arrondissement, Paris, France",
+#   short_description: "Découvre les secrets du Canal Saint-Martin.",
+#   long_description: "Plonge dans les mystères du 10ᵉ arrondissement le long du Canal Saint-Martin. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique.",
+#   introduction: "Bienvenue dans 'Les Secrets du Canal Saint-Martin', une aventure mystérieuse dans le 10ᵉ arrondissement de Paris. Des énigmes fascinantes te guideront à travers les rives pittoresques de ce quartier branché. Découvre les secrets cachés sous les ponts et dans les cafés qui font la renommée de cet endroit unique."
+# )
+# file = URI.open("https://www.pariszigzag.fr/wp-content/uploads/2021/06/shutterstock_247992964-e1624458172598.jpg")
+# storyline9.photo.attach(io: file, filename: "Les Secrets du Canal Saint-Martin", content_type: "image/jpg")
+# storyline9.save!
+
 storyline10 = Storyline.new(
-  title: "L’évasion de Montorgueil",
+  title: "L’Évasion de Montorgueil",
   district: "2ᵉ arr.",
   duration: 60,
   distance: 3.5,
@@ -225,7 +225,7 @@ storyline10.photo.attach(io: file, filename: "L'Évasion de Montorgueil", conten
 storyline10.save!
 
 storyline11 = Storyline.new(
-  title: "Le mystère du Marais",
+  title: "Le Mystère du Marais",
   district: "4ᵉ arr.",
   duration: 75,
   distance: 3,
@@ -241,85 +241,85 @@ storyline11.photo.attach(io: file, filename: "Les Énigmes du Marais", content_t
 storyline11.save!
 
 
-place1 = Place.new(
-  name: "Place Royale",
-  address: "1 Place des Vosges, 75004 Paris, France",
-  description: "La Place Royale, également connue sous le nom de Place des Vosges, est une place historique entourée d'élégants pavillons. Construite au XVIIe siècle, elle est le joyau du Marais.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/zPRMvVy/vosges.jpg")
-place1.photo.attach(io: file, filename: "Vosges", content_type: "image/jpg")
-place1.save!
+# place1 = Place.new(
+#   name: "Place Royale",
+#   address: "1 Place des Vosges, 75004 Paris, France",
+#   description: "La Place Royale, également connue sous le nom de Place des Vosges, est une place historique entourée d'élégants pavillons. Construite au XVIIe siècle, elle est le joyau du Marais.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/zPRMvVy/vosges.jpg")
+# place1.photo.attach(io: file, filename: "Vosges", content_type: "image/jpg")
+# place1.save!
 
-place2 = Place.new(
-  name: "Palais du Louvre",
-  address: "Rue de Rivoli, 75001 Paris, France",
-  description: "Le Palais du Louvre, ancienne résidence royale, est aujourd'hui l'un des plus grands musées du monde. Avec ses vastes collections artistiques, il est un incontournable du 1ᵉʳ arrondissement.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place2.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
-place2.save!
+# place2 = Place.new(
+#   name: "Palais du Louvre",
+#   address: "Rue de Rivoli, 75001 Paris, France",
+#   description: "Le Palais du Louvre, ancienne résidence royale, est aujourd'hui l'un des plus grands musées du monde. Avec ses vastes collections artistiques, il est un incontournable du 1ᵉʳ arrondissement.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
+# place2.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
+# place2.save!
 
-place3 = Place.new(
-  name: "Église Saint-Germain-l'Auxerrois",
-  address: "2 Place du Louvre, 75001 Paris, France",
-  description: "Cette église, située à proximité du Louvre, est connue pour son architecture gothique et son histoire étroitement liée à la royauté française. Un lieu empreint de spiritualité et d'histoire.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/KhjR0L8/saint-germains.jpg")
-place3.photo.attach(io: file, filename: "St germain", content_type: "image/jpg")
-place3.save!
+# place3 = Place.new(
+#   name: "Église Saint-Germain-l'Auxerrois",
+#   address: "2 Place du Louvre, 75001 Paris, France",
+#   description: "Cette église, située à proximité du Louvre, est connue pour son architecture gothique et son histoire étroitement liée à la royauté française. Un lieu empreint de spiritualité et d'histoire.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/KhjR0L8/saint-germains.jpg")
+# place3.photo.attach(io: file, filename: "St germain", content_type: "image/jpg")
+# place3.save!
 
-place4 = Place.new(
-  name: "Fontaine des Innocents",
-  address: "Place Joachim du Bellay, 75001 Paris, France",
-  description: "La Fontaine des Innocents est une fontaine Renaissance richement décorée. Construite au XVIe siècle, elle a été déplacée à son emplacement actuel au cœur du 1ᵉʳ arrondissement.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place4.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
-place4.save!
+# place4 = Place.new(
+#   name: "Fontaine des Innocents",
+#   address: "Place Joachim du Bellay, 75001 Paris, France",
+#   description: "La Fontaine des Innocents est une fontaine Renaissance richement décorée. Construite au XVIe siècle, elle a été déplacée à son emplacement actuel au cœur du 1ᵉʳ arrondissement.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
+# place4.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
+# place4.save!
 
-place5 = Place.new(
-  name: "Théâtre du Châtelet",
-  address: "1 Place du Châtelet, 75001 Paris, France",
-  description: "Le Théâtre du Châtelet est un théâtre historique au style Belle Époque. Il est réputé pour ses productions musicales et sa contribution à la scène artistique parisienne.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place5.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
-place5.save!
+# place5 = Place.new(
+#   name: "Théâtre du Châtelet",
+#   address: "1 Place du Châtelet, 75001 Paris, France",
+#   description: "Le Théâtre du Châtelet est un théâtre historique au style Belle Époque. Il est réputé pour ses productions musicales et sa contribution à la scène artistique parisienne.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
+# place5.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
+# place5.save!
 
-place6 = Place.new(
-  name: "Palais Royal",
-  address: "8 Rue de Montpensier, 75001 Paris, France",
-  description: "Le Palais Royal, résidence autrefois royale, est entouré de jardins élégants. Avec ses colonnes rayées emblématiques et son histoire fascinante, il reste un joyau du 1ᵉʳ arrondissement.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place6.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
-place6.save!
+# place6 = Place.new(
+#   name: "Palais Royal",
+#   address: "8 Rue de Montpensier, 75001 Paris, France",
+#   description: "Le Palais Royal, résidence autrefois royale, est entouré de jardins élégants. Avec ses colonnes rayées emblématiques et son histoire fascinante, il reste un joyau du 1ᵉʳ arrondissement.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
+# place6.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
+# place6.save!
 
-place7 = Place.new(
-  name: "Colonnes de Buren",
-  address: "Palais Royal, 75001 Paris, France",
-  description: "Les Colonnes de Buren, situées dans la cour du Palais Royal, sont une installation artistique contemporaine. Leurs colonnes rayées offrent un contraste unique avec l'histoire du lieu.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place7.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
-place7.save!
+# place7 = Place.new(
+#   name: "Colonnes de Buren",
+#   address: "Palais Royal, 75001 Paris, France",
+#   description: "Les Colonnes de Buren, situées dans la cour du Palais Royal, sont une installation artistique contemporaine. Leurs colonnes rayées offrent un contraste unique avec l'histoire du lieu.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
+# place7.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
+# place7.save!
 
-place8 = Place.new(
-  name: "Jardins des Tuileries",
-  address: "Rue de Rivoli, 75001 Paris, France",
-  description: "Les Jardins des Tuileries, adjacents au Louvre, sont des jardins à la française classiques. Leur conception élégante et leurs statues impressionnantes en font un lieu de promenade incontournable.",
-  storyline: storyline1
-)
-file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
-place8.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
-place8.save!
+# place8 = Place.new(
+#   name: "Jardins des Tuileries",
+#   address: "Rue de Rivoli, 75001 Paris, France",
+#   description: "Les Jardins des Tuileries, adjacents au Louvre, sont des jardins à la française classiques. Leur conception élégante et leurs statues impressionnantes en font un lieu de promenade incontournable.",
+#   storyline: storyline1
+# )
+# file = URI.open("https://i.ibb.co/3rF3pnK/louvre.webp")
+# place8.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
+# place8.save!
 
 place9 = Place.new(
   name: "Le Wagon",
@@ -341,58 +341,57 @@ file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
 place10.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place10.save!
 
+# riddle1 = Riddle.new(
+#   title: 'Horse color',
+#   description: 'riddle 1 : horse color',
+#   solution: 'blanc',
+#   question: 'Quelle est la couleur du cheval blanc d’Henri 4?',
+#   motion_type: 'static',
+#   place: place1
+# )
+# riddle2 = Riddle.new(
+#   title: 'Dog color',
+#   description: 'riddle 2 : dog color',
+#   solution: 'rouge',
+#   question: 'Quelle est la couleur de Pif le chien rouge?',
+#   motion_type: 'static',
+#   place: place1
+# )
+# riddle3 = Riddle.new(
+#   title: 'Cat color',
+#   description: 'riddle 3 : neighbor cat color',
+#   solution: 'noir',
+#   question: 'Quelle est la couleur du chat noir de la voisine?',
+#   motion_type: 'static',
+#   place: place1
+# )
 
-riddle1 = Riddle.new(
-  title: 'Horse color',
-  description: 'riddle 1 : horse color',
-  solution: 'blanc',
-  question: 'Quelle est la couleur du cheval blanc d’Henri 4?',
-  motion_type: 'static',
-  place: place1
-)
-riddle2 = Riddle.new(
-  title: 'Dog color',
-  description: 'riddle 2 : dog color',
-  solution: 'rouge',
-  question: 'Quelle est la couleur de Pif le chien rouge?',
-  motion_type: 'static',
-  place: place1
-)
-riddle3 = Riddle.new(
-  title: 'Cat color',
-  description: 'riddle 3 : neighbor cat color',
-  solution: 'noir',
-  question: 'Quelle est la couleur du chat noir de la voisine?',
-  motion_type: 'static',
-  place: place1
-)
+# riddle4 = Riddle.new(
+#   title: 'Horse color',
+#   description: 'riddle 1 : alexis cat color',
+#   solution: 'crème',
+#   question: 'Quelle est la couleur du chat d’Alexis ?',
+#   motion_type: 'static',
+#   place: place2
+# )
 
-riddle4 = Riddle.new(
-  title: 'Horse color',
-  description: 'riddle 1 : alexis cat color',
-  solution: 'crème',
-  question: 'Quelle est la couleur du chat d’Alexis ?',
-  motion_type: 'static',
-  place: place2
-)
+# riddle5 = Riddle.new(
+#   title: 'Horse color',
+#   description: 'riddle 1 : ap cat color',
+#   solution: 'brun',
+#   question: 'Quelle est la couleur du chat d’AP ?',
+#   motion_type: 'static',
+#   place: place2
+# )
 
-riddle5 = Riddle.new(
-  title: 'Horse color',
-  description: 'riddle 1 : ap cat color',
-  solution: 'brun',
-  question: 'Quelle est la couleur du chat d’AP ?',
-  motion_type: 'static',
-  place: place2
-)
-
-riddle6 = Riddle.new(
-  title: 'Horse color',
-  description: 'riddle 1 : horse color',
-  solution: 'swan',
-  question: 'Comment s’appelle le chat de Diane ?',
-  motion_type: 'static',
-  place: place2
-)
+# riddle6 = Riddle.new(
+#   title: 'Horse color',
+#   description: 'riddle 1 : horse color',
+#   solution: 'swan',
+#   question: 'Comment s’appelle le chat de Diane ?',
+#   motion_type: 'static',
+#   place: place2
+# )
 
 riddle7 = Riddle.new(
   title: 'Le blason du Wagon',
@@ -417,7 +416,7 @@ riddle8 = Riddle.new(
   motion_type: 'shifting',
   place: place9
 )
-file = URI.open("https://i.ibb.co/6vsFQtF/paris11.webp")
+file = URI.open("https://i.ibb.co/Xj9vkgk/Capture-d-e-cran-2023-12-07-a-16-39-58.png")
 riddle8.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
 riddle8.save!
 
@@ -433,7 +432,7 @@ riddle9 = Riddle.new(
   motion_type: 'static',
   place: place10
 )
-file = URI.open("https://i.ibb.co/gdz0z7s/code-707069-1280-1.jpg")
+file = URI.open("https://i.ibb.co/7y22fs2/voleur-code.png")
 riddle9.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
 riddle8.save!
 
@@ -540,139 +539,141 @@ answer6.save!
 
 
 # Storyline: L'appel de la bouffe
-storyline = Storyline.new(
-  title: "Alerte Estomac !",
-  district: "11ᵉ arr.",
-  duration: 15,
-  distance: 1,
-  theme: "urbain",
-  difficulty: 1,
-  starting_point: "68 avenue Parmentier, 75011 Paris, France",
-  short_description: "Pars à la recherche de ta nouriture !",
-  long_description: "Ca y est, nous y sommes! Il est 13h et l'estomac souffre et agonise, il a besoin de manger. Une seule solution, partir en quête de nourriture! Suivez cette aventure exceptiionnelle à laquelle tout le monde revient satisfait, mais surtout, le ventre plein!",
-  introduction: "Dans une ville grouillante d'activité, où les rues pavées bruissent sous les pas pressés des passants, une quête essentielle vous anime : assouvir votre faim grandissante. Ignorant l'agitation ambiante, votre estomac vous rappelle impérieusement à l'ordre, vous incitant à trouver cette nourriture revigorante qui apaisera votre appétit croissant.
+# storyline = Storyline.new(
+#   title: "Alerte Estomac !",
+#   district: "11ᵉ arr.",
+#   duration: 15,
+#   distance: 1,
+#   theme: "urbain",
+#   difficulty: 1,
+#   starting_point: "68 avenue Parmentier, 75011 Paris, France",
+#   short_description: "Pars à la recherche de ta nouriture !",
+#   long_description: "Ca y est, nous y sommes! Il est 13h et l'estomac souffre et agonise, il a besoin de manger. Une seule solution, partir en quête de nourriture! Suivez cette aventure exceptiionnelle à laquelle tout le monde revient satisfait, mais surtout, le ventre plein!",
+#   introduction: "Dans une ville grouillante d'activité, où les rues pavées bruissent sous les pas pressés des passants, une quête essentielle vous anime : assouvir votre faim grandissante. Ignorant l'agitation ambiante, votre estomac vous rappelle impérieusement à l'ordre, vous incitant à trouver cette nourriture revigorante qui apaisera votre appétit croissant.
 
-  Des senteurs alléchantes émanent des cuisines dissimulées derrière les devantures de restaurant, des échoppes et des étals de marché. Chaque recoin de cette ville vous attire et vous offre des promesses gastronomiques, avec l'espoir de combler votre faim insatiable.
+#   Des senteurs alléchantes émanent des cuisines dissimulées derrière les devantures de restaurant, des échoppes et des étals de marché. Chaque recoin de cette ville vous attire et vous offre des promesses gastronomiques, avec l'espoir de combler votre faim insatiable.
 
-  Entre les badauds affairés et les passants pressés, vous poursuivez votre quête, scrutant les enseignes alléchantes, à la recherche du festin parfait. Chaque boulangerie, chaque café et chaque stand coloré éveille votre appétit et fait frémir vos sens. Vous êtes déterminé à découvrir ce met délicieux, à dénicher ce plat réconfortant capable de satisfaire vos désirs les plus profonds."
-)
-file = URI.open("https://www.sofoodmag.fr/wp-content/uploads/2013/02/wpid-3161-avoir-faim.jpg")
-storyline.photo.attach(io: file, filename: "Alerte_Estomac", content_type: "image/jpg")
-storyline.save!
-place1 = Place.new(
-  name: "Le Wagon",
-  address: "68 Ave Parmentier, 75011 Paris, France",
-  description: "On y pleure, on y rit, mais surtout, on s'y sent bien!",
-  storyline: storyline
-)
-file = URI.open("https://studysmarter-mediafiles.s3.amazonaws.com/media/uploads/froala_editor/images/fa7583826ca3-Paris_Campus_3__3_.png")
-place1.photo.attach(io: file, filename: "lewagon", content_type: "image/jpg")
-place1.save!
-place2 = Place.new(
-  name: "Metro Parmentier",
-  address: "86 avenue Parmentier, 75004 Paris, France",
-  description: "Cette bouche de metro... que dire dessus sinon que je ne l'ai jamais prise!",
-  storyline: storyline
-)
-file = URI.open("https://p.monumentum.fr/galerie/maxi/00446/446476-francais-entree-de-la-station-de-metro-parmentier-avenue-parmentier-paris.jpg")
-place2.photo.attach(io: file, filename: "metro parmentier", content_type: "image/jpg")
-place2.save!
-place3 = Place.new(
-  name: "Boulangerie Oberkampf",
-  address: "54 rue Oberkampf, 75001 Paris, France",
-  description: "Cette boulangerie me surprendra toujours, non pas tant par la quantité de ses portions, mais par sa qualité de service et son prix!",
-  storyline: storyline
-)
-file = URI.open("https://st.hzcdn.com/simgs/32d1769f03edfebf_16-1634/home-design.jpg")
-place3.photo.attach(io: file, filename: "boulangerie graine", content_type: "image/jpg")
-place3.save!
-place4 = Place.new(
-  name: place1.name,
-  address: place1.address,
-  description: place1.description,
-  storyline: storyline
-)
-file = URI.open("https://studysmarter-mediafiles.s3.amazonaws.com/media/uploads/froala_editor/images/fa7583826ca3-Paris_Campus_3__3_.png")
-place4.photo.attach(io: file, filename: "lewagon", content_type: "image/jpg")
-place4.save!
+#   Entre les badauds affairés et les passants pressés, vous poursuivez votre quête, scrutant les enseignes alléchantes, à la recherche du festin parfait. Chaque boulangerie, chaque café et chaque stand coloré éveille votre appétit et fait frémir vos sens. Vous êtes déterminé à découvrir ce met délicieux, à dénicher ce plat réconfortant capable de satisfaire vos désirs les plus profonds."
+# )
+# file = URI.open("https://www.sofoodmag.fr/wp-content/uploads/2013/02/wpid-3161-avoir-faim.jpg")
+# storyline.photo.attach(io: file, filename: "Alerte_Estomac", content_type: "image/jpg")
+# storyline.save!
 
-riddle1 = Riddle.new(
-  title: "Ce que je préfère à 13h",
-  description: 'Find the next place',
-  question: "S'il y a bien une chose que je préfère quand l'heure de la soupe arrive, c'est...?",
-  solution: "manger",
-  motion_type: 'static',
-  place: place1
-)
-file = URI.open('https://fondationolo.ca/wp-content/uploads/2017/07/fondation-olo-bebe-a-faim.jpg')
-riddle1.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle1.save!
-riddle2 = Riddle.new(
-  title: "Trouvez le prochain lieu",
-  description: 'Find the next place',
-  question: "Notre première enigme est une bifurcation, l'intersection de tous les chemins de notre aventure, l'origine des séparations mais aussi parfois un point de rencontre...",
-  solution: "Lat:XXX, Lng:YYY",
-  motion_type: 'shifting',
-  place: place1
-)
-file = URI.open('https://www.unmondedaventures.fr/wp-content/uploads/2015/01/281530234-Copier.jpg')
-riddle2.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle2.save!
-riddle3 = Riddle.new(
-  title: 'Find next place',
-  description: 'Find the next place',
-  question: "Bravo! Mais cet endroit n'est que le point de passage, d'un lieu plus important encore!\nOn dit qu'on y fait les meilleurs gateaux mais mon dieu que c'est cher!",
-  solution: "Lat:XXX, Lng:YYY",
-  motion_type: 'shifting',
-  place: place2
-)
-file = URI.open('https://www.podcastfrancaisfacile.com/wp-content/uploads/2013/05/demander-son-chemin.jpg')
-riddle3.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle3.save!
-riddle4 = Riddle.new(
-  title: 'What a cake!',
-  description: 'Find cake price',
-  question: "Félicitation! Vous avez trouvé le lieux exact de notre aventure! Parmi les gateaux que je préfère, il y en a un particulièrement que je prends presque à chaque fois, saurez-vous trouver lequel? Seuls les vrais savent!",
-  solution: "citron pavot",
-  motion_type: 'static',
-  place: place3
-)
-file = URI.open('https://cdn.pratico-pratiques.com/app/uploads/sites/2/2022/05/02113329/gateau-au-citron-et-huile-d-olive.jpg')
-riddle4.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle4.save!
-riddle5 = Riddle.new(
-  title: 'What a cake!',
-  description: 'Find cake price',
-  question: "Et oui, j'adore ce gateau! Pourriez-vous noter le prix du sandwich au poulet pour moi s'il vous plaît? (A l'euro près)",
-  solution: "6€",
-  motion_type: 'static',
-  place: place3
-)
-file = URI.open('https://static.750g.com/images/600-600/0fa217fa9300b4fbea5919f9f7f38bdf/adobestock-430086029.jpg')
-riddle5.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle5.save!
-riddle6 = Riddle.new(
-  title: 'Rentrer manger',
-  description: 'Find cake price',
-  question: "Bon, je pense que l’on a tout ce qu’il faut pour s’assoir autour d’une table et manger tous ensemble ! Il va falloir en trouver une…",
-  solution: "LatLng",
-  motion_type: 'shifting',
-  place: place3
-)
-file = URI.open('https://images.ricardocuisine.com/services/articles/1200x630_manger-ensemble-1400.jpg')
-riddle6.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle6.save!
-riddle7 = Riddle.new(
-  title: 'Conclusion',
-  description: 'Conclusion aventure',
-  question: "Félicitation ! Votre expédition s'arrête ici, il est temps maintenant de savourer votre précieux butin! Bon appétit!\nEnvoyer 'thanks' pour terminer l'aventure :D",
-  solution: "thanks",
-  motion_type: 'static',
-  place: place4
-)
-file = URI.open('https://images.ricardocuisine.com/services/articles/1200x630_manger-ensemble-1400.jpg')
-riddle7.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
-riddle7.save!
+# place1 = Place.new(
+#   name: "Le Wagon",
+#   address: "68 Ave Parmentier, 75011 Paris, France",
+#   description: "On y pleure, on y rit, mais surtout, on s'y sent bien!",
+#   storyline: storyline
+# )
+# file = URI.open("https://studysmarter-mediafiles.s3.amazonaws.com/media/uploads/froala_editor/images/fa7583826ca3-Paris_Campus_3__3_.png")
+# place1.photo.attach(io: file, filename: "lewagon", content_type: "image/jpg")
+# place1.save!
+
+# place2 = Place.new(
+#   name: "Metro Parmentier",
+#   address: "86 avenue Parmentier, 75004 Paris, France",
+#   description: "Cette bouche de metro... que dire dessus sinon que je ne l'ai jamais prise!",
+#   storyline: storyline
+# )
+# file = URI.open("https://p.monumentum.fr/galerie/maxi/00446/446476-francais-entree-de-la-station-de-metro-parmentier-avenue-parmentier-paris.jpg")
+# place2.photo.attach(io: file, filename: "metro parmentier", content_type: "image/jpg")
+# place2.save!
+# place3 = Place.new(
+#   name: "Boulangerie Oberkampf",
+#   address: "54 rue Oberkampf, 75001 Paris, France",
+#   description: "Cette boulangerie me surprendra toujours, non pas tant par la quantité de ses portions, mais par sa qualité de service et son prix!",
+#   storyline: storyline
+# )
+# file = URI.open("https://st.hzcdn.com/simgs/32d1769f03edfebf_16-1634/home-design.jpg")
+# place3.photo.attach(io: file, filename: "boulangerie graine", content_type: "image/jpg")
+# place3.save!
+# place4 = Place.new(
+#   name: place1.name,
+#   address: place1.address,
+#   description: place1.description,
+#   storyline: storyline
+# )
+# file = URI.open("https://studysmarter-mediafiles.s3.amazonaws.com/media/uploads/froala_editor/images/fa7583826ca3-Paris_Campus_3__3_.png")
+# place4.photo.attach(io: file, filename: "lewagon", content_type: "image/jpg")
+# place4.save!
+
+# riddle1 = Riddle.new(
+#   title: "Ce que je préfère à 13h",
+#   description: 'Find the next place',
+#   question: "S'il y a bien une chose que je préfère quand l'heure de la soupe arrive, c'est...?",
+#   solution: "manger",
+#   motion_type: 'static',
+#   place: place1
+# )
+# file = URI.open('https://fondationolo.ca/wp-content/uploads/2017/07/fondation-olo-bebe-a-faim.jpg')
+# riddle1.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+# riddle1.save!
+# riddle2 = Riddle.new(
+#   title: "Trouvez le prochain lieu",
+#   description: 'Find the next place',
+#   question: "Notre première enigme est une bifurcation, l'intersection de tous les chemins de notre aventure, l'origine des séparations mais aussi parfois un point de rencontre...",
+#   solution: "Lat:XXX, Lng:YYY",
+#   motion_type: 'shifting',
+#   place: place1
+# )
+# file = URI.open('https://www.unmondedaventures.fr/wp-content/uploads/2015/01/281530234-Copier.jpg')
+# riddle2.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+# riddle2.save!
+# riddle3 = Riddle.new(
+#   title: 'Find next place',
+#   description: 'Find the next place',
+#   question: "Bravo! Mais cet endroit n'est que le point de passage, d'un lieu plus important encore!\nOn dit qu'on y fait les meilleurs gateaux mais mon dieu que c'est cher!",
+#   solution: "Lat:XXX, Lng:YYY",
+#   motion_type: 'shifting',
+#   place: place2
+# )
+# file = URI.open('https://www.podcastfrancaisfacile.com/wp-content/uploads/2013/05/demander-son-chemin.jpg')
+# riddle3.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+# riddle3.save!
+# riddle4 = Riddle.new(
+#   title: 'What a cake!',
+#   description: 'Find cake price',
+#   question: "Félicitation! Vous avez trouvé le lieux exact de notre aventure! Parmi les gateaux que je préfère, il y en a un particulièrement que je prends presque à chaque fois, saurez-vous trouver lequel? Seuls les vrais savent!",
+#   solution: "citron pavot",
+#   motion_type: 'static',
+#   place: place3
+# )
+# file = URI.open('https://cdn.pratico-pratiques.com/app/uploads/sites/2/2022/05/02113329/gateau-au-citron-et-huile-d-olive.jpg')
+# riddle4.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+# riddle4.save!
+# riddle5 = Riddle.new(
+#   title: 'What a cake!',
+#   description: 'Find cake price',
+#   question: "Et oui, j'adore ce gateau! Pourriez-vous noter le prix du sandwich au poulet pour moi s'il vous plaît? (A l'euro près)",
+#   solution: "6€",
+#   motion_type: 'static',
+#   place: place3
+# )
+# file = URI.open('https://static.750g.com/images/600-600/0fa217fa9300b4fbea5919f9f7f38bdf/adobestock-430086029.jpg')
+# riddle5.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+# riddle5.save!
+# riddle6 = Riddle.new(
+#   title: 'Rentrer manger',
+#   description: 'Find cake price',
+#   question: "Bon, je pense que l’on a tout ce qu’il faut pour s’assoir autour d’une table et manger tous ensemble ! Il va falloir en trouver une…",
+#   solution: "LatLng",
+#   motion_type: 'shifting',
+#   place: place3
+# )
+# file = URI.open('https://images.ricardocuisine.com/services/articles/1200x630_manger-ensemble-1400.jpg')
+# riddle6.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+# riddle6.save!
+# riddle7 = Riddle.new(
+#   title: 'Conclusion',
+#   description: 'Conclusion aventure',
+#   question: "Félicitation ! Votre expédition s'arrête ici, il est temps maintenant de savourer votre précieux butin! Bon appétit!\nEnvoyer 'thanks' pour terminer l'aventure :D",
+#   solution: "thanks",
+#   motion_type: 'static',
+#   place: place4
+# )
+# file = URI.open('https://images.ricardocuisine.com/services/articles/1200x630_manger-ensemble-1400.jpg')
+# riddle7.photo.attach(io: file, filename: "eat_together", content_type: "image/jpg")
+# riddle7.save!
 
 p "created #{Game.all.count} games"
 p "created #{Participation.all.count} participations"
