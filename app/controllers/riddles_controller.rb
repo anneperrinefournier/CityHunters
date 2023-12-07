@@ -16,7 +16,7 @@ class RiddlesController < ApplicationController
       GameChannel.broadcast_to(
         "game-#{@game.id}",
         {
-          action: 'toast',
+          data_type: 'toast',
           type: 'html',
           text: "#{current_user.name} a résolu l’énigme!"
         }
@@ -28,7 +28,7 @@ class RiddlesController < ApplicationController
         GameChannel.broadcast_to(
           "game-#{@game.id}",
           {
-            action: 'update_game_content',
+            data_type: 'update_game_content',
             type: 'html',
             game_status: @game.status,
             content: render_to_string(partial: "/games/end_game", formats: [:html])
@@ -38,7 +38,7 @@ class RiddlesController < ApplicationController
         GameChannel.broadcast_to(
           "game-#{@game.id}",
           {
-            action: 'toast',
+            data_type: 'toast',
             type: 'html',
             text: "Vous avez gagné la partie!"
           }
@@ -47,7 +47,7 @@ class RiddlesController < ApplicationController
         GameChannel.broadcast_to(
           "game-#{@game.id}",
           {
-            action: 'update_riddle',
+            data_type: 'update_riddle',
             type: 'html',
             game_status: @game.status,
             content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: @game })
@@ -80,7 +80,7 @@ class RiddlesController < ApplicationController
       )
       user_answer.save!
 
-      default_radius = 1 #km
+      default_radius = 10 #km
       places_near = Place.near([participation.latitude, participation.longitude], default_radius)
       next_place = @game.upcoming_places[1] # The index 0 is the current place
 
