@@ -83,23 +83,25 @@ storyline2 = Storyline.new(
   district: "11ᵉ arr.",
   duration: 90,
   distance: 6,
-  theme: "aventure numérique",
+  theme: "technologie",
   difficulty: 3,
   starting_point: "68 avenue Parmentier, 75011 Paris, France",
   short_description: "Pars à la recherche du Code Perdu du Wagon !",
-  long_description: "Plonge dans l'univers numérique du 11ᵉ arrondissement avec 'Le Code Perdu du Wagon'. Suis les énigmes cryptiques laissées par un professeur passionné de Ruby on Rails et explore les ruelles du quartier pour dévoiler le trésor caché. Une aventure où le mystère et la programmation se rencontrent.",
-  introduction: "Le Wagon, école renommée de programmation à Paris, est en émoi. Un professeur passionné a découvert un vieux manuscrit renfermant un code Ruby on Rails légendaire, mais a mystérieusement disparu. Les participants doivent décoder ses indices dispersés dans le 11ᵉ arrondissement pour révéler le trésor caché et démasquer les forces adverses cherchant à s'emparer du précieux code. La course pour le ‘Code Rouge’ commence maintenant !"
+  long_description: "Suis les énigmes cryptiques pour retrouver le code perdu du wagon à travers les ruelles du quartier. Une aventure où le mystère et la programmation se rencontrent.",
+  introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !
+  Pierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.
+  Heureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !"
 )
 file = URI.open("https://i.ibb.co/SXNkWx0/re-publique.jpg")
 storyline2.photo.attach(io: file, filename: "Code Rouge", content_type: "image/jpg")
 storyline2.save!
 
 storyline3 = Storyline.new(
-  title: "L'Odyssée du Château",
+  title: "L’Odyssée du Château",
   district: "19ᵉ arr.",
   duration: 90,
   distance: 5,
-  theme: "aventure",
+  theme: "nature",
   difficulty: 3,
   starting_point: "Parc des Buttes-Chaumont, 1 Rue Botzaris, 75019 Paris, France",
   short_description: "Pars à l'aventure dans ce parc exceptionnel !",
@@ -147,7 +149,7 @@ storyline6 = Storyline.new(
   district: "14ᵉ arr.",
   duration: 75,
   distance: 4.5,
-  theme: "mystère",
+  theme: "policier",
   difficulty: 2,
   starting_point: "Montparnasse, 14th arrondissement, Paris, France",
   short_description: "Explore les ruelles pour découvrir les secrets cachés.",
@@ -179,7 +181,7 @@ storyline8 = Storyline.new(
   district: "17ᵉ arr.",
   duration: 90,
   distance: 6,
-  theme: "aventure",
+  theme: "nature",
   difficulty: 3,
   starting_point: "Les Batignolles, 17th arrondissement, Paris, France",
   short_description: "Vis une aventure épique dans les Batignolles.",
@@ -195,7 +197,7 @@ storyline9 = Storyline.new(
   district: "10ᵉ arr.",
   duration: 75,
   distance: 5,
-  theme: "mystère",
+  theme: "policier",
   difficulty: 2,
   starting_point: "Canal Saint-Martin, 10th arrondissement, Paris, France",
   short_description: "Découvre les secrets du Canal Saint-Martin.",
@@ -211,7 +213,7 @@ storyline10 = Storyline.new(
   district: "2ᵉ arr.",
   duration: 60,
   distance: 3.5,
-  theme: "aventure",
+  theme: "urbain",
   difficulty: 2,
   starting_point: "Montorgueil Street, 75002 Paris, France",
   short_description: "Découvre les passages secrets de Montorgueil !",

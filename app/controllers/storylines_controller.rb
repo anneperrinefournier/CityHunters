@@ -1,6 +1,19 @@
 class StorylinesController < ApplicationController
   def index
     @storylines = Storyline.all
+
+    themes_colors = {
+      "historique" => "#C38100;",
+      "policier" => "#C03F3F;",
+      "nature" => "#1D6B18;",
+      "enquête" => "#34566B;",
+      "fantastique" => "#301934;",
+      "artistique" => "#b5485d;",
+      "mythologie" => "#614B3D;",
+      "technologie" => "#DF861A;",
+      "urbain" => "#69838F;"
+    }
+
   end
 
   def show
