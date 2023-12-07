@@ -93,7 +93,10 @@ export default class extends Controller {
   #showToast(text) {
     Toastify({
       text: text,
-      duration: 3000
+      duration: 3000,
+      style: {
+        background: '#1d2b48'
+      }
     }).showToast()
   }
 
