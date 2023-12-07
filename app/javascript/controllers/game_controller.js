@@ -98,7 +98,7 @@ export default class extends Controller {
       text: text,
       duration: 3000,
       style: {
-        background: '#1d2b48'
+        background: '#c4ae59'
       }
     }).showToast()
   }
