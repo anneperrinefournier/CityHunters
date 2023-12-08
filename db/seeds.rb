@@ -267,7 +267,7 @@ storyline11.save!
 #   description: "Cette église, située à proximité du Louvre, est connue pour son architecture gothique et son histoire étroitement liée à la royauté française. Un lieu empreint de spiritualité et d'histoire.",
 #   storyline: storyline1
 # )
-# file = URI.open("https://i.ibb.co/KhjR0L8/saint-germains.jpg")
+# file = URI.open("https://i.ibb.co/H2dR45s/saint-germains.jpg")
 # place3.photo.attach(io: file, filename: "St germain", content_type: "image/jpg")
 # place3.save!
 
