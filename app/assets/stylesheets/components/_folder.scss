@@ -104,7 +104,7 @@
   left: 0;
   width: 100%;
   height: 101%;
-  background: linear-gradient(180deg, rgba(225, 218, 205, 0.00) 56.36%, $darkwhite 93.97%);
+  background: linear-gradient(180deg, rgba(225, 218, 205, 0.00) 50.36%, $darkwhite 93.97%);
 }
 
 .img-transparent-gold {
@@ -115,7 +115,7 @@
   left: 0;
   width: 100%;
   height: 101%;
-  background: linear-gradient(180deg, rgba(225, 218, 205, 0.00) 56.36%, $lightgold 93.97%);
+  background: linear-gradient(180deg, rgba(225, 218, 205, 0.00) 50.36%, $lightgold 93.97%);
 }
 
 // images pour les autres pages en full largeur
@@ -139,7 +139,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   position: absolute;
-  bottom: 15%;
+  bottom: 14%;
   left: 11%;
 }
 
@@ -149,10 +149,17 @@
 
 .storyline-location-dot-position {
   margin-left: 1px;
+  color: $navy;
 }
 
 .storyline-clock-position {
   margin-left: -1px;
+  color: $gold;
+}
+
+.storyline-difficulty-color {
+  margin-left: -1px;
+  color: $red;
 }
 
 
@@ -241,13 +248,13 @@
 }
 
 .enquête {
-  color:#34566B;
+  color:#34506B;
   position: absolute;
   bottom: 18%;
   right: 8%;
   font-size: 20px;
   border-radius: 30px;
-  border: 1px solid #34566B;
+  border: 1px solid #34506B;
   width: 100px;
   box-sizing: border-box;
   transform: rotate(-7deg);
@@ -255,7 +262,7 @@
   z-index: 103;
 
     .folder-theme-external-border {
-      border: 1px solid #34566B;
+      border: 1px solid #34506B;
       transform: rotate(0.4deg);
       border-radius: 30px;
       z-index: 102;
@@ -364,7 +371,7 @@
 //   "historique" => "#C38100;",
 //   "policier" => "#C03F3F;",
 //   "nature" => "#1D6B18;",
-//   "enquête" => "#34566B;",
+//   "enquête" => "#34506B;",
 //   "fantastique" => "#301934;",
 //   "artistique" => "#b5485d;",
 //   "mythologie" => "#614B3D;",
