@@ -42,7 +42,7 @@
 
         <% place.riddles.each do |riddle| %>
           <% if riddle.validated?(game) || place.current_riddle(game) == riddle %>
-            <div class="riddle-container p-3 my-3">
+            <div class="riddle-container p-3 my-3" data-game-target="riddleContainer">
               <div class="pair">
                 <div class="show-title"><h4>Énigme</h4></div>
               </div>

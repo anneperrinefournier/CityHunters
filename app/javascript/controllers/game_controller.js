@@ -24,7 +24,8 @@ export default class extends Controller {
     'map',
     'mapForm',
     'endGameButton',
-    'endGame'
+    'endGame',
+    'riddleContainer'
   ];
 
   initialize() {
@@ -76,7 +77,8 @@ export default class extends Controller {
     if (data.data_type == 'update_riddle') {
       this.riddlesHandleTarget.innerHTML = data.content;
       this.displayAnswerBtnTarget.classList.remove('d-none');
-      this.displayAnswerBtnTarget.scrollIntoView(true)
+      this.displayAnswerBtnTarget.scrollIntoView(true);
+      console.log(this.riddleContainerTargets.last())
       return;
     }
 
@@ -142,6 +144,7 @@ export default class extends Controller {
 
   closeIntroduction() {
     this.riddlesHandleTarget.classList.remove('d-none')
+    this.riddlesHandleTarget.scrollIntoView(true);
     this.introductionTarget.classList.add('d-none')
     this.mapTarget.classList.remove('d-none')
 
