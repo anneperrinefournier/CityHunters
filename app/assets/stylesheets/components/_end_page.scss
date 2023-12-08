@@ -2,6 +2,9 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  border-bottom: 1px solid $gold;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .playtime-info {
@@ -16,9 +19,14 @@
   gap: 1rem;
   text-align: center;
   margin-top: 3vh;
+  border-bottom: 1px solid $gold;
+  border-radius: 5px;
 }
 
 .riddle-solving {
 margin-top: 3vh;
 margin-bottom: 2vh;
+border-bottom: 1px solid $gold;
+border-radius: 5px;
+padding: 5px;
 }
