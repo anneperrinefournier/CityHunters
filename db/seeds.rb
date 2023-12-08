@@ -323,7 +323,7 @@ storyline11.save!
 
 place9 = Place.new(
   name: "Le Wagon",
-  address: "68 Avenuee Parmentier, 75011 Paris, France",
+  address: "68 Avenue Parmentier, 75011 Paris, France",
   description: "Le Wagon, refuge de l'art du code, offre un havre d'apprentissage. Dans cet écrin de savoir, découvre des programmes captivants pour tous les niveaux. Un repaire d'élégance pour les passionnés de technologie et d'innovation. Bienvenue dans l'univers du Wagon, où les compétences en programmation prennent vie.",
   storyline: storyline2
 )
@@ -341,7 +341,11 @@ file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
 place10.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place10.save!
 
-Place.all.each { |place| raise if place.latitude.nil? || place.longitude.nil? }
+Place.all.each do |place|
+  if place.latitude.nil? || place.longitude.nil?
+    p "place #{place.name} has incorrect address"
+  end
+end
 
 
 riddle7 = Riddle.new(
@@ -352,7 +356,7 @@ riddle7 = Riddle.new(
   motion_type: 'static',
   place: place9
 )
-file = URI.open("https://i.ibb.co/r36wK57/riddle-wagon.png")
+file = URI.open("https://i.ibb.co/pbLJw4M/wagon-riddle.png")
 riddle7.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
 riddle7.save!
 
