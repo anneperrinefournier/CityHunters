@@ -324,7 +324,7 @@ storyline11.save!
 place9 = Place.new(
   name: "Le Wagon",
   address: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
-  description: "Le Wagon est un espace dédié à l’apprentissage de la programmation informatique. Situé au 68 Avenue Parmentier dans le 11ᵉ arrondissement de Paris, l’école offre un environnement dynamique où les participants peuvent découvrir et développer leurs compétences en matière de codage. Le Wagon propose des programmes éducatifs stimulants pour tous les niveaux. C’est un lieu incontournable pour les passionnés de technologie et d’innovation.",
+  description: "Le Wagon, refuge de l'art du code, offre un havre d'apprentissage. Dans cet écrin de savoir, découvre des programmes captivants pour tous les niveaux. Un repaire d'élégance pour les passionnés de technologie et d'innovation. Bienvenue dans l'univers du Wagon, où les compétences en programmation prennent vie.",
   storyline: storyline2
 )
 file = URI.open("https://i.ibb.co/Kmjtv1T/le-wagon.jpg")
@@ -358,7 +358,6 @@ riddle8 = Riddle.new(
   title: 'À la poursuite du voleur',
   description: "Tu trouves derrière le logo un papier. Une énigme a été écrite dessus :\n
   « Où l’esprit de Voltaire flirte avec la foi,\n
-  Au cœur du mystère, dans le 11ᵉ,\n
   Le voleur du code se cache, prêt à fuir. »",
   solution: 'blablabla',
   question: 'Trouve le lieu où se cache le voleur.',
@@ -372,10 +371,9 @@ riddle8.save!
 riddle9 = Riddle.new(
   title: 'Le nom du voleur',
   description: "Quand tu arrives sur place, le voleur a déjà disparu, mais il a laissé le code volé avec un mot dessus :\n
-  « Je suis l’énigmatique gentleman des ombres, où l’intrigue s’épanouit, \n
-  Mes prouesses brillent dans la nuit, mystère d’une époque révolue. \n
-  Création d’une plume habile, mon nom résonne dans l’écho, \n
-  Charmeur des larcins, je voulais le code, je le rends avec flegme. »",
+  « Je suis le gentleman des ombres, né d’une plume habile, \n
+  Mes prouesses rayonnent dans la nuit, \n
+  Voleur charistmatique, je voulais le code, je le rends avec flegme. »",
   solution: 'Arsène Lupin',
   question: 'Quel est le nom du voleur ?',
   motion_type: 'static',
