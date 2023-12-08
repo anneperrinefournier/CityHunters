@@ -5,16 +5,16 @@
         <li class="nav-item">
           <button class="nav-link <%= place == game.current_place ? 'active' : '' %>" data-game-target="placeTab" data-index="<%= index %>" data-action="click->game#activate">
             <% if place.photo.attached? %>
-              <%= cl_image_tag(place.photo.key, width: 35, height: 35, crop: 'fill') %>
+              <%= cl_image_tag(place.photo.key, width: 75, height: 45, crop: 'fill', data: { index: index }) %>
             <% else %>
-              <%= image_tag('compas.png', width: 35, height: 35, crop: 'fill') %>
+              <%= image_tag('compas.png', width: 75, height: 45, crop: 'fill', data: { index: index }) %>
             <% end %>
           </button>
         </li>
       <% else %>
         <li class="nav-item">
           <button class="nav-link" href="#" data-game-target="placeTab" data-index="<%= index %>" data-action="click->game#activate" disabled>
-            <%= image_tag('place-locked.png', width: 35, height: 35, crop: 'fill') %>
+            <%= image_tag('place-locked.png', width: 75, height: 45, crop: 'fill') %>
           </button>
         </li>
       <% end %>
@@ -40,11 +40,11 @@
           <p><%= place.description %></p>
         </div>
 
-        <% place.riddles.each do |riddle| %>
+        <% place.riddles.each_with_index do |riddle, riddle_index| %>
           <% if riddle.validated?(game) || place.current_riddle(game) == riddle %>
-            <div class="riddle-container p-3 my-3">
+            <div class="riddle-container p-3 my-3" data-game-target="riddleContainer">
               <div class="pair">
-                <div class="show-title"><h4>Énigme</h4></div>
+                <div class="show-title"><h4>Énigme <%= riddle_index + 1 %>/<%= place.riddles.count %></h4></div>
               </div>
 
               <div class="folder-show">
