@@ -40,7 +40,7 @@
 
               <div class="folder-show">
                 <%= cl_image_tag @storyline.photo.key, alt: (@storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
-                <p><%= @storyline.introduction %></p>
+                <p><%= simple_format(@storyline.introduction) %></p>
 
                 <%# <div class="map-storyline-show">
                   <div class="map-position">

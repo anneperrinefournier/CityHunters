@@ -88,9 +88,7 @@ storyline2 = Storyline.new(
   starting_point: "68 avenue Parmentier, 75011 Paris, France",
   short_description: "Pars à la recherche du Code Perdu du Wagon !",
   long_description: "Suis les énigmes cryptiques pour retrouver le code perdu du wagon à travers les ruelles du quartier. Une aventure où le mystère et la programmation se rencontrent.",
-  introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !\n
-  Pierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.\n
-  Heureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !"
+  introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !\nPierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.\nHeureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !"
 )
 file = URI.open("https://i.ibb.co/SXNkWx0/re-publique.jpg")
 storyline2.photo.attach(io: file, filename: "Code Rouge", content_type: "image/jpg")
@@ -362,9 +360,7 @@ riddle7.save!
 
 riddle8 = Riddle.new(
   title: 'À la poursuite du voleur',
-  description: "Tu trouves derrière le logo un papier. Une énigme a été écrite dessus :\n
-  « Où l’esprit de Voltaire flirte avec la foi,\n
-  Le voleur du code se cache, prêt à fuir. »",
+  description: "Tu trouves derrière le logo un papier. Une énigme a été écrite dessus :\n« Où l’esprit de Voltaire flirte avec la foi,\nLe voleur du code se cache, prêt à fuir. »",
   solution: 'blablabla',
   question: 'Trouve le lieu où se cache le voleur.',
   motion_type: 'shifting',
@@ -376,10 +372,7 @@ riddle8.save!
 
 riddle9 = Riddle.new(
   title: 'Le nom du voleur',
-  description: "Quand tu arrives sur place, le voleur a déjà disparu, mais il a laissé le code volé avec un mot dessus :\n
-  « Je suis le gentleman des ombres, né d’une plume habile, \n
-  Mes prouesses rayonnent dans la nuit, \n
-  Voleur charistmatique, je voulais le code, je le rends avec flegme. »",
+  description: "Quand tu arrives sur place, le voleur a déjà disparu, mais il a laissé le code volé avec un mot dessus :\n« Je suis le gentleman des ombres, né d’une plume habile,\nMes prouesses rayonnent dans la nuit,\nVoleur charistmatique, je voulais le code, je le rends avec flegme. »",
   solution: 'Arsène Lupin',
   question: 'Quel est le nom du voleur ?',
   motion_type: 'static',
