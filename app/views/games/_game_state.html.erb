@@ -5,9 +5,9 @@
         <li class="nav-item">
           <button class="nav-link <%= place == game.current_place ? 'active' : '' %>" data-game-target="placeTab" data-index="<%= index %>" data-action="click->game#activate">
             <% if place.photo.attached? %>
-              <%= cl_image_tag(place.photo.key, width: 35, height: 35, crop: 'fill') %>
+              <%= cl_image_tag(place.photo.key, width: 35, height: 35, crop: 'fill', data: { index: index }) %>
             <% else %>
-              <%= image_tag('compas.png', width: 35, height: 35, crop: 'fill') %>
+              <%= image_tag('compas.png', width: 35, height: 35, crop: 'fill', data: { index: index }) %>
             <% end %>
           </button>
         </li>

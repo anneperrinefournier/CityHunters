@@ -161,16 +161,17 @@ export default class extends Controller {
       tab.classList.remove('active')
     });
 
+    console.log(event.currentTarget)
     event.currentTarget.classList.add('active');
   }
 
   switchPanel(event) {
     const tabIndex = event.target.dataset.index
-
     this.placePanelTargets.forEach(panel => {
       panel.classList.add('d-none')
     })
-    this.placePanelTargets.find( (panel) => {
+    this.placePanelTargets.find(panel => {
+      console.log(panel)
       return panel.dataset.index == tabIndex
     }).classList.remove('d-none')
   }
