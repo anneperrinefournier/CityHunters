@@ -40,13 +40,11 @@
           <p><%= place.description %></p>
         </div>
 
-
-
         <% place.riddles.each do |riddle| %>
           <% if riddle.validated?(game) || place.current_riddle(game) == riddle %>
             <div class="riddle-container p-3 my-3">
               <div class="pair">
-                <div class="show-title"><h4><%= riddle.title %></h4></div>
+                <div class="show-title"><h4>Énigme</h4></div>
               </div>
 
               <div class="folder-show">
@@ -58,6 +56,7 @@
                   <% end %>
                 </div>
 
+                <h4><%= riddle.title %></h4>
                 <%= simple_format(riddle.description) %>
                 <p><strong><i class="fa-solid fa-puzzle-piece" style="color: #1d2b48;"></i> <%= riddle.question %></strong></p>
 
@@ -75,7 +74,7 @@
 
                     <% elsif game.current_place.current_riddle(game).motion_type == 'shifting' %>
                       <%= simple_form_for :question, url: "#", html: { data: { riddle_id: game.current_place.current_riddle(game).id, game_target: "mapForm", action: "submit->game#verifyPosition" } } do |f| %>
-                        <%= f.submit "Send position", class: 'btn-home' %>
+                        <%= f.submit "Envoyer ma position", class: 'btn-home' %>
                       <% end %>
                     <% end %>
                   </div>
