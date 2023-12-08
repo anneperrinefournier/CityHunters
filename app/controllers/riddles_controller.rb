@@ -125,11 +125,11 @@ class RiddlesController < ApplicationController
   end
 
   def create_place_marker(place)
-    place.geocoded({
-        lat: place.latitude,
-        lng: place.longitude,
-        info_window_html: render_to_string(partial: "games/places_info_window", locals: { place: place }),
-        marker_html: render_to_string(partial: "games/marker", locals: { marker_class: "marker marker-blue" })
-      })
+    {
+      lat: place.latitude,
+      lng: place.longitude,
+      info_window_html: render_to_string(partial: "games/places_info_window", locals: { place: place }, formats: [:html]),
+      marker_html: render_to_string(partial: "games/marker", locals: { marker_class: "marker marker-blue" }, formats: [:html])
+    }
   end
 end

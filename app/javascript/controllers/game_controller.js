@@ -81,6 +81,7 @@ export default class extends Controller {
     }
 
     if (data.data_type == 'new_marker') {
+      console.log(data)
       this.#addMarkerToMap(data.content)
     }
 
