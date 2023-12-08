@@ -25,7 +25,7 @@
           </div>
 
           <div class="folder <%= index.even? ? 'folder-pair' : 'folder-odd' %>">
-          <div class= "storylines-container-img">
+            <div class= "storylines-container-img">
               <% if storyline.photo.attached? %>
                 <%= cl_image_tag(storyline.photo.key, class: "storylines-img") %>
               <% else %>
@@ -33,10 +33,10 @@
               <% end %>
 
               <div class="<%= index.even? ? 'img-transparent-white' : 'img-transparent-gold' %>"></div>
-          </div>
-          <div class= "folder-info">
               <div class="folder-icons">
-                 <div class="storyline-location-dot-position"><i class="fa-solid fa-location-dot"></i> <%= storyline.district %></div>
+                <div class="storyline-location-dot-position">
+                  <i class="fa-solid fa-location-dot"></i> <%= storyline.district %>
+                </div>
                   <div class="storyline-difficulty-color"><i class="fa-solid fa-puzzle-piece"></i>
                     <% difficulty = storyline.difficulty %>
                       <% case difficulty %>
@@ -51,16 +51,14 @@
                       <% end %>
                     </div>
                   <div class="storyline-clock-position"><i class="fa-solid fa-clock"></i> <%= storyline.duration.to_i %> min</div>
+              </div>
+              <div class="<%= storyline.theme %>">
+                <div class="folder-theme-external-border">
+                    <light-strong><%= storyline.theme %></strong>
                 </div>
-
-                    <div class="<%= storyline.theme %>">
-                  <div class="folder-theme-external-border">
-                      <light-strong><%= storyline.theme %></strong>
-                  </div>
-                </div>
-
               </div>
             </div>
+          </div>
 
         <% end %>
       </div>
