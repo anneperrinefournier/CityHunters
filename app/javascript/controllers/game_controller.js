@@ -77,13 +77,12 @@ export default class extends Controller {
     if (data.data_type == 'update_riddle') {
       this.riddlesHandleTarget.innerHTML = data.content;
       this.displayAnswerBtnTarget.classList.remove('d-none');
-      this.displayAnswerBtnTarget.scrollIntoView(true);
-      // console.log(this.riddleContainerTargets.last())
+      const lastItem = this.riddleContainerTargets[this.riddleContainerTargets.length - 1];
+      lastItem.scrollIntoView(true)
       return;
     }
 
     if (data.data_type == 'new_marker') {
-      console.log(data)
       this.#addMarkerToMap(data.content)
     }
 
@@ -164,7 +163,6 @@ export default class extends Controller {
       tab.classList.remove('active')
     });
 
-    console.log(event.currentTarget)
     event.currentTarget.classList.add('active');
   }
 
@@ -174,7 +172,6 @@ export default class extends Controller {
       panel.classList.add('d-none')
     })
     this.placePanelTargets.find(panel => {
-      console.log(panel)
       return panel.dataset.index == tabIndex
     }).classList.remove('d-none')
   }
