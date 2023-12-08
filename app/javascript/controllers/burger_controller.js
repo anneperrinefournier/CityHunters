@@ -6,8 +6,6 @@ export default class extends Controller {
   static targets = ["pin"];
 
   connect() {
-    console.log("Happy meal or maxi best of?");
-    console.log(this.gameIdValue);
   }
 
   goProfile() {
@@ -15,7 +13,6 @@ export default class extends Controller {
   }
 
   async endGame() {
-    console.log(this.gameIdValue);
     const options = {
       method: 'GET',
       headers: {
@@ -25,6 +22,5 @@ export default class extends Controller {
     };
 
     const response = await fetch(`/games/${this.gameIdValue}/end`, options);
-    console.log(response);
   }
 }
