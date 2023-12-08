@@ -55,7 +55,7 @@
         <p>
           <% @game.answers.group_by(&:solver).each do |solver, answer| %>
             <%= solver.name.capitalize %> a résolu <%= answer.select(&:correct).count %> <%= answer.select(&:correct).count > 1 ? 'énigmes' : 'énigme' %>
-            - Mauvaises réponses: <%= answer.reject(&:correct).count %><br>
+            - <%= answer.reject(&:correct).count %> <%= answer.reject(&:correct).count > 1 ? 'mauvaises réponses' : 'mauvaise réponse' %><br>
           <% end %>
         </p>
       <%# <ul class="">
