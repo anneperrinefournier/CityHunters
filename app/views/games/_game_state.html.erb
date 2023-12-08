@@ -5,9 +5,9 @@
         <li class="nav-item">
           <button class="nav-link <%= place == game.current_place ? 'active' : '' %>" data-game-target="placeTab" data-index="<%= index %>" data-action="click->game#activate">
             <% if place.photo.attached? %>
-              <%= cl_image_tag(place.photo.key, width: 35, height: 35, crop: 'fill') %>
+              <%= cl_image_tag(place.photo.key, width: 35, height: 35, crop: 'fill', data: { index: index }) %>
             <% else %>
-              <%= image_tag('compas.png', width: 35, height: 35, crop: 'fill') %>
+              <%= image_tag('compas.png', width: 35, height: 35, crop: 'fill', data: { index: index }) %>
             <% end %>
           </button>
         </li>
@@ -40,13 +40,11 @@
           <p><%= place.description %></p>
         </div>
 
-
-
         <% place.riddles.each do |riddle| %>
           <% if riddle.validated?(game) || place.current_riddle(game) == riddle %>
-            <div class="riddle-container p-3 my-3">
+            <div class="riddle-container p-3 my-3" data-game-target="riddleContainer">
               <div class="pair">
-                <div class="show-title"><h4><%= riddle.title %></h4></div>
+                <div class="show-title"><h4>Énigme</h4></div>
               </div>
 
               <div class="folder-show">
@@ -58,6 +56,7 @@
                   <% end %>
                 </div>
 
+                <h4><%= riddle.title %></h4>
                 <%= simple_format(riddle.description) %>
                 <p><strong><i class="fa-solid fa-puzzle-piece" style="color: #1d2b48;"></i> <%= riddle.question %></strong></p>
 
@@ -75,7 +74,7 @@
 
                     <% elsif game.current_place.current_riddle(game).motion_type == 'shifting' %>
                       <%= simple_form_for :question, url: "#", html: { data: { riddle_id: game.current_place.current_riddle(game).id, game_target: "mapForm", action: "submit->game#verifyPosition" } } do |f| %>
-                        <%= f.submit "Send position", class: 'btn-home' %>
+                        <%= f.submit "Envoyer ma position", class: 'btn-home' %>
                       <% end %>
                     <% end %>
                   </div>
