@@ -77,8 +77,11 @@ export default class extends Controller {
       this.riddlesHandleTarget.innerHTML = data.content;
       this.displayAnswerBtnTarget.classList.remove('d-none');
       this.displayAnswerBtnTarget.scrollIntoView(true);
-      this.#addMarkerToMap(data.place_marker);
       return;
+    }
+
+    if (data.data_type == 'new_marker') {
+      this.#addMarkerToMap(data.content)
     }
 
     if (data.data_type == 'update_game_content') {

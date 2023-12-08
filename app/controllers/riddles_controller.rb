@@ -24,7 +24,6 @@ class RiddlesController < ApplicationController
       )
 
       if @game.current_place.nil?
-        # @game.update(status: :ended, end_time: Time.now)
         @game.ended!
 
         GameChannel.broadcast_to(
@@ -46,24 +45,22 @@ class RiddlesController < ApplicationController
           }
         )
       else
+        GameChannel.broadcast_to(
+          "game-#{@game.id}",
+          {
+            data_type: 'update_riddle',
+            type: 'html',
+            game_status: @game.status,
+            content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: @game })
+          })
+
         if riddle.motion_type == 'shifting'
           GameChannel.broadcast_to(
             "game-#{@game.id}",
             {
-              data_type: 'update_riddle',
+              data_type: 'new_marker',
               type: 'html',
-              game_status: @game.status,
-              content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: @game }),
-              place_marker: create_place_marker(@game.current_place)
-            })
-        else
-          GameChannel.broadcast_to(
-            "game-#{@game.id}",
-            {
-              data_type: 'update_riddle',
-              type: 'html',
-              game_status: @game.status,
-              content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: @game })
+              content: create_place_marker(@game.current_place),
             })
         end
       end
