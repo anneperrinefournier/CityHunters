@@ -323,7 +323,7 @@ storyline11.save!
 
 place9 = Place.new(
   name: "Le Wagon",
-  address: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
+  address: "68 Avenuee Parmentier, 75011 Paris, France",
   description: "Le Wagon, refuge de l'art du code, offre un havre d'apprentissage. Dans cet écrin de savoir, découvre des programmes captivants pour tous les niveaux. Un repaire d'élégance pour les passionnés de technologie et d'innovation. Bienvenue dans l'univers du Wagon, où les compétences en programmation prennent vie.",
   storyline: storyline2
 )
@@ -333,7 +333,7 @@ place9.save!
 
 place10 = Place.new(
   name: "Église Saint-Ambroise",
-  address: "33 Ave Parmentier, 75011 Paris",
+  address: "33 Avenue Parmentier, 75011 Paris",
   description: "Bienvenue à l'Église Saint-Ambroise, un trésor caché au cœur du 11ᵉ arrondissement de Paris ! Cette merveille architecturale au 71 bis Boulevard Voltaire est bien plus qu'un simple édifice religieux. Plongez dans l'histoire captivante de ce lieu chargé de mystères.",
   storyline: storyline2
 )
