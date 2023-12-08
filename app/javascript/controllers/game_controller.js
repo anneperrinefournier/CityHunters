@@ -57,7 +57,7 @@ export default class extends Controller {
       style: "mapbox://styles/anneperrine/clpqvu9za014201pke2o7alpm"
     })
 
-    this.#addMarkersToMap()
+    this.#addAllMarkersToMap()
     this.#addPlayerMarkersToMap()
     this.#fitMapToMarkers()
   }
@@ -78,8 +78,13 @@ export default class extends Controller {
       this.riddlesHandleTarget.innerHTML = data.content;
       this.displayAnswerBtnTarget.classList.remove('d-none');
       this.displayAnswerBtnTarget.scrollIntoView(true);
-      console.log(this.riddleContainerTargets.last())
+      // console.log(this.riddleContainerTargets.last())
       return;
+    }
+
+    if (data.data_type == 'new_marker') {
+      console.log(data)
+      this.#addMarkerToMap(data.content)
     }
 
     if (data.data_type == 'update_game_content') {
@@ -159,16 +164,17 @@ export default class extends Controller {
       tab.classList.remove('active')
     });
 
+    console.log(event.currentTarget)
     event.currentTarget.classList.add('active');
   }
 
   switchPanel(event) {
     const tabIndex = event.target.dataset.index
-
     this.placePanelTargets.forEach(panel => {
       panel.classList.add('d-none')
     })
-    this.placePanelTargets.find( (panel) => {
+    this.placePanelTargets.find(panel => {
+      console.log(panel)
       return panel.dataset.index == tabIndex
     }).classList.remove('d-none')
   }
@@ -205,19 +211,23 @@ export default class extends Controller {
     })
   }
 
-  #addMarkersToMap() {
+  #addAllMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
-
-      const customMarker = document.createElement('div');
-      customMarker.className = `marker ${marker.marker_class}`;
-      customMarker.innerHTML = marker.marker_html
-
-      new mapboxgl.Marker(customMarker)
-                  .setLngLat([ marker.lng, marker.lat ])
-                  .setPopup(popup)
-                  .addTo(this.map)
+      this.#addMarkerToMap(marker)
     })
+  }
+
+  #addMarkerToMap(marker) {
+    const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
+
+    const customMarker = document.createElement('div');
+    customMarker.className = `marker ${marker.marker_class}`;
+    customMarker.innerHTML = marker.marker_html
+
+    new mapboxgl.Marker(customMarker)
+                .setLngLat([ marker.lng, marker.lat ])
+                .setPopup(popup)
+                .addTo(this.map)
   }
 
   #fitMapToMarkers() {
