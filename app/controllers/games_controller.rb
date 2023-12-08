@@ -34,6 +34,12 @@ class GamesController < ApplicationController
       @participations = Participation.where(game: @game)
       @starting_point = Storyline.find(@game.storyline_id)
 
+      @places_to_mark = @places.select do |place|
+        place == @game.current_place || place.validated?(@game)
+      end
+
+      @places = Place.where(id: @places_to_mark.map(&:id))
+
       @places_markers = @places.geocoded.map do |place|
         {
           lat: place.latitude,
@@ -74,15 +80,36 @@ class GamesController < ApplicationController
   def access
     game_pin = params[:game][:pin].delete(" \t\r\n").upcase
     game = Game.find_by(pin: game_pin)
-    if game
-      participation = Participation.new(
-        game: game,
-        user: current_user
-      )
-      participation.save
-      redirect_to lobby_game_path(game)
+    if game.storyline.title != "Code Rouge" ||
+        (
+          game.storyline.title == "Code Rouge" &&
+          (
+            (
+              current_user.email == "anneperrine@gmail.com" ||
+              current_user.email == "alexis@gmail.com" ||
+              current_user.email == "pf-thomas@hotmail.fr" ||
+              current_user.email == "riton@gmail.com"
+            ) ||
+            (
+              game.user.email != "anneperrine@gmail.com" &&
+              game.user.email != "alexis@gmail.com"
+            )
+          )
+        )
+
+      if game
+        participation = Participation.new(
+          game: game,
+          user: current_user
+        )
+        participation.save
+        redirect_to lobby_game_path(game)
+      else
+        flash[:alert] = "No game with PIN: #{game_pin}"
+        redirect_to join_game_path
+      end
     else
-      flash[:alert] = "No game with PIN: #{game_pin}"
+      flash[:alert] = "Alors ça veut pourrir la démo en live ? :P"
       redirect_to join_game_path
     end
   end

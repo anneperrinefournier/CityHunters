@@ -27,8 +27,12 @@
   <div class="playtime">
     <% @game.participations.each do |player| %>
     <div class="playtime-info">
-          <%= cl_image_tag(player.user.photo.key, class:'avatar') %>
-          <%= (player.user.name.downcase) %>
+      <% if player.user.photo.attached? %>
+        <%= cl_image_tag(player.user.photo.key, class:'avatar') %>
+        <%= (player.user.name.downcase) %>
+      <% else %>
+        <img src="https://i.ibb.co/PFHbc3Z/profilephoto.png" alt="user-picture" class="avatar">
+      <% end %>
       </div>
     <% end %>
   </div>
@@ -49,10 +53,13 @@
     </div>
 
     <div class="riddle-solving">
-      <h4> Énigmes résolues <%= @game.answers.count %>/<%= @game.riddles.count%></h4>
+
+
+      <h4> Énigmes résolues <%= @game.answers.where(correct: true).count %>/<%= @game.riddles.count%></h4>
         <p>
           <% @game.answers.group_by(&:solver).each do |solver, answer| %>
-            <%= solver.name.capitalize %> a résolu <%= answer.count %> <%= answer.count > 1 ? 'énigmes' : 'énigme'%> <br>
+            <%= solver.name.capitalize %> a résolu <%= answer.select(&:correct).count %> <%= answer.select(&:correct).count > 1 ? 'énigmes' : 'énigme' %>
+            - <%= answer.reject(&:correct).count %> <%= answer.reject(&:correct).count > 1 ? 'mauvaises réponses' : 'mauvaise réponse' %><br>
           <% end %>
         </p>
       <%# <ul class="">

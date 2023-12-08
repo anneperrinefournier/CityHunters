@@ -88,9 +88,7 @@ storyline2 = Storyline.new(
   starting_point: "68 avenue Parmentier, 75011 Paris, France",
   short_description: "Pars à la recherche du Code Perdu du Wagon !",
   long_description: "Suis les énigmes cryptiques pour retrouver le code perdu du wagon à travers les ruelles du quartier. Une aventure où le mystère et la programmation se rencontrent.",
-  introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !\n
-  Pierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.\n
-  Heureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !"
+  introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !\nPierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.\nHeureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !"
 )
 file = URI.open("https://i.ibb.co/SXNkWx0/re-publique.jpg")
 storyline2.photo.attach(io: file, filename: "Code Rouge", content_type: "image/jpg")
@@ -270,7 +268,7 @@ storyline11.save!
 #   description: "Cette église, située à proximité du Louvre, est connue pour son architecture gothique et son histoire étroitement liée à la royauté française. Un lieu empreint de spiritualité et d'histoire.",
 #   storyline: storyline1
 # )
-# file = URI.open("https://i.ibb.co/KhjR0L8/saint-germains.jpg")
+# file = URI.open("https://i.ibb.co/H2dR45s/saint-germains.jpg")
 # place3.photo.attach(io: file, filename: "St germain", content_type: "image/jpg")
 # place3.save!
 
@@ -326,8 +324,8 @@ storyline11.save!
 
 place9 = Place.new(
   name: "Le Wagon",
-  address: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
-  description: "Le Wagon est un espace dédié à l’apprentissage de la programmation informatique. Situé au 68 Avenue Parmentier dans le 11ᵉ arrondissement de Paris, l’école offre un environnement dynamique où les participants peuvent découvrir et développer leurs compétences en matière de codage. Le Wagon propose des programmes éducatifs stimulants pour tous les niveaux. C’est un lieu incontournable pour les passionnés de technologie et d’innovation.",
+  address: "68 Avenue Parmentier, 75011 Paris, France",
+  description: "Le Wagon, refuge de l'art du code, offre un havre d'apprentissage. Dans cet écrin de savoir, découvre des programmes captivants pour tous les niveaux. Un repaire d'élégance pour les passionnés de technologie et d'innovation. Bienvenue dans l'univers du Wagon, où les compétences en programmation prennent vie.",
   storyline: storyline2
 )
 file = URI.open("https://i.ibb.co/Kmjtv1T/le-wagon.jpg")
@@ -336,13 +334,19 @@ place9.save!
 
 place10 = Place.new(
   name: "Église Saint-Ambroise",
-  address: "71 bis Bd Voltaire, 75011 Paris",
+  address: "33 Avenue Parmentier, 75011 Paris",
   description: "Bienvenue à l'Église Saint-Ambroise, un trésor caché au cœur du 11ᵉ arrondissement de Paris ! Cette merveille architecturale au 71 bis Boulevard Voltaire est bien plus qu'un simple édifice religieux. Plongez dans l'histoire captivante de ce lieu chargé de mystères.",
   storyline: storyline2
 )
 file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
 place10.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place10.save!
+
+Place.all.each do |place|
+  if place.latitude.nil? || place.longitude.nil?
+    p "place #{place.name} has incorrect address"
+  end
+end
 
 
 riddle7 = Riddle.new(
@@ -353,16 +357,13 @@ riddle7 = Riddle.new(
   motion_type: 'static',
   place: place9
 )
-file = URI.open("https://i.ibb.co/r36wK57/riddle-wagon.png")
+file = URI.open("https://i.ibb.co/pbLJw4M/wagon-riddle.png")
 riddle7.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
 riddle7.save!
 
 riddle8 = Riddle.new(
   title: 'À la poursuite du voleur',
-  description: "Tu trouves derrière le logo un papier. Une énigme a été écrite dessus :\n
-  « Où l’esprit de Voltaire flirte avec la foi,\n
-  Au cœur du mystère, dans le 11ᵉ,\n
-  Le voleur du code se cache, prêt à fuir. »",
+  description: "Tu trouves derrière le logo un papier. Une énigme a été écrite dessus :\n« Où l’esprit de Voltaire flirte avec la foi,\nLe voleur du code se cache, prêt à fuir. »",
   solution: 'blablabla',
   question: 'Trouve le lieu où se cache le voleur.',
   motion_type: 'shifting',
@@ -374,11 +375,7 @@ riddle8.save!
 
 riddle9 = Riddle.new(
   title: 'Le nom du voleur',
-  description: "Quand tu arrives sur place, le voleur a déjà disparu, mais il a laissé le code volé avec un mot dessus :\n
-  « Je suis l’énigmatique gentleman des ombres, où l’intrigue s’épanouit, \n
-  Mes prouesses brillent dans la nuit, mystère d’une époque révolue. \n
-  Création d’une plume habile, mon nom résonne dans l’écho, \n
-  Charmeur des larcins, je voulais le code, je le rends avec flegme. »",
+  description: "Quand tu arrives sur place, le voleur a déjà disparu, mais il a laissé le code volé avec un mot dessus :\n« Je suis le gentleman des ombres, né d’une plume habile,\nMes prouesses rayonnent dans la nuit,\nVoleur charistmatique, je voulais le code, je le rends avec flegme. »",
   solution: 'Arsène Lupin',
   question: 'Quel est le nom du voleur ?',
   motion_type: 'static',

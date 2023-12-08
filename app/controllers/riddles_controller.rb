@@ -1,5 +1,6 @@
 class RiddlesController < ApplicationController
   def verify
+    riddle = Riddle.find(params[:riddle_id].to_i)
     @game = Game.find(params[:game_id].to_i)
 
     user_answer = create_answer(params)
@@ -23,7 +24,6 @@ class RiddlesController < ApplicationController
       )
 
       if @game.current_place.nil?
-        # @game.update(status: :ended, end_time: Time.now)
         @game.ended!
 
         GameChannel.broadcast_to(
@@ -52,8 +52,17 @@ class RiddlesController < ApplicationController
             type: 'html',
             game_status: @game.status,
             content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: @game })
-          }
-        )
+          })
+
+        if riddle.motion_type == 'shifting'
+          GameChannel.broadcast_to(
+            "game-#{@game.id}",
+            {
+              data_type: 'new_marker',
+              type: 'html',
+              content: create_place_marker(@game.current_place),
+            })
+        end
       end
 
     else
@@ -86,7 +95,11 @@ class RiddlesController < ApplicationController
       )
       user_answer.save!
 
-      default_radius = 1 #km
+      if @game.storyline.title == "Code Rouge"
+        default_radius = 1 #km
+      else
+        default_radius = 0.03
+      end
       places_near = Place.near([participation.latitude, participation.longitude], default_radius)
       next_place = @game.upcoming_places[1] # The index 0 is the current place
 
@@ -113,5 +126,14 @@ class RiddlesController < ApplicationController
 
       return user_answer
     end
+  end
+
+  def create_place_marker(place)
+    {
+      lat: place.latitude,
+      lng: place.longitude,
+      info_window_html: render_to_string(partial: "games/places_info_window", locals: { place: place }, formats: [:html]),
+      marker_html: render_to_string(partial: "games/marker", locals: { marker_class: "marker marker-blue" }, formats: [:html])
+    }
   end
 end
