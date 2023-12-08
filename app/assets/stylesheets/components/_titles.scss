@@ -21,3 +21,7 @@ p {
   justify-content: center;
   border-bottom: 2px $lightblack;
 }
+
+.place-title-container h1 {
+  border-bottom: 1px dashed $lightblack;
+}

@@ -267,7 +267,7 @@ storyline11.save!
 #   description: "Cette église, située à proximité du Louvre, est connue pour son architecture gothique et son histoire étroitement liée à la royauté française. Un lieu empreint de spiritualité et d'histoire.",
 #   storyline: storyline1
 # )
-# file = URI.open("https://i.ibb.co/KhjR0L8/saint-germains.jpg")
+# file = URI.open("https://i.ibb.co/H2dR45s/saint-germains.jpg")
 # place3.photo.attach(io: file, filename: "St germain", content_type: "image/jpg")
 # place3.save!
 
@@ -323,7 +323,7 @@ storyline11.save!
 
 place9 = Place.new(
   name: "Le Wagon",
-  address: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
+  address: "68 Avenue Parmentier, 75011 Paris, France",
   description: "Le Wagon, refuge de l'art du code, offre un havre d'apprentissage. Dans cet écrin de savoir, découvre des programmes captivants pour tous les niveaux. Un repaire d'élégance pour les passionnés de technologie et d'innovation. Bienvenue dans l'univers du Wagon, où les compétences en programmation prennent vie.",
   storyline: storyline2
 )
@@ -333,13 +333,19 @@ place9.save!
 
 place10 = Place.new(
   name: "Église Saint-Ambroise",
-  address: "33 Ave Parmentier, 75011 Paris",
+  address: "33 Avenue Parmentier, 75011 Paris",
   description: "Bienvenue à l'Église Saint-Ambroise, un trésor caché au cœur du 11ᵉ arrondissement de Paris ! Cette merveille architecturale au 71 bis Boulevard Voltaire est bien plus qu'un simple édifice religieux. Plongez dans l'histoire captivante de ce lieu chargé de mystères.",
   storyline: storyline2
 )
 file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
 place10.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place10.save!
+
+Place.all.each do |place|
+  if place.latitude.nil? || place.longitude.nil?
+    p "place #{place.name} has incorrect address"
+  end
+end
 
 
 riddle7 = Riddle.new(
@@ -350,7 +356,7 @@ riddle7 = Riddle.new(
   motion_type: 'static',
   place: place9
 )
-file = URI.open("https://i.ibb.co/r36wK57/riddle-wagon.png")
+file = URI.open("https://i.ibb.co/pbLJw4M/wagon-riddle.png")
 riddle7.photo.attach(io: file, filename: "Wagon", content_type: "image/jpg")
 riddle7.save!
 

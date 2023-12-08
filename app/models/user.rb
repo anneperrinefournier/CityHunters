@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_one_attached :photo, dependent: :destroy
 
+  validates :name, presence: true
+
   def find_participation_for(game)
     Participation.find_by(game: game, user: self)
   end
