@@ -96,7 +96,7 @@ class RiddlesController < ApplicationController
       user_answer.save!
 
       if @game.storyline.title == "Code Rouge"
-        default_radius = 6 #km
+        default_radius = 1 #km
       else
         default_radius = 0.06
       end
