@@ -27,7 +27,7 @@
   <div class="playtime">
     <% @game.participations.each do |player| %>
     <div class="playtime-info">
-      <% if player.photo.attached? %>
+      <% if player.user.photo.attached? %>
         <%= cl_image_tag(player.user.photo.key, class:'avatar') %>
         <%= (player.user.name.downcase) %>
       <% else %>
