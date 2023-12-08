@@ -341,6 +341,8 @@ file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
 place10.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place10.save!
 
+Place.all.each { |place| raise if place.latitude.nil? || place.longitude.nil? }
+
 
 riddle7 = Riddle.new(
   title: 'Le logo du Wagon',
