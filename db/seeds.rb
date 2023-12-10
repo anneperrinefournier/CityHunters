@@ -820,9 +820,9 @@ riddle205.save!
 riddle206 = Riddle.new(
   title: 'La pastèque rouge (et verte)',
   description: "Voilà notre Grinch satisfait de boire son petit verre de vin chaud. Peut-être commence-t-il presque à aimer Noël ? Oula… Le vin chaud lui monte à la tête… Il avait oublié qu'il ne digérait que les choses vertes ! Il aurait bien besoin de boire un peu d'eau, mais ce n'est pas vert… Vous avez alors une idée : une pastèque, c'est rouge et vert, et ça contient plein d'eau ! Mais où trouver une pastèque en plein hiver ? Il y a bien la pastèque magique, mais pour cela, il faut la retrouver ! Et même en mauvais état, le Grinch trouve la force de donner une énigme :\n« Dans le froid hivernal où la glace se déploie,\nCherchez l'endroit où la danse sur glace étonne.\nLames aux pieds, rires dans l'air,\nOù suis-je, ce lieu de joie éphémère ? »",
-  question: "Qu'est-ce que le Grinch aimerait boire ?",
+  question: "Quel est le nom du lieu ?",
   motion_type: 'static',
-  solution: "vin chaud",
+  solution: "patinoire",
   place: place203
 )
 file = URI.open("https://i.ibb.co/pXbM2SM/Capture-d-e-cran-2023-12-10-a-00-49-41.png")
