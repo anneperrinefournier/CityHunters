@@ -61,7 +61,6 @@ photo = URI.open('https://curiosmos.com/wp-content/uploads/2023/08/Homo-sapiens-
 joey.photo.attach(io: photo, filename: "joey-photo", content_type: 'image/jpeg')
 joey.save!
 
-
 storyline1 = Storyline.new(
   title: "Le Secret du Louvre",
   district: "1ᵉʳ arr.",
@@ -93,9 +92,6 @@ storyline2 = Storyline.new(
 file = URI.open("https://i.ibb.co/SXNkWx0/re-publique.jpg")
 storyline2.photo.attach(io: file, filename: "Code Rouge", content_type: "image/jpg")
 storyline2.save!
-
-
-
 
 storyline3 = Storyline.new(
   title: "L’Odyssée du Château",
@@ -340,7 +336,6 @@ place10 = Place.new(
 file = URI.open("https://i.ibb.co/y0jQ7f7/saint-ambroise.jpg")
 place10.photo.attach(io: file, filename: "Louvre", content_type: "image/jpg")
 place10.save!
-
 
 riddle7 = Riddle.new(
   title: 'Le logo du Wagon',
@@ -591,7 +586,6 @@ file = URI.open("https://static.nationalgeographic.fr/files/styles/image_3200/pu
 place104.photo.attach(io: file, filename: "Frères-Lumière", content_type: "image/jpg")
 place104.save!
 
-
 riddle101 = Riddle.new(
   title: ' ',
   description: 'Une première enigme pour se chauffer,',
@@ -617,7 +611,6 @@ riddle102 = Riddle.new(
 )
 riddle102.save!
 
-
 riddle103 = Riddle.new(
   title: ' ',
   description: "Félicitations!Après le Lycée Charles Peguy il faut maintenant rejoindre une station de métro depuis ta position.\nPetite devinette:
@@ -630,7 +623,6 @@ riddle103 = Riddle.new(
   place: place102
 )
 riddle103.save!
-
 
 riddle105 = Riddle.new(
   title: ' ',
@@ -679,7 +671,6 @@ riddle107 = Riddle.new(
 )
 riddle107.save!
 
-
 riddle108 = Riddle.new(
   title: ' ',
   description: "Nice! C'était la dernière énigme! l’adresse à valider est :
@@ -713,7 +704,6 @@ storyline12 = Storyline.new(
 file = URI.open("https://i.ibb.co/bbHwnRk/IMG-20231209-225953.jpg")
 storyline12.photo.attach(io: file, filename: "spicy girls", content_type: "image/jpg")
 storyline12.save!
-
 
 place200 = Place.new(
   name: "Princesse Café",
@@ -772,7 +762,7 @@ riddle201 = Riddle.new(
   description: "En arrivant devant le palais de la Reine des neiges, tu aperçois en effet le Grinch. Il regarde sa montre toute les deux secondes avec impatience et jette des regards agacés vers le ciel, d'où tombent les flocons de neige provoqués par Elsa. Tu t’approches de lui et essaye de le convaincre de te rendre les fruits de Noël. Tu essayes de le convaincre, tu lui parles de famille, d'amitié, de bons sentiments. Mais il refuse, disant que tout ça, ça n'existe pas. Mais quand tu lui proposes de te joindre à toi et tes amis, il hésite. Il accepte de venir mais ne donnera que des indices que si toi et tes amis trouvez les réponses à ses questions, car c'est plus amusant comme ça. Voici son énigme :\n« Dans les plats, je suis la note épicée,\nUn feu qui danse, l'âme bien trempée.\nRouge comme l'amitié, piquant l'instant,\nUne amie ardente, dans chaque repas pimenté. »",
   question: "Qui suis-je ?",
   motion_type: 'static',
-  solution: "blabla",
+  solution: "piment",
   place: place201
 )
 file = URI.open("https://i.ibb.co/zs0hW04/Capture-d-e-cran-2023-12-10-a-00-56-09.png")
