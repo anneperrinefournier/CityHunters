@@ -1,4 +1,3 @@
-
 storyline1 = Storyline.new(
   title: "Le Secret du Louvre",
   district: "1ᵉʳ arr.",
