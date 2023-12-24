@@ -98,19 +98,12 @@ class RiddlesController < ApplicationController
       if @game.storyline.title == "Code Rouge"
         default_radius = 1 #km
       else
-        default_radius = 0.2
+        default_radius = 1 #0.06
       end
       places_near = Place.near([participation.latitude, participation.longitude], default_radius)
       next_place = @game.upcoming_places[1] # The index 0 is the current place
 
-      if user_answer.correct?
-        if next_riddle && next_riddle.motion_type == 'shifting'
-          next_place = next_riddle.place
-          user_answer.update(correct: true) unless places_near.exclude?(next_place)
-        else
-          user_answer.update(correct: true)
-        end
-      end
+      user_answer.update(correct: true) unless places_near.count(next_place.id).zero?
 
       return user_answer
     end
