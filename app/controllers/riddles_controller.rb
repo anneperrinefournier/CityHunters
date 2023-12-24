@@ -103,7 +103,14 @@ class RiddlesController < ApplicationController
       places_near = Place.near([participation.latitude, participation.longitude], default_radius)
       next_place = @game.upcoming_places[1] # The index 0 is the current place
 
-      user_answer.update(correct: true) unless places_near.count(next_place.id).zero?
+      if user_answer.correct?
+        if next_riddle && next_riddle.motion_type == 'shifting'
+          next_place = next_riddle.place
+          user_answer.update(correct: true) unless places_near.exclude?(next_place)
+        else
+          user_answer.update(correct: true)
+        end
+      end
 
       return user_answer
     end
