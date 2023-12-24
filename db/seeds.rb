@@ -695,11 +695,11 @@ storyline13 = Storyline.new(
   distance: 6,
   theme: "fantastique",
   difficulty: 3,
-  starting_point: "28 rue de Bel Air, 53960 Bonchamp-lès-Laval, France",
+  starting_point: "28 Rue De Bel Air, 53960 Bonchamp-lès-Laval, France",
   short_description: "Les cinq doigts de la main",
   long_description: "Noël est en danger ! Les rennes du père Noël ont disparu ! Sans eux, le père Noël ne pourra pas livrer les cadeaux ! Le coupable a cependant laissé des indices derrière lui. Suis-les pour sauver Noël !",
   introduction: "Vous êtes posés au coin du feu quand soudain, un homme avec une longue barbe blanche et un costume rouge sonne à la porte : c’est le père Noël !
-  Il explique qu’il a besoin de votre aide pour retrouver ses rennes. Le ou la coupable, pour gâcher Noël, les a volés et les a éparpillés dans Bonchamp ! Heureusement, il a laissé quelques indices derrière lui… Sauve Noël et aide le père Noël à retrouver ses rennes magiques !"
+  Il explique qu’il a besoin de votre aide pour retrouver ses rennes. Le ou la coupable, pour gâcher Noël, les a volés et les a éparpillés dans Bonchamp ! Heureusement, il a laissé quelques indices derrière lui… Sauvez Noël et aidez le père Noël à retrouver ses rennes magiques !"
 )
 file = URI.open("https://t3.ftcdn.net/jpg/06/68/12/48/360_F_668124876_LVDek2loS1Bgic9KxfwiiJByZ3ckuLv2.jpg")
 storyline13.photo.attach(io: file, filename: "rennes", content_type: "image/jpg")
@@ -707,7 +707,7 @@ storyline13.save!
 
 place300 = Place.new(
   name: "Maison",
-  address: "28 rue de Bel Air, 53960 Bonchamp-lès-Laval, France",
+  address: "28 Rue De Bel Air, 53960 Bonchamp-lès-Laval, France",
   description: "La maison",
   storyline: storyline13
 )
@@ -748,7 +748,7 @@ place303.save!
 riddle300 = Riddle.new(
   title: 'Le voleur',
   description: "Suite à la disparition des elfes, le père Noël a fait un appel à témoins. Un elfe a vu le coupable, mais les elfes ne savent parler qu'en énigmes. Voici ce qu'il a dit :\nDans l'obscurité, sous la neige qui brille,\nUn être vert au cœur d'argile.\nQui déteste Noël et tout ce qui étincelle,\nA pris les rennes, farceur rebelle.",
-  question: "Qui et le coupable ?",
+  question: "Qui est le coupable ?",
   motion_type: 'static',
   solution: "Grinch",
   place: place300
