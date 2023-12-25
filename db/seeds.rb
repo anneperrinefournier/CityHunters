@@ -9,26 +9,28 @@ p "destroying #{Riddle.all.count} riddles"
 p "destroying #{Answer.all.count} answers"
 p "destroying #{Clue.all.count} clues"
 
-Game.destroy_all
 Participation.destroy_all
-User.all.each do |user|
-  user.photo.purge
-end
-User.destroy_all
-Storyline.all.each do |storyline|
-  storyline.photo.purge
-end
-Storyline.destroy_all
-Place.all.each do |place|
-  place.photo.purge
-end
-Place.destroy_all
+Answer.destroy_all
+Game.destroy_all
+
+Clue.destroy_all
 Riddle.all.each do |riddle|
   riddle.photo.purge
 end
 Riddle.destroy_all
-Answer.destroy_all
-Clue.destroy_all
+Place.all.each do |place|
+  place.photo.purge
+end
+Place.destroy_all
+Storyline.all.each do |storyline|
+  storyline.photo.purge
+end
+Storyline.destroy_all
+
+User.all.each do |user|
+  user.photo.purge
+end
+User.destroy_all
 
 monica = User.new(
   email: 'monica@gmail.com',

@@ -29,6 +29,15 @@ file = URI.open("https://studysmarter-mediafiles.s3.amazonaws.com/media/uploads/
 place1.photo.attach(io: file, filename: "lewagon", content_type: "image/jpg")
 place1.save!
 
+place2 = Place.new(
+  name: "Metro Parmentier",
+  address: "86 avenue Parmentier, 75004 Paris, France",
+  description: "Cette bouche de metro... que dire dessus si non que je ne l'ai jamais prise!",
+  storyline: storyline
+)
+file = URI.open("https://p.monumentum.fr/galerie/maxi/00446/446476-francais-entree-de-la-station-de-metro-parmentier-avenue-parmentier-paris.jpg")
+place2.photo.attach(io: file, filename: "metro parmentier", content_type: "image/jpg")
+place2.save!
 
 place3 = Place.new(
   name: "Boulangerie Oberkampf",
