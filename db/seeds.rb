@@ -57,6 +57,7 @@ require_relative 'storylines/ruby_cest_fini'
 require_relative 'storylines/food_call'
 require_relative 'storylines/code_rouge'
 require_relative 'storylines/spicy_girls'
+require_relative 'storylines/christmas_time'
 # require_relative 'storylines/test_stories'
 
 
