@@ -1,11 +1,11 @@
-p "destroying #{Game.all.count} games"
-p "destroying #{Participation.all.count} participations"
-p "destroying #{User.all.count} users"
-p "destroying #{Storyline.all.count} storylines"
-p "destroying #{Place.all.count} places"
-p "destroying #{Riddle.all.count} riddles"
-p "destroying #{Answer.all.count} answers"
-p "destroying #{Clue.all.count} clues"
+p "destroying #{Game.count} games"
+p "destroying #{Participation.count} participations"
+p "destroying #{User.count} users"
+p "destroying #{Storyline.count} storylines"
+p "destroying #{Place.count} places"
+p "destroying #{Riddle.count} riddles"
+p "destroying #{Answer.count} answers"
+p "destroying #{Clue.count} clues"
 
 Participation.destroy_all
 Answer.destroy_all
@@ -34,11 +34,11 @@ User.destroy_all
 require_relative 'seeds'
 
 
-p "created #{Game.all.count} games"
-p "created #{Participation.all.count} participations"
-p "created #{User.all.count} users"
-p "created #{Storyline.all.count} storylines"
-p "created #{Place.all.count} places"
-p "created #{Riddle.all.count} riddles"
-p "created #{Answer.all.count} answers"
-p "created #{Clue.all.count} clues"
+p "created #{Game.count} games"
+p "created #{Participation.count} participations"
+p "created #{User.count} users"
+p "created #{Storyline.count} storylines"
+p "created #{Place.count} places"
+p "created #{Riddle.count} riddles"
+p "created #{Answer.count} answers"
+p "created #{Clue.count} clues"
