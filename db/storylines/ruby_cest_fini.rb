@@ -1,53 +1,77 @@
 # Storyline
-storyline = Storyline.find_or_create_by(title: "Ruby, c'est finiii") do |new_storyline|
-  file = URI.open("https://media.sudouest.fr/16036980/1000x500/20230723111519-copiedebi7963.jpg?v=1690178400")
-  new_storyline.photo.attach(io: file, filename: "teuf", content_type: "image/jpg")
-end
-storyline.district = "11ᵉ arr."
-storyline.duration = 20
-storyline.distance = 6
-storyline.theme = "grosse teuf"
-storyline.difficulty = 3
-storyline.short_description = "Party of your life"
-storyline.long_description = "Comment se rendre à une soirée épique de fin de batch après deux mois de code intensif."
-storyline.introduction = "Vous êtes épuisés. Épuisés, mais ravi, encore portés par l’adrénaline de cette journée. Deux mois intenses viennent de s’écouler dans les murs du Wagon. Votre application n’a pas crashé pendant la démonstration (enfin on espère ^^). Maintenant s’ouvre devant vous le scintillement d’une soirée trépidante. Pas de controller en vue, c’est le moment d’oublier tout vos bundle install et autres folles gem, queryselector et elsif, bootstrap et fetch…c’est le moment pour un rm-rf de qualité, un reboot complet, délestez-vous de vos git push origin (master??) en fredonnant 'Ruby, c'est finiiiii, et dire que c'était le code de mon premier amoooour !'"
-storyline.save!
+storyline = create_or_update(
+  Storyline.new(
+    title: "Ruby, c'est finiii",
+    district: "11ᵉ arr.",
+    duration: 20,
+    distance: 6,
+    theme: "grosse teuf",
+    difficulty: 3,
+    short_description: "Party of your life",
+    long_description: "Comment se rendre à une soirée épique de fin de batch après deux mois de code intensif.",
+    introduction: "Vous êtes épuisés. Épuisés, mais ravi, encore portés par l’adrénaline de cette journée. Deux mois intenses viennent de s’écouler dans les murs du Wagon. Votre application n’a pas crashé pendant la démonstration (enfin on espère ^^). Maintenant s’ouvre devant vous le scintillement d’une soirée trépidante. Pas de controller en vue, c’est le moment d’oublier tout vos bundle install et autres folles gem, queryselector et elsif, bootstrap et fetch…c’est le moment pour un rm-rf de qualité, un reboot complet, délestez-vous de vos git push origin (master??) en fredonnant 'Ruby, c'est finiiiii, et dire que c'était le code de mon premier amoooour !'",
+  ), {
+    filename: "teuf",
+    url: "https://media.sudouest.fr/16036980/1000x500/20230723111519-copiedebi7963.jpg?v=1690178400",
+    content_type: "image/jpg"
+  }
+)
 
 
 # Places
-place1 = Place.find_or_create_by(name: "Le Wagon", storyline: storyline) do |new_place|
-  file = URI.open("https://i.ibb.co/Kmjtv1T/le-wagon.jpg")
-  new_place.photo.attach(io: file, filename: "LeWagon", content_type: "image/jpg")
-end
-place1.address = "68 Avenue Parmentier, 75011 Paris"
-place1.description = "Alors en route, get/batch_party_path(bière), alcools.querySelectorAll(« babyguinness »), soirée.addEventListener('danse' -> Soirée.new(batch_party)"
-place1.save!
+place1 = create_or_update(
+  Place.new(
+    name: "Le Wagon",
+    address: "68 Avenue Parmentier, 75011 Paris",
+    description: "Alors en route, get/batch_party_path(bière), alcools.querySelectorAll(« babyguinness »), soirée.addEventListener('danse' -> Soirée.new(batch_party)",
+    storyline: storyline
+  ), {
+    filename: "LeWagon",
+    url: "https://i.ibb.co/Kmjtv1T/le-wagon.jpg",
+    content_type: "image/jpg"
+  }
+)
 
-place2 = Place.find_or_create_by(name: "Lycée Charles Péguy", storyline: storyline) do |new_place|
-    file = URI.open("https://slack-imgs.com/?c=1&o1=ro&url=http%3A%2F%2Fwww.edarchitectes.net%2Fsite%2Fpeguy%2Fed_lycee_peguy_2.jpg")
-    new_place.photo.attach(io: file, filename: "lycee", content_type: "image/jpg")
-end
-place2.address = "80 avenue Parmentier, 75004 Paris, France"
-place2.description = ""
-place2.save!
 
-place3 = Place.find_or_create_by(name: "Metro Parmentier", storyline: storyline) do |new_place|
-    file = URI.open("https://p.monumentum.fr/galerie/maxi/00446/446476-francais-entree-de-la-station-de-metro-parmentier-avenue-parmentier-paris.jpg")
-    new_place.photo.attach(io: file, filename: "metro_parmentier", content_type: "image/jpg")
-end
-place3.address = "90 avenue Parmentier, 75004 Paris, France"
-place3.description = "Yes la bonne réponse était Parmentier ( par - 'ment' - 'T.A.' )\n
-Du nom de ce bon vieux Antoine qui a importé la patate en France au XVIIIeme siècle et qui a laissé son nom au fameux hachis."
-place3.save!
+place2 = create_or_update(
+  Place.new(
+    name: "Lycée Charles Péguy",
+    storyline: storyline,
+    address: "80 avenue Parmentier, 75004 Paris, France",
+    description: ""
+  ), {
+    filename: "Lycée Charles Péguy",
+    url: "https://slack-imgs.com/?c=1&o1=ro&url=http%3A%2F%2Fwww.edarchitectes.net%2Fsite%2Fpeguy%2Fed_lycee_peguy_2.jpg",
+    content_type: "image/jpg"
+  }
+)
 
-place4 = Place.find_or_create_by(name: "104", storyline: storyline) do |new_place|
-    file = URI.open("https://static.nationalgeographic.fr/files/styles/image_3200/public/01-auguste-louis-lumiere.jpg?w=710&h=788")
-    new_place.photo.attach(io: file, filename: "Frères-Lumière", content_type: "image/jpg")
-end
-place4.address = "99 avenue Jean Jaurès, 75019 Paris"
-place4.description = ""
-place4.save!
+place3 = create_or_update(
+  Place.new(
+    name: "Metro Parmentier",
+    storyline: storyline,
+    address: "90 avenue Parmentier, 75004 Paris, France",
+    description: "Yes la bonne réponse était Parmentier ( par - 'ment' - 'T.A.' )\n
+    Du nom de ce bon vieux Antoine qui a importé la patate en France au XVIIIeme siècle et qui a laissé son nom au fameux hachis."
+  ), {
+    filename: "metro_parmentier",
+    url: "https://p.monumentum.fr/galerie/maxi/00446/446476-francais-entree-de-la-station-de-metro-parmentier-avenue-parmentier-paris.jpg",
+    content_type: "image/jpg"
+  }
+)
 
+place4 = create_or_update(
+  Place.new(
+    name: "104",
+    address: "99 avenue Jean Jaurès, 75019 Paris",
+    description: "",
+    storyline: storyline,
+  ), {
+    filename: "Frères-Lumière",
+    url: "https://static.nationalgeographic.fr/files/styles/image_3200/public/01-auguste-louis-lumiere.jpg?w=710&h=788",
+    content_type: "image/jpg"
+  }
+)
 
 # Riddles
 riddle1 = Riddle.find_or_create_by(title: "Chat de Diane", place: place1)
