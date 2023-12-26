@@ -1,11 +1,13 @@
 class StorylinesController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[new]
+
   def index
     @storylines = Storyline.all
   end
 
   def show
     @storyline = Storyline.find(params[:id])
-    @starting_point = Storyline.find(params[:id])
+    @starting_point = Storyline.find(params[:id]).places.first
 
     game_id = params[:game_id].to_i
     @game = Game.find_by(id: game_id)
@@ -19,7 +21,9 @@ class StorylinesController < ApplicationController
       }
 
       @markers = [@starting_point_marker]
-
   end
 
+  def new
+    @storyline = Storyline.new
+  end
 end

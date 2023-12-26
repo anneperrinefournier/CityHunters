@@ -7,7 +7,6 @@ storyline = create_or_update(
     distance: 1,
     theme: "urbain",
     difficulty: 1,
-    starting_point: "68 avenue Parmentier, 75011 Paris, France",
     short_description: "Pars à la recherche de ta nouriture !",
     long_description: "Ca y est, nous y sommes! Il est 13h et l'estomac souffre et agonise, il a besoin de manger. Une seule solution, partir en quête de nourriture! Suivez cette aventure exceptiionnelle à laquelle tout le monde revient satisfait, mais surtout, le ventre plein!",
     introduction: "Dans une ville grouillante d'activité, où les rues pavées bruissent sous les pas pressés des passants, une quête essentielle vous anime : assouvir votre faim grandissante. Ignorant l'agitation ambiante, votre estomac vous rappelle impérieusement à l'ordre, vous incitant à trouver cette nourriture revigorante qui apaisera votre appétit croissant.

@@ -8,7 +8,6 @@ storyline.duration = 20
 storyline.distance = 6
 storyline.theme = "grosse teuf"
 storyline.difficulty = 3
-storyline.starting_point = "68 avenue Parmentier, 75011 Paris, France"
 storyline.short_description = "Party of your life"
 storyline.long_description = "Comment se rendre à une soirée épique de fin de batch après deux mois de code intensif."
 storyline.introduction = "Vous êtes épuisés. Épuisés, mais ravi, encore portés par l’adrénaline de cette journée. Deux mois intenses viennent de s’écouler dans les murs du Wagon. Votre application n’a pas crashé pendant la démonstration (enfin on espère ^^). Maintenant s’ouvre devant vous le scintillement d’une soirée trépidante. Pas de controller en vue, c’est le moment d’oublier tout vos bundle install et autres folles gem, queryselector et elsif, bootstrap et fetch…c’est le moment pour un rm-rf de qualité, un reboot complet, délestez-vous de vos git push origin (master??) en fredonnant 'Ruby, c'est finiiiii, et dire que c'était le code de mon premier amoooour !'"
