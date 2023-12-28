@@ -26,13 +26,18 @@
   <h4>Joueurs</h4>
   <div class="playtime">
     <% @game.participations.each do |player| %>
-    <div class="playtime-info">
-      <% if player.user.photo.attached? %>
-        <%= cl_image_tag(player.user.photo.key, class:'avatar') %>
-        <%= (player.user.name.downcase) %>
-      <% else %>
-        <img src="https://i.ibb.co/PFHbc3Z/profilephoto.png" alt="user-picture" class="avatar">
-      <% end %>
+      <div class="playtime-info">
+        <% if player.user.photo.attached? %>
+          <%= cl_image_tag(player.user.photo.key, class:'avatar') %>
+        <% else %>
+          <img src="https://i.ibb.co/PFHbc3Z/profilephoto.png" alt="user-picture" class="avatar">
+        <% end %>
+
+        <% if player.user.name.length > 8 %>
+          <%= player.user.name[..7] %>...
+        <% else %>
+          <%= player.user.name %>
+        <% end %>
       </div>
     <% end %>
   </div>

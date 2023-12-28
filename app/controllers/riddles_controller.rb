@@ -95,11 +95,8 @@ class RiddlesController < ApplicationController
       )
       user_answer.save!
 
-      if @game.storyline.title == "Code Rouge"
-        default_radius = 1 #km
-      else
-        default_radius = 1 #0.06
-      end
+
+      default_radius = 1 #0.06
       places_near = Place.near([participation.latitude, participation.longitude], default_radius)
       next_place = @game.upcoming_places[1] # The index 0 is the current place
 

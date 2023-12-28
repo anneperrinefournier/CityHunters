@@ -16,15 +16,11 @@ export default class extends Controller {
     'pageHandle',
     'riddlesHandle',
     'introduction',
-    'enigme',
-    'placeTabs',
     'placeTab',
     'placePanel',
     'displayAnswerBtn',
     'map',
     'mapForm',
-    'endGameButton',
-    'endGame',
     'riddleContainer'
   ];
 
