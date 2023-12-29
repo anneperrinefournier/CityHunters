@@ -49,15 +49,6 @@
                               link_classes: 'btn btn-primary',
                               link_text: 'Ajouter un lieu') %>
 
-    <%# <template id="place-form-template" class="d-none" data-edit-storyline-target="placeTemplate"> %>
-      <%#= render partial: 'place_fields', locals: { f: f, place: @empty_place } %>
-    <%# </template> %>
-
-    <button class="btn btn-primary"
-            data-action="click->edit-storyline#addPlace">
-      Add place
-    </button>
-
     <div class="form-actions d-flex justify-content-end">
       <%= form.button :submit, "Valider", class:"btn-home" %>
     </div>

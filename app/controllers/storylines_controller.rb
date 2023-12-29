@@ -72,7 +72,6 @@ class StorylinesController < ApplicationController
     if current_user == @storyline.user
       if @storyline.is_ready == false
 
-        # storyline_places = Places.where(storyline: @storyline)
         if @storyline.places.count > 0
           if !@storyline.photo.attached?
             render json: {
@@ -92,7 +91,6 @@ class StorylinesController < ApplicationController
           end
 
           @storyline.places.each do |place|
-            # place_riddles = Riddle.where(place: place)
             if !place.photo.attached?
               render json: {
                 isReady: false,
