@@ -1,5 +1,7 @@
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Mon Profil</a></li>
+    <li>
+      <%= link_to 'Mon profil', profile_path, class:"dropdown-item" %>
+    </li>
     <% if defined?(@game) && @game %>
       <li data-controller="burger" data-burger-game-pin-value="<%= @game.pin %>">
         <button class="dropdown-item"> PIN de la partie : <%= @game.pin %></button>

@@ -2,14 +2,16 @@
 storyline = create_or_update(
   Storyline.new(
     title: "Ruby, c'est finiii",
+    user: User.find_by(email: 'monica@gmail.com'),
     district: "11ᵉ arr.",
     duration: 20,
     distance: 6,
-    theme: "grosse teuf",
+    theme: "urbain",
     difficulty: 3,
     short_description: "Party of your life",
     long_description: "Comment se rendre à une soirée épique de fin de batch après deux mois de code intensif.",
     introduction: "Vous êtes épuisés. Épuisés, mais ravi, encore portés par l’adrénaline de cette journée. Deux mois intenses viennent de s’écouler dans les murs du Wagon. Votre application n’a pas crashé pendant la démonstration (enfin on espère ^^). Maintenant s’ouvre devant vous le scintillement d’une soirée trépidante. Pas de controller en vue, c’est le moment d’oublier tout vos bundle install et autres folles gem, queryselector et elsif, bootstrap et fetch…c’est le moment pour un rm-rf de qualité, un reboot complet, délestez-vous de vos git push origin (master??) en fredonnant 'Ruby, c'est finiiiii, et dire que c'était le code de mon premier amoooour !'",
+    is_ready: true
   ), {
     filename: "teuf",
     url: "https://media.sudouest.fr/16036980/1000x500/20230723111519-copiedebi7963.jpg?v=1690178400",
@@ -147,9 +149,8 @@ riddle7.description = "Nice! C'était la dernière énigme! l’adresse à valid
 Pour la suite, l’adresse du bar étant  dans l’invit slack ça n'avait pas trop d’intérêt de la faire deviner, donc on se retrouve au bar Belushi's Paris Canal, 159 rue de Crimée, 75019 Paris
 
 des bécots de la team CityHunters,
-AP, Alexis, Henri et Pif\n
-\n
-Répondre 'Batch1410' pour terminer la partie"
+AP, Alexis, Henri et Pif\n"
+riddle7.question = "Répondre 'Batch1410' pour terminer la partie"
 riddle7.motion_type = 'static'
 riddle7.solution = "Batch1410"
 riddle7.save!

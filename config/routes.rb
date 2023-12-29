@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'games/join', to: "games#join", as: "join_game"
   post 'games/access', to: "games#access", as: "access_game"
 
+  get 'profile', to: 'pages#profile'
+
   resources :games, only: [:show] do
     member do
       patch '/start', to: "games#start"
@@ -26,8 +28,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :storylines, only: %i[new create edit update destroy]
   resources :storylines, only: %i[index show] do
     resources :games, only: [:create]
+    patch '/toggle-ready', to: 'storylines#toggle_ready'
   end
 
   post '/verify', to: 'riddles#verify'

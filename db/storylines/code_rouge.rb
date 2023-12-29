@@ -1,6 +1,7 @@
 storyline = create_or_update(
   Storyline.new(
     title: "Code Rouge",
+    user: User.find_by(email: 'monica@gmail.com'),
     district: "11ᵉ arr.",
     duration: 90,
     distance: 6,
@@ -9,6 +10,7 @@ storyline = create_or_update(
     short_description: "Pars à la recherche du Code Perdu du Wagon !",
     long_description: "Suis les énigmes cryptiques pour retrouver le code perdu du wagon à travers les ruelles du quartier. Une aventure où le mystère et la programmation se rencontrent.",
     introduction: "Tout va pour le mieux au Wagon quand soudain, un cri se fait entendre : le Code Rouge a disparu !\nPierre de rosette des développeurs, le Code Rouge est un vieux manuscrit qui renferme une librairie de langage légendaire : Ruby on Rails ! Découvert par le professeur Hansson, le précieux code avait été mis en sécurité dans un coffre-fort.\nHeureusement, le voleur a laissé des indices… Il n’y a plus qu’à les suivre pour espérer retrouver le Code Rouge !",
+    is_ready: true
   ),
   {
     filename: "Code Rouge",

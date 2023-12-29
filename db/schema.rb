@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_26_213640) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_28_142004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -108,8 +108,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_26_213640) do
     t.string "picture"
     t.string "solution"
     t.string "question"
-    t.float "longitude"
-    t.float "latitude"
     t.bigint "place_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -125,10 +123,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_26_213640) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.float "duration"
+    t.integer "duration"
     t.text "short_description"
     t.text "long_description"
     t.text "introduction"
+    t.bigint "user_id"
+    t.boolean "is_ready", default: false
+    t.index ["user_id"], name: "index_storylines_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -158,4 +159,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_26_213640) do
   add_foreign_key "participations", "users"
   add_foreign_key "places", "storylines"
   add_foreign_key "riddles", "places"
+  add_foreign_key "storylines", "users"
 end

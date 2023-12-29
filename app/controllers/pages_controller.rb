@@ -5,6 +5,10 @@ class PagesController < ApplicationController
   def home
   end
 
+  def profile
+    @storylines = Storyline.where(user: current_user)
+  end
+
   def qr_code_generator
     qrcode = RQRCode::QRCode.new("http://github.com/")
 
