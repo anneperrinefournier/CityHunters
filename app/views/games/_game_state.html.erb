@@ -38,8 +38,8 @@
           <%= image_tag('compass.png', class:'place-picture') %>
         <% end %>
         <div class="mt-3 container">
-            <p><%= place.description %></p>
-          </div>
+          <p><%= place.description %></p>
+        </div>
       </div>
 
         <% place.riddles.each_with_index do |riddle, riddle_index| %>
@@ -53,8 +53,6 @@
                 <div>
                   <% if riddle.photo.attached? %>
                     <%= cl_image_tag(riddle.photo.key, alt: "#{riddle.title} -photo", class: "photos-img") %>
-                  <% else %>
-                    <%= image_tag('compass.png', alt: "#{place.name} -photo", class: "photos-img") %>
                   <% end %>
                 </div>
 

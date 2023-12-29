@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Modifier mon aventure</h1>
+  <div class="container d-flex justify-content-end">
+    <%= link_to "Delete", storyline_path(@storyline), data: { turbo_method:'delete', turbo_confirm:'Are you sure?' }, class:'btn btn-danger' %>
+  </div>
+
+  <%= render partial: "storyline_form" %>
+
+</div>

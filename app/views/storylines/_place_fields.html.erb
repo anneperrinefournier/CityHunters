@@ -1,0 +1,13 @@
+<div class="place-fields">
+    <%= form.input :name %>
+    <%= form.input :photo, io: :file %>
+    <%= form.input :address %>
+    <%= form.input :description %>
+    <%= link_to_remove_nested(form, link_classes: 'btn btn-danger', link_text: 'Supprimer')  %>
+
+    <div class="riddles-fields-container">
+      <%# places.riddles.each do |riddle| %>
+        <%#= render partial: 'riddle_fields', locals: { p: p, riddle: riddle } %>
+      <%# end %>
+    </div>
+</div>
