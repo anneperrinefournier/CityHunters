@@ -1,0 +1,18 @@
+<div class="container">
+  <%= simple_form_for(@place) do |form| %>
+    <%= form.input :name %>
+    <%= form.input :photo, io: :file %>
+    <%= form.input :address %>
+    <%= form.input :description %>
+
+    <div id="riddles-fields">
+      <% form.simple_fields_for :riddles do |r| %>
+        <%= render 'riddle_fields', form: r %>
+      <% end %>
+    </div>
+    <%= link_to_add_nested(form, :riddles, '#riddles-fields',
+                                  partial: 'riddle_fields',
+                                  link_classes: 'btn btn-primary',
+                                  link_text: 'Ajouter une énigme') %>
+  <% end %>
+</div>

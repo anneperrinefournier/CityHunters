@@ -27,7 +27,7 @@ class StorylinesController < ApplicationController
   def new
     @empty_place = Place.new
     @storyline = Storyline.new
-    @storyline.place.build
+    @storyline.places.build
   end
 
   def create
@@ -41,6 +41,7 @@ class StorylinesController < ApplicationController
   end
 
   def edit
+    @storyline.places.build
     if @storyline.user == current_user
       @empty_place = Place.new
       render :edit
@@ -170,18 +171,31 @@ class StorylinesController < ApplicationController
   end
 
   def storyline_params
+    debugger
     params[:storyline][:theme].downcase! # = params[:storyline][:theme].downcase
-    params
-      .require(:storyline)
-      .permit(:title,
-              :theme,
-              :photo,
-              :difficulty,
-              :duration,
-              :district,
-              :short_description,
-              :long_description,
-              :introduction,
-              places_attributes: [:id, :name, :photo, :address, :description, :_destroy])
+    params.require(:storyline)
+          .permit(:title,
+                  :theme,
+                  :photo,
+                  :difficulty,
+                  :duration,
+                  :district,
+                  :short_description,
+                  :long_description,
+                  :introduction,
+                  places_attributes: [:id,
+                                      :name,
+                                      :photo,
+                                      :address,
+                                      :description,
+                                      :_destroy,
+                                      riddles_attributes: [:id,
+                                                          :title,
+                                                          :picture,
+                                                          :question,
+                                                          :solution,
+                                                          :description,
+                                                          :motion_type,
+                                                          :_destroy]])
   end
 end

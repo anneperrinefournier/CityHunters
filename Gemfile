@@ -55,7 +55,7 @@ gem "geocoder"
 gem 'redis', '~> 5.0', '>= 5.0.8'
 gem 'rqrcode'
 gem 'image_optim'
-gem 'vanilla_nested'
+gem 'vanilla_nested', github: 'arielj/vanilla-nested', branch: "support-3-level-nesting"
 
 group :development, :test do
   gem "dotenv-rails"

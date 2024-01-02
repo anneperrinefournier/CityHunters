@@ -1,9 +1,11 @@
 class Place < ApplicationRecord
   belongs_to :storyline
-  has_many :riddles, -> { order(created_at: :asc) }, dependent: :destroy
-  validates :name, :address, presence: true
-
   has_one_attached :photo, dependent: :destroy
+  
+  has_many :riddles, -> { order(created_at: :asc) }, dependent: :destroy
+  accepts_nested_attributes_for :riddles, allow_destroy: true
+
+  validates :name, :address, presence: true
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?

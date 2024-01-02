@@ -1,0 +1,18 @@
+<div class="riddle-fields">
+  <%= debugger %>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+  <%= form.label :photo %>
+  <%= form.file_field :photo, io: :file %>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+  <%= form.label :question %>
+  <%= form.text_field :question %>
+  <%= form.label :solution %>
+  <%= form.text_field :solution %>
+  <%= form.label :motion_type %>
+  <%= form.text_field :motion_type %>
+
+  <%= p form.object %>
+  <%= link_to_remove_nested(form, link_classes:'btn btn-danger', link_text: 'Supprimer énigme') %>
+</div>

@@ -1,13 +1,24 @@
 <div class="place-fields">
-    <%= form.input :name %>
-    <%= form.input :photo, io: :file %>
-    <%= form.input :address %>
-    <%= form.input :description %>
-    <%= link_to_remove_nested(form, link_classes: 'btn btn-danger', link_text: 'Supprimer')  %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :photo, io: :file %>
+  <%= form.file_field :photo, io: :file %>
+  <%= form.label :address %>
+  <%= form.text_field :address %>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+  <%= link_to_remove_nested(form, link_classes: 'btn btn-danger', link_text: 'Supprimer le lieu')  %>
 
-    <div class="riddles-fields-container">
-      <%# places.riddles.each do |riddle| %>
-        <%#= render partial: 'riddle_fields', locals: { p: p, riddle: riddle } %>
-      <%# end %>
-    </div>
+  <%= debugger %>
+  <%= link_to_add_nested(form, :riddles, "#riddles_#{form.object.id}_idx1",
+                                partial: 'riddle_fields',
+                                link_classes: 'btn btn-secondary',
+                                link_text: 'Ajouter une énigme',
+                                idx_placeholder: "_idx2") %>
+
+  <div id="riddles_<%= form.object.id %>_idx1" >
+    <% form.fields_for :riddles do |form_riddle| %>
+      <%= render 'riddle_fields', form: form_riddle %>
+    <% end %>
+  </div>
 </div>

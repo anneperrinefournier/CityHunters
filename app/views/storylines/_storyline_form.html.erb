@@ -1,23 +1,30 @@
 <div data-controller="edit-storyline">
-  <%= simple_form_for(@storyline) do |form| %>
+  <%= form_for(@storyline) do |form_story| %>
     <div class="form-inputs">
-      <%= form.input :title,
+      <%= form_story.label :title %>
+      <%= form_story.text_field :title,
                   required: true,
                   autofocus: true,
                   label: "Titre" %>
-      <%= form.input :theme,
+      <%= form_story.label :theme %>
+      <%= form_story.text_field :theme,
                   required: true,
                   label: "Thème"%>
-      <%= form.input :photo,
+      <%= form_story.file_field :photo,
+                  io: :file,
                   label: 'Photo' %>
-      <%= form.input :difficulty,
+      <%= form_story.label :difficulty %>
+      <%= form_story.text_field :difficulty,
                   label: "Difficultée" %>
-      <%= form.input :duration,
+      <%= form_story.label :duration %>
+      <%= form_story.text_field :duration,
                   label: "Durée" %>
-      <%= form.input :district,
+      <%= form_story.label :district %>
+      <%= form_story.text_field :district,
                   required: true,
                   label: "Arrondissement" %>
-      <%= form.input :long_description,
+      <%= form_story.label :long_description %>
+      <%= form_story.text_field :long_description,
                   as: :text,
                   required: true,
                   label: "Description",
@@ -27,7 +34,8 @@
                       action: "input->edit-storyline#adjustHeight"
                     }
                   } %>
-      <%= form.input :introduction,
+      <%= form_story.label :introduction %>
+      <%= form_story.text_field :introduction,
                   label: "Introduction",
                   input_html: {
                     data: {
@@ -37,20 +45,21 @@
                   } %>
     </div>
 
-    <div id="places-fields" data-edit-storyline-target="placesContainer">
-      <%# @storyline.places.each do |place| %>
-        <%= form.simple_fields_for :places do |p| %>
-            <%= render 'place_fields', form: p %>
-        <% end %>
-      <%# end %>
+    <%= p form_story.object %>
+
+    <div id="places_fields">
+      <%= form_story.fields_for :places do |form_place| %>
+        <%= render 'place_fields', form: form_place %>
+      <% end %>
     </div>
-    <%= link_to_add_nested(form, :places, '#places-fields',
+    <%= link_to_add_nested(form_story, :places, '#places_fields',
                               partial: 'place_fields',
                               link_classes: 'btn btn-primary',
-                              link_text: 'Ajouter un lieu') %>
+                              link_text: 'Ajouter un lieu',
+                              idx_placeholder: "_idx1") %>
 
     <div class="form-actions d-flex justify-content-end">
-      <%= form.button :submit, "Valider", class:"btn-home" %>
+      <%= form_story.button "Valider", type: "submit", class:"btn-home" %>
     </div>
   <% end %>
 </div>
