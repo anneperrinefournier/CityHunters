@@ -1,9 +1,14 @@
 <div class="container">
-  <h1>Modifier mon aventure</h1>
+  <h1>Mon aventure</h1>
   <div class="container d-flex justify-content-end">
-    <%= link_to "Delete", storyline_path(@storyline), data: { turbo_method:'delete', turbo_confirm:'Are you sure?' }, class:'btn btn-danger' %>
+    <% if Game.where(storyline: @storyline).count > 0 %>
+      <p>Vous ne pouvez pas supprimer cette histoire car des partie ont été jouées</p>
+    <% else %>
+      <%= link_to "Delete", storyline_path(@storyline), data: { turbo_method:'delete', turbo_confirm:'Are you sure?' }, class:'btn btn-danger' %>
+    <% end %>
   </div>
 
   <%= render partial: "storyline_form" %>
 
+  <%= link_to "Ajouter un lieu", new_storyline_place_path(@storyline), class:'btn btn-primary' %>
 </div>

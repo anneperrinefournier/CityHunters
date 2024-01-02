@@ -25,17 +25,15 @@ class StorylinesController < ApplicationController
   end
 
   def new
-    @empty_place = Place.new
     @storyline = Storyline.new
-    @storyline.place.build
   end
 
   def create
     @storyline = Storyline.new(storyline_params)
+    @storyline.user = current_user
     if @storyline.save
       redirect_to profile_path
     else
-      @empty_place = Place.new
       render :new, status: :unprocessable_entity
     end
   end
@@ -46,7 +44,7 @@ class StorylinesController < ApplicationController
       render :edit
     else
       flash[:error] = 'You cannot edit this storyline'
-      redirect_to profile_path, status: :forbidden
+      redirect_to profile_path, status: :unauthorized
     end
   end
 
@@ -159,7 +157,7 @@ class StorylinesController < ApplicationController
       end
     else #storyline.user != current_user
       flash[:error] = "Vous ne pouvez pas éditer cette storyline"
-      redirect_to profile_path, status: :forbidden
+      redirect_to profile_path, status: :unauthorized
     end
   end
 
@@ -170,7 +168,7 @@ class StorylinesController < ApplicationController
   end
 
   def storyline_params
-    params[:storyline][:theme].downcase! # = params[:storyline][:theme].downcase
+    params[:storyline][:theme].downcase!
     params
       .require(:storyline)
       .permit(:title,
@@ -181,7 +179,6 @@ class StorylinesController < ApplicationController
               :district,
               :short_description,
               :long_description,
-              :introduction,
-              places_attributes: [:id, :name, :photo, :address, :description, :_destroy])
+              :introduction)
   end
 end

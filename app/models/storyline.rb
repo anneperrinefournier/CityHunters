@@ -2,7 +2,7 @@ class Storyline < ApplicationRecord
   belongs_to :user
 
   has_one_attached :photo, dependent: :destroy
-  has_many :places, dependent: :destroy
+  has_many :places, -> { order(created_at: :asc) }, dependent: :destroy
 
   accepts_nested_attributes_for :places, allow_destroy: true
 

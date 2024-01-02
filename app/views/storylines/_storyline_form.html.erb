@@ -37,20 +37,34 @@
                   } %>
     </div>
 
-    <div id="places-fields" data-edit-storyline-target="placesContainer">
-      <%# @storyline.places.each do |place| %>
-        <%= form.simple_fields_for :places do |p| %>
-            <%= render 'place_fields', form: p %>
-        <% end %>
-      <%# end %>
-    </div>
-    <%= link_to_add_nested(form, :places, '#places-fields',
-                              partial: 'place_fields',
-                              link_classes: 'btn btn-primary',
-                              link_text: 'Ajouter un lieu') %>
+
 
     <div class="form-actions d-flex justify-content-end">
       <%= form.button :submit, "Valider", class:"btn-home" %>
     </div>
   <% end %>
+
+  <div id="places-fields" data-edit-storyline-target="placesContainer" class="d-flex justify-content-center flex-wrap">
+    <% @storyline.places.each_with_index do |place, index| %>
+      <%= link_to edit_storyline_place_path(@storyline, place) do %>
+        <div class="place-card">
+          <h2>Place <%= index + 1 %></h2>
+          <% if place.photo.attached? %>
+            <%= cl_image_tag(place.photo.key, class:'place-picture') %>
+          <% else %>
+            <%= image_tag("compass.png", class:'place-picture') %>
+          <% end %>
+          <h4>Nom</h4>
+          <%= place.name %>
+          <h4>Adresse</h4>
+          <%= place.address %>
+          <h4>Description</h4>
+          <%= place.description %>
+          <br/>
+          <br/>
+          <%= link_to "Supprimer #{place.name}", storyline_place_path(@storyline, place), class:'btn btn-danger', data: { turbo_method: 'delete', turbo_confirm: "Are you sure to delete place \"#{place.name}\" ?"} %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
