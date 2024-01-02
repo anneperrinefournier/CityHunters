@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_28_142004) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_02_174217) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -93,7 +93,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_142004) do
     t.string "name"
     t.string "address"
     t.string "description"
-    t.string "picture"
     t.float "longitude"
     t.float "latitude"
     t.bigint "storyline_id", null: false
@@ -105,7 +104,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_28_142004) do
   create_table "riddles", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "picture"
     t.string "solution"
     t.string "question"
     t.bigint "place_id", null: false
