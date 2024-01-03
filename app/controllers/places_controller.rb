@@ -5,15 +5,12 @@ class PlacesController < ApplicationController
   def new
     @place = Place.new
     @storyline = Storyline.find(params[:storyline_id])
-  end
-
-  def create
-    @place = Place.new(place_params)
     @place.storyline = @storyline
     if @place.save
-      redirect_to edit_storyline_path(@storyline)
+      redirect_to edit_storyline_place_path(@storyline, @place)
     else
-      render :new, status: :unprocessable_entity
+      flash[:alert] = "An error occured"
+      redirect_to edit_storyline_path(@storyline)
     end
   end
 

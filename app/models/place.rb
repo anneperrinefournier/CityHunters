@@ -1,7 +1,6 @@
 class Place < ApplicationRecord
   belongs_to :storyline
   has_many :riddles, -> { order(created_at: :asc) }, dependent: :destroy
-  validates :name, :address, presence: true
 
   has_one_attached :photo, dependent: :destroy
 

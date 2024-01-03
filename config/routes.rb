@@ -28,12 +28,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :storylines, only: %i[new create edit update destroy]
+  resources :storylines, only: %i[new edit update destroy]
   resources :storylines, only: %i[index show] do
     resources :games, only: [:create]
     patch '/toggle-ready', to: 'storylines#toggle_ready'
 
-    resources :places, only: %i[new create edit update destroy]
+    resources :places, only: %i[new edit update destroy]
   end
 
   post '/verify', to: 'riddles#verify'

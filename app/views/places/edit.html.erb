@@ -1,3 +1,12 @@
 <div class="container">
-  <%= render 'shared/place_form' %>
+  <%= simple_form_for [@storyline, @place] do |form| %>
+    <%=form.input :name %>
+    <%=form.input :photo, io: :file %>
+    <%=form.input :address %>
+    <%=form.input :description %>
+    <div class="d-flex justify-content-between">
+      <%= link_to "Back", edit_storyline_path(@storyline), class:'btn btn-secondary' %>
+      <%=form.submit "Valider", class:'btn btn-primary flex-grow' %>
+    </div>
+  <% end %>
 </div>

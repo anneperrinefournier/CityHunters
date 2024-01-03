@@ -26,15 +26,12 @@ class StorylinesController < ApplicationController
 
   def new
     @storyline = Storyline.new
-  end
-
-  def create
-    @storyline = Storyline.new(storyline_params)
     @storyline.user = current_user
     if @storyline.save
-      redirect_to profile_path
+      redirect_to edit_storyline_path(@storyline)
     else
-      render :new, status: :unprocessable_entity
+      flash[:alert] = "A problem occured"
+      redirect_to profile_path
     end
   end
 
@@ -79,7 +76,12 @@ class StorylinesController < ApplicationController
             return
           elsif @storyline.difficulty.nil? ||
             @storyline.duration.nil? ||
-            @storyline.introduction.nil?
+            @storyline.introduction.empty? ||
+            @storyline.title.empty? ||
+            @storyline.theme.empty? ||
+            @storyline.district.empty? ||
+            @storyline.long_description.empty?
+            # || @storyline.short_description.empty?
 
             render json: {
               isReady: false,
@@ -97,7 +99,8 @@ class StorylinesController < ApplicationController
               return
             elsif place.longitude.nil? ||
                   place.latitude.nil? ||
-                  place.address.nil?
+                  place.address.empty? ||
+                  place.name.empty?
 
               render json: {
                 isReady: false,
