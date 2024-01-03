@@ -33,7 +33,10 @@ Rails.application.routes.draw do
     resources :games, only: [:create]
     patch '/toggle-ready', to: 'storylines#toggle_ready'
 
-    resources :places, only: %i[new edit update destroy]
+    resources :places, only: %i[new update destroy]
+    resources :places, only: :edit do
+      resources :riddles, only: %i[new edit update destroy]
+    end
   end
 
   post '/verify', to: 'riddles#verify'

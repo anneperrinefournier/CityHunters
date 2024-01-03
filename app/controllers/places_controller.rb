@@ -9,7 +9,7 @@ class PlacesController < ApplicationController
     if @place.save
       redirect_to edit_storyline_place_path(@storyline, @place)
     else
-      flash[:alert] = "An error occured"
+      flash[:error] = "An error occured"
       redirect_to edit_storyline_path(@storyline)
     end
   end
@@ -24,7 +24,8 @@ class PlacesController < ApplicationController
     if @storyline.user == current_user
       @place.update(place_params)
       if @place.save
-        redirect_to edit_storyline_path(@storyline)
+        flash[:notice] = "Le lieu a été mis à jour"
+        redirect_to edit_storyline_place_path(@storyline, @place)
       else
         render :edit, status: :unprocessable_entity
       end
@@ -55,13 +56,4 @@ class PlacesController < ApplicationController
   def place_params
     params.require(:place).permit(:name, :photo, :address, :description)
   end
-
-      # riddles_attributes: [:id,
-      #                     :title,
-      #                     :picture,
-      #                     :question,
-      #                     :solution,
-      #                     :description,
-      #                     :motion_type,
-      #                     :_destroy]
 end

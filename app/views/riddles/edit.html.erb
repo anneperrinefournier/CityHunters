@@ -1,0 +1,14 @@
+<div class="container">
+  <%= simple_form_for [@storyline, @place, @riddle] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :photo, io: :file %>
+    <%= f.input :description %>
+    <%= f.input :question %>
+    <%= f.input :solution %>
+    <%= f.input :motion_type %>
+    <div class="d-flex justify-content-between">
+      <%= link_to "Retour", edit_storyline_place_path(@storyline, @place), class:'btn btn-secondary' %>
+      <%= f.submit "Enregistrer", class:'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

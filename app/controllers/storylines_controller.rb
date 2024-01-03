@@ -49,7 +49,8 @@ class StorylinesController < ApplicationController
     if @storyline.user == current_user
       @storyline.update(storyline_params)
       if @storyline.save
-        redirect_to profile_path
+        flash[:notice] = "L'histoire a été mise à jour"
+        redirect_to edit_storyline_path(@storyline)
       else
         render :edit, status: :unprocessable_entity
       end

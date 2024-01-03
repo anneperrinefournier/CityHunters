@@ -5,8 +5,36 @@
     <%=form.input :address %>
     <%=form.input :description %>
     <div class="d-flex justify-content-between">
-      <%= link_to "Back", edit_storyline_path(@storyline), class:'btn btn-secondary' %>
-      <%=form.submit "Valider", class:'btn btn-primary flex-grow' %>
+      <%= link_to "Retour", edit_storyline_path(@storyline), class:'btn btn-secondary' %>
+      <%= form.submit "Enregistrer", class:'btn btn-primary flex-grow' %>
     </div>
   <% end %>
+
+  <div id="places-fields" data-edit-storyline-target="placesContainer" class="d-flex justify-content-center flex-wrap">
+    <% @place.riddles.each_with_index do |riddle, index| %>
+      <%= link_to edit_storyline_place_riddle_path(@storyline, @place, riddle) do %>
+        <div class="place-card">
+          <h2>Riddle <%= index + 1 %></h2>
+          <% if riddle.photo.attached? %>
+            <%= cl_image_tag(riddle.photo.key, class:'place-picture') %>
+          <% else %>
+            <%= image_tag("compass.png", class:'place-picture') %>
+          <% end %>
+          <h4>Titre</h4>
+          <%= riddle.title %>
+          <h4>Description</h4>
+          <%= riddle.description %>
+          <h4>Question</h4>
+          <%= riddle.question %>
+          <h4>Solution</h4>
+          <%= riddle.solution %>
+          <br/>
+          <br/>
+          <%= link_to "Supprimer l'énigme", storyline_place_riddle_path(@storyline, @place, riddle), class:'btn btn-danger', data: { turbo_method: 'delete', turbo_confirm: "Are you sure to delete place \"#{riddle.title}\" ?"} %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= link_to "Ajouter une énigme", new_storyline_place_riddle_path(@storyline, @place), class:'btn btn-primary' %>
 </div>
