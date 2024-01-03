@@ -6,7 +6,12 @@ class PagesController < ApplicationController
   end
 
   def profile
-    @storylines = Storyline.where(user: current_user)
+    if current_user.email == "monica@gmail.com"
+      @storylines = Storyline.where(user: current_user)
+    else
+      flash[:alert] = "Not implemented yet"
+      redirect_to root_path
+    end
   end
 
   def qr_code_generator
