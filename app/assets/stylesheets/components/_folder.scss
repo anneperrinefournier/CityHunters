@@ -389,6 +389,16 @@
 //   "urbain" => "#69838F;"
 // }
 
+.storyline-check-ready {
+  font-size: 26px;
+  color: $lightgreen;
+}
+
+.storyline-check-not-ready {
+  font-size: 26px;
+  color: $red;
+}
+
 .storyline-title, .show-title {
   width: auto;
   text-align: center;

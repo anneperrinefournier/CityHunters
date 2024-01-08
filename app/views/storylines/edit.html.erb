@@ -1,0 +1,82 @@
+<div class="container">
+  <h1>Mon aventure</h1>
+  <div class="container d-flex justify-content-end">
+    <% if Game.where(storyline: @storyline).count > 0 %>
+      <p>Vous ne pouvez pas supprimer cette histoire car des partie ont été jouées</p>
+    <% else %>
+      <%= link_to "Supprimer l'histoire", storyline_path(@storyline), data: { turbo_method:'delete', turbo_confirm:'Are you sure?' }, class:'btn btn-danger' %>
+    <% end %>
+  </div>
+
+  <div data-controller="edit-storyline">
+    <%= simple_form_for(@storyline) do |form| %>
+      <div class="form-inputs">
+        <%= form.input :title,
+                    required: true,
+                    autofocus: true,
+                    label: "Titre" %>
+        <%= form.input :theme,
+                    required: true,
+                    label: "Thème"%>
+        <%= form.input :photo,
+                    label: 'Photo' %>
+        <%= form.input :difficulty,
+                    label: "Difficultée" %>
+        <%= form.input :duration,
+                    label: "Durée" %>
+        <%= form.input :district,
+                    required: true,
+                    label: "Arrondissement" %>
+        <%= form.input :long_description,
+                    as: :text,
+                    required: true,
+                    label: "Description",
+                    input_html: {
+                      data: {
+                        edit_storyline_target: "description",
+                        action: "input->edit-storyline#adjustHeight"
+                      }
+                    } %>
+        <%= form.input :introduction,
+                    label: "Introduction",
+                    input_html: {
+                      data: {
+                        edit_storyline_target: "introduction",
+                        action: "input->edit-storyline#adjustHeight"
+                      }
+                    } %>
+      </div>
+
+      <div class="form-actions d-flex justify-content-between align-items-baseline">
+        <%= link_to "Retour", profile_path, class:"btn btn-secondary" %>
+        <%= form.button :submit, "Enregistrer", class:"btn-home" %>
+      </div>
+    <% end %>
+
+    <div id="places-fields" data-edit-storyline-target="placesContainer" class="d-flex justify-content-center flex-wrap">
+      <% @storyline.places.each_with_index do |place, index| %>
+        <%= link_to edit_storyline_place_path(@storyline, place) do %>
+          <div class="place-card">
+            <h2>Place <%= index + 1 %></h2>
+            <% if place.photo.attached? %>
+              <%= cl_image_tag(place.photo.key, class:'place-picture') %>
+            <% else %>
+              <%= image_tag("compass.png", class:'place-picture') %>
+            <% end %>
+            <h4>Nom</h4>
+            <%= place.name %>
+            <h4>Adresse</h4>
+            <%= place.address %>
+            <h4>Description</h4>
+            <%= place.description %>
+            <br/>
+            <br/>
+            <%= link_to "Supprimer le lieu", storyline_place_path(@storyline, place), class:'btn btn-danger', data: { turbo_method: 'delete', turbo_confirm: "Are you sure to delete place \"#{place.name}\" ?"} %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to "Ajouter un lieu", new_storyline_place_path(@storyline), class:'btn btn-primary' %>
+</div>

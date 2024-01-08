@@ -32,7 +32,7 @@ class GamesController < ApplicationController
 
       @places = Place.where(storyline: @storyline)
       @participations = Participation.where(game: @game)
-      @starting_point = Storyline.find(@game.storyline_id)
+      @starting_point = Storyline.find(@game.storyline_id).places.first
 
       @places_to_mark = @places.select do |place|
         place == @game.current_place || place.validated?(@game)

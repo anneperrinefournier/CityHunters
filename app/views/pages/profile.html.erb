@@ -1,0 +1,68 @@
+<div class="container"
+      data-controller='profile'>
+  <h1><%= current_user.name %></h1>
+
+  <h2>Mes aventures</h2>
+  <%= link_to "Nouvelle aventure", new_storyline_path, class:"btn btn-primary" %>
+  <div class="p-3 my-3">
+    <% @storylines.each_with_index do |storyline, index| %>
+      <div class="<%= index.even? ? 'regroup' : 'regroup-reverse' %>">
+
+          <div class="<%= index.even? ? 'pair' : 'odd' %>">
+            <div class="d-flex align-items-center">
+              <h5 class="storyline-title"><%= storyline.title %></h5>
+              <%= link_to storyline_toggle_ready_path(storyline),
+                    data: { turbo_method: :patch,
+                    action: 'click->profile#toggleReady' } do %>
+
+                  <i class="fa-regular fa-circle-check
+                    <%= storyline.is_ready ? "storyline-check-ready" : "storyline-check-not-ready" %>"
+                    data-profile-target="checkIsReady"
+                    data-action="profile#toggleReady">
+                  </i>
+              <% end %>
+            </div>
+          </div>
+
+        <%= link_to edit_storyline_path(storyline), class: "links" do %>
+          <div class="folder <%= index.even? ? 'folder-pair' : 'folder-odd' %>">
+            <div class= "storylines-container-img">
+              <% if storyline.photo.attached? %>
+                <%= cl_image_tag(storyline.photo.key, class: "storylines-img") %>
+              <% else %>
+                <%= image_tag("https://i.ibb.co/RcyVLfd/paris-4546007-1280.jpg", alt: "Image", class: "storylines-img") %>
+              <% end %>
+
+              <div class="<%= index.even? ? 'img-transparent-white' : 'img-transparent-gold' %>"></div>
+              <div class="folder-icons">
+                <div class="storyline-location-dot-position">
+                  <i class="fa-solid fa-location-dot"></i> <%= storyline.district %>
+                </div>
+                  <div class="storyline-difficulty-color"><i class="fa-solid fa-puzzle-piece"></i>
+                    <% difficulty = storyline.difficulty %>
+                      <% case difficulty %>
+                        <% when 1..2 %>
+                          facile
+                        <% when 3 %>
+                          moyen
+                        <% when 4..5 %>
+                          difficile
+                        <% else %>
+                          inconnu
+                      <% end %>
+                    </div>
+                  <div class="storyline-clock-position"><i class="fa-solid fa-clock"></i> <%= storyline.duration.to_i %> min</div>
+              </div>
+              <div class="<%= storyline.theme %>">
+                <div class="folder-theme-external-border">
+                    <light-strong><%= storyline.theme %></strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
