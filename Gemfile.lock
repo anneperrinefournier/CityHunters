@@ -124,6 +124,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dockerfile-rails (1.6.3)
+      rails (>= 3.0.0)
     domain_name (0.6.20231109)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
@@ -333,6 +335,7 @@ DEPENDENCIES
   cloudinary
   debug
   devise
+  dockerfile-rails (>= 1.6)
   dotenv-rails
   error_highlight (>= 0.6.0)
   font-awesome-sass (~> 6.1)
