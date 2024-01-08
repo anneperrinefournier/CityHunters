@@ -13,7 +13,6 @@ module CityHunters
       generate.helper false
       generate.test_framework :test_unit, fixture: false
       config.exceptions_app = self.routes
-      config.assets.js_compressor = :mini_racer
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
