@@ -39,7 +39,7 @@ place1 = create_or_update(
 place2 = create_or_update(
   Place.new(
     name: "Comédie-Française",
-    address: "1 Rue de Rivoli, 75001 Paris, France",
+    address: "1 Place Colette, 75001 Paris, France",
     description: "Bienvenue à la Comédie-Française, un véritable joyau culturel situé en plein cœur de Paris. Cette institution théâtrale prestigieuse, fondée en 1680, a été le berceau de nombreuses œuvres emblématiques. Plongez dans l'histoire captivante de ce lieu chargé de mystères, où le théâtre classique et contemporain se rencontrent pour créer une expérience artistique inoubliable.",
     storyline: storyline
   ),
@@ -131,7 +131,7 @@ riddle3 = create_or_update(
 riddle4 = create_or_update(
   Riddle.new(
     title: 'En blanc et noir',
-    description: "Tu comprends que le voleur a laissé un jeu de piste pour vous. Si le premier indice menait au Palais-Royal, il fallait déjà comprendre le deuxième indice : « Dans la cour du roi, une forêt verticale s’érige,\nDes troncs en noir et blanc, un tableau qui intrigue.\n\nUne symphonie graphique, une énigme éternelle,\nOù l’art se dévoile, mystère en résonance. »",
+    description: "Tu comprends que le voleur a laissé un jeu de piste pour vous. Si le premier indice menait au Palais-Royal, il fallait déjà comprendre le deuxième indice : « Dans la cour du roi, une forêt verticale s’érige,\nDes troncs en noir et blanc, un tableau qui intrigue.\nUne symphonie graphique, une énigme éternelle,\nOù l’art se dévoile, mystère en résonance. »",
     solution: 'Colonnes de Buren',
     question: 'Quel est le nom de cette forêt ?',
     motion_type: 'static',
@@ -147,7 +147,7 @@ riddle4 = create_or_update(
 riddle5 = create_or_update(
   Riddle.new(
     title: 'Co & co',
-    description: "Il s’agit bien des colonnes de Buren ! Le fantôme t’emboîte le pas pour s’y rendre, avant de lire l’indice suivant : « Ce n’est ni la place, ni l’allée, mais la demeure où Cosette avec un l a vécu ses dernières années. ».",
+    description: "Il s’agit bien des colonnes de Buren ! Le fantôme t’emboîte le pas pour s’y rendre, avant de lire l’indice suivant :\n« Ce n’est ni la place, ni l’allée, mais la demeure où Cosette avec un l a vécu ses dernières années. ».",
     solution: '9 Rue de Beaujolais',
     question: 'Rends-toi en ce lieu.',
     motion_type: 'shifting',
