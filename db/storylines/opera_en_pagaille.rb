@@ -131,7 +131,7 @@ riddle3 = create_or_update(
 riddle4 = create_or_update(
   Riddle.new(
     title: 'En blanc et noir',
-    description: "Tu comprends que le voleur a laissé un jeu de piste pour vous. Si le premier indice menait au Palais-Royal, il fallait déjà comprendre le deuxième indice : « Dans la cour du roi, une forêt verticale s’érige,\nDes troncs en noir et blanc, un tableau qui intrigue.\n\nUne symphonie graphique, une énigme éternelle,\nOù l’art se dévoile, mystère en résonance. »"
+    description: "Tu comprends que le voleur a laissé un jeu de piste pour vous. Si le premier indice menait au Palais-Royal, il fallait déjà comprendre le deuxième indice : « Dans la cour du roi, une forêt verticale s’érige,\nDes troncs en noir et blanc, un tableau qui intrigue.\n\nUne symphonie graphique, une énigme éternelle,\nOù l’art se dévoile, mystère en résonance. »",
     solution: 'Colonnes de Buren',
     question: 'Quel est le nom de cette forêt ?',
     motion_type: 'static',
@@ -147,7 +147,7 @@ riddle4 = create_or_update(
 riddle5 = create_or_update(
   Riddle.new(
     title: 'Co & co',
-    description: "Il s’agit bien des colonnes de Buren ! Le fantôme t’emboîte le pas pour s’y rendre, avant de lire l’indice suivant : « Ce n’est ni la place, ni l’allée, mais la demeure où Cosette avec un l a vécu ses dernières années. »."
+    description: "Il s’agit bien des colonnes de Buren ! Le fantôme t’emboîte le pas pour s’y rendre, avant de lire l’indice suivant : « Ce n’est ni la place, ni l’allée, mais la demeure où Cosette avec un l a vécu ses dernières années. ».",
     solution: '9 Rue de Beaujolais',
     question: 'Rends-toi en ce lieu.',
     motion_type: 'shifting',
@@ -163,7 +163,7 @@ riddle5 = create_or_update(
 riddle6 = create_or_update(
   Riddle.new(
     title: 'Les planches royales',
-    description: "Le dernier indice est : « Dans la rue où Cocteau à vécu, se trouve les planches que Molière partagea avec des italiens. »."
+    description: "Le dernier indice est : « Dans la rue où Cocteau à vécu, se trouve les planches que Molière partagea avec des italiens. ».",
     solution: 'Théâtre du Palais-Royal',
     question: 'Rends-toi en ce lieu.',
     motion_type: 'shifting',
@@ -179,7 +179,7 @@ riddle6 = create_or_update(
 riddle7 = create_or_update(
   Riddle.new(
     title: 'Le masque',
-    description: "C’est donc au théâtre du Palais-Royal que vous a mené le dernier indice ! Vous y entrez et découvrez, sur le comptoir, un masque. Celui du fantôme de l’Opéra… Ce dernier le remet, soulagé et accepte de retourner à l’Opéra Garnier. Comme par miracle, son retour lève la malédiction des artistes, qui peuvent enfin chanter, danser et jouer ! Grâce à toi, la représentation peut avoir lieu ! Pour terminer l’intrigue, écris le nom de l’auteur de la plume duquel le fantôme est né."
+    description: "C’est donc au théâtre du Palais-Royal que vous a mené le dernier indice ! Vous y entrez et découvrez, sur le comptoir, un masque. Celui du fantôme de l’Opéra… Ce dernier le remet, soulagé et accepte de retourner à l’Opéra Garnier. Comme par miracle, son retour lève la malédiction des artistes, qui peuvent enfin chanter, danser et jouer ! Grâce à toi, la représentation peut avoir lieu ! Pour terminer l’intrigue, écris le nom de l’auteur de la plume duquel le fantôme est né.",
     solution: 'Gaston Leroux',
     question: 'Quel est son nom ?',
     motion_type: 'static',
