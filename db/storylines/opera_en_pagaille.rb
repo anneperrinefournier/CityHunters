@@ -99,7 +99,7 @@ riddle1 = create_or_update(
 riddle2 = create_or_update(
   Riddle.new(
     title: 'Sur les traces du fantôme',
-    description: "Erik, le fantôme de l’Opéra… Et si c’était lui ? À l'évocation de ce nom, les lumières de l’Opéra Garnier se mettent à trembler. C’est sûr, ce fantôme et la malédiction des artistes sont liés ! Si plus rien ne va, c’est parce que le fantôme de l’Opéra a quitté les lieux ! Sans lui, l’Opéra a perdu son âme. Il faut à tout prix le retrouver et le convaincre de revenir ! Tu questionnes le garçon pour savoir où il est allé. Il te montre alors un papier qui est apparu quand le fantôme est sorti de l’opéra.\n« Dans la maison de Molière, en quête de son masque,\nLe fantôme erre et cherche sans relâche\nParmi les costumes et autres accessoires\nDans ce lieu de comédies et de tragédies\nSe joue maintenant son drame. »",
+    description: "Erik, le fantôme de l’Opéra… Et si c’était lui ? À l'évocation de ce nom, les lumières de l’Opéra Garnier se mettent à trembler. C’est sûr, ce fantôme et la malédiction des artistes sont liés ! Si plus rien ne va, c’est parce que le fantôme de l’Opéra a quitté les lieux ! Sans lui, l’Opéra a perdu son âme. Il faut à tout prix le retrouver et le convaincre de revenir ! Tu questionnes le garçon pour savoir où il est allé. Il te montre alors un papier qui est apparu quand le fantôme est sorti de l’opéra.\n« Dans la maison de Molière, en quête de son masque,\nLe fantôme erre et cherche sans relâche,\nParmi les costumes et autres accessoires,\nDans ce lieu de comédies et de tragédies,\nSe joue maintenant son drame. »",
     solution: 'lieu à trouver',
     question: 'Trouve le lieu où est allé le fantôme de l’Opéra.',
     motion_type: 'shifting',
@@ -115,7 +115,7 @@ riddle2 = create_or_update(
 riddle3 = create_or_update(
   Riddle.new(
     title: 'L’inauguration du théâtre',
-    description: "La maison de Molière, c’est bien entendu la Comédie-Française ! Tu t’y rends rapidement, espérant ne pas manqeur le fantôme. Il doit sûrement être à la recherche de son masque, là où les costumes sont rangés… Il est logique qu’il soit venu ici, vu la collection importante de masques que la Comédie-Française doit avoir ! Tu t’apprêtes à rentrer, quand le fantôme apparaît soudain devant toi. « Erik ? »\nIl se retourne quand tu l’appelles, mais mets les mains sur son visage pour le cacher. « Ne me regardez pas ! J’ai perdu mon masque… Je pensais le trouver ici, mais il n’est pas là… ».\n Tu essayes de le consoler, puis lui explique la situation à l’Opéra : tu lui demandes de revenir.\n« Je ne peux pas, pas sans mon masque… C’est grâce à lui que je me cache. Il efface ma laideur. »\n Tu insistes, mais il refuse de revenir tant qu’il n'aura pas retrouvé son masque. Tu lui proposes de l’aider à le retrouver et lui demandes s’il a vu le voleur. Il t’explique que non, mais qu’il a laissé un mot avec des indices. Le premier est la date de l’inauguration de la Comédie-Française.",
+    description: "La maison de Molière, c’est bien entendu la Comédie-Française ! Tu t’y rends rapidement, espérant ne pas manqeur le fantôme. Il doit sûrement être à la recherche de son masque, là où les costumes sont rangés… Il est logique qu’il soit venu ici, vu la collection importante de masques que la Comédie-Française doit avoir ! Tu t’apprêtes à rentrer, quand le fantôme apparaît soudain devant toi.\n« Erik ? »\nIl se retourne quand tu l’appelles, mais mets les mains sur son visage pour le cacher. « Ne me regardez pas ! J’ai perdu mon masque… Je pensais le trouver ici, mais il n’est pas là… ».\n Tu essayes de le consoler, puis lui explique la situation à l’Opéra : tu lui demandes de revenir.\n« Je ne peux pas, pas sans mon masque… C’est grâce à lui que je me cache. Il efface ma laideur. »\n Tu insistes, mais il refuse de revenir tant qu’il n'aura pas retrouvé son masque. Tu lui proposes de l’aider à le retrouver et lui demandes s’il a vu le voleur. Il t’explique que non, mais qu’il a laissé un mot avec des indices. Le premier est la date de l’inauguration de la Comédie-Française.",
     solution: '1680',
     question: 'Quel est la date d’inauguration de la Comédie-Française ?',
     motion_type: 'static',
@@ -131,7 +131,7 @@ riddle3 = create_or_update(
 riddle4 = create_or_update(
   Riddle.new(
     title: 'En blanc et noir',
-    description: "Tu comprends que le voleur a laissé un jeu de piste pour vous. Si le premier indice menait au Palais-Royal, il fallait déjà comprendre le deuxième indice : « Dans la cour du roi, une forêt verticale s’érige,\nDes troncs en noir et blanc, un tableau qui intrigue.\nUne symphonie graphique, une énigme éternelle,\nOù l’art se dévoile, mystère en résonance. »",
+    description: "Tu comprends que le voleur a laissé un jeu de piste pour vous. Si le premier indice menait au Palais-Royal, il fallait déjà comprendre le deuxième indice : « Dans la cour du roi, une forêt verticale s’érige,\nDes troncs en noir et blanc, un tableau qui intrigue,\nUne symphonie graphique, une énigme éternelle,\nOù l’art se dévoile, mystère en résonance. »",
     solution: 'Colonnes de Buren',
     question: 'Quel est le nom de cette forêt ?',
     motion_type: 'static',
@@ -151,7 +151,7 @@ riddle5 = create_or_update(
     solution: '9 Rue de Beaujolais',
     question: 'Rends-toi en ce lieu.',
     motion_type: 'shifting',
-    place: place2
+    place: place3
   ),
   {
     filename: "Colonnes de Buren",
@@ -167,7 +167,7 @@ riddle6 = create_or_update(
     solution: 'Théâtre du Palais-Royal',
     question: 'Rends-toi en ce lieu.',
     motion_type: 'shifting',
-    place: place2
+    place: place4
   ),
   {
     filename: "Portrait de Molière. Molière interprétant César dans La Mort de Pompée, portrait attribué à Nicolas Mignard (1658)",
@@ -183,7 +183,7 @@ riddle7 = create_or_update(
     solution: 'Gaston Leroux',
     question: 'Quel est son nom ?',
     motion_type: 'static',
-    place: place2
+    place: place5
   ),
   {
     filename: "encre et parchemin.",
