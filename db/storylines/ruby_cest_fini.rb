@@ -96,7 +96,7 @@ riddle2.solution = "salut"
 riddle2.save!
 
 riddle3 = Riddle.find_or_create_by(title: 'Rejoindre le métro', place: place2)
-riddle3.description = "Félicitations!Après le Lycée Charles Peguy il faut maintenant rejoindre une station de métro depuis ta position.\nPetite devinette:
+riddle3.description = "Félicitations ! Après le Lycée Charles Peguy il faut maintenant rejoindre une station de métro depuis ta position.\nPetite devinette:
 \nMon premier est un adverbe
 \nMon deuxième ne dit pas la vérité
 \nMon troisième est l’appellation d’un prof assistant du wagon."
