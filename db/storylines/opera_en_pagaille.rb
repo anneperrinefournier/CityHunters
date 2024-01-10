@@ -78,6 +78,20 @@ place4 = create_or_update(
   }
 )
 
+place5 = create_or_update(
+  Place.new(
+    name: "Théâtre du Palais-Royal",
+    address: "38 Rue de Montpensier, 75001 Paris",
+    description: "Bienvenue au Théâtre du Palais-Royal, un lieu emblématique au cœur de Paris. Ce théâtre a une longue histoire riche en représentations théâtrales mémorables.",
+    storyline: storyline
+  ),
+  {
+    filename: "Theatre_du_Palais_Royal",
+    url: "https://i.ibb.co/9qZbvsY/theatre-palais-royal.jpg",
+    content_type: "image/jpg"
+  }
+)
+
 #riddles
 
 riddle1 = create_or_update(
