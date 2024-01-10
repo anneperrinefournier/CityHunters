@@ -12,7 +12,7 @@ storyline = create_or_update(
     short_description: "Un personnage emblématique de l’Opéra Garnier a disparu, retrouve-le !",
     long_description: "Un personnage emblématique de l’Opéra a mystérieusement disparu ! Sans lui, l'Opéra a perdu son âme et plus rien ne va : les chanteurs ont perdu leur voix, les danseurs ne font que tomber… Il faut vite le retrouver !\nPartez sur la trace de cet énigmatique personnage. Suivez les indices laissées à travers les ruelles du quartier, déchiffrez les mystères, et découvrez ce qui lui est arrivé ! Une enquête palpitante où le mystère et l’intrigue vous guideront dans une traque passionnante à la recherche de ce personnage perdu.",
     introduction: "Le rideau se lève sur l’Opéra, mais le silence règne. Une étrange malédiction semble s’être abattue sur les artistes… Les chanteurs ont perdu leur voix, les danseurs trébuchent sans grâce et les comédiens ne parviennent plus à mémoriser leurs textes. C’est une catastrophe ! Comment assurer la présentation à venir dans ces conditions ? Le cri d’un jeune homme résonne dans ce lugubre silence. Il vous explique qu’il a vu un fantôme avec un visage affreux sortir de l’Opéra. « Mon masque, mon masque ! » criait-il. « Qu’on me rende mon masque ! » Un fantôme avec un masque… Cela vous évoque une légende bien ancienne…",
-is_ready: true
+    is_ready: true
   ),
   {
     filename: "Opéra en pagaille",
