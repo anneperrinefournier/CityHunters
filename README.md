@@ -30,7 +30,7 @@ Ce projet a été développé dans le cadre du projet de fin de cours au Wagon, 
 
 ## Contributeurs
 
-- **Anne-Perrine Fournier – porteuse du projet** : Création et configuration de l'application, déploiement, gestion des conflits de merge, API Mapbox (position des storylines, des lieux et des utilisateurs, stylisation de la carte), localisation (Ajax) et suivi des utilisateurs (Websocket), validation de la position. Figma, css et html de la home, du choix des scénarii, du lobby, du jeu et de la carte. Création des données de la base de données. Écriture des scénarii Code Rouge et Opéra en pagaille. Travail d'édition du contenu.
+- **Anne-Perrine Fournier – porteuse du projet** : Création et configuration de l'application, déploiement et configuration du nom de domaine, gestion des conflits de merge, API Mapbox (position des storylines, des lieux et des utilisateurs, stylisation de la carte), localisation (Ajax) et suivi des utilisateurs (Websocket), validation de la position. Figma, css et html de la home, du choix des scénarii, du lobby, du jeu et de la carte. Création des données de la base de données. Écriture des scénarii Code Rouge et Opéra en pagaille. Travail d'édition du contenu.
 - **Alexis de Temmerman** : Websocket du lobby, websocket de la dynamique du jeu des énigmes (local et déplacement), validation de la position, gestion des conflits de merge.
 - **Pierre-François Thomas** : Configuration de l'application, navigation drawer (JS), localisation des utilisateurs (Ajax), html et css de la page home et de la page de statistiques.
 - **Henri Guillot** : Modèles, API Cloudinary, fenêtre modal de réponse, websocket de fin de partie.
