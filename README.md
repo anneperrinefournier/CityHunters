@@ -1,6 +1,6 @@
 # CityHunters
 
-Jeu de piste sous forme d’application web mobile, qui intégère des énigmes statiques et mobiles basées sur la géolocalisation.
+Jeu de piste sous forme d’application web mobile, qui intègre des énigmes statiques et mobiles basées sur la géolocalisation.
 
 Lien du projet :  [www.cityhunters.site](https://www.cityhunters.site/)<br>
 Voir des images du projet [ici](https://troopl.com/anneperrinefournier/cityhunters).
