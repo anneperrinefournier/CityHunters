@@ -3,7 +3,8 @@
 Jeu de piste sous forme d’application web mobile, qui intègre des énigmes statiques et mobiles basées sur la géolocalisation.
 
 Lien du projet :  [www.cityhunters.site](https://www.cityhunters.site/)<br>
-Voir des images du projet [ici](https://troopl.com/anneperrinefournier/cityhunters).
+Voir des images du projet [ici](https://troopl.com/anneperrinefournier/cityhunters).<br>
+Voir les maquettes du projet [ici](https://www.figma.com/file/jMJnl25lhc4KchvGJIFPrk/Untitled?type=design&node-id=0%3A1&mode=design&t=U102RpP9mPlywplD-1).
 
 ## Fonctionnalités principales
 
