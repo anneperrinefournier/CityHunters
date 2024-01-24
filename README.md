@@ -1,4 +1,4 @@
-# CityHunters: Paris Puzzle Trail Mobile Web Application
+# CityHunters: jeu de piste sous forme d’application web mobile
 
 Ce projet a été développé dans le cadre du projet de fin de cours au Wagon, avec une équipe de 4 membres sur une période de 2 semaines. L’objectif était de créer une application web mobile proposant un jeu de piste à Paris, intégrant des énigmes statiques et mobiles basées sur la géolocalisation.
 
