@@ -59,6 +59,11 @@ gem 'rqrcode'
 gem 'image_optim'
 gem 'vanilla_nested'
 
+# database, call-stack and memory profiling
+gem 'rack-mini-profiler'
+gem 'memory_profiler'
+gem 'stackprof'
+
 group :development, :test do
   gem "dotenv-rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

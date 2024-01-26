@@ -19,7 +19,6 @@ storyline = create_or_update(
   }
 )
 
-
 # Places
 place1 = create_or_update(
   Place.new(
@@ -54,7 +53,7 @@ place3 = create_or_update(
     storyline: storyline,
     address: "90 avenue Parmentier, 75004 Paris, France",
     description: "Yes la bonne réponse était Parmentier ( par - 'ment' - 'T.A.' )\n
-    Du nom de ce bon vieux Antoine qui a importé la patate en France au XVIIIeme siècle et qui a laissé son nom au fameux hachis."
+    Du nom de ce bon vieux Antoine qui a importé la patate en France au XVIIIe siècle et qui a laissé son nom au fameux hachis."
   ), {
     filename: "metro_parmentier",
     url: "https://p.monumentum.fr/galerie/maxi/00446/446476-francais-entree-de-la-station-de-metro-parmentier-avenue-parmentier-paris.jpg",
@@ -78,18 +77,18 @@ place4 = create_or_update(
 # Riddles
 riddle1 = Riddle.find_or_create_by(title: "Chat de Diane", place: place1)
 riddle1.description = 'Une première enigme pour se chauffer,'
-riddle1.question = "Quel est le nom du chat de Diane?"
+riddle1.question = "Quel est le nom du chat de Diane ?"
 riddle1.solution = "swan"
 riddle1.motion_type = 'static'
 riddle1.save!
 
 riddle2 = Riddle.find_or_create_by(title: 'Trouver le lycée', place: place1)
-riddle2.description = "Maintenant, il est temps de sortir du Wagon et de rejoindre le bar.Enigme pour aller au deuxième lieu:\n
+riddle2.description = "Maintenant, il est temps de sortir du Wagon et de rejoindre le bar.Enigme pour aller au deuxième lieu :\n
 Le lieu se situe avenue parmentier.\n
 Le numéro de l’avenue correspond à 4 fois l’âge d’une chanson célèbre de Pierre Bachelet.\n
 
 Il s’agit d’un lieu d’apprentissage, mais ce n’est pas le wagon. Il faut un code pour y entrer, mais ce n’est pas en ruby. If age > 18 tu as peu de chance d’y aller encore, à moins d’en avoir fait son métier.
-Son nom est celui d’un écrivain français du début du XXème siècle, connu pour ses poèmes et ses cahiers, mort au front en 1914."
+Son nom est celui d’un écrivain français du début du XXe siècle, connu pour ses poèmes et ses cahiers, mort au front en 1914."
 riddle2.question = "Va à l’adresse et valide ta position!"
 riddle2.motion_type = 'shifting'
 riddle2.solution = "salut"
@@ -143,7 +142,7 @@ riddle6.motion_type = 'static'
 riddle6.save!
 
 riddle7 = Riddle.find_or_create_by(title: 'Batch 1410', place: place4)
-riddle7.description = "Nice! C'était la dernière énigme! l’adresse à valider est :
+riddle7.description = "Nice ! C'était la dernière énigme ! L’adresse à valider est :
 99 avenue Jean Jaurès
 
 Pour la suite, l’adresse du bar étant  dans l’invit slack ça n'avait pas trop d’intérêt de la faire deviner, donc on se retrouve au bar Belushi's Paris Canal, 159 rue de Crimée, 75019 Paris
