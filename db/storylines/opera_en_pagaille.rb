@@ -53,7 +53,7 @@ place2 = create_or_update(
 place3 = create_or_update(
   Place.new(
     name: "Colonnes de Buren",
-    address: "Palais Royal, 75001 Paris, France",
+    address: "8 Rue De Montpensier, 75001 Paris, France",
     description: "Bienvenue aux Colonnes de Buren, une installation artistique emblématique située au cœur du Palais Royal à Paris. Ces colonnes rayées en noir et blanc, conçues par l'artiste Daniel Buren, offrent un spectacle visuel unique. Plongez dans l'atmosphère artistique de ce lieu singulier, où l'art contemporain se mêle à l'histoire royale du Palais. Une étape incontournable dans votre quête pour retrouver le personnage énigmatique disparu.",
     storyline: storyline
   ),
@@ -160,8 +160,24 @@ riddle4 = create_or_update(
 
 riddle5 = create_or_update(
   Riddle.new(
+    title: 'La forêt de pierre',
+    description: "Il s’agit bien de l’œuvre de Daniel Buren : les colonnes de Buren, aussi appelées « Les Deux Plateaux » ! Le fantôme te passe devant pour se rendre dans cette forêt d’arbres en marbre : suis-le !",
+    solution: '9 Rue de Beaujolais',
+    question: 'Rends-toi aux colonnes de Buren.',
+    motion_type: 'shifting',
+    place: place2
+  ),
+  {
+    filename: "Colonnes de Buren",
+    url: "https://i.ibb.co/7KNtd5C/Palais-Royal-et-les-Colonnes-de-Buren.jpg",
+    content_type: "image/png"
+  }
+)
+
+riddle5 = create_or_update(
+  Riddle.new(
     title: 'Co & co',
-    description: "Il s’agit bien des colonnes de Buren ! Le fantôme t’emboîte le pas pour s’y rendre, avant de lire l’indice suivant :\n« Ce n’est ni la place, ni l’allée, mais la demeure où Cosette avec un l a vécu ses dernières années. ».",
+    description: "Le fantôme te lit l’indice suivant :\n« Ce n’est ni la place, ni l’allée, mais la demeure où Cosette avec un l a vécu ses dernières années. ».",
     solution: '9 Rue de Beaujolais',
     question: 'Rends-toi en ce lieu.',
     motion_type: 'shifting',
