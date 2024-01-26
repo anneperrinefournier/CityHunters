@@ -21,7 +21,7 @@ storyline = create_or_update(
   }
 )
 
-# Places
+# places
 place1 = create_or_update(
   Place.new(
     name: "Opéra Garnier",
