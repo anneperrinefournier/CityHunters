@@ -1,12 +1,13 @@
 <div class="container">
 
-<h2 class="mt-3">Sign up</h2>
+<h2 class="mt-3">Inscription</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :email,
+                label: "E-mail",
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" } %>
@@ -17,17 +18,18 @@
 
     <%= f.input :photo, io: :file %>
     <%= f.input :password,
+                label: "Mot de passe",
                 required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
+                input_html: { autocomplete: "nouveau-mot-de-passe" } %>
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "nouveau-mot-de-passe" } %>
   </div>
 
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up", class:"btn-home" %>
+    <%= f.button :submit, "Valider l’inscription", class:"btn-home" %>
   </div>
 <% end %>
 

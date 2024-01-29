@@ -11,14 +11,17 @@
     <% end %>
 
     <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
+                label: "Mot de passe",
+                hint: "Laissez vide si vous ne souhaitez pas le changer.",
                 required: false,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "nouveau-mot-de-passe" } %>
     <%= f.input :password_confirmation,
+                label: "Confirmer le mot de passe",
                 required: false,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "nouveau-mot-de-passe" } %>
     <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+                label: "Mot de passe actuel",
+                hint: "Nous avons besoin de votre mot de passe actuel pour confirmer vos modifications",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
   </div>
@@ -30,6 +33,6 @@
 
 <h3>Cancel my account</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<div>Unhappy? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr ?", turbo_confirm: "Êtes-vous sûr ?" }, method: :delete %></div>
 
 <%= link_to "Back", :back %>
