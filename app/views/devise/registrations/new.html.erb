@@ -13,6 +13,7 @@
                 input_html: { autocomplete: "email" } %>
     <%= f.input :name,
             required: true,
+            label: "Pseudo",
             autofocus: true,
             input_html: { autocomplete: "name" } %>
 
@@ -23,6 +24,7 @@
                 hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
                 input_html: { autocomplete: "nouveau-mot-de-passe" } %>
     <%= f.input :password_confirmation,
+                label: "Confirmer le mot de passe",
                 required: true,
                 input_html: { autocomplete: "nouveau-mot-de-passe" } %>
   </div>
