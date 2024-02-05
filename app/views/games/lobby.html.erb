@@ -5,7 +5,7 @@
     <% if @game.present? && @game.qr_code.present? %>
       <%= image_tag(@game.qr_code, class: 'lobby-qrcode') %>
     <% end %>
-g
+
       <div class="lobby-pin-share">
         <div class="h3 lobby-pin">PIN: <%= @game.pin %></div>
           <%= image_tag('dotted-lines.svg', class: 'lobby-img-margin') %>

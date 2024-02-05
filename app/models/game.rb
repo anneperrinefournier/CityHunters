@@ -56,6 +56,19 @@ class Game < ApplicationRecord
 
   def set_game_pin
     self.pin = 4.times.map { ('A'..'Z').to_a.sample }.join
-    self.qr_code = "URL_DU_JEU/#{self.pin}"
+    generate_qr_code
+  end
+
+  def generate_qr_code
+    qrcode = RQRCode::QRCode.new("URL_DU_JEU/#{self.pin}")
+    image = qrcode.as_png(size: 120)
+    filename = "#{self.pin}_qr_code.png"
+
+    # Sauvegarder l'image dans le répertoire des assets
+    File.open(Rails.root.join('app', 'assets', 'images', filename), 'wb') do |file|
+      file.write(image.to_s)
+    end
+
+    self.qr_code = filename
   end
 end
