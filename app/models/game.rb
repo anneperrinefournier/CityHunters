@@ -57,6 +57,7 @@ class Game < ApplicationRecord
 
   def set_game_pin
     self.pin = 4.times.map { ('A'..'Z').to_a.sample }.join
+    generate_qr_code
   end
 
   def generate_qr_code
