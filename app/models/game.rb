@@ -6,7 +6,8 @@ class Game < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :participations, dependent: :destroy
 
-  before_create :set_game_pin
+  before_create :set_game_pin, :generate_qr_code
+  before_save :generate_qr_code, if: :pin_changed?
 
   enum status: {
     not_started: 0,
