@@ -2,10 +2,8 @@
   <h1 class="background-top-title background-lobby-top-title"><%= @storyline_title %></h1>
   <div class="container" data-controller="lobby" data-lobby-id-value="<%= @game.id %>" data-lobby-participation-id-value="<%= current_user.find_participation_for(@game).id %>">
     <div class="lobby-content">
-      <%= image_tag('qrcode.png', class:'lobby-qrcode') %>
-      <%# <div class="lobby-qrcode"> %>
-        <%#= raw @svg_qrcode %>
-      <%# </div> %>
+      <%= image_tag(@game.qr_code, class: 'lobby-qrcode') %>
+
 
       <div class="lobby-pin-share">
         <div class="h3 lobby-pin">PIN: <%= @game.pin %></div>
