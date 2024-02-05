@@ -6,8 +6,7 @@ class Game < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :participations, dependent: :destroy
 
-  before_create :set_game_pin, :generate_qr_code
-  before_save :generate_qr_code, if: :pin_changed?
+  before_create :set_game_pin
 
   enum status: {
     not_started: 0,
@@ -57,10 +56,6 @@ class Game < ApplicationRecord
 
   def set_game_pin
     self.pin = 4.times.map { ('A'..'Z').to_a.sample }.join
-    generate_qr_code
-  end
-
-  def generate_qr_code
     self.qr_code = "URL_DU_JEU/#{self.pin}"
   end
 end
