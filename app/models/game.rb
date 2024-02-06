@@ -60,7 +60,8 @@ class Game < ApplicationRecord
   end
 
   def generate_qr_code
-    qrcode = RQRCode::QRCode.new("URL_DU_JEU/#{self.pin}")
+    # base_url = Rails.application.routes.default_url_options[:host]
+    qrcode = RQRCode::QRCode.new("https://www.cityhunters.site/games/#{self.pin}/lobby")
     image = qrcode.as_png(size: 120)
     filename = "#{self.pin}_qr_code.png"
 

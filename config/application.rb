@@ -28,5 +28,8 @@ module CityHunters
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Configuration for default URL options
+    config.action_controller.default_url_options = { host: 'localhost:3000' }
   end
 end
