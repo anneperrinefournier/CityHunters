@@ -8,20 +8,20 @@ class StorylinesController < ApplicationController
 
   def show
     @storyline = Storyline.find(params[:id])
-    @starting_point = Storyline.find(params[:id]).places.first
+    @starting_point = @storyline.places.first
 
     game_id = params[:game_id].to_i
     @game = Game.find_by(id: game_id)
 
     @starting_point.geocode
-      @starting_point_marker = {
-        lat: @starting_point.latitude,
-        lng: @starting_point.longitude,
-        info_window_html: render_to_string(partial: "games/starting_point_info_window", locals: { starting_point: @starting_point }),
-        marker_html: render_to_string(partial: "games/marker", locals: { marker_class: "marker marker-red" })
-      }
+    @starting_point_marker = {
+      lat: @starting_point.latitude,
+      lng: @starting_point.longitude,
+      info_window_html: render_to_string(partial: "games/starting_point_info_window", locals: { starting_point: @starting_point }),
+      marker_html: render_to_string(partial: "games/marker", locals: { marker_class: "marker marker-red" })
+    }
 
-      @markers = [@starting_point_marker]
+    @markers = [@starting_point_marker]
   end
 
   def new
@@ -30,7 +30,7 @@ class StorylinesController < ApplicationController
     if @storyline.save
       redirect_to edit_storyline_path(@storyline)
     else
-      flash[:alert] = "A problem occured"
+      flash[:alert] = "Erreur, veuillez recommencer"
       redirect_to profile_path
     end
   end
@@ -40,7 +40,7 @@ class StorylinesController < ApplicationController
       @empty_place = Place.new
       render :edit
     else
-      flash[:error] = 'You cannot edit this storyline'
+      flash[:error] = 'Vous ne pouvez pas éditer ce scénario'
       redirect_to profile_path, status: :unauthorized
     end
   end
@@ -49,7 +49,7 @@ class StorylinesController < ApplicationController
     if @storyline.user == current_user
       @storyline.update(storyline_params)
       if @storyline.save
-        flash[:notice] = "L'histoire a été mise à jour"
+        flash[:notice] = "L’histoire a été mise à jour"
         redirect_to edit_storyline_path(@storyline)
       else
         render :edit, status: :unprocessable_entity
@@ -59,7 +59,7 @@ class StorylinesController < ApplicationController
 
   def destroy
     @storyline.destroy
-    flash[:notice] = "Scenario \"#{@storyline.title}\" supprimé"
+    flash[:notice] = "Scénario \"#{@storyline.title}\" supprimé"
     redirect_to profile_path
   end
 
@@ -72,7 +72,7 @@ class StorylinesController < ApplicationController
           if !@storyline.photo.attached?
             render json: {
               isReady: false,
-              message: "L'aventure doit contenir au moins une photo"
+              message: "L’aventure doit contenir au moins une photo"
             }
             return
           elsif @storyline.duration.nil? ||
@@ -83,7 +83,7 @@ class StorylinesController < ApplicationController
                 @storyline.long_description.empty?
             render json: {
               isReady: false,
-              message: "Les informations de l'aventure sont incomplètes"
+              message: "Les informations de l’aventure sont incomplètes"
             }
             return
           end
@@ -92,7 +92,7 @@ class StorylinesController < ApplicationController
           if @storyline.set_storyline_ready? && !@storyline.valid?(:set_storyline_ready)
             render json: {
               isReady: false,
-              message: "La durée de l'aventure doit être présente et valide"
+              message: "La durée de l’aventure doit être présente et valide"
             }
             return
           end
@@ -101,7 +101,7 @@ class StorylinesController < ApplicationController
         else
           render json: {
             isReady: false,
-            message: "L'aventure doit contenir au moins un lieu"
+            message: "L’aventure doit contenir au moins un lieu"
           }
           return
         end
@@ -109,7 +109,7 @@ class StorylinesController < ApplicationController
         @storyline.update(is_ready: true)
         render json:{
           isReady: true,
-          message: "L'aventure est publiée!"
+          message: "L’aventure est publiée !"
         }
         return
 
@@ -117,7 +117,7 @@ class StorylinesController < ApplicationController
         @storyline.update(is_ready: false)
         render json: {
           isReady: false,
-          message: "L'aventure a été retirée"
+          message: "L’aventure a été retirée"
         }
         return
       end
