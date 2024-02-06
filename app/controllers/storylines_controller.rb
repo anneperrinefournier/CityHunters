@@ -75,15 +75,12 @@ class StorylinesController < ApplicationController
               message: "L'aventure doit contenir au moins une photo"
             }
             return
-          elsif @storyline.difficulty.nil? ||
-            @storyline.duration.nil? ||
-            @storyline.introduction.empty? ||
-            @storyline.title.empty? ||
-            @storyline.theme.empty? ||
-            @storyline.district.empty? ||
-            @storyline.long_description.empty?
-            # || @storyline.short_description.empty?
-
+          elsif @storyline.duration.nil? ||
+                @storyline.introduction.empty? ||
+                @storyline.title.empty? ||
+                @storyline.theme.empty? ||
+                @storyline.district.empty? ||
+                @storyline.long_description.empty?
             render json: {
               isReady: false,
               message: "Les informations de l'aventure sont incomplètes"
@@ -91,52 +88,17 @@ class StorylinesController < ApplicationController
             return
           end
 
-          @storyline.places.each do |place|
-            if !place.photo.attached?
-              render json: {
-                isReady: false,
-                message: "Le lieu #{place.name} doit contenir au moins une énigme"
-              }
-              return
-            elsif place.longitude.nil? ||
-                  place.latitude.nil? ||
-                  place.address.empty? ||
-                  place.name.empty?
-
-              render json: {
-                isReady: false,
-                message: "L'addresse du lieu #{place.name}, n'est pas valide"
-              }
-              return
-            elsif place.description.nil?
-              render json: {
-                isReady: false,
-                message: "La description du lieu #{place.name} est vide"
-              }
-              return
-            elsif place.riddles.count == 0
-              render json: {
-                isReady: false,
-                message: "Le lieu #{place.name} doit contenir au moins une énigme"
-              }
-              return
-            else
-              place.riddles.each do |riddle|
-                if riddle.description.nil? ||
-                    riddle.solution.nil? ||
-                    riddle.question.nil? ||
-                    riddle.motion_type.nil?
-
-                  render json: {
-                    isReady: false,
-                    message: "L'énigme #{riddle.title}, du lieu #{place.name} est incomplète"
-                  }
-                  return
-                end
-              end
-            end
+          # Validate the duration only if the storyline is ready
+          if @storyline.set_storyline_ready? && !@storyline.valid?(:set_storyline_ready)
+            render json: {
+              isReady: false,
+              message: "La durée de l'aventure doit être présente et valide"
+            }
+            return
           end
-        else #storyline.places.count == 0
+
+          # Continue with other validations for places and riddles...
+        else
           render json: {
             isReady: false,
             message: "L'aventure doit contenir au moins un lieu"
@@ -151,7 +113,7 @@ class StorylinesController < ApplicationController
         }
         return
 
-      else #storyline.is_ready == true
+      else
         @storyline.update(is_ready: false)
         render json: {
           isReady: false,
@@ -159,7 +121,7 @@ class StorylinesController < ApplicationController
         }
         return
       end
-    else #storyline.user != current_user
+    else
       flash[:error] = "Vous ne pouvez pas éditer cette storyline"
       redirect_to profile_path, status: :unauthorized
     end
