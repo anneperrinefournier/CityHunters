@@ -8,7 +8,7 @@ storyline = Storyline.new(
   difficulty: 1,
   starting_point: "Le Wagon, 68 Ave Parmentier, 75011 Paris, France",
   short_description: "Pars à la recherche de ta nouriture !",
-  long_description: "Ca y est, nous y sommes! Il est 13h et l'estomac souffre et agonise, il a besoin de manger. Une seule solution, partir à la quête de nourriture! Suivez cette aventure exceptiionnelle à laquelle tout le monde reviens satisfait, mais surtout, le ventre plein!",
+  long_description: "Ca y est, nous y sommes ! Il est 13 h et l'estomac souffre et agonise, il a besoin de manger. Une seule solution, partir à la quête de nourriture! Suivez cette aventure exceptiionnelle à laquelle tout le monde reviens satisfait, mais surtout, le ventre plein!",
   introduction: "Dans une ville grouillante d'activité, où les rues pavées bruissaient sous les pas pressés des passants, une quête essentielle vous animait : assouvir votre faim grandissante. Ignorant l'agitation ambiante, votre estomac vous rappelait impérieusement à l'ordre, vous incitant à trouver cette nourriture revigorante qui apaiserait votre appétit croissant.
 
   Les senteurs alléchantes émanaient des cuisines dissimulées derrière les devantures des restaurants, des échoppes et des étals de marché. Chaque recoin de cette ville vous attirait, vous offrant des promesses gastronomiques et l'espoir de combler votre faim insatiable.

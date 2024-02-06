@@ -31,7 +31,7 @@ place1 = create_or_update(
   ),
   {
     filename: "Opéra Garnier",
-    url: "https://i.ibb.co/s5H5ksS/pexels-masood-aslami-14960325.jpg",
+    url: "https://i.ibb.co/PDF1xMp/opera2.jpg",
     content_type: "image/jpg"
   }
 )
@@ -45,7 +45,7 @@ place2 = create_or_update(
   ),
   {
     filename: "Comédie-Française",
-    url: "https://i.ibb.co/Dw82QNH/Come-die-Franc-aise-colonnes.jpg",
+    url: "https://i.ibb.co/HNKJy9G/3.jpg",
     content_type: "image/jpg"
   }
 )
@@ -59,7 +59,7 @@ place3 = create_or_update(
   ),
   {
     filename: "Colonnes de Buren",
-    url: "https://i.ibb.co/DzSHvLy/Come-die-Franc-aise-colonnes.jpg",
+    url: "https://i.ibb.co/K0Sz13f/buren.jpg",
     content_type: "image/jpg"
   }
 )
@@ -73,7 +73,7 @@ place4 = create_or_update(
   ),
   {
     filename: "Maison de Colette",
-    url: "https://i.ibb.co/nwwfz5q/colette.jpg",
+    url: "https://i.ibb.co/DM2jXcx/colette.png",
     content_type: "image/jpg"
   }
 )
@@ -87,7 +87,7 @@ place5 = create_or_update(
   ),
   {
     filename: "Theatre_du_Palais_Royal",
-    url: "https://i.ibb.co/9qZbvsY/theatre-palais-royal.jpg",
+    url: "https://i.ibb.co/4Nk4nqf/theatre.jpg",
     content_type: "image/jpg"
   }
 )
@@ -105,7 +105,7 @@ riddle1 = create_or_update(
   ),
   {
     filename: "fantôme",
-    url: "https://i.ibb.co/gR8mXc6/Capture-d-e-cran-2024-01-09-a-00-24-56.png",
+    url: "https://i.ibb.co/S70cHQ0/fantome.png",
     content_type: "image/png"
   }
 )
@@ -121,7 +121,7 @@ riddle2 = create_or_update(
   ),
   {
     filename: "mot parchemin",
-    url: "https://i.ibb.co/cYnshrj/pexels-pixabay-51159.jpg",
+    url: "https://i.ibb.co/3TTKyTN/writing.jpg",
     content_type: "image/png"
   }
 )
@@ -137,7 +137,7 @@ riddle3 = create_or_update(
   ),
   {
     filename: "Intérieur de la Comédie-Française en 1790.",
-    url: "https://i.ibb.co/DYYsnL0/1920px-Paris-Comedie-Francaise.jpg",
+    url: "https://i.ibb.co/DD8F2tK/opera.jpg",
     content_type: "image/png"
   }
 )
@@ -169,7 +169,7 @@ riddle5 = create_or_update(
   ),
   {
     filename: "Colonnes de Buren",
-    url: "https://i.ibb.co/7KNtd5C/Palais-Royal-et-les-Colonnes-de-Buren.jpg",
+    url: "https://i.ibb.co/K0Sz13f/buren.jpg",
     content_type: "image/png"
   }
 )
