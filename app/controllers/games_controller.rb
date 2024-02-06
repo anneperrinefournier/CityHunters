@@ -3,12 +3,11 @@ class GamesController < ApplicationController
   before_action :set_game_users, only: %i[lobby stats end_game]
 
   def create
-    game = Game.new(
+    game = Game.create!(
       user: current_user,
       storyline_id: params[:storyline_id],
       status: :not_started
     )
-    game.save!
     Participation.create!(
       game: game,
       user: current_user,
