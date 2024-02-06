@@ -6,12 +6,17 @@ class Game < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :participations, dependent: :destroy
 
-  before_create :set_game_pin
+  before_create :set_default_code_type
 
   enum status: {
     not_started: 0,
     running: 1,
     ended: 2
+  }
+
+  enum code_type: {
+    pin: 0,
+    qr_code: 1
   }
 
   def validated_places
@@ -49,38 +54,30 @@ class Game < ApplicationRecord
 
   def ended!
     update(end_time: Time.now)
-    # delete_qr_code
     super
   end
 
   private
 
   def set_game_pin
+    self.code_type ||= :pin
+    set_pin_code if pin?
+  end
+
+  def set_pin_code
     self.pin = 4.times.map { ('A'..'Z').to_a.sample }.join
-    generate_qr_code
   end
 
   def generate_qr_code
     return if ended? # Ne génère pas le QR code si la partie est terminée
-    qr_code_data = "https://www.cityhunters.site/games/#{self.pin}/lobby"
+    qr_code_data = "https://www.cityhunters.site/games/#{id}/lobby"
     qrcode = RQRCode::QRCode.new(qr_code_data)
     image = qrcode.as_png(size: 120)
 
     # Télécharger l'image dans Cloudinary
-    cloudinary_upload = Cloudinary::Uploader.upload(image.to_blob, public_id: "#{self.pin}_qr_code")
+    cloudinary_upload = Cloudinary::Uploader.upload(image.to_blob, public_id: "#{id}_qr_code")
 
     # Récupérer l'URL de l'image téléchargée depuis Cloudinary et la sauvegarder dans self.qr_code
     self.qr_code = cloudinary_upload['secure_url']
   end
-
-  # def delete_qr_code
-  #   return unless qr_code.present?
-
-  #   # Supprimer le fichier du répertoire des assets
-  #   file_path = Rails.root.join('app', 'assets', 'images', qr_code)
-  #   File.delete(file_path) if File.exist?(file_path)
-
-  #   # Supprimer la référence au fichier dans la base de données
-  #   self.qr_code = nil
-  # end
 end
