@@ -6,7 +6,7 @@ class Game < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :participations, dependent: :destroy
 
-  before_create :set_default_code_type
+  before_create :set_game_pin
 
   enum status: {
     not_started: 0,
