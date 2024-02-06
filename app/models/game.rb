@@ -49,7 +49,7 @@ class Game < ApplicationRecord
 
   def ended!
     update(end_time: Time.now)
-    delete_qr_code
+    # delete_qr_code
     super
   end
 
@@ -75,14 +75,14 @@ class Game < ApplicationRecord
     self.qr_code = filename
   end
 
-  def delete_qr_code
-    return unless qr_code.present?
+  # def delete_qr_code
+  #   return unless qr_code.present?
 
-    # Supprimer le fichier du répertoire des assets
-    file_path = Rails.root.join('app', 'assets', 'images', qr_code)
-    File.delete(file_path) if File.exist?(file_path)
+  #   # Supprimer le fichier du répertoire des assets
+  #   file_path = Rails.root.join('app', 'assets', 'images', qr_code)
+  #   File.delete(file_path) if File.exist?(file_path)
 
-    # Supprimer la référence au fichier dans la base de données
-    self.qr_code = nil
-  end
+  #   # Supprimer la référence au fichier dans la base de données
+  #   self.qr_code = nil
+  # end
 end
