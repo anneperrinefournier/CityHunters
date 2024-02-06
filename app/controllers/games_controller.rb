@@ -79,8 +79,9 @@ class GamesController < ApplicationController
   end
 
   def access
-    game_pin = params[:game][:pin].delete(" \t\r\n").upcase
-    game = Game.find_by(pin: game_pin)
+    game_identifier = params[:game][:identifier].delete(" \t\r\n").upcase
+    game = find_game_by_identifier(game_identifier)
+
     if game
       participation = Participation.new(
         game: game,
@@ -89,7 +90,7 @@ class GamesController < ApplicationController
       participation.save
       redirect_to lobby_game_path(game)
     else
-      flash[:alert] = "No game with PIN: #{game_pin}"
+      flash[:alert] = "Aucune partie trouvée avec ce PIN ou QR code : #{game_identifier}"
       redirect_to join_game_path
     end
   end
@@ -150,5 +151,31 @@ class GamesController < ApplicationController
     participations = Participation.where(game: @game)
     users_id = participations.map(&:user_id)
     @users = User.where(id: users_id)
+  end
+
+  private
+
+  def find_game_by_identifier(identifier)
+    # Vérifier si l'identifiant est un PIN
+    game_by_pin = Game.find_by(pin: identifier)
+    return game_by_pin if game_by_pin
+
+    # Vérifier si l'identifiant est un ID extrait du QR code
+    game_by_qr_code = find_game_by_qr_code(identifier)
+    return game_by_qr_code if game_by_qr_code
+
+    # Si aucun jeu n'est trouvé, retourner nil
+    nil
+  end
+
+  def find_game_by_qr_code(qr_code)
+    # Vérifier si l'identifiant est un PIN
+    match_data = qr_code.match(/games\/(\d+)\/lobby/)
+    return nil unless match_data
+
+    game_id = match_data[1].to_i
+
+    # Rechercher le jeu correspondant dans la base de données en utilisant l'ID extrait
+    Game.find_by(id: game_id)
   end
 end

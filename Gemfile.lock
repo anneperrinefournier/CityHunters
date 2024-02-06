@@ -354,7 +354,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 7.1.2)
   redis (~> 5.0, >= 5.0.8)
-  rqrcode
+  rqrcode (~> 2.0)
   sassc-rails
   selenium-webdriver
   simple_form!

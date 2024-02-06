@@ -55,7 +55,7 @@ gem "sassc-rails"
 gem "cloudinary"
 gem "geocoder"
 gem 'redis', '~> 5.0', '>= 5.0.8'
-gem 'rqrcode'
+gem "rqrcode", "~> 2.0"
 gem 'image_optim'
 gem 'vanilla_nested'
 
