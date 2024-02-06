@@ -6,7 +6,8 @@ class Game < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :participations, dependent: :destroy
 
-  before_create :set_pin_code, :set_game_pin
+  before_create :set_pin_code
+  # , :set_game_pin
 
   enum status: {
     not_started: 0,
@@ -14,10 +15,10 @@ class Game < ApplicationRecord
     ended: 2
   }
 
-  enum code_type: {
-    pin: 0,
-    qr_code: 1
-  }
+  # enum code_type: {
+  #   pin: 0,
+  #   qr_code: 1
+  # }
 
   def validated_places
     places.select do |place|
@@ -59,25 +60,25 @@ class Game < ApplicationRecord
 
   private
 
-  def set_game_pin
-    self.code_type ||= :pin
-    set_pin_code if pin?
-  end
+  # def set_game_pin
+  #   self.code_type ||= :pin
+  #   set_pin_code if pin?
+  # end
 
   def set_pin_code
     self.pin = 4.times.map { ('A'..'Z').to_a.sample }.join
   end
 
-  def generate_qr_code
-    return if ended? # Ne génère pas le QR code si la partie est terminée
-    qr_code_data = "https://www.cityhunters.site/games/#{id}/lobby"
-    qrcode = RQRCode::QRCode.new(qr_code_data)
-    image = qrcode.as_png(size: 120)
+  # def generate_qr_code
+  #   return if ended? # Ne génère pas le QR code si la partie est terminée
+  #   qr_code_data = "https://www.cityhunters.site/games/#{id}/lobby"
+  #   qrcode = RQRCode::QRCode.new(qr_code_data)
+  #   image = qrcode.as_png(size: 120)
 
-    # Télécharger l'image dans Cloudinary
-    cloudinary_upload = Cloudinary::Uploader.upload(image.to_blob, public_id: "#{id}_qr_code")
+  #   # Télécharger l'image dans Cloudinary
+  #   cloudinary_upload = Cloudinary::Uploader.upload(image.to_blob, public_id: "#{id}_qr_code")
 
-    # Récupérer l'URL de l'image téléchargée depuis Cloudinary et la sauvegarder dans self.qr_code
-    self.qr_code = cloudinary_upload['secure_url']
-  end
+  #   # Récupérer l'URL de l'image téléchargée depuis Cloudinary et la sauvegarder dans self.qr_code
+  #   self.qr_code = cloudinary_upload['secure_url']
+  # end
 end
