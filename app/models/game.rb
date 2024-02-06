@@ -62,17 +62,15 @@ class Game < ApplicationRecord
 
   def generate_qr_code
     return if ended? # Ne génère pas le QR code si la partie est terminée
-    # base_url = Rails.application.routes.default_url_options[:host]
-    qrcode = RQRCode::QRCode.new("https://www.cityhunters.site/games/#{self.pin}/lobby")
+    qr_code_data = "https://www.cityhunters.site/games/#{self.pin}/lobby"
+    qrcode = RQRCode::QRCode.new(qr_code_data)
     image = qrcode.as_png(size: 120)
-    filename = "#{self.pin}_qr_code.png"
 
-    # Sauvegarder l'image dans le répertoire des assets
-    File.open(Rails.root.join('app', 'assets', 'images', filename), 'wb') do |file|
-      file.write(image.to_blob)
-    end
+    # Télécharger l'image dans Cloudinary
+    cloudinary_upload = Cloudinary::Uploader.upload(image.to_blob, public_id: "#{self.pin}_qr_code")
 
-    self.qr_code = filename
+    # Récupérer l'URL de l'image téléchargée depuis Cloudinary et la sauvegarder dans self.qr_code
+    self.qr_code = cloudinary_upload['secure_url']
   end
 
   # def delete_qr_code
