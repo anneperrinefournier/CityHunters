@@ -60,6 +60,7 @@ class Game < ApplicationRecord
   end
 
   def generate_qr_code
+    return if ended? # Ne génère pas le QR code si la partie est terminée
     # base_url = Rails.application.routes.default_url_options[:host]
     qrcode = RQRCode::QRCode.new("https://www.cityhunters.site/games/#{self.pin}/lobby")
     image = qrcode.as_png(size: 120)
@@ -71,5 +72,16 @@ class Game < ApplicationRecord
     end
 
     self.qr_code = filename
+  end
+
+  def delete_qr_code
+    return unless qr_code.present?
+
+    # Supprimer le fichier du répertoire des assets
+    file_path = Rails.root.join('app', 'assets', 'images', qr_code)
+    File.delete(file_path) if File.exist?(file_path)
+
+    # Supprimer la référence au fichier dans la base de données
+    self.qr_code = nil
   end
 end
