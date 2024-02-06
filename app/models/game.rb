@@ -49,6 +49,7 @@ class Game < ApplicationRecord
 
   def ended!
     update(end_time: Time.now)
+    delete_qr_code
     super
   end
 
@@ -68,7 +69,7 @@ class Game < ApplicationRecord
 
     # Sauvegarder l'image dans le répertoire des assets
     File.open(Rails.root.join('app', 'assets', 'images', filename), 'wb') do |file|
-      file.write(image.to_s)
+      file.write(image.to_blob)
     end
 
     self.qr_code = filename
