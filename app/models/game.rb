@@ -6,8 +6,9 @@ class Game < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :participations, dependent: :destroy
 
-  before_create :set_pin_code
-  # , :set_game_pin
+  before_create :set_game_pin
+
+  # before_create :set_pin_code, :set_game_pin
 
   enum status: {
     not_started: 0,
@@ -65,7 +66,7 @@ class Game < ApplicationRecord
   #   set_pin_code if pin?
   # end
 
-  def set_pin_code
+  def set_game_pin
     self.pin = 4.times.map { ('A'..'Z').to_a.sample }.join
   end
 
