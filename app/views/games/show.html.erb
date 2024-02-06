@@ -21,7 +21,7 @@
 
     <div class="second-big-container" style="width: 200vw; display: flex; transition: all ease 0.5s; overflow-y: auto;"  data-swipe-map-target="unroll">
 
-      <div style="width: 100vw; overflow: hidden; max-width: 480px;">
+      <div style="width: 100vw; overflow: hidden; max-width: 390px">
         <div class= "pages-backscreen">
           <div class="background-top-title">
             <h4> <%= @storyline.title %></h4>
@@ -58,12 +58,12 @@
         </div>
       </div>
 
-      <div class="map-show-off">
+      <div class="map-show-off" style="width: 100vw; overflow: hidden; max-width: 390px">
         <div class="parent sticky">
             <%= render 'map' %>
         </div>
       </div>
-    </div>
+    </div>r
     <%# <div class="mt-3 mb-3 d-none" data-game-target="endGameButton">
       <button class="btn btn-danger" data-action="click->game#endGame">Fin de partie</button>
     </div> %>
