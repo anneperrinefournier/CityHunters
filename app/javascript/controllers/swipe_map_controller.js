@@ -1,10 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["swipe", "unroll", "police", "showmap"]
+  static targets = ["swipe", "unroll", "police", "showmap", "mapShowOff"]
   connect() {
-    const bigContainer = document.querySelector('.big-container');
     const stickyElement = document.querySelector('.parent');
+    const bigContainer = document.querySelector('.big-container');
     const rectangle = document.querySelector('.rectangle-swipe');
 
     window.addEventListener('scroll', (event) => {
@@ -22,7 +22,8 @@ export default class extends Controller {
       this.showmapTarget.style.marginLeft = "-14px";
       this.showmapTarget.innerHTML = '<i class="fa-solid fa-caret-left"></i>';
       this.showmapTarget.style.letterSpacing = "8px";
-
+      const mapshowElement = this.targets.find("parent");
+      mapshowElement.classList.remove('hidden-map');
 
     } else {
       this.unrollTarget.style.transform = "translateX(-100vw)";
@@ -34,6 +35,8 @@ export default class extends Controller {
       this.showmapTarget.style.marginLeft = "14px";
       this.showmapTarget.innerHTML = '<i class="fa-solid fa-caret-right"></i>'
       this.showmapTarget.style.letterSpacing = "2px";
+      const mapshowElement = this.targets.find("parent");
+      mapshowElement.classList.add('hidden-map');
     }
   };
 }

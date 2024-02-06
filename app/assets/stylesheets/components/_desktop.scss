@@ -1,0 +1,10 @@
+/* Styles pour les ordinateurs de bureau */
+@media only screen and (min-width: 390px) {
+  .my-custom-class {
+    // width: 100% !important;
+    // min-height: 100% !important;
+    max-width: 390px !important;
+    max-height: 844px;
+    margin: 0 auto !important;
+  }
+}

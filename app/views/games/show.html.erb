@@ -1,5 +1,5 @@
 
-<div class="big-container" style= "width: 100vw; overflow-x: hidden;" data-controller="swipe-map">
+<div class="big-container" style= "overflow-x: hidden;" data-controller="swipe-map">
 
   <div class="rectangle-swipe swipe-right" data-action="click->swipe-map#swipe" data-swipe-map-target="police">
     <p data-swipe-map-target="showmap"><i class="fa-solid fa-caret-left"></i></p>
@@ -21,7 +21,7 @@
 
     <div class="second-big-container" style="width: 200vw; display: flex; transition: all ease 0.5s; overflow-y: auto;"  data-swipe-map-target="unroll">
 
-      <div style="width: 100vw; overflow: hidden;">
+      <div style="width: 100vw; overflow: hidden; max-width: 480px;">
         <div class= "pages-backscreen">
           <div class="background-top-title">
             <h4> <%= @storyline.title %></h4>
@@ -58,8 +58,8 @@
         </div>
       </div>
 
-      <div>
-        <div class="parent sticky">
+      <div class="map-show-off">
+        <div class="parent sticky hidden-map">
             <%= render 'map' %>
         </div>
       </div>
