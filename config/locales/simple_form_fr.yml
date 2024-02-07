@@ -1,0 +1,31 @@
+fr:
+  simple_form:
+    "oui": 'Oui'
+    "non": 'Non'
+    required:
+      text: 'requis'
+      mark: '*'
+      # Vous pouvez décommenter la ligne ci-dessous si vous avez besoin de remplacer le code HTML complet requis.
+      # Lorsque vous utilisez du HTML, le texte et le signe ne seront pas utilisés.
+      # html: '<abbr title="requis">*</abbr>'
+    error_notification:
+      default_message: "Veuillez vérifier les problèmes ci-dessous :"
+    # Exemples
+    # labels:
+    #   defaults:
+    #     password: 'Mot de passe'
+    #   user:
+    #     new:
+    #       email: 'Adresse e-mail pour se connecter.'
+    #     edit:
+    #       email: 'Adresse e-mail.'
+    # hints:
+    #   defaults:
+    #     username: 'Nom d'utilisateur pour se connecter.'
+    #     password: 'Pas de caractères spéciaux, s'il vous plaît.'
+    # include_blanks:
+    #   defaults:
+    #     age: 'Ne souhaite pas le communiquer'
+    # prompts:
+    #   defaults:
+    #     age: 'Sélectionnez votre âge'
