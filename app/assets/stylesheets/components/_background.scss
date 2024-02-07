@@ -1,10 +1,8 @@
 .pages-backscreen {
-  background-image: url(background5.png);
+  background-image: url(background-pages.png);
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  overflow: auto;
-  }
+}
 
 // .background-top-title {
 //   min-height: 14vh;
@@ -40,4 +38,13 @@
   font-size: 26px;
   color: white;
   margin-top: 30px;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .pages-backscreen {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+  }
 }
