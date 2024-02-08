@@ -63,15 +63,20 @@ class Game < ApplicationRecord
   def generate_qr_code
     qrcode = RQRCode::QRCode.new("https://www.cityhunters.site/games/#{id}/lobby")
 
-    # options for the qr code
-    self.qr_code = qrcode.as_svg(
+    # convertir le code QR en une chaîne SVG + options
+    svg = qrcode.as_svg(
       offset: 0, #Padding around the QR Code in pixels
       fill: :currentColor, #background-color
       color: "000", #Foreground color
       module_size: 11,
       shape_rendering: "crispEdges",
-      standalone: true,
-      use_path: true
+      # standalone: true,
+      # use_path: true
     )
+    # Télécharger la chaîne SVG sur Cloudinary
+    cloudinary_response = Cloudinary::Uploader.upload(svg, options = {})
+
+    # Stocker l'URL de l'image Cloudinary dans le champ qr_code
+    self.qr_code = cloudinary_response["secure_url"]
   end
 end
