@@ -1,9 +1,29 @@
+// /* Styles pour les ordinateurs de bureau */
+// @media only screen and (min-width: 768px) {
+//   .my-custom-class {
+//     margin: 0 auto !important;
+//     max-width: 30% !important;
+//     height: 100vh !important;
+//   }
+// }
+
 /* Styles pour les ordinateurs de bureau */
 @media only screen and (min-width: 768px) {
-  .my-custom-class {
-    margin: 0 auto !important;
-    width: 100% !important;
-    max-width: 390px !important;
-    height: 100vh !important;
+  .desktop-folder-all {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+  }
+
+  .desktop-folder-one {
+    width: 35%;
+    margin: auto 0;
+  }
+
+  .desktop-folder-show {
+    width: 70%;
+    margin: 0 auto;
   }
 }

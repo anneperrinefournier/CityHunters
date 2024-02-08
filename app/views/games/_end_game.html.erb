@@ -14,7 +14,7 @@
   </div>
 
   <div class="p-3 my-3">
-    <div class="folder-endgame">
+    <div class="folder-endgame desktop-folder-show">
       <%= cl_image_tag @game.storyline.photo.key, alt: (@game.storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
     <div class="riddle-solving">
       <h4>Félicitations !</h4>
@@ -73,7 +73,7 @@
         <%# end %>
       <%# </ul> %>
     </div>
+     <%= link_to "Retour au menu principal", root_path, class:"btn-ugly", style: "margin: 0 auto;" %>
  </div>
-     <%= link_to "Retour au menu principal", root_path, class:"btn-ugly" %>
   </div>
 </div>

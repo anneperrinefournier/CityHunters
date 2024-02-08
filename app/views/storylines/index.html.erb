@@ -15,8 +15,9 @@
     </div>
   </div>
 
-  <div class="p-3 my-3">
+  <div class="p-3 my-3 desktop-folder-all">
     <% @storylines.each_with_index do |storyline, index| %>
+    <div class="desktop-folder-one">
       <div class="<%= index.even? ? 'regroup' : 'regroup-reverse' %>">
         <%= link_to storyline_path(storyline), class: "links" do %>
 
@@ -61,6 +62,7 @@
           </div>
 
         <% end %>
+      </div>
       </div>
     <% end %>
 
