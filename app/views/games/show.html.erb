@@ -4,12 +4,6 @@
     <p data-swipe-map-target="showmap"><i class="fa-solid fa-caret-left"></i></p>
   </div>
 
-  <div class="burger-menu dropdown">
-    <i class="fa-solid fa-bars btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    </i>
-    <%= render 'shared/burger'%>
-  </div>
-
   <div data-controller="game"
     data-game-target="pageHandle"
     data-game-game-id-value="<%= @game.id %>"
@@ -22,7 +16,15 @@
         <div class= "pages-backscreen" style="width: 100vw; overflow: hidden;">
           <div class="background-top-title">
             <h4> <%= @storyline.title %></h4>
+
+            <div class="burger-menu dropdown">
+              <i class="fa-solid fa-bars btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              </i>
+              <%= render 'shared/burger'%>
+            </div>
+
           </div>
+
           <div class="container">
             <div class="riddles-container d-none" data-game-target="riddlesHandle">
               <%= render 'game_state', game: @game %>

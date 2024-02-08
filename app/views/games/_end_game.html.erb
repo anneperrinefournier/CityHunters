@@ -2,12 +2,8 @@
 
 <div class= "pages-backscreen">
   <div class="background-top-title">
-    <div class="menu">
-      <div class="menu-title">
-        <h4><%= @game.storyline.title %></h4>
-      </div>
-
-      <div class="dropdown">
+        <h4 style="text-align: center;"><%= @game.storyline.title %></h4>
+      <div class="burger-menu dropdown">
         <i class="fa-solid fa-bars btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         </i>
         <%= render 'shared/burger'%>
