@@ -73,10 +73,10 @@ class Game < ApplicationRecord
       # standalone: true,
       # use_path: true
     )
-    # Télécharger la chaîne SVG sur Cloudinary
-    cloudinary_response = Cloudinary::Uploader.upload(svg, options = {})
+    # # Télécharger la chaîne SVG sur Cloudinary
+    # cloudinary_response = Cloudinary::Uploader.upload(svg, options = {})
 
-    # Stocker l'URL de l'image Cloudinary dans le champ qr_code
-    self.qr_code = cloudinary_response["secure_url"]
+    # # Stocker l'URL de l'image Cloudinary dans le champ qr_code
+    # self.qr_code = cloudinary_response["secure_url"]
   end
 end
