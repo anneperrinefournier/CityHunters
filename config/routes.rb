@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     member do
       patch '/start', to: "games#start"
       get '/lobby', to: "games#lobby"
+      # get '/qr_code_lobby', to: 'games#qr_code_lobby', as: 'qr_code_lobby_game'
+      get '/games/:id/qr_code_lobby', to: 'games#qr_code_lobby', as: 'qr_code_lobby_game'
       get '/end', to: "games#end_game"
     end
   end

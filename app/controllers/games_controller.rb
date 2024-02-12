@@ -3,12 +3,11 @@ class GamesController < ApplicationController
   before_action :set_game_users, only: %i[lobby stats end_game]
 
   def create
-    game = Game.new(
+    game = Game.create!(
       user: current_user,
       storyline_id: params[:storyline_id],
       status: :not_started
     )
-    game.save!
     Participation.create!(
       game: game,
       user: current_user,
@@ -141,10 +140,14 @@ class GamesController < ApplicationController
     )
   end
 
-  private
-
-  def set_game
-    @game = Game.find(params[:id])
+  def qr_code_lobby
+    if current_user
+      @game = Game.find(params[:id])
+      redirect_to lobby_game_path(@game)
+    else
+      flash[:alert] = "Vous devez être connecté pour accéder au lobby du jeu."
+      redirect_to new_user_session_path
+    end
   end
 
   def set_game_users
@@ -152,8 +155,6 @@ class GamesController < ApplicationController
     users_id = participations.map(&:user_id)
     @users = User.where(id: users_id)
   end
-
-  private
 
   def find_game_by_identifier(identifier)
     # Vérifier si l'identifiant est un PIN
@@ -166,6 +167,12 @@ class GamesController < ApplicationController
 
     # Si aucun jeu n'est trouvé, retourner nil
     nil
+  end
+
+  private
+
+  def set_game
+    @game = Game.find(params[:id])
   end
 
   def find_game_by_qr_code(qr_code)

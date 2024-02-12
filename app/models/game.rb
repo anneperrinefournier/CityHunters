@@ -1,4 +1,5 @@
 require "rqrcode"
+require 'chunky_png'
 
 class Game < ApplicationRecord
   belongs_to :user
@@ -61,22 +62,31 @@ class Game < ApplicationRecord
   end
 
   def generate_qr_code
-    qrcode = RQRCode::QRCode.new("https://www.cityhunters.site/games/#{id}/lobby")
+    return if qr_code.present?
 
-    # convertir le code QR en une chaîne SVG + options
-    svg = qrcode.as_svg(
-      offset: 0, #Padding around the QR Code in pixels
-      fill: :currentColor, #background-color
-      color: "000", #Foreground color
-      module_size: 11,
-      shape_rendering: "crispEdges",
-      # standalone: true,
-      # use_path: true
+    # qrcode = RQRCode::QRCode.new("https://www.cityhunters.site/games/#{id}/lobby")
+    qr_code_url = "https://622b-77-132-153-212.ngrok-free.app/games/#{id}/lobby"
+    qrcode = RQRCode::QRCode.new(qr_code_url)
+
+    png = qrcode.as_png(
+      resize_gte_to: false,
+      resize_exactly_to: false,
+      color_mode: ChunkyPNG::COLOR_TRUECOLOR_ALPHA,
+      fill: ChunkyPNG::Color::TRANSPARENT,
+      color: 'black',
+      size: 200,
+      border_modules: 4,
+      module_px_size: 11,
+      file: nil # Don't generate file
     )
-    # # Télécharger la chaîne SVG sur Cloudinary
-    # cloudinary_response = Cloudinary::Uploader.upload(svg, options = {})
 
-    # # Stocker l'URL de l'image Cloudinary dans le champ qr_code
-    # self.qr_code = cloudinary_response["secure_url"]
+    # Envoyer les données de l'image PNG directement vers Cloudinary
+    cloudinary_response = Cloudinary::Uploader.upload(
+      "data:image/png;base64,#{Base64.strict_encode64(png.to_s)}"
+    )
+
+    # Stocker l'URL de l'image Cloudinary dans le champ qr_code
+    self.qr_code = cloudinary_response["secure_url"]
+    save
   end
 end

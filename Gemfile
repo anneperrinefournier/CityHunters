@@ -55,7 +55,8 @@ gem "sassc-rails"
 gem "cloudinary"
 gem "geocoder"
 gem 'redis', '~> 5.0', '>= 5.0.8'
-gem "rqrcode", "~> 2.0"
+gem "rqrcode", "~> 2.0" #qr code generator
+gem "chunky_png" #color of the qr code
 gem 'image_optim'
 gem 'vanilla_nested'
 
