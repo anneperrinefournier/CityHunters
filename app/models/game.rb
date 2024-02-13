@@ -65,8 +65,8 @@ class Game < ApplicationRecord
   def generate_qr_code
     return if qr_code.present?
 
-    # qrcode = RQRCode::QRCode.new("https://www.cityhunters.site/games/#{id}/lobby")
-    qr_code_url = "https://622b-77-132-153-212.ngrok-free.app/games/#{id}/lobby"
+    qr_code_url = "https://www.cityhunters.site/games/#{id}/lobby"
+    # qr_code_url = "https://622b-77-132-153-212.ngrok-free.app/games/#{id}/lobby"
     qrcode = RQRCode::QRCode.new(qr_code_url)
 
 
