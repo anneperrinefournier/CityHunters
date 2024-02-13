@@ -3,9 +3,7 @@
   <div class="container" data-controller="lobby" data-lobby-id-value="<%= @game.id %>" data-lobby-participation-id-value="<%= current_user.find_participation_for(@game).id %>">
     <div class="lobby-content desktop-folder-show">
       <% if @game.present? && @game.qr_code.present? %>
-        <%= link_to access_qr_code_game_path(game_id: @game.id), method: :post do %>
           <%= image_tag @game.qr_code, class: "lobby-qrcode" %>
-        <% end %>
       <% end %>
 
       <div class="lobby-pin-share">

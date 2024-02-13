@@ -94,17 +94,17 @@ class GamesController < ApplicationController
   end
 
   def access_qr_code
-    game_id = params[:game_id]
-    game = Game.find_by(id: game_id)
-    if game
+    game_id = params[:id]
+    @game = Game.find_by(id: game_id)
+    if @game
       participation = Participation.new(
-        game: game,
+        game: @game,
         user: current_user
       )
       participation.save
-      redirect_to lobby_game_path(game)
+      redirect_to lobby_game_path(@game)
     else
-      flash[:alert] = "Aucune partie trouvée avec cet identifiant de jeu : #{game_id}"
+      flash[:alert] = "Aucune partie trouvée avec cet identifiant de jeu : #{params[:id]}"
       redirect_to join_game_path
     end
   end
@@ -155,15 +155,15 @@ class GamesController < ApplicationController
     )
   end
 
-  def qr_code_lobby
-    if current_user
-      @game = Game.find(params[:id])
-      redirect_to lobby_game_path(@game)
-    else
-      flash[:alert] = "Vous devez être connecté pour accéder au lobby du jeu."
-      redirect_to new_user_session_path
-    end
-  end
+  # def qr_code_lobby
+  #   if current_user
+  #     @game = Game.find(params[:id])
+  #     redirect_to lobby_game_path(@game)
+  #   else
+  #     flash[:alert] = "Vous devez être connecté pour accéder au lobby du jeu."
+  #     redirect_to new_user_session_path
+  #   end
+  # end
 
   def set_game_users
     participations = Participation.where(game: @game)

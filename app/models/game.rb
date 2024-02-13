@@ -9,7 +9,8 @@ class Game < ApplicationRecord
   has_many :answers, dependent: :destroy
   has_many :participations, dependent: :destroy
 
-  before_create :set_game_pin, :generate_qr_code
+  before_create :set_game_pin
+  after_create :generate_qr_code
 
   enum status: {
     not_started: 0,
@@ -65,8 +66,9 @@ class Game < ApplicationRecord
     return if qr_code.present?
 
     # qrcode = RQRCode::QRCode.new("https://www.cityhunters.site/games/#{id}/lobby")
-    qr_code_url = "https://622b-77-132-153-212.ngrok-free.app/games/#{self.id}/lobby"
+    qr_code_url = "https://622b-77-132-153-212.ngrok-free.app/games/#{id}/lobby"
     qrcode = RQRCode::QRCode.new(qr_code_url)
+
 
     png = qrcode.as_png(
       resize_gte_to: false,
