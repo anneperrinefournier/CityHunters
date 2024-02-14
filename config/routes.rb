@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   get 'games/join', to: "games#join", as: "join_game"
   post 'games/access', to: "games#access", as: "access_game"
-  post 'games/access_qr_code', to: "games#access_qr_code", as: "access_qr_code_game"
+  get 'games/access', to: "games#access", as: "access_game_qr_code"
 
   get 'profile', to: 'pages#profile'
 

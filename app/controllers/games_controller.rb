@@ -78,34 +78,24 @@ class GamesController < ApplicationController
   end
 
   def access
-    game_pin = params[:game][:pin].delete(" \t\r\n").upcase
-    game = Game.find_by(pin: game_pin)
-    if game
-      participation = Participation.new(
-        game: game,
-        user: current_user
-      )
-      participation.save
-      redirect_to lobby_game_path(game)
+    if current_user
+      game_pin = params[:game][:pin].delete(" \t\r\n").upcase
+      game = Game.find_by(pin: game_pin)
+      if game
+        participation = Participation.new(
+          game: game,
+          user: current_user
+        )
+        participation.save
+        redirect_to lobby_game_path(game)
+      else
+        flash[:alert] = "Aucune partie trouvée. Veuillez réessayer."
+        redirect_to join_game_path
+      end
     else
-      flash[:alert] = "Aucune partie trouvée avec ce PIN ou QR code : #{game_pin}"
-      redirect_to join_game_path
-    end
-  end
-
-  def access_qr_code
-    game_id = params[:id]
-    @game = Game.find_by(id: game_id)
-    if @game
-      participation = Participation.new(
-        game: @game,
-        user: current_user
-      )
-      participation.save
-      redirect_to lobby_game_path(@game)
-    else
-      flash[:alert] = "Aucune partie trouvée avec cet identifiant de jeu : #{params[:id]}"
-      redirect_to join_game_path
+      flash[:alert] = "Vous devez être connecté pour accéder au lobby du jeu."
+      redirect_to new_user_session_path
+      #how to redirect on device
     end
   end
 
@@ -120,6 +110,7 @@ class GamesController < ApplicationController
         html: render_to_string(partial: "player", locals: { user: current_user })
       }
     )
+    @participation = current_user.find_participation_for(@game).id
     @storyline_title = Storyline.find(@game.storyline_id).title
   end
 

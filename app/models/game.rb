@@ -65,8 +65,11 @@ class Game < ApplicationRecord
   def generate_qr_code
     return if qr_code.present?
 
-    qr_code_url = "https://www.cityhunters.site/games/#{id}/lobby"
-    # qr_code_url = "https://622b-77-132-153-212.ngrok-free.app/games/#{id}/lobby"
+    qr_code_url = Rails.application.routes.url_helpers.access_game_qr_code_url(game: { pin: })
+
+    # qr_code_url = "https://www.cityhunters.site/games/#{id}/lobby"
+    # qr_code_url = "https://9eee-77-132-153-212.ngrok-free.app/games/access_qr_code?id=#{self.id}"
+
     qrcode = RQRCode::QRCode.new(qr_code_url)
 
 
