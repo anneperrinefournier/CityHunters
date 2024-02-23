@@ -6,7 +6,8 @@ export default class extends Controller {
   static targets = ["useranswer", "response", "form", "displayriddle"];
   static values = {
     gameId: String,
-    riddleId: String
+    riddleId: String,
+    participationId: Number
   }
 
   connect() {
@@ -32,10 +33,11 @@ export default class extends Controller {
     event.preventDefault();
     event.stopPropagation();
 
-    let userResponse = new FormData(this.formTarget)
+    let userResponse = new FormData(this.formTarget);
     userResponse.append('answer_type', 'new_static_answer');
-    userResponse.append('game_id', this.gameIdValue)
-    userResponse.append('riddle_id', this.riddleIdValue)
+    userResponse.append('game_id', this.gameIdValue);
+    userResponse.append('riddle_id', this.riddleIdValue);
+    userResponse.append('participation_id', this.participationIdValue);
 
     const options = {
       method: 'POST',
@@ -44,10 +46,10 @@ export default class extends Controller {
         "X-CSRF-TOKEN": this.token
       },
       body: userResponse
-    }
+    };
 
     const response = await fetch(`/verify`, options);
-    const data = await response.json()
+    const data = await response.json();
 
     if (data.status === "ok") {
       this.closeModal();

@@ -95,6 +95,7 @@ class RiddlesController < ApplicationController
           }
         )
       else
+        @user_participation = @game.participations.find_by(user: current_user)
         GameChannel.broadcast_to(
           "game-#{@game.id}",
           {
@@ -141,7 +142,7 @@ class RiddlesController < ApplicationController
         game: @game,
         participation: participation,
         riddle: riddle,
-        content: "Lat:#{participation['latitude']},Lng:#{participation['longitude']}"
+        content: "Lat:#{participation.latitude},Lng:#{participation.longitude}"
       )
       user_answer.save!
 
@@ -159,7 +160,7 @@ class RiddlesController < ApplicationController
 
       user_answer = Answer.new(
         game: @game,
-        participation: Participation.find_by(user: current_user),
+        participation: participation,
         riddle: riddle,
         content: params.dig(:question, :answer)
       )

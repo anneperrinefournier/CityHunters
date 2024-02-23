@@ -65,7 +65,8 @@
                     data-controller="answer-modal"
                     data-game-target="displayAnswerBtn"
                     data-answer-modal-game-id-value="<%= game.id %>"
-                    data-answer-modal-riddle-id-value="<%= game.current_place.current_riddle(game).id %>">
+                    data-answer-modal-riddle-id-value="<%= game.current_place.current_riddle(game).id %>"
+                    data-answer-modal-participation-id-value="<%= @user_participation.id %>">
 
                     <% if game.current_place.current_riddle(game).motion_type == 'static' %>
                       <button class="btn-home" data-action="click->answer-modal#openModal">Répondre</button>
