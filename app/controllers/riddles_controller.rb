@@ -141,7 +141,7 @@ class RiddlesController < ApplicationController
         game: @game,
         participation: participation,
         riddle: riddle,
-        content: "Lat:#{params['latitude']},Lng:#{params['longitude']}"
+        content: "Lat:#{participation['latitude']},Lng:#{participation['longitude']}"
       )
       user_answer.save!
 
