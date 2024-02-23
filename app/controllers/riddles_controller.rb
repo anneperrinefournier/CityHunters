@@ -132,19 +132,18 @@ class RiddlesController < ApplicationController
 
   def create_answer(params)
     riddle = Riddle.find(params[:riddle_id].to_i)
-    participation = Participation.find_by(user: current_user)
+    participation = Participation.find(params['participation_id'])
 
     if riddle.motion_type == 'shifting' &&
        params['answer_type'] == 'new_shifting_answer'
 
       user_answer = Answer.new(
         game: @game,
-        participation: Participation.find_by(user: current_user),
+        participation: participation,
         riddle: riddle,
         content: "Lat:#{params['latitude']},Lng:#{params['longitude']}"
       )
       user_answer.save!
-
 
       default_radius = 1 #0.06
       places_near = Place.near([participation.latitude, participation.longitude], default_radius)
