@@ -28,7 +28,6 @@ export default class extends Controller {
       } else {
         event.target.classList.remove('storyline-check-ready')
         event.target.classList.add('storyline-check-not-ready')
-        console.log(data.message)
       }
     })
   }
