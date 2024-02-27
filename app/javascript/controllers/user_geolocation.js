@@ -17,17 +17,26 @@ const UserGeolocation = (Base) => class extends Base {
         this.#showError,
       );
     } else {
-      console.log("Geolocation is not supported by this browser.");
+      //Geolocation is not supported by this browser.
+      Swal.fire({
+        title: "Où êtes-vous?",
+        text: "La localisation n'est pas supporté par ce navigateur",
+        confirmButtonText: "Compris",
+        customClass: {
+          popup: 'swal-modal',
+          confirmButton: 'btn-home'
+        }
+      })
     }
   }
 
   #showError(error) {
     switch(error.code) {
       case error.PERMISSION_DENIED:
-        console.log("User denied the request for Geolocation.");
+        //User denied the request for Geolocation.
         Swal.fire({
           title: "Où êtes-vous?",
-          text: "La localisation est désactivée, assurez vous d'activer la localisation pour city hunters dans les paramètres",
+          text: "City Hunters ne peut pas savoir où vous êtes, assurez vous d'autoriser la localisation pour City Hunters dans les paramètres",
           confirmButtonText: "Compris",
           customClass: {
             popup: 'swal-modal',
@@ -36,13 +45,22 @@ const UserGeolocation = (Base) => class extends Base {
         })
         break;
       case error.POSITION_UNAVAILABLE:
-        console.log("Location information is unavailable.");
+        // Localisation unavailable
+        Swal.fire({
+          title: "Où êtes-vous?",
+          text: "La localisation est désactivée, assurez vous d'activer et d'autoriser la localisation pour City Hunters dans les paramètres",
+          confirmButtonText: "Compris",
+          customClass: {
+            popup: 'swal-modal',
+            confirmButton: 'btn-home'
+          }
+        })
         break;
       case error.TIMEOUT:
-        console.log("The request to get user location timed out.");
+        // The request to get user location timed out.
         break;
       case error.UNKNOWN_ERROR:
-        console.log("An unknown error occurred.");
+        // An unknown error occurred.
         break;
     }
   }
