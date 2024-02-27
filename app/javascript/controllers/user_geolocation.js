@@ -2,8 +2,6 @@ import Swal from 'sweetalert2';
 
 const UserGeolocation = (Base) => class extends Base {
   locateUser() {
-    console.log("hi!");
-
     if (navigator.geolocation) {
       navigator.geolocation.watchPosition(
         (coordinates) => {

@@ -1,16 +1,21 @@
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu"
+    data-controller= "burger"
+    data-burger-game-id-value="<%= @game.id %>">
+
+    <li>
+      <button class="dropdown-item" data-action="click->burger#refresh">Actualiser</button>
+    </li>
+    <% if defined?(@game) && @game %>
+      <li>
+        <button class="dropdown-item"> PIN de la partie : <%= @game.pin %></button>
+      </li>
+      <li>
+        <button class="dropdown-item" data-action="click->burger#endGame">Finir la partie</button>
+      </li>
+    <% end %>
     <li>
       <%= link_to 'Mon profil', profile_path, class:"dropdown-item" %>
     </li>
-    <% if defined?(@game) && @game %>
-      <li data-controller="burger" data-burger-game-pin-value="<%= @game.pin %>">
-        <button class="dropdown-item"> PIN de la partie : <%= @game.pin %></button>
-      </li>
-      <li data-controller= "burger" data-burger-game-id-value="<%= @game.id %>">
-        <button class="dropdown-item" data-action="click->burger#endGame">Finir la partie
-        </button>
-      </li>
-    <% end %>
     <li ><%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></li>
 
   </ul>
