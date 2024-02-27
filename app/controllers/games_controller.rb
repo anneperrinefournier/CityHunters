@@ -35,7 +35,6 @@ class GamesController < ApplicationController
       @starting_point = Storyline.find(@game.storyline_id).places.first
 
       @user_participation = @participations.find_by(user: current_user)
-      debugger
 
       @places_to_mark = @places.select do |place|
         place == @game.current_place || place.validated?(@game)

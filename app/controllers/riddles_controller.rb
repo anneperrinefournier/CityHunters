@@ -133,7 +133,7 @@ class RiddlesController < ApplicationController
 
   def create_answer(params)
     riddle = Riddle.find(params[:riddle_id].to_i)
-    participation = Participation.find(params['participation_id'])
+    participation = Participation.find_by(game: params['game_id'], user: current_user)
 
     if riddle.motion_type == 'shifting' &&
        params['answer_type'] == 'new_shifting_answer'
