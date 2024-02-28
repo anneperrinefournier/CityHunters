@@ -1,5 +1,6 @@
   <ul class="dropdown-menu"
-    data-controller= "burger">
+    data-controller="burger"
+    data-burger-game-id-value="<%= defined?(@game) ? @game.id  : '' %>">
 
     <li>
       <div class="dropdown-item burger-item">
@@ -7,8 +8,8 @@
         <p class="burger-item-title" data-action="click->burger#refresh">Actualiser</p>
       </div>
     </li>
-    <% if defined?(@game) && @game %>
-      <li data-burger-game-id-value="<%= @game.id %>">
+    <% if defined?(@game) && @game.status == 'running' %>
+      <li>
         <div class="dropdown-item burger-item">
           <i class="fa-solid fa-qrcode burger-item-icon"></i>
           <p class="burger-item-title"><%= @game.pin %></p>
@@ -31,12 +32,31 @@
         </div>
       <% end %>
     </li>
-    <li>
-      <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" do %>
-        <div class="burger-item">
-          <i class="fa-solid fa-door-open burger-item-icon"></i>
-          <p class="burger-item-title">Se déconnecter</p>
-        </div>
-      <% end %>
-    </li>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" do %>
+          <div class="burger-item">
+            <i class="fa-solid fa-door-open burger-item-icon"></i>
+            <p class="burger-item-title">Se déconnecter</p>
+          </div>
+        <% end %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to new_user_session_path, class:"dropdown-item" do %>
+          <div class="burger-item">
+            <i class="fa-solid fa-user burger-item-icon"></i>
+            <p class="burger-item-title">Se connecter</p>
+          </div>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_user_registration_path, class:"dropdown-item" do %>
+          <div class="burger-item">
+            <i class="fa-solid fa-user-plus burger-item-icon"></i>
+            <p class="burger-item-title">Créer un compte</p>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
   </ul>

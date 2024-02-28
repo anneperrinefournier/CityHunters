@@ -1,7 +1,25 @@
 <div class="pages-backscreen" style="min-height: 100vh">
-  <h1 class="background-top-title background-lobby-top-title"><%= @storyline_title %></h1>
 
-  <div class="container" data-controller="lobby" data-lobby-id-value="<%= @game.id %>" data-lobby-participation-id-value="<%= @participation %>">
+  <div class="background-top-title background-lobby-top-title">
+    <div class="menu">
+      <a href="<%= storylines_path %>" class="arrow-menu">
+        <%= image_tag("arrow.png", alt: "back arrow", class:"arrow-menu") %>
+      </a>
+      <div>
+        <h4 class="menu-title"><%= @storyline_title %></h4>
+      </div>
+      <div class="dropdown">
+        <i class="fa-solid fa-bars btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+        <%= render 'shared/burger'%>
+      </div>
+    </div>
+  </div>
+
+  <div class="container"
+      data-controller="lobby"
+      data-lobby-id-value="<%= @game.id %>"
+      data-lobby-participation-id-value="<%= @participation %>">
+
     <div class="lobby-content desktop-folder-show">
       <% if @game.present? && @game.qr_code.present? %>
           <%= image_tag @game.qr_code, class: "lobby-qrcode" %>

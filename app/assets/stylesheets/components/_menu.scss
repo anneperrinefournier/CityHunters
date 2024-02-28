@@ -3,9 +3,13 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   margin: 0px 20px;
+}
+
+.menu-title {
+  margin: 0;
 }
 
 .arrow-menu img {
