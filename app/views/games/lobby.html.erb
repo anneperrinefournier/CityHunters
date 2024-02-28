@@ -1,5 +1,6 @@
 <div class="pages-backscreen" style="min-height: 100vh">
   <h1 class="background-top-title background-lobby-top-title"><%= @storyline_title %></h1>
+
   <div class="container" data-controller="lobby" data-lobby-id-value="<%= @game.id %>" data-lobby-participation-id-value="<%= @participation %>">
     <div class="lobby-content desktop-folder-show">
       <% if @game.present? && @game.qr_code.present? %>

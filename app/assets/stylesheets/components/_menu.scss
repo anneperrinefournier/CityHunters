@@ -24,9 +24,21 @@
 }
 
 .burger-menu {
-  position: fixed;
+  position: absolute;
   align-items: end;
   left: 80vw;
   z-index: 1000;
-  margin-top: 10px;
+}
+
+.burger-item-icon {
+  margin-right: 10px;
+}
+
+.burger-item-title {
+  margin: 0;
+}
+
+.burger-item {
+  display: flex;
+  align-items: center;
 }

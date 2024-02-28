@@ -1,21 +1,42 @@
   <ul class="dropdown-menu"
-    data-controller= "burger"
-    data-burger-game-id-value="<%= @game.id %>">
+    data-controller= "burger">
 
     <li>
-      <button class="dropdown-item" data-action="click->burger#refresh">Actualiser</button>
+      <div class="dropdown-item burger-item">
+        <i class="fa-solid fa-rotate-right burger-item-icon"></i>
+        <p class="burger-item-title" data-action="click->burger#refresh">Actualiser</p>
+      </div>
     </li>
     <% if defined?(@game) && @game %>
-      <li>
-        <button class="dropdown-item"> PIN de la partie : <%= @game.pin %></button>
+      <li data-burger-game-id-value="<%= @game.id %>">
+        <div class="dropdown-item burger-item">
+          <i class="fa-solid fa-qrcode burger-item-icon"></i>
+          <p class="burger-item-title"><%= @game.pin %></p>
+        </div>
       </li>
-      <li>
-        <button class="dropdown-item" data-action="click->burger#endGame">Finir la partie</button>
-      </li>
+      <% if @game.user == current_user %>
+        <li>
+          <div class="dropdown-item burger-item">
+            <i class="fa-solid fa-xmark burger-item-icon"></i>
+            <p class="burger-item-title" data-action="click->burger#endGame">Finir la partie</p>
+          </div>
+        </li>
+      <% end %>
     <% end %>
     <li>
-      <%= link_to 'Mon profil', profile_path, class:"dropdown-item" %>
+      <%= link_to root_path, class: "dropdown-item" do %>
+        <div class="burger-item">
+          <i class="fa-solid fa-house burger-item-icon"></i>
+          <p class="burger-item-title">Acceuil</p>
+        </div>
+      <% end %>
     </li>
-    <li ><%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %></li>
-
+    <li>
+      <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" do %>
+        <div class="burger-item">
+          <i class="fa-solid fa-door-open burger-item-icon"></i>
+          <p class="burger-item-title">Se déconnecter</p>
+        </div>
+      <% end %>
+    </li>
   </ul>
