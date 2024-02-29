@@ -1,9 +1,10 @@
-import { Controller } from "@hotwired/stimulus"
-import { createConsumer } from "@rails/actioncable"
-import mapboxgl from 'mapbox-gl'
+import { Controller } from "@hotwired/stimulus";
+import { createConsumer } from "@rails/actioncable";
+import mapboxgl from 'mapbox-gl';
+import UserGeolocation from "./user_geolocation";
 import Swal from 'sweetalert2';
 
-export default class extends Controller {
+export default class extends UserGeolocation(Controller) {
   static values = {
     gameId: Number,
     apiKey: String,
@@ -33,15 +34,7 @@ export default class extends Controller {
   }
 
   connect() {
-    navigator.geolocation.watchPosition((coordinates) => {
-      this.channel.send({
-        data_type: 'set_player_position',
-        participation_id: this.participationIdValue,
-        longitude: coordinates.coords.longitude,
-        latitude: coordinates.coords.latitude,
-      })
-    })
-
+    this.locateUser();
     this._initMap();
   }
 

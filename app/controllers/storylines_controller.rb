@@ -10,8 +10,6 @@ class StorylinesController < ApplicationController
     @storyline = Storyline.find(params[:id])
     @starting_point = @storyline.places.first
 
-    game_id = params[:game_id].to_i
-    @game = Game.find_by(id: game_id)
 
     @starting_point.geocode
     @starting_point_marker = {

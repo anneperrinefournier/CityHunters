@@ -1,6 +1,11 @@
-<div class="big-container" style= "width: 100vw; overflow-x: hidden;" data-controller="swipe-map">
+<div class="big-container"
+    style= "width: 100vw; overflow-x: hidden;"
+    data-controller="swipe-map">
 
-  <div class="rectangle-swipe swipe-right" data-action="click->swipe-map#swipe" data-swipe-map-target="police">
+  <div class="rectangle-swipe swipe-right"
+      data-action="click->swipe-map#swipe"
+      data-swipe-map-target="police">
+
     <p data-swipe-map-target="showmap"><i class="fa-solid fa-caret-left"></i></p>
   </div>
 
@@ -12,40 +17,43 @@
     data-game-participations-markers-value="<%= @participations_markers.to_json %>"
     data-game-participation-id-value="<%= current_user.find_participation_for(@game).id %>">
 
-    <div class="second-big-container" style="width: 200vw; display: flex; transition: all ease 0.5s; overflow-y: auto;"  data-swipe-map-target="unroll">
-        <div class= "pages-backscreen" style="width: 100vw; overflow: hidden;">
-          <div class="background-top-title">
-            <h4> <%= @storyline.title %></h4>
+    <div class="second-big-container"
+        style="width: 200vw; display: flex; transition: all ease 0.5s; overflow-y: auto;"
+        data-swipe-map-target="unroll">
 
-            <div class="burger-menu dropdown">
-              <i class="fa-solid fa-bars btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              </i>
-              <%= render 'shared/burger'%>
-            </div>
+      <div class="pages-backscreen" style="width: 100vw; overflow: hidden;">
+        <div class="background-top-title">
+          <h4><%= @storyline.title %></h4>
 
+          <div class="burger-menu dropdown">
+            <i class="fa-solid fa-bars btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            </i>
+            <%= render 'shared/burger'%>
           </div>
 
-          <div class="container">
-            <div class="riddles-container d-none" data-game-target="riddlesHandle">
-              <%= render 'game_state', game: @game %>
+        </div>
+
+        <div class="container">
+          <div class="riddles-container d-none" data-game-target="riddlesHandle">
+            <%= render 'game_state', game: @game %>
+          </div>
+
+          <div class="p-3 my-3 story-introduction desktop-folder-show" data-game-target="introduction">
+            <div class="pair">
+              <div class="show-title">
+                <h4>Introduction</h4>
+              </div>
             </div>
 
-            <div class="p-3 my-3 story-introduction desktop-folder-show" data-game-target="introduction">
-              <div class="pair">
-                <div class="show-title">
-                  <h4>Introduction</h4>
-                </div>
-              </div>
-
-              <div class="folder-show">
-                <%= cl_image_tag @storyline.photo.key, alt: (@storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
-                <p><%= simple_format(@storyline.introduction) %></p>
-                <div class="d-flex justify-content-center">
-                  <button class="btn-home" data-action="click->game#closeIntroduction">C’est parti !</button>
-                </div>
+            <div class="folder-show">
+              <%= cl_image_tag @storyline.photo.key, alt: (@storyline.title + "-picture"), id: "storyline-picture-intro", class: "storyline-picture-card" %>
+              <p><%= simple_format(@storyline.introduction) %></p>
+              <div class="d-flex justify-content-center">
+                <button class="btn-home" data-action="click->game#closeIntroduction">C’est parti !</button>
               </div>
             </div>
           </div>
+        </div>
       </div>
 
       <div>

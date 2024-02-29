@@ -2,14 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="burger"
 export default class extends Controller {
-  static values = { gameId: Number, gamePin: String };
-  static targets = ["pin"];
+  static values = {
+    gameId: Number,
+    gamePin: String
+  };
 
   connect() {
   }
 
   goProfile() {
-
   }
 
   async endGame() {
@@ -22,5 +23,9 @@ export default class extends Controller {
     };
 
     const response = await fetch(`/games/${this.gameIdValue}/end`, options);
+  }
+
+  refresh() {
+    location.reload();
   }
 }

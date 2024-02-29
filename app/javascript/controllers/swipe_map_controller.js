@@ -23,11 +23,8 @@ export default class extends Controller {
       this.showmapTarget.innerHTML = '<i class="fa-solid fa-caret-left"></i>';
       this.showmapTarget.style.letterSpacing = "8px";
 
-
     } else {
       this.unrollTarget.style.transform = "translateX(-100vw)";
-      // this.policeTarget.style.marginLeft = "-30px";
-      //this.policeTarget.style.left = "";
       this.policeTarget.classList.remove("swipe-right");
       this.policeTarget.classList.add("swipe-left");
       this.showmapTarget.classList.add("font-police");
