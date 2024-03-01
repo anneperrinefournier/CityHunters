@@ -30,7 +30,13 @@ export default class extends UserGeolocation(Controller) {
     this.channel = createConsumer().subscriptions.create(
       { channel: "GameChannel", id: this.gameIdValue },
       { received: data => this.#handleData(data) }
-    )
+    );
+    this.channel.connected = () => {
+      this.channel.send({
+          data_type: 'fetch_missed_messages',
+          participation_id: this.participationIdValue,
+      });
+    };
   }
 
   connect() {
