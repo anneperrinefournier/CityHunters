@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_06_020408) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_01_210608) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -115,6 +115,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_06_020408) do
     t.index ["place_id"], name: "index_riddles_on_place_id"
   end
 
+  create_table "state_messages", force: :cascade do |t|
+    t.text "content"
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_state_messages_on_game_id"
+  end
+
   create_table "storylines", force: :cascade do |t|
     t.string "district"
     t.string "theme"
@@ -159,5 +167,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_06_020408) do
   add_foreign_key "participations", "users"
   add_foreign_key "places", "storylines"
   add_foreign_key "riddles", "places"
+  add_foreign_key "state_messages", "games"
   add_foreign_key "storylines", "users"
 end

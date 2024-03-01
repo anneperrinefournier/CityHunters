@@ -8,6 +8,7 @@ class Game < ApplicationRecord
   has_many :riddles, through: :places
   has_many :answers, dependent: :destroy
   has_many :participations, dependent: :destroy
+  has_many :state_messages, -> { order(created_at: :asc) }, dependent: :destroy
 
   before_create :set_game_pin
   after_create :generate_qr_code
