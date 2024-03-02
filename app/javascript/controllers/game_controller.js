@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 import { createConsumer } from "@rails/actioncable";
 import mapboxgl from 'mapbox-gl';
-import UserGeolocation from "./user_geolocation";
+import UserGeolocation from "./user_geolocation.js";
 import Swal from 'sweetalert2';
 
 export default class extends UserGeolocation(Controller) {
