@@ -73,16 +73,27 @@ class RiddlesController < ApplicationController
         }
       )
 
+      # If there is no place anymore, then the game is other
       if @game.current_place.nil?
         @game.ended!
+
+        new_riddle_message = StateMessage.create!(
+          game: @game,
+          index: StateMessage.where(game: @game).count,
+          data_type: "update_game_content",
+          content: render_to_string(
+            partial: "/games/end_game",
+            formats: [:html]
+          )
+        )
 
         GameChannel.broadcast_to(
           "game-#{@game.id}",
           {
-            data_type: 'update_game_content',
+            data_type: new_riddle_message.data_type,
             type: 'html',
             game_status: @game.status,
-            content: render_to_string(partial: "/games/end_game", formats: [:html])
+            content: new_riddle_message.content
           }
         )
 
@@ -98,18 +109,16 @@ class RiddlesController < ApplicationController
         @user_participation = @game.participations.find_by(user: current_user)
 
         # Create the next state message in order to broadcast it to disconnected users
-        new_riddle_message = StateMessage.create!(game: @game)
-        new_riddle_message.index = StateMessage.where(game: @game).count + 1
-        new_riddle_message.data_type = "update_riddle"
-        new_riddle_message.content = render_to_string(
-          partial: "/games/game_state",
-          formats: [:html],
-          locals: {
-            game: @game,
-            last_state_id: new_riddle_message.id
-          }
+        new_riddle_message = StateMessage.create!(
+          game: @game,
+          index: StateMessage.where(game: @game).count,
+          data_type: "update_riddle",
+          content: render_to_string(
+            partial: "/games/game_state",
+            formats: [:html],
+            locals: { game: @game }
+          )
         )
-        new_riddle_message.save!
 
         GameChannel.broadcast_to(
           "game-#{@game.id}",
@@ -118,7 +127,8 @@ class RiddlesController < ApplicationController
             type: 'html',
             state_message_index: new_riddle_message.index,
             content: new_riddle_message.content
-          })
+          }
+        )
 
         if riddle.motion_type == 'shifting'
           new_place_message = StateMessage.new(

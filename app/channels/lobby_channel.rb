@@ -6,7 +6,7 @@ class LobbyChannel < ApplicationCable::Channel
       stream_for "lobby-#{game.id}"
 
       # If the game is already running, the player is redirected to the game when reconnected to the lobby
-      if game.status == 'running'
+      if game.status != 'not_started'
         LobbyChannel.broadcast_to(
           "lobby-#{game.id}",
           {

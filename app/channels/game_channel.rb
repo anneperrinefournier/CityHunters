@@ -26,7 +26,7 @@ class GameChannel < ApplicationCable::Channel
         message.data_type == 'new_marker' && message.index > data['state_message_index']
       end
       missed_riddles = StateMessage.where(game: game).select do |message|
-        message.data_type == 'update_riddle' && message.index > data['state_message_index']
+        message.data_type != 'new_marker' && message.index > data['state_message_index']
       end
 
       missed_messages.push(missed_riddles.last) unless missed_riddles.empty?
