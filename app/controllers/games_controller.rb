@@ -97,7 +97,6 @@ class GamesController < ApplicationController
     else
       flash[:alert] = "Vous devez être connecté pour accéder au lobby du jeu."
       redirect_to new_user_session_path
-      #how to redirect on device
     end
   end
 
@@ -134,8 +133,6 @@ class GamesController < ApplicationController
 
   def end_game
     @game.ended!
-
-    @participations = Participation.where(game: @game)
 
     GameChannel.broadcast_to(
       "game-#{@game.id}",

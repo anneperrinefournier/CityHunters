@@ -96,22 +96,47 @@ class RiddlesController < ApplicationController
         )
       else
         @user_participation = @game.participations.find_by(user: current_user)
+
+        # Create the next state message in order to broadcast it to disconnected users
+        new_riddle_message = StateMessage.create!(game: @game)
+        new_riddle_message.index = StateMessage.where(game: @game).count + 1
+        new_riddle_message.data_type = "update_riddle"
+        new_riddle_message.content = render_to_string(
+          partial: "/games/game_state",
+          formats: [:html],
+          locals: {
+            game: @game,
+            last_state_id: new_riddle_message.id
+          }
+        )
+        new_riddle_message.save!
+
         GameChannel.broadcast_to(
           "game-#{@game.id}",
           {
-            data_type: 'update_riddle',
+            data_type: new_riddle_message.data_type,
             type: 'html',
             game_status: @game.status,
-            content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: @game })
+            state_message_index: new_riddle_message.index,
+            content: new_riddle_message.content
           })
 
         if riddle.motion_type == 'shifting'
+          new_place_message = StateMessage.new(
+            game: @game,
+            data_type: 'new_marker',
+            content: create_place_marker(@game.current_place)
+          )
+          new_place_message.index = new_riddle_message.index + 1
+          new_place_message.save
+
           GameChannel.broadcast_to(
             "game-#{@game.id}",
             {
-              data_type: 'new_marker',
+              data_type: new_place_message.data_type,
               type: 'html',
-              content: create_place_marker(@game.current_place),
+              state_message_index: new_place_message.index,
+              content: new_place_message.content
             })
         end
       end
