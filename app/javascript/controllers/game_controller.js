@@ -72,9 +72,6 @@ export default class extends UserGeolocation(Controller) {
       return;
     }
 
-    console.log(data.state_message_index)
-    console.log(this.stateMessageIndexValue)
-
     if (data.data_type == 'update_riddle' &&
         data.state_message_index > this.stateMessageIndexValue) {
 
