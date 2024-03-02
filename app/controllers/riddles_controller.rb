@@ -116,7 +116,6 @@ class RiddlesController < ApplicationController
           {
             data_type: new_riddle_message.data_type,
             type: 'html',
-            game_status: @game.status,
             state_message_index: new_riddle_message.index,
             content: new_riddle_message.content
           })
@@ -125,9 +124,9 @@ class RiddlesController < ApplicationController
           new_place_message = StateMessage.new(
             game: @game,
             data_type: 'new_marker',
-            content: create_place_marker(@game.current_place)
+            index: new_riddle_message.index + 1,
+            content: create_place_marker(@game.current_place).to_json
           )
-          new_place_message.index = new_riddle_message.index + 1
           new_place_message.save
 
           GameChannel.broadcast_to(
@@ -136,7 +135,7 @@ class RiddlesController < ApplicationController
               data_type: new_place_message.data_type,
               type: 'html',
               state_message_index: new_place_message.index,
-              content: new_place_message.content
+              content: JSON.parse(new_place_message.content).symbolize_keys
             })
         end
       end

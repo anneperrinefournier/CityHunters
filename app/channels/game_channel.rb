@@ -37,7 +37,7 @@ class GameChannel < ApplicationCable::Channel
           type: 'html',
           game_status: game.status,
           state_message_index: message.index,
-          content: message.content
+          content: message.data_type == 'new_marker' ? JSON.parse(message.content).symbolize_keys : message.content
         })
       end
     end
