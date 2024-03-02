@@ -34,6 +34,8 @@ class GamesController < ApplicationController
       @participations = Participation.where(game: @game)
       @starting_point = Storyline.find(@game.storyline_id).places.first
 
+      @user_participation = @participations.find_by(user: current_user)
+
       @places_to_mark = @places.select do |place|
         place == @game.current_place || place.validated?(@game)
       end
@@ -95,7 +97,6 @@ class GamesController < ApplicationController
     else
       flash[:alert] = "Vous devez être connecté pour accéder au lobby du jeu."
       redirect_to new_user_session_path
-      #how to redirect on device
     end
   end
 
@@ -133,8 +134,6 @@ class GamesController < ApplicationController
   def end_game
     @game.ended!
 
-    @participations = Participation.where(game: @game)
-
     GameChannel.broadcast_to(
       "game-#{@game.id}",
       {
@@ -145,16 +144,6 @@ class GamesController < ApplicationController
       }
     )
   end
-
-  # def qr_code_lobby
-  #   if current_user
-  #     @game = Game.find(params[:id])
-  #     redirect_to lobby_game_path(@game)
-  #   else
-  #     flash[:alert] = "Vous devez être connecté pour accéder au lobby du jeu."
-  #     redirect_to new_user_session_path
-  #   end
-  # end
 
   def set_game_users
     participations = Participation.where(game: @game)

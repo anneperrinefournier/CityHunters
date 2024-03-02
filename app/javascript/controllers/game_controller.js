@@ -1,15 +1,17 @@
-import { Controller } from "@hotwired/stimulus"
-import { createConsumer } from "@rails/actioncable"
-import mapboxgl from 'mapbox-gl'
+import { Controller } from "@hotwired/stimulus";
+import { createConsumer } from "@rails/actioncable";
+import mapboxgl from 'mapbox-gl';
+import UserGeolocation from "./user_geolocation";
 import Swal from 'sweetalert2';
 
-export default class extends Controller {
+export default class extends UserGeolocation(Controller) {
   static values = {
     gameId: Number,
     apiKey: String,
     markers: Array,
     participationsMarkers: Array,
-    participationId: Number
+    participationId: Number,
+    stateMessageIndex: Number
   }
 
   static targets = [
@@ -29,19 +31,19 @@ export default class extends Controller {
     this.channel = createConsumer().subscriptions.create(
       { channel: "GameChannel", id: this.gameIdValue },
       { received: data => this.#handleData(data) }
-    )
+    );
+    this.channel.connected = () => {
+      this.channel.send({
+          data_type: 'fetch_missed_messages',
+          game_id: this.gameIdValue,
+          participation_id: this.participationIdValue,
+          state_message_index: this.stateMessageIndexValue
+      });
+    };
   }
 
   connect() {
-    navigator.geolocation.watchPosition((coordinates) => {
-      this.channel.send({
-        data_type: 'set_player_position',
-        participation_id: this.participationIdValue,
-        longitude: coordinates.coords.longitude,
-        latitude: coordinates.coords.latitude,
-      })
-    })
-
+    this.locateUser();
     this._initMap();
   }
 
@@ -70,7 +72,10 @@ export default class extends Controller {
       return;
     }
 
-    if (data.data_type == 'update_riddle') {
+    if (data.data_type == 'update_riddle' &&
+        data.state_message_index > this.stateMessageIndexValue) {
+
+      this.stateMessageIndexValue = data.state_message_index;
       this.riddlesHandleTarget.innerHTML = data.content;
       this.displayAnswerBtnTarget.classList.remove('d-none');
       const lastItem = this.riddleContainerTargets[this.riddleContainerTargets.length - 1];
@@ -80,6 +85,7 @@ export default class extends Controller {
 
     if (data.data_type == 'new_marker') {
       this.#addMarkerToMap(data.content)
+      return
     }
 
     if (data.data_type == 'update_game_content') {
@@ -164,12 +170,14 @@ export default class extends Controller {
 
   switchPanel(event) {
     const tabIndex = event.target.dataset.index
-    this.placePanelTargets.forEach(panel => {
-      panel.classList.add('d-none')
-    })
-    this.placePanelTargets.find(panel => {
-      return panel.dataset.index == tabIndex
-    }).classList.remove('d-none')
+    if (tabIndex != undefined) {
+      this.placePanelTargets.forEach(panel => {
+        panel.classList.add('d-none')
+      })
+      this.placePanelTargets.find(panel => {
+        return panel.dataset.index == tabIndex
+      }).classList.remove('d-none')
+    }
   }
 
   async endGame() {

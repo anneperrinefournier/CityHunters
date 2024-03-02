@@ -73,16 +73,27 @@ class RiddlesController < ApplicationController
         }
       )
 
+      # If there is no place anymore, then the game is other
       if @game.current_place.nil?
         @game.ended!
+
+        new_riddle_message = StateMessage.create!(
+          game: @game,
+          index: StateMessage.where(game: @game).count,
+          data_type: "update_game_content",
+          content: render_to_string(
+            partial: "/games/end_game",
+            formats: [:html]
+          )
+        )
 
         GameChannel.broadcast_to(
           "game-#{@game.id}",
           {
-            data_type: 'update_game_content',
+            data_type: new_riddle_message.data_type,
             type: 'html',
             game_status: @game.status,
-            content: render_to_string(partial: "/games/end_game", formats: [:html])
+            content: new_riddle_message.content
           }
         )
 
@@ -95,22 +106,46 @@ class RiddlesController < ApplicationController
           }
         )
       else
+        @user_participation = @game.participations.find_by(user: current_user)
+
+        # Create the next state message in order to broadcast it to disconnected users
+        new_riddle_message = StateMessage.create!(
+          game: @game,
+          index: StateMessage.where(game: @game).count,
+          data_type: "update_riddle",
+          content: render_to_string(
+            partial: "/games/game_state",
+            formats: [:html],
+            locals: { game: @game }
+          )
+        )
+
         GameChannel.broadcast_to(
           "game-#{@game.id}",
           {
-            data_type: 'update_riddle',
+            data_type: new_riddle_message.data_type,
             type: 'html',
-            game_status: @game.status,
-            content: render_to_string(partial: "/games/game_state", formats: [:html], locals: { game: @game })
-          })
+            state_message_index: new_riddle_message.index,
+            content: new_riddle_message.content
+          }
+        )
 
         if riddle.motion_type == 'shifting'
+          new_place_message = StateMessage.new(
+            game: @game,
+            data_type: 'new_marker',
+            index: new_riddle_message.index + 1,
+            content: create_place_marker(@game.current_place).to_json
+          )
+          new_place_message.save
+
           GameChannel.broadcast_to(
             "game-#{@game.id}",
             {
-              data_type: 'new_marker',
+              data_type: new_place_message.data_type,
               type: 'html',
-              content: create_place_marker(@game.current_place),
+              state_message_index: new_place_message.index,
+              content: JSON.parse(new_place_message.content).symbolize_keys
             })
         end
       end
@@ -132,19 +167,18 @@ class RiddlesController < ApplicationController
 
   def create_answer(params)
     riddle = Riddle.find(params[:riddle_id].to_i)
-    participation = Participation.find_by(user: current_user)
+    participation = Participation.find_by(game: params['game_id'], user: current_user)
 
     if riddle.motion_type == 'shifting' &&
        params['answer_type'] == 'new_shifting_answer'
 
       user_answer = Answer.new(
         game: @game,
-        participation: Participation.find_by(user: current_user),
+        participation: participation,
         riddle: riddle,
-        content: "Lat:#{params['latitude']},Lng:#{params['longitude']}"
+        content: "Lat:#{participation.latitude},Lng:#{participation.longitude}"
       )
       user_answer.save!
-
 
       default_radius = 1 #0.06
       places_near = Place.near([participation.latitude, participation.longitude], default_radius)
@@ -160,7 +194,7 @@ class RiddlesController < ApplicationController
 
       user_answer = Answer.new(
         game: @game,
-        participation: Participation.find_by(user: current_user),
+        participation: participation,
         riddle: riddle,
         content: params.dig(:question, :answer)
       )
