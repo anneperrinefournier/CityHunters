@@ -170,12 +170,14 @@ export default class extends UserGeolocation(Controller) {
 
   switchPanel(event) {
     const tabIndex = event.target.dataset.index
-    this.placePanelTargets.forEach(panel => {
-      panel.classList.add('d-none')
-    })
-    this.placePanelTargets.find(panel => {
-      return panel.dataset.index == tabIndex
-    }).classList.remove('d-none')
+    if (tabIndex != undefined) {
+      this.placePanelTargets.forEach(panel => {
+        panel.classList.add('d-none')
+      })
+      this.placePanelTargets.find(panel => {
+        return panel.dataset.index == tabIndex
+      }).classList.remove('d-none')
+    }
   }
 
   async endGame() {
