@@ -11,8 +11,8 @@ class GamesController < ApplicationController
     Participation.create!(
       game: game,
       user: current_user,
-      latitude: 48.8641,
-      longitude: 2.3753
+      latitude: nil,
+      longitude: nil
     )
     redirect_to lobby_game_path(game)
   end
@@ -52,13 +52,15 @@ class GamesController < ApplicationController
       end
 
       @participations_markers = @participations.map do |participation|
-        {
-          lat: participation.latitude,
-          lng: participation.longitude,
-          participation_id: participation.id,
-          info_window_html: render_to_string(partial: "participations_info_window", locals: { participation: participation }),
-          participation_marker_html: render_to_string(partial: "participation_marker", locals: { participation_user: participation.user })
-        }
+        if !(participation.latitude.nil? || participation.longitude.nil?)
+          {
+            lat: participation.latitude,
+            lng: participation.longitude,
+            participation_id: participation.id,
+            info_window_html: render_to_string(partial: "participations_info_window", locals: { participation: participation }),
+            participation_marker_html: render_to_string(partial: "participation_marker", locals: { participation_user: participation.user })
+          }
+        end
       end
 
       @starting_point.geocode
@@ -86,7 +88,9 @@ class GamesController < ApplicationController
       if game
         participation = Participation.new(
           game: game,
-          user: current_user
+          user: current_user,
+          latitude: nil,
+          longitude: nil
         )
         participation.save
         redirect_to lobby_game_path(game)
