@@ -9,7 +9,7 @@ class PlacesController < ApplicationController
     if @place.save
       redirect_to edit_storyline_place_path(@storyline, @place)
     else
-      flash[:error] = "An error occured"
+      flash[:error] = "Une erreur est apparue, veuillez recommencer"
       redirect_to edit_storyline_path(@storyline)
     end
   end

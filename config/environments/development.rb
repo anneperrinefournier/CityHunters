@@ -75,8 +75,8 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 
-  config.hosts << "9eee-77-132-153-212.ngrok-free.app"
+  config.hosts << "853c-2a02-8440-5340-8f5d-f112-dbeb-8c34-20f7.ngrok-free.app"
   config.hosts << "nicely-normal-tarpon.ngrok-free.app"
   config.hosts << "localhost:3000"
-  Rails.application.routes.default_url_options[:host] = "9eee-77-132-153-212.ngrok-free.app"
+  Rails.application.routes.default_url_options[:host] = "853c-2a02-8440-5340-8f5d-f112-dbeb-8c34-20f7.ngrok-free.app"
 end

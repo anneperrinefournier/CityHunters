@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     if current_user.email == "monica@gmail.com"
       @storylines = Storyline.where(user: current_user)
     else
-      flash[:alert] = "Not implemented yet"
+      flash[:alert] = "Fonctionnalité à venir !"
       redirect_to root_path
     end
   end

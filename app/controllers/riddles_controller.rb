@@ -9,7 +9,7 @@ class RiddlesController < ApplicationController
     if @riddle.save
       redirect_to edit_storyline_place_riddle_path(@storyline, @place, @riddle)
     else
-      flash[:error] = "An error occured"
+      flash[:error] = "Erreur, veuillez recommencer"
       redirect_to edit_storyline_place_path(place)
     end
   end
@@ -18,7 +18,7 @@ class RiddlesController < ApplicationController
     if @storyline.user == current_user
       render :edit
     else
-      flash[:error] = "Action forbidden"
+      flash[:error] = "Cette action n’est pas autorisée"
       redirect_to profile_path, status: :unauthorized
     end
   end
@@ -27,13 +27,13 @@ class RiddlesController < ApplicationController
     if @storyline.user == current_user
       @riddle.update(riddle_params)
       if @riddle.save
-        flash[:notice] = "L'énigme a été mise à jour"
+        flash[:notice] = "L’énigme a été mise à jour"
         redirect_to edit_storyline_place_riddle_path(@storyline, @place, @riddle)
       else
         redirect_to edit_storyline_place_riddle_path(@storyline, @place, @riddle), status: :unprocessable_entity
       end
     else
-      flash[:error] = "Action forbidden"
+      flash[:error] = "Cette action n’est pas autorisée"
       redirect_to profile_path, status: :unauthorized
     end
   end
@@ -42,9 +42,9 @@ class RiddlesController < ApplicationController
     if @storyline.user == current_user
       @riddle.destroy
       redirect_to edit_storyline_place_path(@storyline, @place)
-      flash[:notice] = "Enigme supprimée"
+      flash[:notice] = "Énigme supprimée"
     else
-      flash[:error] = "Action forbidden"
+      flash[:error] = "Cette action n’est pas autorisée"
       redirect_to profile_path, status: :unauthorized
     end
   end
@@ -61,7 +61,7 @@ class RiddlesController < ApplicationController
 
       render json: {
         status: :ok,
-        message: "Correct answer!"
+        message: "Bonne réponse !"
       }
 
       GameChannel.broadcast_to(
@@ -69,7 +69,7 @@ class RiddlesController < ApplicationController
         {
           data_type: 'toast',
           type: 'html',
-          text: "#{current_user.name} a résolu l’énigme!"
+          text: "#{current_user.name} a résolu l’énigme !"
         }
       )
 
@@ -102,7 +102,7 @@ class RiddlesController < ApplicationController
           {
             data_type: 'toast',
             type: 'html',
-            text: "Vous avez gagné la partie!"
+            text: "Vous avez gagné la partie !"
           }
         )
       else
@@ -152,8 +152,8 @@ class RiddlesController < ApplicationController
 
     else
       titles = ["Sapristi !", "Fichtre !", "Pardi !", "Saperlipopette !", "Saperlotte !", "Tonnerre de brest !"]
-      texts = ["La bonne réponse n'est certainement pas loin", "Je suis sûr que tu l'as sur le bout de la langue"]
-      button_text = ["Je ne laisse pas tomber", "Je cherche, je cherche...", "Hum..."]
+      texts = ["La bonne réponse n’est certainement pas loin", "Je sais que tu l’as sur le bout de la langue"]
+      button_text = ["Je ne laisse pas tomber", "Je cherche, je cherche…", "Hum…"]
       render json: {
         status: :error,
         title: titles.sample,

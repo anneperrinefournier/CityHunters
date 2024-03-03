@@ -31,6 +31,7 @@
 
 
   <div class="form-actions">
+    <% hidden_field_tag :redirect_to, params[:redirect_to] %>
     <%= f.button :submit, "Valider l’inscription", class:"btn-home" %>
   </div>
 <% end %>
