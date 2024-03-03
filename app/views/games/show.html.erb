@@ -15,7 +15,8 @@
     data-game-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
     data-game-markers-value="<%= @markers.to_json %>"
     data-game-participations-markers-value="<%= @participations_markers.to_json %>"
-    data-game-participation-id-value="<%= current_user.find_participation_for(@game).id %>">
+    data-game-participation-id-value="<%= current_user.find_participation_for(@game).id %>"
+    data-game-state-message-index-value="<%= @game.state_messages.count - 1%>">
 
     <div class="second-big-container"
         style="width: 200vw; display: flex; transition: all ease 0.5s; overflow-y: auto;"
@@ -34,7 +35,8 @@
         </div>
 
         <div class="container">
-          <div class="riddles-container d-none" data-game-target="riddlesHandle">
+          <div class="riddles-container d-none"
+              data-game-target="riddlesHandle">
             <%= render 'game_state', game: @game %>
           </div>
 

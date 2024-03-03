@@ -143,8 +143,6 @@ class GamesController < ApplicationController
   def end_game
     @game.ended!
 
-    @participations = Participation.where(game: @game)
-
     GameChannel.broadcast_to(
       "game-#{@game.id}",
       {
