@@ -1,21 +1,30 @@
 class GamesController < ApplicationController
   before_action :set_game, only: %i[lobby show start end_game]
   before_action :set_game_users, only: %i[lobby stats end_game]
+  skip_before_action :authenticate_user!, only: [:create]
+  include ApplicationHelper
 
   def create
-    game = Game.create!(
-      user: current_user,
-      storyline_id: params[:storyline_id],
-      status: :not_started
-    )
-    Participation.create!(
-      game: game,
-      user: current_user,
-      latitude: 48.8641,
-      longitude: 2.3753
-    )
-    redirect_to lobby_game_path(game)
+    if current_user
+      game = Game.create!(
+        user: current_user,
+        storyline_id: params[:storyline_id],
+        status: :not_started
+      )
+      Participation.create!(
+        game: game,
+        user: current_user,
+        latitude: 48.8641,
+        longitude: 2.3753
+      )
+      redirect_to lobby_game_path(game)
+    else
+      session[:chosen_storyline_id] = params[:storyline_id]
+      flash[:alert] = "Vous devez vous connecter ou vous inscrire pour rejoindre la partie."
+      redirect_to new_user_session_path(log_in_options)
+    end
   end
+
 
   def show
     if @game.status == "not_started" && current_user == @game.user
@@ -95,9 +104,8 @@ class GamesController < ApplicationController
         redirect_to join_game_path
       end
     else
-      flash[:alert] = "Vous devez être connecté pour accéder au lobby du jeu."
-      redirect_to new_user_session_path
-      #how to redirect on device
+      flash[:alert] = "Vous devez vous connecter ou vous inscrire pour rejoindre la partie."
+      redirect_to new_user_session_path(log_in_options)
     end
   end
 

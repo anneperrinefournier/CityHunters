@@ -16,6 +16,7 @@
     </div>
 
     <div class="form-actions">
+      <%= hidden_field_tag :redirect_to, params[:redirect_to] %>
       <%= f.button :submit, "Se connecter", class:"btn-home" %>
     </div>
   <% end %>

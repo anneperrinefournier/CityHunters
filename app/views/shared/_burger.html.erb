@@ -43,7 +43,7 @@
       </li>
     <% else %>
       <li>
-        <%= link_to new_user_session_path, class:"dropdown-item" do %>
+        <%= link_to new_user_session_path(log_in_options), class:"dropdown-item" do %>
           <div class="burger-item">
             <i class="fa-solid fa-user burger-item-icon"></i>
             <p class="burger-item-title">Se connecter</p>
@@ -51,7 +51,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to new_user_registration_path, class:"dropdown-item" do %>
+        <%= link_to new_user_registration_path(log_in_options), class:"dropdown-item" do %>
           <div class="burger-item">
             <i class="fa-solid fa-user-plus burger-item-icon"></i>
             <p class="burger-item-title">Créer un compte</p>
