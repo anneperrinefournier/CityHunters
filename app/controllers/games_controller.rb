@@ -14,8 +14,8 @@ class GamesController < ApplicationController
       Participation.create!(
         game: game,
         user: current_user,
-        latitude: 48.8641,
-        longitude: 2.3753
+        latitude: nil,
+        longitude: nil
       )
       redirect_to lobby_game_path(game)
     else
