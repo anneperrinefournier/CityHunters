@@ -2,12 +2,14 @@ import { Controller } from "@hotwired/stimulus";
 import { createConsumer } from "@rails/actioncable";
 import mapboxgl from 'mapbox-gl';
 import Swal from 'sweetalert2';
+// import { Map } from './map'
 
+// export default class extends Map(Controller) {
 export default class extends Controller {
   static values = {
     gameId: Number,
     apiKey: String,
-    markers: Array,
+    placesMarkers: Array,
     participationsMarkers: Array,
     participationId: Number,
     stateMessageIndex: Number
@@ -20,8 +22,7 @@ export default class extends Controller {
     'placeTab',
     'placePanel',
     'displayAnswerBtn',
-    'map',
-    'mapForm',
+    'positionButton',
     'riddleContainer'
   ];
 
@@ -43,7 +44,10 @@ export default class extends Controller {
 
   connect() {
     this.locateUser();
-    this._initMap();
+
+    this.addAllMarkersToMap(this.placesMarkersValue)
+    this.addPlayerMarkersToMap(this.participationMarkersValue)
+    this.fitMapToMarkers()
   }
 
   locateUser() {
@@ -108,19 +112,6 @@ export default class extends Controller {
     }
   }
 
-  _initMap() {
-    mapboxgl.accessToken = this.apiKeyValue
-
-    this.map = new mapboxgl.Map({
-      container: this.mapTarget,
-      style: "mapbox://styles/anneperrine/clpqvu9za014201pke2o7alpm"
-    })
-
-    this.#addAllMarkersToMap()
-    this.#addPlayerMarkersToMap()
-    this.#fitMapToMarkers()
-  }
-
   #handleData(data) {
     if (data.data_type === 'redirect') {
       window.location.href = data.url;
@@ -145,7 +136,7 @@ export default class extends Controller {
     }
 
     if (data.data_type == 'new_marker') {
-      this.#addMarkerToMap(data.content)
+      this.addMarkerToMap(data.content)
       return
     }
 
@@ -179,7 +170,7 @@ export default class extends Controller {
     let userResponse = new FormData();
     userResponse.append('answer_type', 'new_shifting_answer');
     userResponse.append('game_id', this.gameIdValue);
-    userResponse.append('riddle_id', this.mapFormTarget.dataset.riddleId);
+    userResponse.append('riddle_id', this.positionButtonTarget.dataset.riddleId);
     userResponse.append('participation_id', this.participationIdValue);
     userResponse.append('longitude:', player.marker._lngLat.lng);
     userResponse.append('latitude:', player.marker._lngLat.lat);
@@ -251,50 +242,5 @@ export default class extends Controller {
     };
 
     const response = await fetch(`/games/${this.gameIdValue}/end`, options);
-  }
-
-  #addPlayerMarkersToMap() {
-    this.playerMarkers = []
-
-    this.participationsMarkersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
-
-      const customMarker = document.createElement('div');
-      customMarker.className = `marker ${marker.marker_class}`;
-      customMarker.innerHTML = marker.participation_marker_html
-
-      this.playerMarkers.push({
-        participation_id: marker.participation_id,
-        marker: new mapboxgl.Marker(customMarker)
-                            .setLngLat([ marker.lng, marker.lat ])
-                            .setPopup(popup)
-                            .addTo(this.map)
-      })
-    })
-  }
-
-  #addAllMarkersToMap() {
-    this.markersValue.forEach((marker) => {
-      this.#addMarkerToMap(marker)
-    })
-  }
-
-  #addMarkerToMap(marker) {
-    const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
-
-    const customMarker = document.createElement('div');
-    customMarker.className = `marker ${marker.marker_class}`;
-    customMarker.innerHTML = marker.marker_html
-
-    new mapboxgl.Marker(customMarker)
-                .setLngLat([ marker.lng, marker.lat ])
-                .setPopup(popup)
-                .addTo(this.map)
-  }
-
-  #fitMapToMarkers() {
-    const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.concat(this.participationsMarkersValue).forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
-    this.map.fitBounds(bounds, { padding: 80, maxZoom: 15, duration: 0 })
   }
 }

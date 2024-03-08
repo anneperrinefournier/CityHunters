@@ -60,13 +60,15 @@
        <p><%= @storyline.long_description %></p>
       </div>
 
-      <div data-controller="show-storyline"
-      data-show-storyline-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-      data-show-storyline-markers-value="<%= @markers.to_json %>"
->
+      <div data-controller="storyline-show"
+      data-storyline-show-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      data-storyline-show-markers-value="<%= @markers.to_json %>">
+      <%# data-action="storyline-show:loadPlacesMarkers->map#loadMarkers"
+      data-action="storyline-show:loadPlacesMarkers->map#fitMapToMarkers"> %>
+
         <div class="map-storyline-show">
           <div class="map-position">
-            <%= render 'storylines/map' %>
+            <%= render 'shared/map' %>
           </div>
         </div>
 

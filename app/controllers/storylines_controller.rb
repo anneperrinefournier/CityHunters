@@ -8,18 +8,18 @@ class StorylinesController < ApplicationController
 
   def show
     @storyline = Storyline.find(params[:id])
-    @starting_point = @storyline.places.first
+    starting_point = @storyline.places.first
 
 
-    @starting_point.geocode
-    @starting_point_marker = {
-      lat: @starting_point.latitude,
-      lng: @starting_point.longitude,
-      info_window_html: render_to_string(partial: "games/starting_point_info_window", locals: { starting_point: @starting_point }),
+    starting_point.geocode
+    starting_point_marker = {
+      lat: starting_point.latitude,
+      lng: starting_point.longitude,
+      info_window_html: render_to_string(partial: "games/starting_point_info_window", locals: { starting_point: starting_point }),
       marker_html: render_to_string(partial: "games/marker", locals: { marker_class: "marker marker-red" })
     }
 
-    @markers = [@starting_point_marker]
+    @markers = [starting_point_marker]
   end
 
   def new
