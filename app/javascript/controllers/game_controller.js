@@ -63,7 +63,7 @@ export default class extends Controller {
       //Geolocation is not supported by this browser.
       Swal.fire({
         title: "Où êtes-vous?",
-        text: "La localisation n'est pas supporté par ce navigateur",
+        text: "La localisation n'est pas supportée par ce navigateur",
         confirmButtonText: "Compris",
         customClass: {
           popup: 'swal-modal',
@@ -79,7 +79,7 @@ export default class extends Controller {
         //User denied the request for Geolocation.
         Swal.fire({
           title: "Où êtes-vous?",
-          text: "City Hunters ne peut pas savoir où vous êtes, assurez vous d'autoriser la localisation pour City Hunters dans les paramètres",
+          text: "CityHunters ne peut pas savoir où vous êtes, assurez-vous d'autoriser la localisation pour CityHunters dans les paramètres",
           confirmButtonText: "Compris",
           customClass: {
             popup: 'swal-modal',
@@ -91,7 +91,7 @@ export default class extends Controller {
         // Localisation unavailable
         Swal.fire({
           title: "Où êtes-vous?",
-          text: "La localisation est désactivée, assurez vous d'activer et d'autoriser la localisation pour City Hunters dans les paramètres",
+          text: "La localisation est désactivée, assurez-vous d'activer et d’autoriser la localisation pour CityHunters dans les paramètres",
           confirmButtonText: "Compris",
           customClass: {
             popup: 'swal-modal',

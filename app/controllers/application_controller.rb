@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:photo, :name])
   end
 
-  #redirect after sign in or sign up
+  # redirect after sign in or sign up
   def set_redirect_path
     @redirect_path = request.path
   end
