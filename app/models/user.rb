@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   has_one_attached :photo, dependent: :destroy
 
-  # validates :name, presence: true
+  validates :name, presence: true
   validates :email, presence: true
 
   def find_participation_for(game)

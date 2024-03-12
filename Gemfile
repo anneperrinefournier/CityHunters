@@ -89,6 +89,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'rspec-rails', '~> 5.0'
+  gem 'shoulda-matchers', '~> 5.0' # librairie qui fournit une syntaxe plus lisible pour les tests RSpec
+  gem 'factory_bot_rails' # librairie qui permet de créer des objets pour les tests
 end
 
 gem "dockerfile-rails", ">= 1.6", :group => :development
