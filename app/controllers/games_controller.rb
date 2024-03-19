@@ -5,6 +5,7 @@ class GamesController < ApplicationController
   include ApplicationHelper
 
   def create
+    authorize @game
     if current_user
       game = Game.create!(
         user: current_user,
@@ -27,6 +28,8 @@ class GamesController < ApplicationController
 
 
   def show
+    authorize @game
+
     if @game.status == "not_started" && current_user == @game.user
       @game.running!
     end
@@ -86,9 +89,11 @@ class GamesController < ApplicationController
   end
 
   def join
+    authorize @game
   end
 
   def access
+    authorize @game
     if current_user
       game_pin = params[:game][:pin].delete(" \t\r\n").upcase
       game = Game.find_by(pin: game_pin)
@@ -110,6 +115,7 @@ class GamesController < ApplicationController
   end
 
   def lobby
+    authorize @game
     redirect_to game_path(@game) unless @game.status == 'not_started'
 
     LobbyChannel.broadcast_to(
@@ -125,10 +131,12 @@ class GamesController < ApplicationController
   end
 
   def stats
+    authorize @game
     @storyline = Storyline.find(@game.storyline)
   end
 
   def start
+    authorize @game
     @game.running!
     @game.update(start_time: Time.now)
     LobbyChannel.broadcast_to(
@@ -141,6 +149,7 @@ class GamesController < ApplicationController
   end
 
   def end_game
+    authorize @game
     @game.ended!
 
     GameChannel.broadcast_to(
