@@ -43,6 +43,7 @@ Rails.application.routes.draw do
 
   post '/verify', to: 'riddles#verify'
   patch '/update', to: 'participations#update'
+  patch '/clues/:id/unblock', to: 'clues#unblock', as: 'unblock_clue'
 
   match '/404', to: 'errors#not_found', via: :all
   match '/500', to: 'errors#internal_server', via: :all

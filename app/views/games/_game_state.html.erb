@@ -73,16 +73,19 @@
                       <%= render "games/answer_modal", riddle: game.current_place.current_riddle(game), game: game %>
                       <div data-answer-modal-target="displayriddle"></div>
 
-                    <% elsif game.current_place.current_riddle(game).motion_type == 'shifting' %>
+                    <% elsif game.current_place.current_riddjle(game).motion_type == 'shifting' %>
                       <%= simple_form_for :question, url: "#", html: { data: { riddle_id: game.current_place.current_riddle(game).id, game_target: "mapForm", action: "submit->game#verifyPosition" } } do |f| %>
                         <%= f.submit "Envoyer ma position", class: 'btn-home' %>
                       <% end %>
                     <% end %>
                   </div>
                 <% end %>
-                <div class="d-flex justify-content-end">
-                <button class="btn-ugly" data-action="click->clue-modal#openModal">Débloquer un indice</button>
+                <div class="d-flex justify-content-end"
+                  data-controller="clue"
+                  data-clue-target="displayClueBtn">
+                <button class="btn-ugly" data-action="click->clue#displayClueContent">Débloquer un indice</button>
                 </div>
+                <%# <div data-clue-target="clueContent"></div> %>
               </div>
             </div>
           <% end %>

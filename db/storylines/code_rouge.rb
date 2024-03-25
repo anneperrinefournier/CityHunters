@@ -96,20 +96,20 @@ riddle3 = create_or_update(
   }
 )
 
-clue = Clue.new(
+clue1 = Clue.new(
   content: 'Je suis un moyen de locomotion.',
   riddle: riddle1
 )
-clue.save!
+clue1.save!
 
-clue = Clue.new(
+clue2 = Clue.new(
   content: 'Je porte le même nom que la station de métro et la rue où je me trouve.',
   riddle: riddle2
 )
-clue.save!
+clue2.save!
 
-clue = Clue.new(
+clue3 = Clue.new(
   content: 'Mon nom de famille fait écho au loup.',
   riddle: riddle3
 )
-clue.save!
+clue3.save!

@@ -8,6 +8,8 @@ def create_or_update(instance, picture_info)
     db_instance = Riddle.find_by(title: instance.title, place: instance.place)
   when "User"
     db_instance = User.find_by(email: instance.email)
+  when "Clue"
+    db_instance = Clue.find_by(content: instance.content)
   else
     p "No case for class instance \"#{instance.class.to_s}\""
   end

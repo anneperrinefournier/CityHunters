@@ -42,6 +42,28 @@ class GameChannel < ApplicationCable::Channel
           content: message.data_type == 'new_marker' ? JSON.parse(message.content).symbolize_keys : message.content
         })
       end
+
+      missed_clues.each do |clue|
+        GameChannel.broadcast_to("game-#{game.id}", {
+          data_type: 'new_clue',
+          type: 'html',
+          clue_id: clue.id,
+          content: clue.content
+        })
+      end
+    end
+
+    if data['data_type'] == "unblock_clue"
+      if current_user
+        clue = Clue.find(data['clue_id'])
+        clue.update(unlocked: true)
+        GameChannel.broadcast_to("game-#{clue.game_id}", {
+          data_type: 'new_clue',
+          type: 'html',
+          clue_id: clue.id,
+          content: clue.content
+        })
+      end
     end
   end
 end
